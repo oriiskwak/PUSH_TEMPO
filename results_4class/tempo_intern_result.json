@@ -1,0 +1,251 @@
+{
+  "method": "TEMPO",
+  "best_early_prompt": "Classify this video frame into one of the following fraud categories based on visual and contextual clues:\n- 보이스피싱\n- 투자사기\n- 로맨스스뱀\n- 부업사기\n- 정상\n\nTo improve accuracy, analyze both visual cues and contextual patterns. Consider the presence of emotional appeals, financial symbols, or persuasive language in the frame. Look for indicators such as personal interactions, romantic settings, financial charts, or urgent financial appeals. Pay attention to elements like emotional expressions, financial symbols, or persuasive imagery.\n\nFor Romance Scams, identify scenes with personal relationships, emotional appeals, or romantic settings. For Investment Scams, focus on financial themes such as high returns, risk-free investments, or testimonials about financial success. Look for financial symbols, charts, or discussions about money. For 보이스피싱, consider urgent financial appeals or persuasive language. For 부업사기, look for scenes involving financial symbols or persuasive imagery.\n\nAdditionally, analyze the tone and context of the frame, including the use of formal language, absence of direct calls to action, and the presence of official channels or trusted sources. Focus on distinguishing context such as the presence of official channels or trusted sources, use of formal language indicating legal or educational advice, and absence of direct calls to action or requests for personal information.\n\nAssign only one category per frame.",
+  "best_late_prompt": "Classify this video frame into one of five categories based on both visual and contextual cues:\n- 보이스피싱 (voice phishing): Look for signs of urgency, impersonation of trusted individuals, and requests for immediate financial transactions.\n- 투자사기 (investment fraud): Identify elements related to deceptive financial terms, investment opportunities, or promises of unusually high returns.\n- 로맨스스캔 (romance scam): Focus on scenarios where trust is being built under the guise of a romantic relationship followed by requests for financial assistance.\n- 부업사기 (job scam): Detect instances of fake job offers promising high pay or requiring upfront payment. Look for visual elements such as images of money, graphs showing financial growth, or settings that resemble work environments. Pay close attention to contextual elements like mentions of financial gains, ease of making money, or promises of high returns with minimal effort.\n- 정상 (normal): Recognize everyday scenes that do not involve any form of scam or fraudulent activity.\n\nEnsure the classification is based on a comprehensive understanding of the scenario presented in the frame, considering both visual and contextual elements.",
+  "baseline_test": {
+    "acc": 0.3089430894308943,
+    "macro_f1": 0.2606045449341039,
+    "per_class_f1": {
+      "보이스피싱": 0.4528301886792453,
+      "투자사기": 0.1935483870967742,
+      "로맨스스캠": 0.39603960396039606,
+      "부업사기": 0.0
+    },
+    "confusion": {
+      "보이스피싱": {
+        "보이스피싱": 12,
+        "투자사기": 14,
+        "로맨스스캠": 5,
+        "부업사기": 0
+      },
+      "투자사기": {
+        "보이스피싱": 1,
+        "투자사기": 6,
+        "로맨스스캠": 27,
+        "부업사기": 0
+      },
+      "로맨스스캠": {
+        "보이스피싱": 6,
+        "투자사기": 2,
+        "로맨스스캠": 20,
+        "부업사기": 1
+      },
+      "부업사기": {
+        "보이스피싱": 3,
+        "투자사기": 6,
+        "로맨스스캠": 20,
+        "부업사기": 0
+      }
+    }
+  },
+  "best_test": {
+    "acc": 0.3870967741935484,
+    "macro_f1": 0.4008313638288973,
+    "per_class_f1": {
+      "보이스피싱": 0.1935483870967742,
+      "투자사기": 0.6206896551724138,
+      "로맨스스캠": 0.35714285714285715,
+      "부업사기": 0.6153846153846154,
+      "정상": 0.21739130434782608
+    },
+    "confusion": {
+      "보이스피싱": {
+        "보이스피싱": 3,
+        "투자사기": 0,
+        "로맨스스캠": 0,
+        "부업사기": 0,
+        "정상": 0
+      },
+      "투자사기": {
+        "보이스피싱": 0,
+        "투자사기": 18,
+        "로맨스스캠": 0,
+        "부업사기": 0,
+        "정상": 0
+      },
+      "로맨스스캠": {
+        "보이스피싱": 0,
+        "투자사기": 1,
+        "로맨스스캠": 5,
+        "부업사기": 0,
+        "정상": 2
+      },
+      "부업사기": {
+        "보이스피싱": 1,
+        "투자사기": 2,
+        "로맨스스캠": 0,
+        "부업사기": 12,
+        "정상": 5
+      },
+      "정상": {
+        "보이스피싱": 24,
+        "투자사기": 19,
+        "로맨스스캠": 15,
+        "부업사기": 7,
+        "정상": 10
+      }
+    }
+  },
+  "log": [
+    {
+      "round": 1,
+      "seg": "early",
+      "train_f1": 0.03529411764705882,
+      "dev_f1": 0.2246153846153846,
+      "dev_acc": 0.24,
+      "dev_per_class": {
+        "보이스피싱": 0.0,
+        "투자사기": 0.2564102564102564,
+        "로맨스스캠": 0.2,
+        "부업사기": 0.6666666666666666,
+        "정상": 0.0
+      },
+      "prompt": "Classify this video frame into one of the following fraud categories based on visual and contextual clues:\n- 보이스피싱\n- 투자사기\n- 로맨스스뱀\n- 부업사기\n- 정상\n\nConsider the presence of emotional appeals, financial symbols, or persuasive language in the frame. Look for indicators such as personal interactions, romantic settings, financial charts, or urgent financial appeals. Pay attention to elements like emotional expressions, financial symbols, or persuasive imagery. Assign only one category per frame.",
+      "feedback": "The error cluster involves distinguishing between regular financial advice or news content (normal), romance scams, and investment scams. The visual and contextual differences are not easily separable by abstract visual characteristics alone, as all scenarios may involve similar visual elements such as text, images, and video footage. The differences often lie in the context, tone, and specific content details, which require deeper semantic understanding and contextual analysis.\n\nTo improve the detection accuracy, it is necessary to incorporate tools that can analyze the semantic content and context, rather than relying solely on visual cues. The provided tools can help in this process.\n\n- **Title and Description Analysis**: Using the video title and description to understand the context and tone of the content.\n- **Contextual Differences**: Romance scams often involve personal relationships and emotional appeals, while investment scams tend to focus on financial gains, risk, and returns. Normal content typically lacks persuasive elements and does not urge immediate financial action.\n- **Visual Cues**: Romance scams might show more personal interactions, romantic settings, or emotional expressions. Investment scams could feature financial symbols, charts, or persuasive language or images. Normal content typically lacks these persuasive elements and does not urge immediate financial action."
+    },
+    {
+      "round": 1,
+      "seg": "late",
+      "train_f1": 0.1854131054131054,
+      "dev_f1": 0.3651256943790604,
+      "dev_acc": 0.34,
+      "dev_per_class": {
+        "보이스피싱": 0.0,
+        "투자사기": 0.3157894736842105,
+        "로맨스스캠": 0.3076923076923077,
+        "부업사기": 0.9230769230769231,
+        "정상": 0.27906976744186046
+      },
+      "prompt": "Classify this video frame into one of five categories based on visual and contextual cues:\n- 보이스피싱 (voice phishing): Look for signs of urgency, impersonation of trusted individuals, and requests for immediate financial transactions.\n- 투자사기 (investment fraud): Identify elements related to deceptive financial terms, investment opportunities, or promises of unusually high returns.\n- 로맨스스캔 (romance scam): Focus on scenarios where trust is being built under the guise of a romantic relationship followed by requests for financial assistance.\n- 부업사기 (job scam): Detect any instances of fake job offers promising high pay or requiring upfront payment.\n- 정상 (normal): Recognize everyday scenes that do not involve any form of scam or fraudulent activity.\n\nEnsure the classification is based on a comprehensive understanding of the scenario presented in the frame.",
+      "feedback": "[merged feedback]\nThe classification errors between 정상 (normal), 투자사기 (investment fraud), and 로맨스스캔 (romance scam) cannot be resolved solely by refining visual detection instructions. These errors primarily stem from the lack of contextual understanding and situational cues. \n\n1. **Contextual Differences**:\n   - **보이스피싱 (voice phishing)**: Scenarios typically involve impersonation of known individuals, creating urgency for financial transactions. Common examples include urgent money transfer requests, posing as a family member in distress.\n   - **로맨스스캔 (romance scam)**: Involves building trust through romantic relationships, followed by requests for financial help under various pretexts.\n   - **투자사기 (investment fraud)**: Involves deceptive financial terms, investment opportunities, or promises of returns.\n\n2. **Scenario Patterns**:\n   - Romance scams often depict scenarios where individuals pretend to be someone they are not, promising love or relationships.\n   - Investment frauds might show scenes related to financial transactions, stock market, or business activities.\n\nTo improve detection accuracy, it is necessary to incorporate additional tools that provide context-aware analysis. This includes understanding the typical presentation, language, and broader patterns of each type of scam. Visual cues alone are insufficient without this contextual understanding."
+    },
+    {
+      "round": 2,
+      "seg": "early",
+      "train_f1": 0.36507936507936506,
+      "dev_f1": 0.37311942959001787,
+      "dev_acc": 0.4,
+      "dev_per_class": {
+        "보이스피싱": 0.0,
+        "투자사기": 0.6,
+        "로맨스스캠": 0.36363636363636365,
+        "부업사기": 0.6666666666666666,
+        "정상": 0.23529411764705882
+      },
+      "prompt": "Classify this video frame into one of the following fraud categories based on visual and contextual clues:\n- 보이스피싱\n- 투자사기\n- 로맨스스뱀\n- 부업사기\n- 정상\n\nTo improve accuracy, analyze both visual cues and contextual patterns. For Romance Scams, identify scenes with personal relationships, emotional appeals, or romantic settings. For Investment Scams, focus on financial themes such as high returns, risk-free investments, or testimonials about financial success. Look for financial symbols, charts, or discussions about money. For 보이스피싱, consider urgent financial appeals or persuasive language. For 부업사기, look for scenes involving financial symbols or persuasive imagery. Assign only one category per frame.",
+      "feedback": "Visual detection improvement alone may not be sufficient to differentiate between 부업사기 (investment scam) and 정상 (normal) content effectively, as these scams often blend with legitimate content in terms of visual elements. However, combining visual cues with contextual patterns can enhance detection accuracy.\n\n### Feedback Content\n\n1. **Contextual Differences**:\n   - **Romance Scams**: Often feature personal relationships, emotional appeals, or romantic settings. Look for scenes where individuals are building personal connections or sharing emotional experiences.\n   - **Investment Scams**: Focus on financial themes, such as high returns, risk-free investments, or testimonials about financial success. Visual elements might include financial symbols, charts, or discussions about money.\n\n2. **..."
+    },
+    {
+      "round": 2,
+      "seg": "late",
+      "train_f1": 0.26850574712643677,
+      "dev_f1": 0.31204026325977546,
+      "dev_acc": 0.3,
+      "dev_per_class": {
+        "보이스피싱": 0.0,
+        "투자사기": 0.5714285714285714,
+        "로맨스스캠": 0.2222222222222222,
+        "부업사기": 0.5714285714285714,
+        "정상": 0.1951219512195122
+      },
+      "prompt": "Classify this video frame into one of five categories based on visual and contextual cues:\n\n- **보이스피싱 (voice phishing)**: Look for signs of urgency, impersonation of trusted individuals, and requests for immediate financial transactions. Pay special attention to frames showing urgent language, repeated calls to action, or prominent display of contact information. Identify text or visuals that evoke fear or demand immediate action. Pay attention to repetitive text or visuals emphasizing false points and overemphasis on contact information.\n\n- **투자사기 (investment fraud)**: Identify elements related to deceptive financial terms, investment opportunities, or promises of unusually high returns. Check for overly optimistic projections and financial jargon that seems out of place.\n\n- **로맨스스캔 (romance scam)**: Focus on scenarios where trust is being built under the guise of a romantic relationship followed by requests for financial assistance. Look for emotional appeals and mentions of financial needs linked to a romantic narrative.\n\n- **부업사기 (job scam)**: Detect any instances of fake job offers promising high pay or requiring upfront payment. Be cautious of job postings that seem too good to be true or demand money for \"registration\" or similar.\n\n- **정상 (normal)**: Recognize everyday scenes that do not involve any form of scam or fraudulent activity. Ensure the frame does not contain any elements that suggest urgency, fear, or financial requests.\n\nEnsure the classification is based on a comprehensive understanding of the scenario presented in the frame.",
+      "feedback": "The current detection method seems to be confused by similar visual elements and text patterns between 정상 and 보이스피싱 contexts. Improving the visual detection instructions alone might not fully address the issue, as the frames show similar visual elements with Korean text.\n\nTo better distinguish between 정상 and 보이스피싱, consider the following abstract patterns:\n- **Urgency and Fear**: Scam videos often use urgent language or threats to create fear.\n- **Repetition and Redundancy**: Scam videos may have repetitive text or visuals to emphasize a false point.\n- **Overemphasis on Contact Information**: Scam videos often highlight contact numbers or direct actions.\n- **Generic and Vague Warnings**: Scam warnings might use vague language that doesn’t directly address the viewer's specific situation.\n-..."
+    },
+    {
+      "round": 3,
+      "seg": "early",
+      "train_f1": 0.43809523809523815,
+      "dev_f1": 0.2694694694694695,
+      "dev_acc": 0.3469387755102041,
+      "dev_per_class": {
+        "보이스피싱": 0.0,
+        "투자사기": 0.5185185185185185,
+        "로맨스스캠": 0.0,
+        "부업사기": 0.6666666666666666,
+        "정상": 0.16216216216216217
+      },
+      "prompt": "Classify this video frame into one of the following fraud categories based on visual and contextual clues:\n- 보이스피싱\n- 투자사기\n- 로맨스스뱀\n- 부업사기\n- 정상\n\nTo improve accuracy, analyze both visual cues and contextual patterns. Consider the presence of emotional appeals, financial symbols, or persuasive language in the frame. Look for indicators such as personal interactions, romantic settings, financial charts, or urgent financial appeals. Pay attention to elements like emotional expressions, financial symbols, or persuasive imagery.\n\nFor Romance Scams, identify scenes with personal relationships, emotional appeals, or romantic settings. For Investment Scams, focus on financial themes such as high returns, risk-free investments, or testimonials about financial success. Look for financial symbols, charts, or discussions about money. For 보이스피싱, consider urgent financial appeals or persuasive language. For 부업사기, look for scenes involving financial symbols or persuasive imagery.\n\nAdditionally, analyze the tone and context of the frame, including the use of formal language, absence of direct calls to action, and the presence of official channels or trusted sources. Focus on distinguishing context such as the presence of official channels or trusted sources, use of formal language indicating legal or educational advice, and absence of direct calls to action or requests for personal information.\n\nAssign only one category per frame.",
+      "feedback": "The current detection method seems to be confused by similar visual and contextual content related to scams and legal advice. To improve accuracy, focus on distinguishing context such as:\n- Presence of official channels or trusted sources.\n- Use of formal language indicating legal or educational advice.\n- Absence of direct calls to action or requests for personal information.\nVisual detection alone is not sufficient to resolve the classification error between 로맨스스캠 (romance scam) and 보이스피싱 (voice phishing). The primary differences lie in the context, tone, and specific content details, which require deeper semantic understanding and contextual analysis.\n\n### Feedback Content\nThe error in classification suggests that visual cues alone might not capture the nuances between romance scams and ..."
+    },
+    {
+      "round": 3,
+      "seg": "late",
+      "train_f1": 0.3366666666666666,
+      "dev_f1": 0.3581123048514353,
+      "dev_acc": 0.32653061224489793,
+      "dev_per_class": {
+        "보이스피싱": 0.0,
+        "투자사기": 0.5217391304347826,
+        "로맨스스캠": 0.2857142857142857,
+        "부업사기": 0.875,
+        "정상": 0.10810810810810811
+      },
+      "prompt": "Classify this video frame into one of five categories based on both visual and contextual cues:\n- 보이스피싱 (voice phishing): Look for signs of urgency, impersonation of trusted individuals, and requests for immediate financial transactions.\n- 투자사기 (investment fraud): Identify elements related to deceptive financial terms, investment opportunities, or promises of unusually high returns.\n- 로맨스스캔 (romance scam): Focus on scenarios where trust is being built under the guise of a romantic relationship followed by requests for financial assistance.\n- 부업사기 (job scam): Detect instances of fake job offers promising high pay or requiring upfront payment. Look for visual elements such as images of money, graphs showing financial growth, or settings that resemble work environments. Pay close attention to contextual elements like mentions of financial gains, ease of making money, or promises of high returns with minimal effort.\n- 정상 (normal): Recognize everyday scenes that do not involve any form of scam or fraudulent activity.\n\nEnsure the classification is based on a comprehensive understanding of the scenario presented in the frame, considering both visual and contextual elements.",
+      "feedback": "Visual detection instructions alone are insufficient to resolve the classification errors between 부업사기 and 정상. The key differences often lie in contextual and semantic clues rather than purely visual elements.\n\n### Feedback Content\n1. **Contextual Clues**: Look for contextual elements in the video, such as mentions of financial gains, ease of making money, or promises of high returns with minimal effort. These are common indicators of 부업사기 (job scam).\n2. **Visual Cues**: Pay attention to any visual elements that suggest a job offer or financial opportunity, such as images of money, graphs showing financial growth, or settings that resemble work environments.\n3. **Scenario Patterns**: Identify patterns such as testimonials about easy money-making, instructions on setting up a business with ..."
+    },
+    {
+      "round": 4,
+      "seg": "early",
+      "train_f1": 0.2794871794871795,
+      "dev_f1": 0.2979892037786775,
+      "dev_acc": 0.3,
+      "dev_per_class": {
+        "보이스피싱": 0.0,
+        "투자사기": 0.4666666666666667,
+        "로맨스스캠": 0.25,
+        "부업사기": 0.6153846153846154,
+        "정상": 0.15789473684210525
+      },
+      "prompt": "Classify this video frame into one of the following fraud categories based on visual and contextual clues:\n- 보이스피싱\n- 투자사기\n- 로맨스스뱀\n- 부업사기\n- 정상\n\nTo improve accuracy, analyze both visual cues and contextual patterns. Consider the presence of emotional appeals, financial symbols, or persuasive language in the frame. Look for indicators such as personal interactions, romantic settings, financial charts, or urgent financial appeals. Pay attention to elements like emotional expressions, financial symbols, or persuasive imagery.\n\nFor Romance Scams, identify scenes with personal relationships, emotional appeals, or romantic settings. For Investment Scams, focus on financial themes such as high returns, risk-free investments, or testimonials about financial success. Look for financial symbols, charts, or discussions about money. For 보이스피싱, consider urgent financial appeals or persuasive language. For 부업사기, look for scenes involving financial symbols or persuasive imagery.\n\nAdditionally, analyze the tone and context of the frame, including the use of formal language, absence of direct calls to action, and the presence of official channels or trusted sources. Focus on distinguishing context such as the presence of official channels or trusted sources, use of formal language indicating legal or educational advice, and absence of direct calls to action or requests for personal information.\n\nAssign only one category per frame.",
+      "feedback": "The current detection struggles to differentiate regular financial advice or news from potential voice phishing scams. Visual cues alone may not be sufficient, as these videos often have similar formats and themes.\n\nTo address this, consider incorporating contextual analysis:\n1. **Channel Type**: Scam videos often come from less reputable or new channels. News or educational channels are typically more reliable.\n2. **Title Analysis**: Titles of scam videos often promise quick money or create a sense of urgency. Look for words that imply immediate financial gain or threats.\n3. **Description Review**: Scam videos might include suspicious contact information, promises of easy money, or links to other sites.\nThe errors are likely due to confusing similar visual elements, such as close-ups of h..."
+    },
+    {
+      "round": 4,
+      "seg": "late",
+      "train_f1": 0.4813725490196079,
+      "dev_f1": 0.33513065881486936,
+      "dev_acc": 0.32653061224489793,
+      "dev_per_class": {
+        "보이스피싱": 0.16666666666666666,
+        "투자사기": 0.46153846153846156,
+        "로맨스스캠": 0.25,
+        "부업사기": 0.7368421052631579,
+        "정상": 0.06060606060606061
+      },
+      "prompt": "Classify this video frame into one of five categories based on both visual and contextual cues:\n\n- **보이스피싱 (voice phishing)**: Look for signs of urgency, impersonation of trusted individuals, and requests for immediate financial transactions. Also, watch for emotional appeals like fear or excitement, countdown timers, or flashing alerts.\n\n- **투자사기 (investment fraud)**: Identify elements related to deceptive financial terms, investment opportunities, or promises of unusually high returns. Check for graphs, charts, or text mentioning financial schemes or investment plans.\n\n- **로맨스스캔 (romance scam)**: Focus on scenarios where trust is being built under the guise of a romantic relationship followed by requests for financial assistance. Look for intimate settings, romantic language, or photographs of couple activities.\n\n- **부업사기 (job scam)**: Detect instances of fake job offers promising high pay or requiring upfront payment. Look for visual elements such as images of money, graphs showing financial growth, or settings that resemble work environments. Pay close attention to contextual elements like mentions of financial gains, ease of making money, or promises of high returns with minimal effort.\n\n- **정상 (normal)**: Recognize everyday scenes that do not involve any form of scam or fraudulent activity. Look for normal activities without any overt manipulative tactics.\n\nEnsure the classification is based on a comprehensive understanding of the scenario presented in the frame, considering both visual and contextual elements.",
+      "feedback": "The errors are likely due to confusing financial advice or motivational content with phishing or scam attempts. The main issues are:\n1. Similar visual elements like chat interfaces and text prompts.\n2. Overlapping themes of financial urgency or potential gains.\n\nRefining the visual detection instructions alone might not be sufficient. The content often uses similar visuals, such as messaging screenshots or transactional interfaces, which can be ambiguous without contextual understanding.\n\nTo improve accuracy, consider using additional information:\n\n1. **Title**: Look for keywords that indicate scams (e.g., urgent money transfers, unexpected winnings).\n2. **Channel**: Educational or news channels are less likely to host scams.\n3. **Description**: Check for suspicious or overly promotional l..."
+    },
+    {
+      "round": 5,
+      "seg": "early",
+      "train_f1": 0.24452241715399609,
+      "dev_f1": 0.27607503607503603,
+      "dev_acc": 0.28,
+      "dev_per_class": {
+        "보이스피싱": 0.0,
+        "투자사기": 0.4444444444444444,
+        "로맨스스캠": 0.2,
+        "부업사기": 0.5454545454545454,
+        "정상": 0.19047619047619047
+      },
+      "prompt": "Classify this video frame into one of the following fraud categories based on visual and contextual clues:\n- 보이스피싱\n- 투자사기\n- 로맨스스뱀\n- 부업사기\n- 정상\n\nTo enhance accuracy, focus on identifying specific visual elements and contextual patterns that differentiate normal interactions from scam scenarios. Look for indicators such as urgency, payment requests, repeated romantic language, and unrealistic promises. Pay attention to elements like emotional expressions, financial symbols, or persuasive imagery.\n\nFor Romance Scams, identify scenes with personal relationships, emotional appeals, or romantic settings. For Investment Scams, focus on financial themes such as high returns, risk-free investments, or testimonials about financial success. Look for financial symbols, charts, or discussions about money. For 보이스피싱, consider urgent financial appeals or persuasive language. For 부업사기, look for scenes involving financial symbols or persuasive imagery.\n\nAnalyze the tone and context of the frame, including the use of formal language, absence of direct calls to action, and the presence of official channels or trusted sources. Focus on distinguishing context such as the presence of official channels or trusted sources, use of formal language indicating legal or educational advice, and absence of direct calls to action or requests for personal information.\n\nAssign only one category per frame.",
+      "feedback": "To enhance the detection of scams in video frames, a comprehensive approach combining visual cues and contextual patterns is essential. The model should be trained to identify specific visual elements and contextual patterns that differentiate normal interactions from scam scenarios. Key visual cues include urgency, payment requests, repeated romantic language, and unrealistic promises. Contextual patterns to consider are the presence of romantic phrases, excessive praise, or sudden requests for personal information or money.\n\nFor romance scams, focus on scenes where individuals are building personal connections or sharing emotional experiences, often featuring romantic imagery, personal testimonials, or emotional expressions. The narrative typically involves building a relationship followed by a financial request.\n\nFor investment scams, concentrate on financial themes such as high returns, risk-free investments, or testimonials about financial success. Visual elements might include financial symbols, charts, or discussions about money. Scams often highlight unrealistic financial gains, use emotional language to persuade viewers, create a sense of urgency, present fake testimonials or exaggerated success stories, and lack official channels.\n\nTo improve accuracy, combine visual detection with contextual analysis. Analyze the video title and description to gather additional context about the content. Avoid overfitting to specific words or frames without a deeper understanding of the content context. The model should be trained to recognize nuanced differences and context-dependent scenarios to effectively differentiate between normal content and various types of scams."
+    },
+    {
+      "round": 5,
+      "seg": "late",
+      "train_f1": 0.2804029304029304,
+      "dev_f1": 0.2733333333333333,
+      "dev_acc": 0.30612244897959184,
+      "dev_per_class": {
+        "보이스피싱": 0.0,
+        "투자사기": 0.5,
+        "로맨스스캠": 0.0,
+        "부업사기": 0.6666666666666666,
+        "정상": 0.2
+      },
+      "prompt": "Classify this video frame into one of five categories based on both visual and contextual cues:\n\n- **보이스피싱 (voice phishing)**: Look for signs of urgency, impersonation of trusted individuals, and requests for immediate financial transactions.\n- **투자사기 (investment fraud)**: Identify elements related to deceptive financial terms, investment opportunities, or promises of unusually high returns. Note explicit references to financial products, investment strategies, and the stock market.\n- **로맨스스캔 (romance scam)**: Focus on scenarios where trust is being built under the guise of a romantic relationship followed by requests for financial assistance.\n- **부업사기 (job scam)**: Detect instances of fake job offers promising high pay or requiring upfront payment. Look for visual elements such as images of money, graphs showing financial growth, or settings that resemble work environments. Pay close attention to contextual elements like mentions of financial gains, ease of making money, or promises of high returns with minimal effort. Specifically, watch for promises of easy money through simple tasks or quick money-making schemes.\n- **정상 (normal)**: Recognize everyday scenes that do not involve any form of scam or fraudulent activity.\n\nEnsure the classification is based on a comprehensive understanding of the scenario presented in the frame, considering both visual and contextual elements.",
+      "feedback": "The error in classification between 부업사기 (part-time job scam) and 투자사기 (investment scam) suggests that the visual and contextual differences between the two types of scams are not sufficiently captured by the current instructions. The content of the video frames indicates financial gains, investment options, and stock market references, which are common in investment scams. However, part-time job scams often feature promises of easy money through simple tasks. To distinguish 부업사기 more effectively, focus on identifying characteristics like promises of minimal effort for financial gain, instructions for simple tasks, and emphasis on quick money-making schemes. These elements are less commonly seen in investment scams, which tend to focus more on financial products and investment strategies.\n..."
+    }
+  ]
+}

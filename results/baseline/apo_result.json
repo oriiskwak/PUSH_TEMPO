@@ -1,0 +1,76 @@
+{
+  "method": "APO",
+  "best_prompt": "Calculate the probability (ranging from 0.0 to 1.0) that this video is a cyber scam.",
+  "initial_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+  "baseline_test": {
+    "auc": 0.3536,
+    "map": 0.2975,
+    "f1": 0.4552,
+    "acc": 0.3417
+  },
+  "best_test": {
+    "auc": 0.4511,
+    "map": 0.3266,
+    "f1": 0.4885,
+    "acc": 0.4417
+  },
+  "config": {
+    "rounds": 12,
+    "beam_size": 4,
+    "minibatch_size": 16,
+    "n_gradients": 1,
+    "errors_per_gradient": 4,
+    "gradients_per_error": 1,
+    "steps_per_gradient": 1,
+    "mc_samples_per_step": 2,
+    "max_expansion_factor": 8,
+    "evaluator": "ucb",
+    "eval_rounds": 2,
+    "eval_prompts_per_round": 8,
+    "samples_per_eval": 4,
+    "eval_budget": 64,
+    "c": 1.0
+  },
+  "log": [
+    {
+      "round": 0,
+      "dev_map": 0.2979,
+      "dev_auc": 0.3716,
+      "dev_f1": 0.4755,
+      "dev_acc": 0.375,
+      "prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam."
+    },
+    {
+      "round": 1,
+      "dev_map": 0.3356,
+      "dev_auc": 0.4686,
+      "dev_f1": 0.5224,
+      "dev_acc": 0.4667,
+      "prompt": "Estimate the likelihood (between 0.0 and 1.0) of this video being a cyber scam."
+    },
+    {
+      "round": 2,
+      "dev_map": 0.3461,
+      "dev_auc": 0.4896,
+      "dev_f1": 0.5397,
+      "dev_acc": 0.5167,
+      "prompt": "Calculate the probability (ranging from 0.0 to 1.0) that this video is a cyber scam."
+    },
+    {
+      "round": 3,
+      "dev_map": 0.3316,
+      "dev_auc": 0.455,
+      "dev_f1": 0.5075,
+      "dev_acc": 0.45,
+      "prompt": "Estimate the likelihood (ranging from 0.0 to 1.0) that the video in question is a cyber scam."
+    },
+    {
+      "round": 4,
+      "dev_map": 0.3316,
+      "dev_auc": 0.455,
+      "dev_f1": 0.5075,
+      "dev_acc": 0.45,
+      "prompt": "Estimate the likelihood (ranging from 0.0 to 1.0) that the video in question is a cyber scam."
+    }
+  ]
+}

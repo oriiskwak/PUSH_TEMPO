@@ -1,0 +1,319 @@
+{
+  "method": "TEMPO-COV-MC",
+  "best_early_prompt": "Classify the video frame into: 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. For 로맨스스캠, identify visuals of personal interactions, emotional bonding, and relationship-based promises. For 투자사기, look for financial schemes, charts, and professional settings. Detect 보이스피싱 through urgent financial demands and immediate transactions. Watch for easy money promises and work-from-home schemes in 부업사기. Consider the context: Personal and affectionate tones suggest 로맨스스캠, while business-oriented discussions indicate 투자사기. The model must output ONLY one class name per frame, distinguishing emotional buildup from financial focus.",
+  "best_late_prompt": "Classify each video frame as 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. Focus on visual cues: 보이스피싱 shows urgency and authority figures demanding immediate action. 투자사기 highlights financial investments, returns, graphs, and charts. 로맨스스캠 depicts emotional connections and personal stories. 부업사기 shows unrealistic job offers with quick earnings promises. Clearly distinguish between financial schemes in 투자사기 and non-financial job offers in 부업사기. Choose one class per frame. Examples: \"abnormal_kSCmmNCzFuY\" second 6 is 부업사기; \"abnormal_1LHFE4xcDlU\" second 14 is 로맨스스캠. Ensure only one category is output per frame.",
+  "baseline_test": {
+    "acc": 0.3089430894308943,
+    "macro_f1": 0.2606045449341039,
+    "per_class_f1": {
+      "보이스피싱": 0.4528301886792453,
+      "투자사기": 0.1935483870967742,
+      "로맨스스캠": 0.39603960396039606,
+      "부업사기": 0.0
+    },
+    "confusion": {
+      "보이스피싱": {
+        "보이스피싱": 12,
+        "투자사기": 14,
+        "로맨스스캠": 5,
+        "부업사기": 0
+      },
+      "투자사기": {
+        "보이스피싱": 1,
+        "투자사기": 6,
+        "로맨스스캠": 27,
+        "부업사기": 0
+      },
+      "로맨스스캠": {
+        "보이스피싱": 6,
+        "투자사기": 2,
+        "로맨스스캠": 20,
+        "부업사기": 1
+      },
+      "부업사기": {
+        "보이스피싱": 3,
+        "투자사기": 6,
+        "로맨스스캠": 20,
+        "부업사기": 0
+      }
+    }
+  },
+  "best_test": {
+    "acc": 0.8699186991869918,
+    "macro_f1": 0.8684251478369126,
+    "per_class_f1": {
+      "보이스피싱": 0.8823529411764706,
+      "투자사기": 0.8823529411764706,
+      "로맨스스캠": 0.8518518518518519,
+      "부업사기": 0.8571428571428571
+    },
+    "confusion": {
+      "보이스피싱": {
+        "보이스피싱": 30,
+        "투자사기": 0,
+        "로맨스스캠": 0,
+        "부업사기": 1
+      },
+      "투자사기": {
+        "보이스피싱": 2,
+        "투자사기": 30,
+        "로맨스스캠": 0,
+        "부업사기": 2
+      },
+      "로맨스스캠": {
+        "보이스피싱": 5,
+        "투자사기": 1,
+        "로맨스스캠": 23,
+        "부업사기": 0
+      },
+      "부업사기": {
+        "보이스피싱": 0,
+        "투자사기": 3,
+        "로맨스스캠": 2,
+        "부업사기": 24
+      }
+    }
+  },
+  "log": [
+    {
+      "round": 1,
+      "seg": "early",
+      "train_f1": 0.1346153846153846,
+      "dev_f1": 0.5586545566502463,
+      "dev_acc": 0.56,
+      "dev_per_class": {
+        "보이스피싱": 0.48,
+        "투자사기": 0.5625,
+        "로맨스스캠": 0.6206896551724138,
+        "부업사기": 0.5714285714285714
+      },
+      "prompt": "Classify this video frame into one of four scam categories: 보이스피싱, 투자사기, 로맨스스캠, 부업사기. Focus on visual patterns and context: tables, charts, lists of numbers, or text related to financial gains like \"수익\" or \"적중\" suggest 투자사기. Phrases such as \"TALK X75k\" also indicate financial themes. High-return promises point to investment fraud. Ensure the output is only one class per frame. Avoid confusion between 보이스피싱 and 투자사기 by recognizing the distinct data-driven visuals and financial promises associated with investment fraud. Look for key visual elements: tables, charts, or lists of numbers emphasizing data and financial gains. Text like \"수익\" or \"적중\" also indicates investment fraud. The output must be a single class name: 보이스피싱, 투자사기, 로맨스스캠, or 부업사기.",
+      "feedback": "To address the misclassification of \"투자사기\" (investment fraud) as \"보이스피싱\" (voice phishing), we need to distinguish between the visual and contextual patterns associated with each type of scam. Here are general, abstract patterns that can help:\n\n1. **Visual Focus on Data and Statistics**: Investment fraud videos often feature **tables, charts, or lists of numbers** suggesting investment results or payouts. These visual elements are meant to build trust by appearing data-driven. For example, the frames show lists of numbers and \"TALK X75k,\" implying financial results or bets.\n\n2. **Emphasis on Financial Gains**: Investment fraud focuses on **promising high returns or financial success**. Cues might include text like \"수익\" (profit), \"적중\" (hit), or phrases about earning money. The presence of te..."
+    },
+    {
+      "round": 1,
+      "seg": "late",
+      "train_f1": 0.7161172161172161,
+      "dev_f1": 0.8602941176470589,
+      "dev_acc": 0.88,
+      "dev_per_class": {
+        "보이스피싱": 0.9,
+        "투자사기": 0.9333333333333333,
+        "로맨스스캠": 0.6666666666666666,
+        "부업사기": 0.9411764705882353
+      },
+      "prompt": "Determine the fraud category for each video frame: 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. Differentiate 보이스피싱 (impersonation of authorities, urgency, official symbols) from 투자사기 (financial promises). Look for visual cues like authority symbols, official backgrounds, and urgency. Return ONLY one category per frame. Examples: \"normal_OBu3A86OO_k\" at second 30 is 보이스피싱; \"abnormal_BUgNJjh0N48\" at second 14 is 로맨스스캠.",
+      "feedback": "The current prompt likely fails to effectively distinguish between \"보이스피싱\" and \"투자사기\" because it lacks clear, abstract, and generalizable instructions for visual cues that differentiate these scam types. Here's an improved feedback:\n\n### Identifying Visual and Contextual Differences:\n1. **Scenario Setup**: \"보이스피싱\" often involves impersonation of authorities or familiar entities (e.g., police, banks) to gain trust, while \"투자사기\" focuses on financial promises or benefits.\n2. **Visual Cues for 보이스피싱**:\n   - Frequent use of authority symbols or official-looking backgrounds.\n   - Text or visuals emphasizing urgency or legal consequences.\n   - Calls for immediate actions or decisions (e.g., pressing buttons, revealing information).\n\n### Suggested Visual Cues:\n1. **Abstract Patterns for 보이스피싱**:\n ..."
+    },
+    {
+      "round": 2,
+      "seg": "early",
+      "train_f1": 0.7642628205128205,
+      "dev_f1": 0.8413544379883791,
+      "dev_acc": 0.84,
+      "dev_per_class": {
+        "보이스피싱": 0.8387096774193549,
+        "투자사기": 0.8695652173913043,
+        "로맨스스캠": 0.8571428571428571,
+        "부업사기": 0.8
+      },
+      "prompt": "Classify this video frame into 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. For 로맨스스캠, focus on emotional intimacy, affectionate scenes, and trust-building narratives. Detect 보이스피싱 by identifying urgent financial demands and immediate transactions. Visual patterns such as tables, charts, and terms like \"수익\" indicate 투자사기. Distinguish between 로맨스스캠's gradual financial requests and 보이스피싱's urgency. Output only one class name per frame.",
+      "feedback": "Improving the visual detection instructions alone is insufficient to resolve the classification error between 로맨스스캠 and 보이스피싱. Both scams share some visual elements like financial transactions, but they differ in context and progression. Here are abstract, generalizable patterns to distinguish 로맨스스캠:\n\n1. **Emotional Connection Building**: Romance scams focus heavily on developing emotional intimacy over time, often through personal stories, shared interests, and regular communication. Visual cues might include:\n   - Scenes of couples or individuals showing affection.\n   - Narratives emphasizing the development of trust and closeness.\n   - Mention of long-distance relationships or personal life details.\n\n2. **Gradual Financial Requests**: Unlike the urgency in voice phishing, romance scams ..."
+    },
+    {
+      "round": 2,
+      "seg": "late",
+      "train_f1": 0.9641148325358851,
+      "dev_f1": 0.8903730936819172,
+      "dev_acc": 0.9,
+      "dev_per_class": {
+        "보이스피싱": 0.9629629629629629,
+        "투자사기": 0.9,
+        "로맨스스캠": 0.875,
+        "부업사기": 0.8235294117647058
+      },
+      "prompt": "For each video frame, choose between 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. Differentiate 로맨스스캠 by identifying emotional connections, personal stories, and gradual trust-building. Contrast this with 보이스피싱's focus on urgency, authority symbols, and threats. Ensure only one category is output per frame. Examples: \"abnormal_kSCmmNCzFuY\" second 6 is 부업사기; \"abnormal_1LHFE4xcDlU\" second 14 is 로맨스스캠.",
+      "feedback": "The errors in classifying 로맨스스캠 as 보이스피싱 largely stem from overlapping visual cues and contextual elements that could be interpreted as authority impersonation. To refine the model's classification, focus on abstract, generalizable patterns that distinctly differentiate the two:\n\n1. **Emotional Connection vs. Urgency**: Romance scams build on emotional connections through personal conversations and gradually increasing trust. Look for frames showing intimate interactions, personal stories, or themes of love and commitment. In contrast, voice phishing emphasizes urgency, often using official symbols or threats.\n\n2. **Gradual Engagement**: Romance scams typically unfold slowly, with regular communication over time. Watch for frames that depict the development of a relationship, such as daily..."
+    },
+    {
+      "round": 3,
+      "seg": "early",
+      "train_f1": 0.9382855706385118,
+      "dev_f1": 0.7754193722943723,
+      "dev_acc": 0.78,
+      "dev_per_class": {
+        "보이스피싱": 0.8125,
+        "투자사기": 0.8,
+        "로맨스스캠": 0.7272727272727273,
+        "부업사기": 0.7619047619047619
+      },
+      "prompt": "Classify this video frame into 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. For 로맨스스캠, focus on emotional intimacy, affectionate scenes, and trust-building narratives. Detect 보이스피싱 by identifying urgent financial demands and immediate transactions. Visual patterns such as tables, charts, and terms like \"수익\" indicate 투자사기. Distinguish between 로맨스스캠's gradual financial requests and 보이스피싱's urgency. Output only one class name per frame.",
+      "feedback": "The current visual detection instructions need refinement but may not be sufficient in isolation. To effectively distinguish between 로맨스스캠 (romance scams) and 보이스피싱 (voice phishing scams), the model should focus on the following abstract, generalizable patterns:\n\n1. **Visual Differences**:\n   - **로맨스스캠**: Look for visuals that suggest personal or intimate settings, such as private conversations, shared meals, or personal spaces. These scenes often build an emotional connection.\n   - **보이스피싱**: Focus on visuals that emphasize urgency or immediate action, such as phone calls, quick transactions, or displays of official documents or authority figures.\n\n2. **Contextual Clues**:\n   - **로맨스스캠**: The narrative typically involves gradual financial requests intertwined with personal stories or emot..."
+    },
+    {
+      "round": 3,
+      "seg": "late",
+      "train_f1": 0.8720238095238095,
+      "dev_f1": 0.8968325791855204,
+      "dev_acc": 0.9,
+      "dev_per_class": {
+        "보이스피싱": 0.9,
+        "투자사기": 0.9411764705882353,
+        "로맨스스캠": 0.8461538461538461,
+        "부업사기": 0.9
+      },
+      "prompt": "For each video frame, classify as 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. Focus on visual cues: 보이스피싱 shows urgency, panic, and authority figures demanding immediate action in varied settings. 투자사기 highlights financial opportunities, graphs, or documents emphasizing returns and investments. 로맨스스캠 depicts emotional connections, personal stories, and trust-building. 부업사기 displays unrealistic job offers or quick earnings schemes. Avoid multiple labels; choose one per frame. Examples: \"abnormal_kSCmmNCzFuY\" second 6 is 부업사기; \"abnormal_1LHFE4xcDlU\" second 14 is 로맨스스캠. Ensure only one category is output per frame.",
+      "feedback": "The errors in classifying 보이스피싱 videos as 투자사기 suggest that the current visual detection instructions lack clear distinctions between scenarios involving urgent, authority-based demands and financial investment pitches. To improve classification, focus on the following abstract, generalizable patterns:\n\n### Visual and Contextual Differences:\n1. **Focus on Urgency and Authority vs. Financial Investment**:\n   - **보이스피싱**: These scenarios emphasize immediate action, often involving authority figures or urgent situations. Visuals may include people appearing panicked, rushed, or insistent on immediate compliance. The setting can be any environment where a victim might be pressed into action, such as a home or public space.\n   - **투자사기**: These focus on financial opportunities and returns, typi..."
+    },
+    {
+      "round": 4,
+      "seg": "early",
+      "train_f1": 0.9471362229102167,
+      "dev_f1": 0.8389694041867954,
+      "dev_acc": 0.84,
+      "dev_per_class": {
+        "보이스피싱": 0.8148148148148148,
+        "투자사기": 0.8695652173913043,
+        "로맨스스캠": 0.782608695652174,
+        "부업사기": 0.8888888888888888
+      },
+      "prompt": "Classify this video frame into 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. For 로맨스스캠, focus on emotional intimacy, affectionate scenes, and trust-building narratives. Detect 보이스피싱 by identifying urgent financial demands and immediate transactions. Visual patterns such as tables, charts, and terms like \"수익\" indicate 투자사기. Distinguish between 로맨스스캠's gradual financial requests and 보이스피싱's urgency. Output only one class name per frame.",
+      "feedback": "The current errors suggest that refining visual detection instructions alone may not fully resolve the issue, as the overlapping nature of scam tactics requires additional context. However, we can improve the distinction by focusing on abstract, generalizable patterns:\n\n1. **Visual Cues for 투자사기**:\n   - **Data-driven elements**: Look for graphs, charts, or tables that illustrate financial growth or investment returns.\n   - **Professional environments**: Scenes set in office spaces, conference rooms, or settings that suggest formal financial discussions.\n   - **Success stories**: Visuals highlighting financial achievements or testimonials related to investments.\n\n2. **Contextual Cues for 투자사기**:\n   - **Business-oriented language**: Discussions focus on investment strategies, returns, financ..."
+    },
+    {
+      "round": 4,
+      "seg": "late",
+      "train_f1": 0.7522727272727272,
+      "dev_f1": 0.8606086729362591,
+      "dev_acc": 0.86,
+      "dev_per_class": {
+        "보이스피싱": 0.8275862068965517,
+        "투자사기": 0.9166666666666666,
+        "로맨스스캠": 0.8181818181818182,
+        "부업사기": 0.88
+      },
+      "prompt": "For each video frame, classify as 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. Focus on visual cues: 보이스피싱 shows urgency, panic, and authority figures demanding immediate action in varied settings. 투자사기 highlights financial opportunities, graphs, or documents emphasizing returns and investments. 로맨스스캠 depicts emotional connections, personal stories, and trust-building. 부업사기 displays unrealistic job offers or quick earnings schemes. Avoid multiple labels; choose one per frame. Examples: \"abnormal_kSCmmNCzFuY\" second 6 is 부업사기; \"abnormal_1LHFE4xcDlU\" second 14 is 로맨스스캠. Ensure only one category is output per frame.",
+      "feedback": "The errors in classifying 로맨스스캠 (romance scams) as 보이스피싱 (voice phishing) stem from a lack of clear distinction between the emotional manipulation focus of romance scams and the urgency often associated with voice phishing. To address this, the visual detection instructions should emphasize the following abstract, generalizable patterns:\n\n1. **Emotional Connection vs. Urgency**:  \n   - **Romance Scams**: Focus on gradual emotional engagement, personal stories, and trust-building. Visual cues may include intimate settings, personal conversations, or attempts to form a romantic bond.  \n   - **Voice Phishing**: Typically shows immediate urgency, authority figures demanding action, or scenarios inducing panic. Visuals might show office settings, formal attire, or scenes of hurried transactions..."
+    },
+    {
+      "round": 5,
+      "seg": "early",
+      "train_f1": 0.8722658415753044,
+      "dev_f1": 0.8904505582137161,
+      "dev_acc": 0.9,
+      "dev_per_class": {
+        "보이스피싱": 0.8333333333333334,
+        "투자사기": 0.9696969696969697,
+        "로맨스스캠": 0.8421052631578947,
+        "부업사기": 0.9166666666666666
+      },
+      "prompt": "Classify this video frame into one of: 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. For 로맨스스캠, focus on emotional intimacy, trust-building, and gradual financial requests, often involving personal life and relationship discussions. Detect 보이스피싱 by urgent financial demands and immediate transactions. Visual cues like tables, charts, and terms such as \"수익\" suggest 투자사기; look for professional settings like offices or conference rooms. For 부업사기, watch for easy money promises and work-from-home schemes. Consider the context and language: business-oriented discussions indicate 투자사기, while personal and affectionate tones suggest 로맨스스캠. The model must output ONLY one class name per frame, distinguishing between the emotional buildup in 로맨스스캠 and the urgency in 보이스피싱.",
+      "feedback": "Improving the visual detection instructions alone is insufficient to resolve this error. The model is struggling to distinguish between 로맨스스캠 (romance scams) and 보이스피싱 (voice phishing scams) based solely on visual cues, as both can involve urgent financial requests. The key differences lie more in the context and narrative structure. Here are generalizable patterns to help refine the classification:\n\n1. **Narrative Context for 로맨스스캠**:\n   - **Emotional Engagement**: Look for scenarios where the narrative focuses on building an emotional connection over time. This could involve discussions about personal life, relationships, or shared interests.\n   - **Gradual Financial Requests**: Romance scams typically start with emotional engagement before gradually introducing financial requests. The l..."
+    },
+    {
+      "round": 5,
+      "seg": "late",
+      "train_f1": 0.8127946127946128,
+      "dev_f1": 0.8014158819207908,
+      "dev_acc": 0.8,
+      "dev_per_class": {
+        "보이스피싱": 0.7741935483870968,
+        "투자사기": 0.8695652173913043,
+        "로맨스스캠": 0.7619047619047619,
+        "부업사기": 0.8
+      },
+      "prompt": "For each video frame, classify as 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. Focus on visual cues: 보이스피싱 shows urgency, panic, and authority figures demanding immediate action in varied settings. 투자사기 highlights financial opportunities, graphs, or documents emphasizing returns and investments. 로맨스스캠 depicts emotional connections, personal stories, and trust-building. 부업사기 displays unrealistic job offers or quick earnings schemes. Avoid multiple labels; choose one per frame. Examples: \"abnormal_kSCmmNCzFuY\" second 6 is 부업사기; \"abnormal_1LHFE4xcDlU\" second 14 is 로맨스스캠. Ensure only one category is output per frame.",
+      "feedback": "The errors in classifying 투자사기 (investment scams) as 부업사기 (part-time job scams) likely stem from a lack of clear visual and contextual distinctions in the current instructions. Here are abstract, generalizable patterns to distinguish 투자사기:\n\n1. **Financial Focus:** Investment scams heavily emphasize financial opportunities, returns, and investments. Look for visuals like graphs, charts, or discussions about investment mechanisms. These often highlight potential monetary gains or financial strategies.\n\n2. **Expertise or Authority Claims:** Investment scams frequently portray individuals or groups as financial experts or authorities. Visual cues may include formal settings, professional attire, or references to financial institutions or market analysis.\n\n3. **Systematic Investment Plans:** In..."
+    },
+    {
+      "round": 6,
+      "seg": "early",
+      "train_f1": 0.8048076923076923,
+      "dev_f1": 0.8082880434782609,
+      "dev_acc": 0.82,
+      "dev_per_class": {
+        "보이스피싱": 0.8,
+        "투자사기": 0.9375,
+        "로맨스스캠": 0.6956521739130435,
+        "부업사기": 0.8
+      },
+      "prompt": "Classify this video frame into one of: 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. For 로맨스스캠, focus on emotional intimacy, trust-building, and gradual financial requests, often involving personal life and relationship discussions. Detect 보이스피싱 by urgent financial demands and immediate transactions. Visual cues like tables, charts, and terms such as \"수익\" suggest 투자사기; look for professional settings like offices or conference rooms. For 부업사기, watch for easy money promises and work-from-home schemes. Consider the context and language: business-oriented discussions indicate 투자사기, while personal and affectionate tones suggest 로맨스스캠. The model must output ONLY one class name per frame, distinguishing between the emotional buildup in 로맨스스캠 and the urgency in 보이스피싱.",
+      "feedback": "The current errors suggest that refining the visual detection instructions alone is insufficient to distinguish between 부업사기 and 로맨스스캠. Both scam types can involve personal interactions but differ in their underlying motives and contexts. To improve classification accuracy:\n\n### Visual and Contextual Differences:\n1. **Focus on Work-Related Themes**: For 부업사기, look for visuals that suggest desk-based activities, computer screens, and office-like settings. These indicate promises of easy money through side jobs. In contrast, 로맨스스캠 visuals often show more personal, intimate settings with minimal focus on work-related activities.\n   \n2. **Emotional Engagement**: 부업사기 typically lacks deep emotional engagement. Instead, it focuses on financial gains and work-from-home schemes. Look for an absenc..."
+    },
+    {
+      "round": 6,
+      "seg": "late",
+      "train_f1": 0.8805112328332143,
+      "dev_f1": 0.8394514967790829,
+      "dev_acc": 0.84,
+      "dev_per_class": {
+        "보이스피싱": 0.8275862068965517,
+        "투자사기": 0.8571428571428571,
+        "로맨스스캠": 0.75,
+        "부업사기": 0.9230769230769231
+      },
+      "prompt": "For each video frame, classify as 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. Focus on visual cues: 보이스피싱 shows urgency, panic, and authority figures demanding immediate action in varied settings. 투자사기 highlights financial opportunities, graphs, or documents emphasizing returns and investments. 로맨스스캠 depicts emotional connections, personal stories, and trust-building. 부업사기 displays unrealistic job offers or quick earnings schemes. Avoid multiple labels; choose one per frame. Examples: \"abnormal_kSCmmNCzFuY\" second 6 is 부업사기; \"abnormal_1LHFE4xcDlU\" second 14 is 로맨스스캠. Ensure only one category is output per frame.",
+      "feedback": "The errors in classifying 부업사기 as 보이스피싱 stem from a lack of emphasis on distinguishing between quick earnings schemes and urgent, authority-focused demands. To refine the visual detection instructions:\n\n1. **Quick Earnings vs. Urgent Demands**:\n   - **부업사기**: Focus on visuals that highlight unrealistic job offers, promises of quick earnings, or schemes that seem too good to be true. Look for scenes showing people being enticed with easy money opportunities or unrealistic success stories.\n   - **보이스피싱**: Emphasize visuals that show urgency, panic, or authority figures demanding immediate action. These scenes often depict people in varied settings feeling pressured to act quickly without thinking.\n\n2. **Nature of Requests**:\n   - **부업사기**: Look for requests that involve participation in work..."
+    },
+    {
+      "round": 7,
+      "seg": "early",
+      "train_f1": 0.8780663780663781,
+      "dev_f1": 0.8991545893719807,
+      "dev_acc": 0.9,
+      "dev_per_class": {
+        "보이스피싱": 0.8695652173913043,
+        "투자사기": 0.9444444444444444,
+        "로맨스스캠": 0.782608695652174,
+        "부업사기": 1.0
+      },
+      "prompt": "Classify the video frame into: 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. For 로맨스스캠, identify visuals of personal interactions, emotional bonding, and relationship-based promises. For 투자사기, look for financial schemes, charts, and professional settings. Detect 보이스피싱 through urgent financial demands and immediate transactions. Watch for easy money promises and work-from-home schemes in 부업사기. Consider the context: Personal and affectionate tones suggest 로맨스스캠, while business-oriented discussions indicate 투자사기. The model must output ONLY one class name per frame, distinguishing emotional buildup from financial focus.",
+      "feedback": "Refining the visual detection alone might not fully resolve this issue, as 로맨스스캠 and 투자사기 share some overlapping elements. However, incorporating general, abstract patterns can improve classification accuracy:\n\n### Visual and Contextual Differences:\n1. **로맨스스캠 Patterns**:\n    - **Personal Connection**: Visuals often show romantic or personal interactions, such as couples or individuals meeting via apps.\n    - **Emotional Appeal**: Scenarios emphasize emotional bonding before financial requests, like \"falling in love\" or building trust.\n    - **Unrealistic Promises**: Characters promise high returns or rewards tied to personal relationships rather than investments.\n\n2. **투자사기 Patterns**:\n    - **Financial Focus**: Visuals concentrate on investment schemes, charts, or financial institutions ..."
+    },
+    {
+      "round": 7,
+      "seg": "late",
+      "train_f1": 0.710617201426025,
+      "dev_f1": 0.9016198616198616,
+      "dev_acc": 0.92,
+      "dev_per_class": {
+        "보이스피싱": 0.9142857142857143,
+        "투자사기": 0.9629629629629629,
+        "로맨스스캠": 0.7692307692307693,
+        "부업사기": 0.96
+      },
+      "prompt": "Classify each video frame as 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. Focus on visual cues: 보이스피싱 shows urgency and authority figures demanding immediate action. 투자사기 highlights financial investments, returns, graphs, and charts. 로맨스스캠 depicts emotional connections and personal stories. 부업사기 shows unrealistic job offers with quick earnings promises. Clearly distinguish between financial schemes in 투자사기 and non-financial job offers in 부업사기. Choose one class per frame. Examples: \"abnormal_kSCmmNCzFuY\" second 6 is 부업사기; \"abnormal_1LHFE4xcDlU\" second 14 is 로맨스스캠. Ensure only one category is output per frame.",
+      "feedback": "The errors in classifying 투자사기 as 부업사기 likely stem from a lack of clear distinction in visual and contextual patterns used by the model, particularly between financial schemes that promise investment returns versus quick job offers. To refine the visual detection instructions:\n\n1. **Focus on Financial vs. Non-Financial Earnings Schemes**:  \n   - **투자사기**: Emphasize visuals that highlight financial investments, returns, and complex mechanisms for generating wealth. Look for scenes depicting discussions on investment strategies, graphs, charts, or financial documents.  \n   - **부업사기**: Focus on visuals that promise quick or unrealistic job opportunities, with less emphasis on financial mechanisms. These may include text or speech mentioning immediate income, part-time jobs, or easy work-from-..."
+    },
+    {
+      "round": 8,
+      "seg": "early",
+      "train_f1": 0.9317129629629629,
+      "dev_f1": 0.9005268199233716,
+      "dev_acc": 0.9,
+      "dev_per_class": {
+        "보이스피싱": 0.8888888888888888,
+        "투자사기": 0.9,
+        "로맨스스캠": 0.896551724137931,
+        "부업사기": 0.9166666666666666
+      },
+      "prompt": "Classify the video frame into: 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. For 로맨스스캠, identify visuals of personal interactions, emotional bonding, and relationship-based promises. For 투자사기, look for financial schemes, charts, and professional settings. Detect 보이스피싱 through urgent financial demands and immediate transactions. Watch for easy money promises and work-from-home schemes in 부업사기. Consider the context: Personal and affectionate tones suggest 로맨스스캠, while business-oriented discussions indicate 투자사기. The model must output ONLY one class name per frame, distinguishing emotional buildup from financial focus.",
+      "feedback": "The errors in classifying videos as 부업사기 instead of 투자사기 highlight a need for more refined visual and contextual understanding. Improving the visual detection instructions alone may not fully resolve the issue due to the overlapping financial themes. Here are abstract, generalizable patterns to distinguish 투자사기:\n\n### Visual Cues for 투자사기:\n1. **Focus on Financial Instruments**: Visuals showing graphs, charts, or data-driven representations of investment growth or returns.\n2. **Professional Investment Settings**: Scenes in formal environments like conference rooms, offices, or trading floors.\n3. **Success Stories**: Highlighting high-profile investment gains or financial achievements.\n\n### Contextual Differences:\n1. **Business-Oriented Language**: Discussions center around investment strateg..."
+    },
+    {
+      "round": 8,
+      "seg": "late",
+      "train_f1": 0.9097222222222222,
+      "dev_f1": 0.8604180906812485,
+      "dev_acc": 0.86,
+      "dev_per_class": {
+        "보이스피싱": 0.9090909090909091,
+        "투자사기": 0.8571428571428571,
+        "로맨스스캠": 0.8421052631578947,
+        "부업사기": 0.8333333333333334
+      },
+      "prompt": "Classify each video frame as 보이스피싱, 투자사기, 로맨스스캠, or 부업사기. Focus on visual cues: 보이스피싱 shows urgency and authority figures demanding immediate action. 투자사기 highlights financial investments, returns, graphs, and charts. 로맨스스캠 depicts emotional connections and personal stories. 부업사기 shows unrealistic job offers with quick earnings promises. Clearly distinguish between financial schemes in 투자사기 and non-financial job offers in 부업사기. Choose one class per frame. Examples: \"abnormal_kSCmmNCzFuY\" second 6 is 부업사기; \"abnormal_1LHFE4xcDlU\" second 14 is 로맨스스캠. Ensure only one category is output per frame.",
+      "feedback": "The errors in classifying 로맨스스캠 as 투자사기 stem from a focus on financial elements while overlooking the underlying emotional and relational dynamics characteristic of romance scams. To refine the visual detection instructions:\n\n1. **Emotional Engagement Focus**:  \n   - Look for scenes where the perpetrator emphasizes emotional connections, personal stories, or attempts to build trust and intimacy. Visual cues might include intimate gestures, personal conversations, or expressions of affection.  \n   - Contrast this with investment scams, where the primary focus is on financial opportunities, returns, and investment mechanisms, rather than personal relationships.\n\n2. **Gradual Financial Introduction**:  \n   - Identify scenarios where financial discussions are introduced gradually, only after a..."
+    }
+  ]
+}

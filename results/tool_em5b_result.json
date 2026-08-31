@@ -1,0 +1,83 @@
+{
+  "method": "Tool-EM-v5",
+  "best_prompt": "Evaluate the likelihood (0.0-1.0) of this video frame being a cyber scam. Focus on the overall context and intent. Distinguish between content warning about scams and promoting them by analyzing the credibility and presence of detailed explanations, warnings, and practical advice supported by credible sources. Avoid false positives based solely on professional settings, formal attire, or financial data displays. Look for exaggerated claims and vague solutions as indicators of actual scams. Return a single float value.",
+  "baseline_test": {
+    "kl": 1.6356415109280462,
+    "auc": 0.32266666666666666,
+    "map": 0.28333251521372993,
+    "f1": 0.44755244755244755,
+    "acc": 0.3416666666666667
+  },
+  "best_test": {
+    "kl": 0.7638663326542922,
+    "auc": 0.6497777777777778,
+    "map": 0.4483770170169951,
+    "f1": 0.5607476635514018,
+    "f1_macro": 0.6036821024523926,
+    "acc": 0.6083333333333333
+  },
+  "best_test_f1_opt": 0.5765765765765766,
+  "best_test_acc_opt": 0.6083333333333333,
+  "log": [
+    {
+      "round": 1,
+      "train_map": 0.21140620980400926,
+      "dev_map": 0.40235609723646054,
+      "dev_auc": 0.461038961038961,
+      "dev_f1": 0.5862068965517241,
+      "dev_acc": 0.52,
+      "prompt": "Assess the likelihood (0.0-1.0) that this video frame is part of a cyber scam. Concentrate on distinguishing between genuine financial guidance and suspicious claims by considering context indicators like official seals, credible sources, and the overall intent. Analyze the urgency and advice given within a legitimate context. Ignore visual elements like formal attire or professional studios alone. Return only a single float value.",
+      "feedback": "The model is over-detecting scam content due to visual and contextual patterns associated with financial advice, investment discussions, urgent voice prompts, and educational content about scam prevention. These patterns include presenters in formal attire, investment-related terms, urgent text, professional settings, and contact information. To distinguish legitimate content from actual scams, the model should focus on context indicators such as official seals, professional studio settings, credible sources, verified channels, and the overall intent of the content. The model should be trained to recognize the difference between genuine financial guidance, legal consultations, urgent but legitimate information, and educational content about scams versus suspicious claims and actual scams. Improving the model's understanding of these patterns, considering the presence of credible credentials or affiliations, and the context in which urgency or advice is presented will help reduce false alarms without overfitting to specific visual elements."
+    },
+    {
+      "round": 2,
+      "train_map": 0.33755014826443397,
+      "dev_map": 0.460018453727397,
+      "dev_auc": 0.61,
+      "dev_f1": 0.625,
+      "dev_acc": 0.64,
+      "prompt": "Evaluate the likelihood (0.0-1.0) that this video frame is a cyber scam. Focus on context, intent, and specific visual patterns. For outdoor scenes, recognize natural elements and road infrastructure. For professional settings, distinguish between scam warnings and scams by analyzing intent and credibility. For educational content on app development and finance, look for detailed explanations and practical advice rather than vague promises. Do not return false positives based on attire or studio quality alone. Return a single float value.",
+      "feedback": "To enhance the accuracy of visual detection and reduce false positives, the model must be refined to distinguish between legitimate content and actual scams. This involves focusing on the context, intent, and specific visual patterns of the content. For outdoor traffic scenes, the model should be instructed to recognize natural outdoor elements, road infrastructure, road signs, and vehicle movement that clearly indicate a traffic scene rather than a scam setup. It should also detect frames that combine these elements with unrelated text or audio content, ensuring they are unrelated to typical cyber-scam visual patterns.\n\nFor professional settings, formal attire, and discussions about financial advice or warnings, the model needs to differentiate between content that warns about scams and content that promotes scams. It should analyze the overall context, including the intent of the content and the presence of credible sources or affiliations. Educational segments often provide detailed explanations and warnings, while actual scams tend to make vague promises.\n\nIn the case of educational content about app development and financial returns, the model should focus on the context and intent, such as whether the claims are supported by credible sources, practical advice, or educational purposes rather than vague promises. Refining the criteria to recognize the instructional and developmental nature of app-related content will help reduce false positives.\n\nOverall, the goal is to improve the model's ability to recognize patterns and distinguish between legitimate content and actual scams by focusing on the context, intent, and specific visual patterns of the content."
+    },
+    {
+      "round": 3,
+      "train_map": 0.5525861356688424,
+      "dev_map": 0.5963536470017434,
+      "dev_auc": 0.71256038647343,
+      "dev_f1": 0.6521739130434783,
+      "dev_acc": 0.68,
+      "prompt": "Evaluate the likelihood (0.0-1.0) of this video frame being a cyber scam. Focus on the overall context and intent. Distinguish between content warning about scams and promoting them by analyzing the credibility and presence of detailed explanations, warnings, and practical advice supported by credible sources. Avoid false positives based solely on professional settings, formal attire, or financial data displays. Look for exaggerated claims and vague solutions as indicators of actual scams. Return a single float value.",
+      "feedback": "To address the over-detection of scam content, the model should refine its visual detection instructions to focus on the overall context, intent, and presence of credible sources or affiliations. The current issue arises from misinterpreting legitimate educational content, such as discussions about potential scams, financial advice, app development, and financial returns, as actual scams. These segments often feature professional settings, formal attire, financial data displays, and claims of significant returns, which are mistakenly flagged.\n\nTo distinguish between content that warns about scams and content that promotes them, the model should analyze the intent behind the visuals and text. Educational segments typically provide detailed explanations, warnings, and practical advice supported by credible sources, while actual scams tend to make exaggerated claims and offer vague solutions. Refining the criteria to recognize the instructional and developmental nature of app-related content and the informative intent of financial advice segments will help reduce false alarms without overfitting to specific frames."
+    },
+    {
+      "round": 4,
+      "train_map": 0.7449596212754108,
+      "dev_map": 0.5093838267931969,
+      "dev_auc": 0.6884550084889645,
+      "dev_f1": 0.6206896551724138,
+      "dev_acc": 0.56,
+      "prompt": "Evaluate the likelihood (0.0-1.0) of this video frame being a cyber scam. Focus on simplicity and accessibility cues suggesting minimal effort tasks with no qualifications needed. Look for an absence of credible backing, no reliable sources, or expert endorsements. Identify quick and easy solutions as potential scam indicators. Avoid false positives from professional settings, formal attire, or financial displays. Analyze detailed explanations, warnings, and practical advice supported by credible sources. Distinguish between content warning about scams and promoting them. Look for exaggerated claims and vague solutions. For outdoor scenes, recognize natural elements and road infrastructure. For professional settings and educational content, assess intent and credibility. Do not return false positives based on attire or studio quality alone. Return a single float value.",
+      "feedback": "Improving the visual detection instructions alone can fix this error. The current prompt is missing the following scam signals:\n\n1. **Emphasis on Simplicity and Accessibility**: The frames highlight tasks that can be done from home with minimal effort and no specific qualifications, which is a common tactic in scams to appeal to a wide audience. The visual cues include text or subtitles suggesting that anyone can perform the activities without restrictions.\n\n2. **Absence of Credible Backing**: There is no clear indication of reliable sources or expert endorsements for the claims made. The frames focus solely on the individual's personal claims without any official seals or affiliations with recognized authorities.\n\n3. **Promotion of Quick and Easy Solutions**: The visuals emphasize that th..."
+    },
+    {
+      "round": 5,
+      "train_map": 0.24004377974966212,
+      "dev_map": 0.5273195641782209,
+      "dev_auc": 0.644927536231884,
+      "dev_f1": 0.6785714285714286,
+      "dev_acc": 0.64,
+      "prompt": "Evaluate the likelihood (0.0–1.0) of this video frame being a cyber scam by focusing on the overall context and intent. Distinguish between urgent calls to action in scams and legitimate content. Consider credible sources, detailed explanations, and practical advice as signs of legitimacy. Avoid false positives from professional settings, formal attire, or financial displays. Identify exaggerated claims, vague solutions, and an absence of credible backing as potential scam indicators. Recognize natural elements in outdoor scenes and road infrastructure. Analyze content warning about scams versus promoting them. Do not return false positives based on attire or studio quality alone. Return a single float value.",
+      "feedback": "To enhance the accuracy of scam detection, the model must be refined to distinguish between legitimate content and actual scams by focusing on the overall context and intent rather than isolated visual and textual patterns alone. The current model is over-detecting frames as scams due to certain patterns that resemble scam indicators but are part of legitimate content, such as:\n\n1. **Urgent Calls to Action**: Time-sensitive warnings or recommendations common in both scam content and legitimate educational videos aimed at raising awareness about urgent issues.\n2. **Financial Contexts**: Discussions of financial transactions, money-saving tips, or data displays that can appear in scams as well as in legitimate content discussing financial topics.\n3. **Professional Settings**: Content set in professional environments with formal attire, which may be misinterpreted as scam tactics without considering the context.\n\nTo differentiate between these patterns in legitimate content and actual scams, the model should be instructed to recognize that legitimate content often provides detailed explanations, credible sources of information, and practical advice supported by reliable sources. In contrast, actual scams typically make exaggerated claims without backing evidence and lack credible sources. This approach will help the model accurately identify and flag actual scam content while preserving the integrity of legitimate content."
+    },
+    {
+      "round": 6,
+      "train_map": 0.5210418391518307,
+      "dev_map": 0.4954652150106513,
+      "dev_auc": 0.7178819444444444,
+      "dev_f1": 0.6530612244897959,
+      "dev_acc": 0.66,
+      "prompt": "Evaluate the likelihood (0.0–1.0) of this video frame being a cyber scam by focusing on overall context and intent. Distinguish between urgent calls to action in scams and legitimate content. Consider financial data displays common in both scenarios, but prioritize credible sources, detailed explanations, and practical advice as signs of legitimacy. Avoid false positives from professional settings, formal attire, or financial displays. Identify exaggerated claims, vague solutions, and an absence of credible backing as potential scam indicators. Recognize natural outdoor scenes and road infrastructure as legitimate. Analyze content warning about scams versus promoting them. Do not return false positives based on attire or studio quality alone. Return a single float value.",
+      "feedback": "To address the over-detection of legitimate content as scams, the visual detection instructions must be refined. The current model erroneously flags frames as scams based on certain visual and textual patterns that are common in both scam content and legitimate content warning about scams. These patterns include:\n\n1. **Urgent Calls to Action**: Time-sensitive warnings or recommendations are frequently used in scam content but are also prevalent in legitimate educational videos to emphasize the importance of timely action.\n2. **Financial Data Displays**: Visuals that include financial returns and data displays are common in both scams and legitimate content discussing financial topics.\n3. **Professional Settings**: Frames set in professional environments with individuals in formal attire are often misinterpreted as scam signals by the current model, despite being more commonly associated with legitimate content.\n\nThe model should be adjusted to better distinguish between these elements when they appear in the context of legitimate content, such as educational videos about scam detection and prevention, financial advice, and practical solutions. This will help reduce false positives and improve the accuracy of scam detection."
+    }
+  ]
+}

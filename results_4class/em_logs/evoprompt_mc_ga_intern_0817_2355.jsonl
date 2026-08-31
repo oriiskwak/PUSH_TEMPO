@@ -1,0 +1,2 @@
+{"type": "iteration", "step": 1, "train_f1": 0.05, "dev_f1": 0.0507, "dev_acc": 0.094, "best_prompt": "Assign the correct fraud category to this video frame: Type-A, Type-B, Type-C, Type-D, or Type-E."}
+{"type": "iteration", "step": 2, "train_f1": 0.0, "dev_f1": 0.0475, "dev_acc": 0.0855, "best_prompt": "Determine the fitting fraud category for this video frame: Type-A, Type-B, Type-C, Type-D, or Type-E."}

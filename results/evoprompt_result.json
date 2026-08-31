@@ -1,0 +1,95 @@
+{
+  "best_prompt": "Can you please give me a detailed summary of the steps involved in baking a delicious chocolate cake?",
+  "train_score": 0.6333333333333333,
+  "val_score": 0.47058823529411764,
+  "mode": "de",
+  "log": [
+    {
+      "step": 1,
+      "best": 0.6333333333333333,
+      "avg": 0.5866666666666667,
+      "best_prompt": "Assess the probability from 0.0 up to 1.0 that the video contains elements of a cyber scam."
+    },
+    {
+      "step": 2,
+      "best": 0.6666666666666666,
+      "avg": 0.6399999999999999,
+      "best_prompt": "and"
+    },
+    {
+      "step": 3,
+      "best": 0.6333333333333333,
+      "avg": 0.5933333333333334,
+      "best_prompt": "Estimate the likelihood (ranging from 0.0 to 1.0) that this video pertains to a cyber scam."
+    },
+    {
+      "step": 4,
+      "best": 0.6,
+      "avg": 0.6,
+      "best_prompt": "Estimate the chances, measured from 0.0 to 1.0, of this video being related to a cyber scam, and meticulously examine the video's specifics for any potential cyber scam elements, recognizing typical cyber scam strategies and methods utilized."
+    },
+    {
+      "step": 5,
+      "best": 0.6666666666666666,
+      "avg": 0.6666666666666666,
+      "best_prompt": "and"
+    },
+    {
+      "step": 6,
+      "best": 0.6333333333333333,
+      "avg": 0.6,
+      "best_prompt": "Estimate the likelihood, rated from 0.0 to 1.0, and closely investigate the content and context of the report for any signs of deceptive practices, of the report being a case of deceptive practices."
+    },
+    {
+      "step": 7,
+      "best": 0.5333333333333333,
+      "avg": 0.4800000000000001,
+      "best_prompt": "Estimate the likelihood, rated from 0.0 to 1.0, and closely investigate the content and context of the report for any signs of deceptive practices, of the report being a case of deceptive practices."
+    },
+    {
+      "step": 8,
+      "best": 0.5666666666666667,
+      "avg": 0.4866666666666667,
+      "best_prompt": "Estimate the likelihood, rated from 0.0 to 1.0, and closely investigate the content and context of the report for any signs of deceptive practices, of the report being a case of deceptive practices."
+    },
+    {
+      "step": 9,
+      "best": 0.6666666666666666,
+      "avg": 0.6666666666666666,
+      "best_prompt": "and"
+    },
+    {
+      "step": 10,
+      "best": 0.6333333333333333,
+      "avg": 0.47333333333333333,
+      "best_prompt": "Can you please give me a detailed summary of the steps involved in baking a delicious chocolate cake?"
+    }
+  ],
+  "final_population": [
+    {
+      "prompt": "Can you please give me a detailed summary of the steps involved in baking a delicious chocolate cake?",
+      "score": 0.6333333333333333
+    },
+    {
+      "prompt": "Compose an in-depth investigation into the advancements of technology and their impact on society.",
+      "score": 0.36666666666666664
+    },
+    {
+      "prompt": "Provide an exhaustive examination showcasing the stages required to establish a successful online retail business, along with an investigation into the influence of current technological advancements on the digital retailing landscape.",
+      "score": 0.36666666666666664
+    },
+    {
+      "prompt": "Can you provide me with a comprehensive breakdown of the process for creating a scrumptious chocolate cake and share some tips for achieving the best results?",
+      "score": 0.6333333333333333
+    },
+    {
+      "prompt": "and",
+      "score": 0.36666666666666664
+    }
+  ],
+  "split": {
+    "train": 359,
+    "val": 119,
+    "test": 122
+  }
+}

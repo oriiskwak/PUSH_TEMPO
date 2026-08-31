@@ -1,0 +1,164 @@
+{
+  "method": "EvoPrompt-DE-GPT",
+  "gpt_model": "gpt-4o-mini",
+  "best_prompt": "Evaluate the likelihood (between 0.0 and 1.0) that this video may exhibit signs of a cyber scam, considering various factors such as content, presentation, and context.",
+  "baseline_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+  "baseline_test": {
+    "map": 0.3559,
+    "auc": 0.4975,
+    "f1": 0.5414,
+    "acc": 0.5417
+  },
+  "best_test": {
+    "map": 0.3933,
+    "auc": 0.5545,
+    "f1": 0.474,
+    "acc": 0.4833
+  },
+  "train_map": 0.5627,
+  "mode": "de",
+  "log": [
+    {
+      "step": 1,
+      "train_map": 0.4942,
+      "train_avg": 0.4498,
+      "dev_map": 0.3971,
+      "dev_auc": 0.5227,
+      "dev_f1": 0.4732,
+      "dev_acc": 0.475,
+      "best_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+      "feedback": ""
+    },
+    {
+      "step": 2,
+      "train_map": 0.4554,
+      "train_avg": 0.4387,
+      "dev_map": 0.3973,
+      "dev_auc": 0.5273,
+      "dev_f1": 0.4994,
+      "dev_acc": 0.5,
+      "best_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+      "feedback": ""
+    },
+    {
+      "step": 3,
+      "train_map": 0.4562,
+      "train_avg": 0.4394,
+      "dev_map": 0.4003,
+      "dev_auc": 0.551,
+      "dev_f1": 0.491,
+      "dev_acc": 0.5,
+      "best_prompt": "Estimate the likelihood (ranging from 0.0 to 1.0) that this video may contain a cyber scam.",
+      "feedback": ""
+    },
+    {
+      "step": 4,
+      "train_map": 0.5048,
+      "train_avg": 0.4803,
+      "dev_map": 0.4054,
+      "dev_auc": 0.5502,
+      "dev_f1": 0.4373,
+      "dev_acc": 0.45,
+      "best_prompt": "Assess the likelihood (from 0.0 to 1.0) that this video might contain a cyber scam.",
+      "feedback": ""
+    },
+    {
+      "step": 5,
+      "train_map": 0.699,
+      "train_avg": 0.671,
+      "dev_map": 0.406,
+      "dev_auc": 0.5416,
+      "dev_f1": 0.4732,
+      "dev_acc": 0.475,
+      "best_prompt": "Assess the probability (from 0.0 to 1.0) that a cyber scam is present in this video.",
+      "feedback": ""
+    },
+    {
+      "step": 6,
+      "train_map": 0.4425,
+      "train_avg": 0.4165,
+      "dev_map": 0.408,
+      "dev_auc": 0.5471,
+      "dev_f1": 0.4519,
+      "dev_acc": 0.4583,
+      "best_prompt": "Evaluate the likelihood (on a scale from 0.0 to 1.0) that this video may exhibit signs of a cyber scam.",
+      "feedback": ""
+    },
+    {
+      "step": 7,
+      "train_map": 0.7098,
+      "train_avg": 0.6899,
+      "dev_map": 0.4101,
+      "dev_auc": 0.5523,
+      "dev_f1": 0.4899,
+      "dev_acc": 0.4917,
+      "best_prompt": "Assess the probability (from 0.0 to 1.0) that a cyber scam is present in this video.",
+      "feedback": ""
+    },
+    {
+      "step": 8,
+      "train_map": 0.582,
+      "train_avg": 0.5546,
+      "dev_map": 0.4146,
+      "dev_auc": 0.5683,
+      "dev_f1": 0.4481,
+      "dev_acc": 0.4667,
+      "best_prompt": "Assess the likelihood (on a scale from 0.0 to 1.0) that this video may demonstrate characteristics of a cyber scam.",
+      "feedback": ""
+    },
+    {
+      "step": 9,
+      "train_map": 0.5627,
+      "train_avg": 0.528,
+      "dev_map": 0.43,
+      "dev_auc": 0.5748,
+      "dev_f1": 0.4836,
+      "dev_acc": 0.4917,
+      "best_prompt": "Evaluate the likelihood (between 0.0 and 1.0) that this video may exhibit signs of a cyber scam, considering various factors such as content, presentation, and context.",
+      "feedback": ""
+    },
+    {
+      "step": 10,
+      "train_map": 0.5816,
+      "train_avg": 0.5513,
+      "dev_map": 0.4235,
+      "dev_auc": 0.5756,
+      "dev_f1": 0.4931,
+      "dev_acc": 0.5,
+      "best_prompt": "Evaluate the likelihood (between 0.0 and 1.0) that this video may exhibit signs of a cyber scam, considering various factors such as content, presentation, and context.",
+      "feedback": ""
+    }
+  ],
+  "final_population": [
+    {
+      "prompt": "Determine the probability (on a scale from 0.0 to 1.0) that this video displays indicators of a cyber scam, taking into account elements like content, presentation, and context.",
+      "score": 0.5073400934813979
+    },
+    {
+      "prompt": "Assess the likelihood (on a scale from 0.0 to 1.0) that this video demonstrates signs of a cyber scam, taking into account various elements such as content quality, presentation style, and contextual relevance.",
+      "score": 0.55694826007326
+    },
+    {
+      "prompt": "Assess the probability (on a scale from 0.0 to 1.0) that this video reveals indicators of a cyber scam, taking into account various factors like content, presentation, and contextual elements.",
+      "score": 0.5581738437001595
+    },
+    {
+      "prompt": "Evaluate the probability (on a scale of 0.0 to 1.0) that this video may exhibit signs of a cyber scam.",
+      "score": 0.5523599664224663
+    },
+    {
+      "prompt": "Evaluate the likelihood (between 0.0 and 1.0) that this video may exhibit signs of a cyber scam, considering various factors such as content, presentation, and context.",
+      "score": 0.5815938228438229
+    }
+  ],
+  "config": {
+    "budget": 10,
+    "popsize": 5,
+    "n_eval": 30
+  },
+  "split": {
+    "train": 360,
+    "val": 120,
+    "test": 120
+  }
+}

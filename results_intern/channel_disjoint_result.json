@@ -1,0 +1,33 @@
+{
+  "backbone": "InternVL2.5-78B-AWQ",
+  "source_result": "results_intern/tempo_cov_intern_evolve_result.json",
+  "note": "Tool+Segment 전부 적용된 완전체 CYREN(InternVL)으로, 전체 test와 channel-clean 서브셋을 각각 재채점 (재학습 없음, 동일 best prompt + 동일 학습된 fb_mem 사용).",
+  "full_test": {
+    "n": 121,
+    "kl": 0.6145959263155677,
+    "auc": 0.6488304093567252,
+    "map": 0.5194334594288228,
+    "f1": 0.5294117647058824,
+    "f1_macro": 0.5932773109243697,
+    "acc": 0.6033057851239669,
+    "auc_ratio": 0.6508771929824562,
+    "map_ratio": 0.5140231009799444,
+    "f1_ratio": 0.5899280575539568,
+    "acc_ratio": 0.5289256198347108
+  },
+  "channel_clean": {
+    "n": 100,
+    "kl": 0.539651681057606,
+    "auc": 0.6666666666666666,
+    "map": 0.5164440814438487,
+    "f1": 0.5432098765432098,
+    "f1_macro": 0.6161427533976553,
+    "acc": 0.63,
+    "auc_ratio": 0.6752466752466753,
+    "map_ratio": 0.5440516217487352,
+    "f1_ratio": 0.6017699115044248,
+    "acc_ratio": 0.55
+  },
+  "n_contaminated_excluded": 21,
+  "channel_info_coverage_caveat": "test 121개 중 채널 정보가 있는 영상은 42개(34.7%)뿐이며, 나머지 79개(65.3%)는 channel-disjoint 여부를 확인할 수 없음 — 이 79개는 clean/contaminated 판정 없이 channel-clean 서브셋에 그대로 포함되어 있음."
+}

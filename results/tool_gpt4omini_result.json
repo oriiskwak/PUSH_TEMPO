@@ -1,0 +1,113 @@
+{
+  "method": "Tool-EM-GPT",
+  "gpt_model": "gpt-4o-mini",
+  "best_prompt": "Examine the video frame for possible signs of scams. Prioritize the context: is the content aimed at educating viewers about scams or is it promoting quick financial gains? Note the emotional tone—neutral or informative tones suggest educational material, whereas urgency and excitement may indicate promotional intent. Assess the visual presentation to differentiate serious discussions from promotional tactics. Output a score between 0.0 and 1.0, where 0.0 signifies no scam risk and 1.0 indicates a strong likelihood of scam activity.",
+  "baseline_test": {
+    "kl": 1.633404829635297,
+    "auc": 0.32296296296296295,
+    "map": 0.2834783081796323,
+    "f1": 0.44755244755244755,
+    "f1_macro": 0.3165597289308629,
+    "acc": 0.3416666666666667,
+    "auc_ratio": 0.39525925925925925,
+    "map_ratio": 0.32432851025872655,
+    "f1_ratio": 0.5283018867924528,
+    "acc_ratio": 0.375
+  },
+  "best_test": {
+    "kl": 0.6856244556751229,
+    "auc": 0.7314074074074074,
+    "map": 0.5526493204681878,
+    "f1": 0.6153846153846154,
+    "f1_macro": 0.6247654784240151,
+    "acc": 0.625,
+    "auc_ratio": 0.745925925925926,
+    "map_ratio": 0.5633661331470561,
+    "f1_ratio": 0.5960264900662252,
+    "acc_ratio": 0.49166666666666664
+  },
+  "best_test_f1_opt": 0.5714285714285714,
+  "best_test_acc_opt": 0.65,
+  "log": [
+    {
+      "round": 1,
+      "train_map": 0.2708695063993977,
+      "dev_map": 0.441669212525464,
+      "dev_auc": 0.4222222222222223,
+      "dev_f1": 0.43902439024390244,
+      "dev_acc": 0.39473684210526316,
+      "prompt": "Analyze this video frame for potential cyber scam characteristics, including the presentation style, emotional cues, and communication patterns. Output a single float score from 0.0 to 1.0 that reflects the probability of scam content, where 0.0 means no scam detected and 1.0 means strong evidence of a scam.",
+      "feedback": "The model's detection of scam content needs refinement to reduce false positives by focusing on context and content quality rather than superficial visual cues. To improve accuracy, the model should consider the following criteria:\n\n1. **Presentation Style**: Genuine content typically features a professional presentation style, including formal attire and clear visuals, as opposed to informal or sensational styles.\n   \n2. **Content Quality**: Look for comprehensive explanations and factual descriptions rather than vague claims or aggressive marketing language. Educational content should prioritize clarity and thoroughness.\n\n3. **Credibility Indicators**: Identify elements that enhance credibility, such as expert testimonials, data sources, and professional settings where discussions about scams are presented in an informative manner.\n\n4. **Emotional Cues**: Be aware of exaggerated emotional expressions that may indicate manipulation, as well as visual cues of isolation that suggest vulnerability.\n\n5. **Communication Patterns**: Detect unusual communication patterns, such as excessive messaging or the presence of multiple devices, which may indicate deceptive practices.\n\n6. **Contextual Framing**: Differentiate between informative content and promotional material by recognizing the context of discussions, such as cautionary advice or educational intent.\n\nBy integrating these criteria, the model can better distinguish between legitimate content and potential scams, thereby enhancing detection sensitivity while minimizing false positives."
+    },
+    {
+      "round": 2,
+      "train_map": 0.23741993873572823,
+      "dev_map": 0.5740056028546883,
+      "dev_auc": 0.6858333333333333,
+      "dev_f1": 0.6428571428571429,
+      "dev_acc": 0.6,
+      "prompt": "Review this video frame for potential scam indicators. Concentrate on the context in which the content is presented and identify whether it is educational versus promotional. Evaluate the emotional tone and any visual cues to assess the intent. Output a single float score between 0.0 and 1.0 reflecting the likelihood of scam content, where 0.0 indicates no scam and 1.0 indicates a strong likelihood of a scam.",
+      "feedback": "The model is currently over-detecting scam content due to the presence of formal attire, professional settings, and cautionary discussions about scams, which can lead to ambiguity and false positives. To enhance accuracy, the detection criteria must focus on distinguishing between informative content and promotional or deceptive cues. \n\nKey strategies for improvement include:\n\n1. **Contextual Framing**: Assess whether the content is presented in an educational or cautionary context versus a promotional one.\n2. **Tone of Presentation**: Analyze emotional tones to differentiate between informative discussions and sensational claims that may indicate scams.\n3. **Visual and Textual Patterns**: Recognize that discussions about earnings or financial topics can appear legitimate in educational settings and should not automatically trigger scam detection.\n4. **Intent Analysis**: Evaluate the intent behind visuals and language rather than relying solely on specific keywords or visual patterns associated with scams.\n\nBy refining these detection criteria, the model can significantly reduce false positives and improve its ability to accurately identify genuine scam content."
+    },
+    {
+      "round": 3,
+      "train_map": 0.7405329041656009,
+      "dev_map": 0.6360124860641867,
+      "dev_auc": 0.6924315619967794,
+      "dev_f1": 0.6551724137931034,
+      "dev_acc": 0.6,
+      "prompt": "Review this video frame for signs of potential scams. Focus on whether the content is educational or promotional in nature. Detect financial claims through visuals, such as success charts or unrealistic profit assertions. Identify any promotional elements that convey urgency, including phrases like \"act now\" or promises of substantial returns. Consider the emotional tone for signs of manipulation, such as heightened excitement or a sense of urgency. Watch for unfamiliar branding or logos that might indicate fraudulent content. Provide a single float score between 0.0 and 1.0 reflecting the likelihood of scam content, where 0.0 indicates no scam and 1.0 indicates a strong likelihood of a scam.",
+      "feedback": "The current prompt is missing critical scam signals that could enhance detection sensitivity. Specifically, it should include instructions to identify:\n\n1. **Financial Claims**: Look for visuals depicting financial charts or returns, especially those with exaggerated claims of success.\n2. **Promotional Elements**: Identify promotional graphics that suggest urgency, like \"limited-time offers\" or large financial gains.\n3. **Emotional Manipulation**: Analyze the emotional tone for indicators of manipulation, such as excitement or urgency that could suggest deceptive practices.\n4. **Unfamiliar Branding**: Detect unusual or unofficial app or company logos that may indicate fraudulent activity.\n5. **Simplistic Solutions**: Scrutinize the presentation style for overly simplified claims about maki..."
+    },
+    {
+      "round": 4,
+      "train_map": 0.5774801587301588,
+      "dev_map": 0.5193216088278665,
+      "dev_auc": 0.6782682512733447,
+      "dev_f1": 0.6666666666666666,
+      "dev_acc": 0.64,
+      "prompt": "Inspect this video frame for potential signs of scams. Determine if the content is framed educationally or is overtly promotional. Look for urgent language, such as “limited time” offers, and visually assess for elements like attention-grabbing graphics that may indicate a promotional focus. Analyze the emotional tone: heightened excitement or urgency can be red flags. Be cautious of unfamiliar logos that may hint at fraud. Provide a score between 0.0 and 1.0, where 0.0 indicates no scam risk and 1.0 suggests a strong likelihood of scam activity.",
+      "feedback": "To enhance the accuracy of scam content detection, the following criteria should be implemented:\n\n1. **Contextual Understanding**: The model must assess the overall message of the content, distinguishing between educational discussions about financial topics and promotional material. Legitimate educational content typically lacks urgency or exaggerated claims and focuses on prevention and awareness.\n\n2. **Visual Tone Assessment**: The model should differentiate between vibrant, promotional graphics associated with scams and more subdued, informative visuals. Elements such as bright colors, flashy graphics, and urgency indicators (e.g., countdowns) should be carefully evaluated to avoid misclassifying legitimate content.\n\n3. **Emotional Tone Analysis**: The emotional tone of the visuals and language used should be considered. Informal language and references to financial benefits should not automatically trigger a scam classification unless accompanied by urgency or sensationalism.\n\nBy refining detection parameters to focus on these aspects, the model can reduce false positives and improve its ability to accurately classify content as legitimate or scam-related."
+    },
+    {
+      "round": 5,
+      "train_map": 0.2029925431711146,
+      "dev_map": 0.8128809600015788,
+      "dev_auc": 0.8317230273752012,
+      "dev_f1": 0.75,
+      "dev_acc": 0.72,
+      "prompt": "Examine the video frame for possible signs of scams. Prioritize the context: is the content aimed at educating viewers about scams or is it promoting quick financial gains? Note the emotional tone—neutral or informative tones suggest educational material, whereas urgency and excitement may indicate promotional intent. Assess the visual presentation to differentiate serious discussions from promotional tactics. Output a score between 0.0 and 1.0, where 0.0 signifies no scam risk and 1.0 indicates a strong likelihood of scam activity.",
+      "feedback": "To address the model's over-detection of scam content, it is essential to refine the detection criteria to better differentiate between educational discussions about scams and promotional scam content. The misinterpretation arises from the model's sensitivity to visual elements and emotional tones commonly associated with scams, such as urgency and informal language. \n\nKey adjustments to the detection criteria should include:\n\n1. **Contextual Analysis**: Emphasize the importance of analyzing the context of discussions. Frames that focus on prevention or informational content should be assessed differently from those that promote financial gain or create urgency.\n\n2. **Neutral Emotional Tone**: Establish benchmarks for neutral emotional expressions in educational content, contrasting them with the heightened urgency or excitement typically found in promotional materials.\n\n3. **Visual Presentation**: Refine the model's approach to visual elements, ensuring that it can distinguish between serious news segments highlighting fraudulent activities and promotional content that may inadvertently mimic these elements.\n\nBy implementing these adjustments, the model can improve its accuracy and significantly reduce false positives in scam detection."
+    },
+    {
+      "round": 6,
+      "train_map": 0.5373676223295568,
+      "dev_map": 0.6067415074613779,
+      "dev_auc": 0.7456597222222221,
+      "dev_f1": 0.6511627906976745,
+      "dev_acc": 0.7,
+      "prompt": "Examine the video frame for potential scam indicators, focusing on financial claims that suggest quick profits or unrealistic returns. Context is crucial; differentiate between educational content and promotional tactics. Look for urgency cues, such as countdown timers or flashy graphics, while recognizing that urgency can be legitimate in educational contexts. Analyze the emotional tone and language—be cautious of sensationalized or overly simplified phrases that may indicate manipulation. Pay attention to visual elements that highlight promotional intent, such as success charts or unfamiliar branding. Evaluate the overall context to determine the likelihood of scam content. Provide a single float score between 0.0 (no scam risk) and 1.0 (high scam risk).",
+      "feedback": "To enhance the detection of scams in video frames while minimizing false positives, the following guidelines should be implemented:\n\n1. **Financial Claims Visuals**: Identify graphics or text that prominently display unrealistic financial returns or suggest quick profits. However, assess the framing and context; claims presented with cautionary language or as part of educational narratives should be treated differently.\n\n2. **Urgency Indicators**: Look for visual elements that create a sense of urgency, such as countdown timers or flashing graphics. Context is crucial; urgency in educational content should not automatically indicate a scam.\n\n3. **Manipulative Language**: Examine the language used in visuals, focusing on simplified explanations of complex financial concepts or sensationalized phrases designed to provoke emotional responses. Establish a baseline for emotional tone to differentiate between manipulative language and legitimate educational discussions.\n\n4. **Contextual Analysis**: Emphasize the need to assess the overall context of the video. Frames that focus on educating viewers about scams should be classified differently than those promoting financial gain.\n\n5. **Emotional Tone Neutrality**: Develop criteria to evaluate the emotional tone of the content, ensuring that legitimate educational discussions are not misclassified as scams due to their emotional appeal or informal language.\n\nBy refining these detection parameters, the model can better distinguish between educational content and promotional tactics, reducing the likelihood of misclassifying legitimate discussions as scams."
+    },
+    {
+      "round": 7,
+      "train_map": 0.516419879712427,
+      "dev_map": 0.5163211808301443,
+      "dev_auc": 0.6871657754010695,
+      "dev_f1": 0.46153846153846156,
+      "dev_acc": 0.72,
+      "prompt": "Examine the video frame for signs of potential scams, focusing on financial claims and visual cues. Identify exaggerated visuals like flashy dollar signs, unrealistic profit charts, and urgency indicators such as countdown timers or phrases implying limited-time offers. Context is critical; distinguish between educational content discussing financial risks and promotional material that suggests quick profits. Assess the emotional tone—neutral or informative tones are less concerning, while excitement or urgency may indicate manipulation. Additionally, watch for unfamiliar branding or logos that could signal fraud. Return a single float score between 0.0 (no scam risk) and 1.0 (high scam risk).",
+      "feedback": "To enhance the detection of scam content while minimizing false positives, the following guidelines should be implemented:\n\n1. **Visual Cue Identification**: \n   - Instruct to identify graphics that feature bold or exaggerated financial claims, such as flashy dollar signs or profit charts suggesting unrealistic returns.\n   - Look for urgency indicators like countdowns, flashing text, or phrases indicating limited-time offers.\n   - Examine the overall visual aesthetic for manipulative styling that may suggest fraudulent intent.\n\n2. **Contextual Analysis**: \n   - Emphasize the importance of assessing the overall context of the video frames. Distinguish between educational content that discusses financial risks or scams and promotional material that suggests quick profits.\n\n3. **Emotional Tone Assessment**: \n   - Establish a clear baseline for emotional tone. Content that maintains a neutral or informative tone should not be penalized, while frames demonstrating urgency or excitement should be scrutinized more closely.\n\nBy integrating these elements, the model can improve its sensitivity to genuine scams while reducing the misclassification of legitimate educational discussions."
+    },
+    {
+      "round": 8,
+      "train_map": 0.6954015911658198,
+      "dev_map": 0.3277682829800752,
+      "dev_auc": 0.5238095238095238,
+      "dev_f1": 0.375,
+      "dev_acc": 0.6,
+      "prompt": "Evaluate the video frame for potential scams by identifying financial claims and contextual elements. Focus on exaggerated financial visuals, like unrealistic profit charts and flashy dollar signs. Watch for urgency cues, such as countdown timers or phrases indicating a limited-time offer. Be alert for suspicious phone numbers presented in unusual formats. Assess the emotional tone, noting any expressions of concern or urgency that may imply a scam narrative. Additionally, analyze the language used for manipulative or oversimplified financial descriptions. Return a single float score between 0.0 (no scam risk) and 1.0 (high scam risk).",
+      "feedback": "The current prompt for scam detection requires enhancement to improve sensitivity and accuracy in identifying potential scams, particularly in phone-related contexts. The following key aspects should be incorporated into the visual detection instructions:\n\n1. **Call Identification Cues**: Look for suspicious phone numbers that are unfamiliar or presented in unusual formats, as these can indicate scam calls.\n\n2. **Contextual Elements**: Assess the surrounding context in frames showing phone calls, including concerned expressions or urgency in the narrative, which may suggest a scam scenario.\n\n3. **Visual Financial Claims**: Train the model to identify bold or exaggerated financial graphics, such as profit claims or unrealistic growth charts, which are commonly associated with scams.\n\n4. **Urgency Indicators**: Emphasize the detection of visual elements that create a sense of urgency, including countdown timers or phrases suggesting limited-time offers, often found in scam promotions.\n\n5. **Manipulative Language and Tone**: Analyze the language used in the video, focusing on phrases that oversimplify complex financial concepts or employ sensationalized terms. Additionally, recognize stylistic choices that elicit strong emotional responses, such as bright colors or dramatic imagery.\n\nBy incorporating these elements, the model will be better equipped to detect subtle cues indicative of scams, reducing the likelihood of false negatives."
+    }
+  ]
+}

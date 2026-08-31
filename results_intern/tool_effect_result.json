@@ -1,0 +1,59 @@
+{
+  "backbone": "InternVL2.5-78B-AWQ",
+  "best_early_prompt": "Evaluate the likelihood (0.0-1.0) that this frame is part of a cyber scam. Focus on visual cues such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, requests for personal information, fake credentials, and overly polished production quality. Pay close attention to the presence or absence of clear disclaimers, source verification, actionable steps, expert endorsements, detailed explanations, and legal or financial advice. Ensure to differentiate between educational content, trusted news sources, and warnings about scams, maintaining lower scores for trusted channels and expert advice unless they are suspicious in nature. Avoid mistaking educational content, trusted news sources, and tips on identifying scams unless they lack credible sources or are presented in a suspicious manner. Differentiate trusted news channels and expert advice videos by their logos, branding, and neutral or educational tone.",
+  "best_late_prompt": "Evaluate the likelihood that this visual frame is part of a cyber-scam video. Focus on the coherence between visual elements and textual overlays, ensuring alignment and consistency. Pay attention to visual clarity and context, ensuring high-quality and relevant images. Check for textual consistency and coherence, avoiding abrupt changes or overly promotional graphics. Look for exaggerated claims or urgent language. Assess the realism of any promises or claims displayed, considering whether the language used seems too good to be true. Analyze the visual style for consistency and the production quality for signs of low credibility. Avoid frames with exaggerated claims or low production quality. Ensure the model outputs ONLY a single float between 0.0 and 1.0, representing the probability of the frame being part of a scam.",
+  "group_A_tool_activated_44": {
+    "n": 46,
+    "tool_on": {
+      "kl": 0.5825317680041758,
+      "auc": 0.636029411764706,
+      "map": 0.41337724562700573,
+      "f1": 0.3333333333333333,
+      "f1_macro": 0.5053763440860215,
+      "acc": 0.5652173913043478,
+      "auc_ratio": 0.6299019607843137,
+      "map_ratio": 0.39440502121381105,
+      "f1_ratio": 0.46808510638297873,
+      "acc_ratio": 0.45652173913043476
+    },
+    "tool_off": {
+      "kl": 0.5006983754717207,
+      "auc": 0.6200980392156863,
+      "map": 0.39857407004922885,
+      "f1": 0.41379310344827586,
+      "f1_macro": 0.571975916803503,
+      "acc": 0.6304347826086957,
+      "auc_ratio": 0.6470588235294118,
+      "map_ratio": 0.38651049966881507,
+      "f1_ratio": 0.5217391304347826,
+      "acc_ratio": 0.5217391304347826
+    }
+  },
+  "group_B_tool_unactivated_77_control": {
+    "n": 75,
+    "as_trained_off": {
+      "kl": 0.6388185186030102,
+      "auc": 0.6605339105339106,
+      "map": 0.599110087927866,
+      "f1": 0.6111111111111112,
+      "f1_macro": 0.6260683760683761,
+      "acc": 0.6266666666666667,
+      "auc_ratio": 0.6587301587301586,
+      "map_ratio": 0.5794502347962692,
+      "f1_ratio": 0.6521739130434783,
+      "acc_ratio": 0.5733333333333334
+    },
+    "forced_on": {
+      "kl": 0.7054847512456822,
+      "auc": 0.6753246753246754,
+      "map": 0.6735580126801681,
+      "f1": 0.6086956521739131,
+      "f1_macro": 0.6376811594202898,
+      "acc": 0.64,
+      "auc_ratio": 0.66991341991342,
+      "map_ratio": 0.6310727389618331,
+      "f1_ratio": 0.6304347826086957,
+      "acc_ratio": 0.5466666666666666
+    }
+  }
+}

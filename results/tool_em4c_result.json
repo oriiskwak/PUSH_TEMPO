@@ -1,0 +1,62 @@
+{
+  "method": "Tool-EM-v4",
+  "best_prompt": "Estimate the likelihood (0.0-1.0) of this video being a cyber scam, ensuring consideration of genuine educational or professional context cues such as branded backgrounds, formal professional attire, and structured interview setups. Pay attention to consistent branding or logo presence suggesting a reputable channel. Evaluate the overall tone and structure for professional financial guidance, avoiding unsolicited or aggressive sales pitches. Return ONLY a float 0.0–1.0.",
+  "baseline_test": {
+    "auc": null,
+    "map": null,
+    "f1": null,
+    "acc": null
+  },
+  "best_test": {
+    "kl": 0.9656784348084833,
+    "auc": 0.5656296296296296,
+    "map": 0.3834583969122823,
+    "f1": 0.5137614678899083,
+    "f1_macro": 0.5545906576090762,
+    "acc": 0.5583333333333333
+  },
+  "best_test_f1_opt": 0.5806451612903226,
+  "best_test_acc_opt": 0.5666666666666667,
+  "log": [
+    {
+      "round": 1,
+      "train_map": 0.21302958642738584,
+      "dev_map": 0.5465727682708602,
+      "dev_auc": 0.6103896103896104,
+      "dev_f1": 0.5416666666666666,
+      "dev_acc": 0.56,
+      "prompt": "Estimate the likelihood (0.0-1.0) of this video being a cyber scam, ensuring consideration of genuine educational or professional context cues such as branded backgrounds, formal professional attire, and structured interview setups. Pay attention to consistent branding or logo presence suggesting a reputable channel. Evaluate the overall tone and structure for professional financial guidance, avoiding unsolicited or aggressive sales pitches. Return ONLY a float 0.0–1.0.",
+      "feedback": "The model is over-detecting scam content due to visual patterns related to financial discussions and expert advice. These frames often feature structured interviews, formal settings, and text overlays with financial references. To distinguish legitimate financial advice from scams, the policy should:\n\n1. Focus on identifying genuine educational or professional context cues such as branded backgrounds, formal professional attire, and structured interview setups.\n2. Look for consistent branding or logo presence that indicates a reputable channel or organization.\n3. Analyze the overall tone and structure of the content, ensuring it aligns with professional financial guidance rather than unsolicited or aggressive sales pitches."
+    },
+    {
+      "round": 2,
+      "train_map": 0.425595238095238,
+      "dev_map": 0.42972207415371655,
+      "dev_auc": 0.5808333333333333,
+      "dev_f1": 0.6122448979591837,
+      "dev_acc": 0.62,
+      "prompt": "Estimate the likelihood (0.0-1.0) of this video being a cyber scam, ensuring consideration of genuine educational or professional context cues such as branded backgrounds, formal professional attire, and structured interview setups. Pay attention to consistent branding or logo presence suggesting a reputable channel. Evaluate the overall tone and structure for professional financial guidance, avoiding unsolicited or aggressive sales pitches. Return ONLY a float 0.0–1.0.",
+      "feedback": "The model should refine its detection of scam content by focusing on evaluating the overall tone and structure of the content, rather than solely on professional elements like formal interviews, branded backgrounds, and contact information. Professional videos typically exhibit a polished and cohesive design, while scam videos often appear cluttered and lack a structured layout. Additionally, the model should consider the context of the content, including the channel name and subscriber count, to verify the source credibility. By concentrating on abstract visual patterns and the professional tone, the model can more accurately distinguish between legitimate content and scams."
+    },
+    {
+      "round": 3,
+      "train_map": 0.5266840526067134,
+      "dev_map": 0.5464375748735808,
+      "dev_auc": 0.6586151368760065,
+      "dev_f1": 0.5714285714285714,
+      "dev_acc": 0.58,
+      "prompt": "Estimate the likelihood (0.0-1.0) of this video being a cyber scam, ensuring consideration of genuine educational or professional context cues such as branded backgrounds, formal professional attire, and structured interview setups. Pay attention to consistent branding or logo presence suggesting a reputable channel. Evaluate the overall tone and structure for professional financial guidance, avoiding unsolicited or aggressive sales pitches. Return ONLY a float 0.0–1.0.",
+      "feedback": "The model is currently over-detecting scam content, particularly in videos containing financial charts, stock market data, and calls to action, which are common in both legitimate financial education and scams. To improve accuracy, the model should focus on the overall professionalism and consistency of the content. Legitimate videos typically exhibit a polished and structured presentation, including clear branding, formal attire, and credible sources. The model should also consider the context of the video, such as the channel's reputation and subscriber count, to verify the source's credibility. Additionally, text-heavy frames with urgent monetary requests or phrases suggesting romantic entanglements should be carefully evaluated, as these can resemble legitimate content when presented professionally. By refining the visual detection instructions to focus on these abstract patterns, the model can better distinguish between legitimate financial guidance and scams, reducing false alarms without overfitting to specific elements."
+    },
+    {
+      "round": 4,
+      "train_map": 0.621610650558019,
+      "dev_map": 0.5177652534097931,
+      "dev_auc": 0.6960950764006791,
+      "dev_f1": 0.6,
+      "dev_acc": 0.68,
+      "prompt": "Estimate the likelihood (0.0-1.0) of this video being a cyber scam, ensuring consideration of genuine educational or professional context cues such as branded backgrounds, formal professional attire, and structured interview setups. Pay attention to consistent branding or logo presence suggesting a reputable channel. Evaluate the overall tone and structure for professional financial guidance, avoiding unsolicited or aggressive sales pitches. Return ONLY a float 0.0–1.0.",
+      "feedback": "To accurately distinguish between potential scams and legitimate educational content, especially in frames that include home or casual office setups and textual references to \"voice phishing\" investigations, the following guidelines should be applied:\n\n1. **Look for context clues:** Identify educational tone, structured narrative, and explicit labeling of content as \"scam prevention\" or \"investigation.\" These elements help differentiate legitimate educational content from actual scams.\n\n2. **Examine branding and source context:** Assess the consistency of professional branding and the source of the content. Reputable channels typically feature a structured layout, clear branding, and other indicators of authenticity."
+    }
+  ]
+}

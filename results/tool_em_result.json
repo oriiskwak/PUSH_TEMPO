@@ -1,0 +1,62 @@
+{
+  "method": "Tool-EM",
+  "best_prompt": "Predict the probability (0.0-1.0) that this video frame contains a cyber scam, focusing on bold text claims about easy, substantial income generation with simple charts or graphics. Also, detect frames showing minimal effort content creation, like simplified instructions, content upload interfaces, and generic stock photos. Return ONLY a single float between 0.0 and 1.0.",
+  "baseline_test": {
+    "kl": 1.6356415109280462,
+    "auc": 0.32266666666666666,
+    "map": 0.28333251521372993,
+    "f1": 0.44755244755244755,
+    "acc": 0.3416666666666667
+  },
+  "best_test": {
+    "kl": 0.724657231273787,
+    "auc": 0.6925925925925925,
+    "map": 0.4984068316046478,
+    "f1": 0.5806451612903226,
+    "acc": 0.675
+  },
+  "best_test_f1_opt": 0.5961538461538461,
+  "best_test_acc_opt": 0.65,
+  "log": [
+    {
+      "round": 1,
+      "train_map": 0.21302958642738584,
+      "dev_map": 0.6431214549279058,
+      "dev_auc": 0.6987179487179487,
+      "dev_f1": 0.5652173913043478,
+      "dev_acc": 0.6,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame contains a cyber scam, focusing on bold text claims about easy, substantial income generation with simple charts or graphics. Also, detect frames showing minimal effort content creation, like simplified instructions, content upload interfaces, and generic stock photos. Return ONLY a single float between 0.0 and 1.0.",
+      "feedback": "The current prompt is missing key signals related to unrealistic income claims and automated content creation strategies, which are common in scam videos. To increase detection sensitivity for these patterns, the visual cues should include:\n\n1. **Unrealistic Income Claims**: Look for frames that feature bold text highlighting easy and substantial income generation, often accompanied by simple charts or graphics that promise high returns without showing detailed methods.\n\n2. **Automated Content Creation**: Focus on detecting frames that emphasize minimal effort with high rewards, particularly those showing simplified instructions for uploading content or automating tasks. These often include visuals of content upload interfaces, generic stock photos, or placeholders used for automated conte..."
+    },
+    {
+      "round": 2,
+      "train_map": 0.4161866682700016,
+      "dev_map": 0.5781284925471829,
+      "dev_auc": 0.7228163992869876,
+      "dev_f1": 0.5882352941176471,
+      "dev_acc": 0.72,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame contains a cyber scam, focusing on bold text claims about easy, substantial income generation with simple charts or graphics. Also, detect frames showing minimal effort content creation, like simplified instructions, content upload interfaces, and generic stock photos. Return ONLY a single float between 0.0 and 1.0.",
+      "feedback": "The current visual detection prompt is missing key indicators specific to unsolicited communication-based scams. It fails to identify the abstract pattern of unexpected messages from unknown contacts claiming to be from another country and expressing an interest in the recipient. To improve detection sensitivity, the prompt should focus on identifying:\n\n1. **Unsolicited messages** from unknown contacts claiming to be from a foreign country, which is a common tactic used by scammers to build false trust and lure victims into further interactions.\n2. **Expressions of unsolicited interest**, such as friendship or business, from strangers, which often precede requests for personal information or financial transactions.\n3. **Generic or vague claims about interest in cultural exchange or meeting..."
+    },
+    {
+      "round": 3,
+      "train_map": 0.4226990400903444,
+      "dev_map": 0.35999000663097014,
+      "dev_auc": 0.44083333333333335,
+      "dev_f1": 0.4583333333333333,
+      "dev_acc": 0.48,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame contains a cyber scam, focusing on bold text claims about easy, substantial income generation with simple charts or graphics. Also, detect frames showing minimal effort content creation, like simplified instructions, content upload interfaces, and generic stock photos. Return ONLY a single float between 0.0 and 1.0.",
+      "feedback": "The visual detection instructions are overly sensitive to content that resembles scam tutorials but are actually legitimate security, educational, or investment guides. The model is being misled by bold claims, simplified graphics, or interfaces mimicking common scam setups. To reduce false alarms:\n\n1. Enhance the visual prompt to distinguish between content that warns about scams and content that perpetrates them. Look for abstract patterns such as clear disclaimers, structured narratives, or calls to action that promote critical thinking as indicators of legitimacy.\n\n2. Focus on the context of the content. Educational videos often include official disclaimers, contact information for reporting scams, instructions for viewers to be cautious, and discussions about investment risks and fraud warnings. These elements should be interpreted as signs of credibility rather than indicators of scam activity."
+    },
+    {
+      "round": 4,
+      "train_map": 0.7775446600551642,
+      "dev_map": 0.4864757754732647,
+      "dev_auc": 0.7201426024955436,
+      "dev_f1": 0.5882352941176471,
+      "dev_acc": 0.72,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame contains a cyber scam, focusing on bold text claims about easy, substantial income generation with simple charts or graphics. Also, detect frames showing minimal effort content creation, like simplified instructions, content upload interfaces, and generic stock photos. Return ONLY a single float between 0.0 and 1.0.",
+      "feedback": "The current visual detection instructions are missing key indicators specific to these frames, which showcase a messaging interface promoting financial gain through betting or gambling activities. The prompt is not recognizing the abstract pattern of:\n\n1. **Financial return claims within messaging interfaces:** The content highlights potential winnings and income generation, often using numerical data to create an illusion of legitimacy. The model should focus on identifying financial figures, return percentages, or gain estimates presented in a messaging format.\n\n2. **Sequential betting or prediction patterns:** The frames display a list of bets or predictions with outcomes, creating an impression of easy success. The visual cues should recognize sequences of numbers, predictions, or resu..."
+    }
+  ]
+}

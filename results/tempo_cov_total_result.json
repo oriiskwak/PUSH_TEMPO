@@ -1,0 +1,176 @@
+{
+  "method": "TEMPO-COV-Total",
+  "best_early_prompt": "Predict the probability (0.0-1.0) that this video frame is part of an active cyber scam. Focus on frames promoting misleading \"BIG SALE\" events lasting unusually long, offering unrealistic guarantees like immediate support, or using chats promising quick fixes to build false trust. Ignore frames about scam prevention, especially those mentioning \"initial stages,\" \"prevention,\" and \"what to do.\" Exclude content of professionals giving advice in formal settings. Maintain high scores for misleading urgency tactics. Return ONLY a float 0.0–1.0 per frame.",
+  "best_late_prompt": "Predict a single float (0.0–1.0) for cyber scam likelihood in each video frame. Focus on presentation style and content purpose. Legitimate content uses structured, formal presentations with clear disclaimers and balanced language. Scams often use urgent, persuasive tones and lack transparency. Analyze whether the content is instructional or cautionary, warning about scams with balanced information, versus promotional content with urgent calls to action. Avoid over-detection in educational videos discussing scams by considering broader contextual signals like visual cues, formal settings, and professional presentations. Maintain performance on recognized cases, like video=abnormal_0JUr7e9RGeA. Ensure the model outputs only a float 0.0–1.0 per frame.",
+  "baseline_test": {
+    "auc": null,
+    "map": null,
+    "f1": null,
+    "acc": null
+  },
+  "best_test": {
+    "kl": 0.6196438468827193,
+    "auc": 0.6419259259259259,
+    "map": 0.5313930988106336,
+    "f1": 0.4578313253012048,
+    "acc": 0.625
+  },
+  "best_test_f1_opt": 0.5192307692307693,
+  "best_test_acc_opt": 0.5833333333333334,
+  "log": [
+    {
+      "round": 1,
+      "seg": "early",
+      "train_map": 0.21140620980400926,
+      "dev_map": 0.6704651139997106,
+      "dev_auc": 0.7315705128205129,
+      "dev_f1": 0.7169811320754716,
+      "dev_acc": 0.7,
+      "prompt": "Predict the probability (0.0-1.0) that this video is actively engaging in a cyber scam, not advising about scams. Ignore frames with text focused on identifying or preventing scams, especially those mentioning \"initial stages,\" \"prevention,\" and \"what to do.\" Exclude content showing professionals in business attire giving advice in formal settings. Return ONLY a float 0.0–1.0 per frame.",
+      "feedback": "The current false positives indicate that the model is over-detecting legitimate content about identifying and preventing romance scams. The visual patterns that appear to be causing these false alarms include:\n\n1. **Textual Patterns**: Frames with text heavily focused on advising viewers on identifying and avoiding specific types of scams, including references to \"initial stages,\" \"prevention,\" and \"what to do.\" These are often accompanied by contact information for legal advice, which the model may misinterpret as part of a scam.\n\n2. **Visual Patterns**: The presence of individuals who seem to be professionals (e.g., dressed in business attire, sitting at a desk, and displaying credentials like a name badge) delivering advice in a formal setting. The model may confuse this professional p..."
+    },
+    {
+      "round": 1,
+      "seg": "late",
+      "train_map": 0.6641975308641976,
+      "dev_map": 0.474958695600587,
+      "dev_auc": 0.6969696969696969,
+      "dev_f1": 0.5777777777777777,
+      "dev_acc": 0.62,
+      "prompt": "Evaluate the video frame to predict a single float (0.0–1.0) indicating the likelihood of a cyber scam, considering context. Differentiate between educational content and actual scams by recognizing formal tones, structured presentations, and authoritative sources. Visual cues like professional settings, formal speech, and text about investments or cautionary messages should not lead to false positives. Focus on the overall context, including mentions of cautionary tales, educational discussions, news reporting, or preventive measures. Ensure the model accurately distinguishes between legitimate content and scams, reducing false alarms while maintaining performance on cases like video=abnormal_0JUr7e9RGeA.",
+      "feedback": "To minimize false positives, the model should be refined to distinguish between content discussing scams for educational or informative purposes and actual scam attempts. This includes recognizing the context of discussions about legal consequences, online relationships, financial content, and preventive measures against scams. The model should be trained to identify general patterns such as a formal tone, structured presentation, informative content, and authoritative sources like news channels. Visual elements such as professional settings, formal speech, text overlays about investments, police involvement, or cautionary messages should not automatically trigger a false positive. Instead, the model should consider the overall context, including explicit mentions of being a cautionary tale, educational discussion, news reporting, or preventive measures. By refining the detection criteria to recognize these nuances, the model can more accurately distinguish between legitimate content and actual scams, reducing false alarms without overfitting to specific patterns."
+    },
+    {
+      "round": 2,
+      "seg": "early",
+      "train_map": 0.611418615108907,
+      "dev_map": 0.7599671178636258,
+      "dev_auc": 0.8268251273344651,
+      "dev_f1": 0.6842105263157895,
+      "dev_acc": 0.76,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame is part of an active cyber scam. Focus on frames promoting misleading \"BIG SALE\" events lasting unusually long, offering unrealistic guarantees like immediate support, or using chats promising quick fixes to build false trust. Ignore frames about scam prevention, especially those mentioning \"initial stages,\" \"prevention,\" and \"what to do.\" Exclude content of professionals giving advice in formal settings. Maintain high scores for misleading urgency tactics. Return ONLY a float 0.0–1.0 per frame.",
+      "feedback": "The current prompt is missing key scam signals related to misleading sales promotions and urgency tactics commonly used in online scams. These frames exhibit abstract patterns that include:\n\n1. **Prominent Big Sale Messaging**: The repeated emphasis on a \"BIG SALE\" for an extended period (e.g., 365 days) suggests a misleading urgency tactic designed to pressure viewers into making quick purchases without thorough consideration.\n\n2. **Unrealistic Guarantees**: The offer of immediate replies and support within a few minutes, combined with promotional discounts, can be a tactic used to build false trust and encourage impulsive actions.\n\n3. **Chats and Quick Fixes**: The presence of chat icons and assurances of prompt customer support may indicate a deceptive attempt to mimic legitimate custom..."
+    },
+    {
+      "round": 2,
+      "seg": "late",
+      "train_map": 0.561075961075961,
+      "dev_map": 0.6626534817374239,
+      "dev_auc": 0.7619047619047619,
+      "dev_f1": 0.6956521739130435,
+      "dev_acc": 0.72,
+      "prompt": "Predict a single float (0.0–1.0) for the likelihood of a cyber scam in the video frame. Distinguish between educational content and actual scams by analyzing the context and presentation style. Pay attention to disclaimers, structured narratives, and cautionary dialogues that aim to inform viewers rather than deceive them. Avoid false positives from simulated call recordings or reenactments that mimic scam scenarios. Consider visual elements like professional settings, formal speech, and on-screen prompts encouraging viewer interaction. Ensure the model accurately identifies actual scams, maintaining performance on cases like video=abnormal_0JUr7e9RGeA.",
+      "feedback": "The model is over-detecting scam content in videos that appear to be educational or awareness-focused regarding cyber threats. The primary cause is the presence of simulated call recordings or reenactments that mimic scam scenarios, including fake phone numbers and cautionary dialogues. These elements are often used in legitimate content to illustrate common scam tactics.\n\nTo distinguish these patterns from actual scams, the model should focus on the overall context and presentation style. Legitimate content typically includes clear disclaimers, educational tones, and structured narratives aimed at informing viewers rather than deceiving them. Visual cues like on-screen prompts encouraging viewer interaction (e.g., \"like and subscribe\"), along with the structured format of the video, sugge..."
+    },
+    {
+      "round": 3,
+      "seg": "early",
+      "train_map": 0.35107417648723327,
+      "dev_map": 0.6162852013206909,
+      "dev_auc": 0.7441666666666666,
+      "dev_f1": 0.6666666666666666,
+      "dev_acc": 0.72,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame is part of an active cyber scam. Focus on frames promoting misleading \"BIG SALE\" events lasting unusually long, offering unrealistic guarantees like immediate support, or using chats promising quick fixes to build false trust. Ignore frames about scam prevention, especially those mentioning \"initial stages,\" \"prevention,\" and \"what to do.\" Exclude content of professionals giving advice in formal settings. Maintain high scores for misleading urgency tactics. Return ONLY a float 0.0–1.0 per frame.",
+      "feedback": "To enhance the detection of scams related to misleading gambling or investment promotions, exaggerated claims of authority or credibility, and the exploitation of trust in AI capabilities, the following policy should be implemented:\n\n1. **Look for Abstract Visual Patterns**:\n   - Chat-based frames promoting high returns with minimal input, suggesting easy financial success or AI-driven content creation.\n   - Visual cues emphasizing quick financial gain through games, lotteries, or AI capabilities, using urgency to encourage immediate action.\n   - On-screen text or chat logs focusing on numbers, outcomes, or AI capabilities, creating a misleading impression of guaranteed wins or effortless high-quality content.\n   - Frames displaying large numbers or figures suggesting unrealistic achievements or gains, and visuals that create a sense of exclusivity or insider knowledge.\n   - On-screen text or graphics emphasizing extraordinary results without verifiable evidence, such as high view counts, earnings, or subscriber numbers.\n\n2. **Refine Visual Cues**:\n   - Increase sensitivity to frames showing chat interactions, charts, graphs, or statistics with claims of unrealistic achievements.\n   - Enhance detection of visuals that mimic legitimate AI tools or interfaces but are used in contexts promoting false promises or unrealistic expectations."
+    },
+    {
+      "round": 3,
+      "seg": "late",
+      "train_map": 0.7573656363130048,
+      "dev_map": 0.6657148341394995,
+      "dev_auc": 0.7629233511586453,
+      "dev_f1": 0.5714285714285714,
+      "dev_acc": 0.76,
+      "prompt": "Predict a single float (0.0–1.0) for the likelihood of a cyber scam in the video frame. Focus on presentation style and content purpose. Legitimate content uses a formal, structured style with clear disclaimers and balanced language, while actual scams employ urgent, persuasive tones. Identify if the content is instructional or cautionary, warning about scams with balanced information, versus promotional content with urgent calls to action. Maintain performance on recognized cases, like video=abnormal_0JUr7e9RGeA. Avoid over-detection in educational videos discussing scams, considering visual cues like on-screen text warnings and formal settings.",
+      "feedback": "The model is over-detecting scam content in videos that discuss or educate about scam techniques, particularly due to visual patterns such as formal settings, business attire, on-screen text warnings, and structured dialogues resembling scam scenarios. These elements are often present in legitimate videos aiming to inform viewers about scam techniques in a cautionary or educational manner. To distinguish these legitimate patterns from actual scams and reduce false alarms, the model should focus on the following criteria:\n\n1. **Presentation Style**: Legitimate content typically features a structured and formal presentation style, with clear disclaimers, balanced informational language, and a lack of urgent, persuasive tones. In contrast, actual scams often use urgent, persuasive language without transparency.\n\n2. **Content Purpose**: The model should identify whether the content is instructional or cautionary rather than promotional. Educational content will explicitly warn about potential scams and provide balanced information, whereas actual scams will attempt to persuade viewers with urgent calls to action.\n\nBy refining the model's visual detection and training it to recognize the broader context of presentation style and content purpose, the model can better distinguish between educational content discussing scams and actual scam content, thereby reducing false alarms."
+    },
+    {
+      "round": 4,
+      "seg": "early",
+      "train_map": 0.5706180826546959,
+      "dev_map": 0.6252949629812052,
+      "dev_auc": 0.8694852941176471,
+      "dev_f1": 0.8108108108108109,
+      "dev_acc": 0.86,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame is part of an active cyber scam. Focus on frames promoting misleading \"BIG SALE\" events lasting unusually long, offering unrealistic guarantees like immediate support, or using chats promising quick fixes to build false trust. Ignore frames about scam prevention, especially those mentioning \"initial stages,\" \"prevention,\" and \"what to do.\" Exclude content of professionals giving advice in formal settings. Maintain high scores for misleading urgency tactics. Return ONLY a float 0.0–1.0 per frame.",
+      "feedback": "To refine the detection of scam content, the model should focus on distinguishing between legitimate financial advice and actual scams by considering the following criteria:\n\n1. **Specific Patterns of Deception**: Identify exaggerated or unverifiable financial claims rather than general discussions about earning extra income. Legitimate financial advice typically includes detailed steps and practical guidance.\n\n2. **Contextual Analysis**: Utilize the video title and ASR text to determine the intent of the content. Legitimate advice aims to educate, while scams intend to deceive. This includes recognizing the difference between content that describes scam activities and content that exposes them, such as news reports.\n\n3. **Tone and Context of Visual Cues**: Differentiate between frames that show interfaces resembling financial or cryptocurrency apps with complex metrics and those that are part of a journalistic or informative context. Visual patterns that suggest unrealistic financial gains should be scrutinized for their intent.\n\n4. **Abstract Visual and Textual Patterns**: Look for chat-based frames promoting high returns with minimal effort, using urgency to encourage immediate action. Visual cues emphasizing daily or weekly gains through investment or trading schemes, and on-screen text focusing on investment strategies, return rates, or financial advice, should be evaluated for their potential to mislead.\n\nBy integrating these criteria, the model can more accurately detect and differentiate between legitimate financial content and actual scams, reducing false positives and improving overall detection accuracy."
+    },
+    {
+      "round": 4,
+      "seg": "late",
+      "train_map": 0.6695687971275656,
+      "dev_map": 0.7145940276917491,
+      "dev_auc": 0.8455882352941176,
+      "dev_f1": 0.6428571428571429,
+      "dev_acc": 0.8,
+      "prompt": "Predict a single float (0.0–1.0) for cyber scam likelihood in each video frame. Focus on presentation style and content purpose. Legitimate content uses structured, formal presentations with clear disclaimers and balanced language. Scams often use urgent, persuasive tones and lack transparency. Analyze whether the content is instructional or cautionary, warning about scams with balanced information, versus promotional content with urgent calls to action. Avoid over-detection in educational videos discussing scams by considering broader contextual signals like visual cues, formal settings, and professional presentations. Maintain performance on recognized cases, like video=abnormal_0JUr7e9RGeA. Ensure the model outputs only a float 0.0–1.0 per frame.",
+      "feedback": "The model is over-detecting scam content due to the presence of formal presentation styles, legal warnings, professional settings, and discussions about financial strategies or investment fraud. These elements are often found in legitimate educational content. To distinguish legitimate content from actual scams, the model should focus on the following broader contextual signals:\n\n1. **Presentation Style**: Legitimate content typically includes structured, formal presentations with clear disclaimers and balanced language. Scams often use urgent, persuasive tones and lack transparency.\n\n2. **Content Purpose**: Analyze whether the content is instructional or cautionary rather than promotional. Educational content will explicitly warn about potential scams and discuss common financial strategies, rather than attempt to lure viewers into fraudulent activities.\n\nBy focusing on these abstract, generalizable visual cues, the model can better differentiate between legitimate educational content and actual scam content."
+    },
+    {
+      "round": 5,
+      "seg": "early",
+      "train_map": 0.6831608005521049,
+      "dev_map": 0.5841683341160645,
+      "dev_auc": 0.7200328407224958,
+      "dev_f1": 0.6190476190476191,
+      "dev_acc": 0.68,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame is part of an active cyber scam. Focus on frames promoting misleading \"BIG SALE\" events lasting unusually long, offering unrealistic guarantees like immediate support, or using chats promising quick fixes to build false trust. Ignore frames about scam prevention, especially those mentioning \"initial stages,\" \"prevention,\" and \"what to do.\" Exclude content of professionals giving advice in formal settings. Maintain high scores for misleading urgency tactics. Return ONLY a float 0.0–1.0 per frame.",
+      "feedback": "Improving the visual detection instructions alone can fix this error. The model is currently over-detecting scam content due to certain abstract visual patterns:\n\n1. **Contact Information Prominence**: Frames that prominently display contact numbers, even in the context of legitimate reporting or warnings, are mistaken for scams. The model should distinguish between contact details provided as part of an informational context versus those meant to lure viewers into direct interaction.\n\n2. **Urgency in Educational Content**: The model is sensitive to urgency cues in educational or informational content, such as calls to \"subscribe\" or \"like,\" which are common in legitimate YouTube videos. The instructions should clarify that this type of urgency, when accompanied by clear educational intent..."
+    },
+    {
+      "round": 5,
+      "seg": "late",
+      "train_map": 0.5459343434343435,
+      "dev_map": 0.5633295021139633,
+      "dev_auc": 0.7085385878489326,
+      "dev_f1": 0.55,
+      "dev_acc": 0.64,
+      "prompt": "Predict a single float (0.0–1.0) for cyber scam likelihood in each video frame. Focus on presentation style and content purpose. Legitimate content uses structured, formal presentations with clear disclaimers and balanced language. Scams often use urgent, persuasive tones and lack transparency. Analyze whether the content is instructional or cautionary, warning about scams with balanced information, versus promotional content with urgent calls to action. Avoid over-detection in educational videos discussing scams by considering broader contextual signals like visual cues, formal settings, and professional presentations. Maintain performance on recognized cases, like video=abnormal_0JUr7e9RGeA. Ensure the model outputs only a float 0.0–1.0 per frame.",
+      "feedback": "The current false positives stem from the model misinterpreting educational content as actual scams. Specifically, the model is over-detecting based on:\n\n1. **Visual Cues Related to Scams**: The presence of bold text warnings about fraud and phrases emphasizing cautionary language are being interpreted as direct scam indicators. However, in this context, these elements are part of a structured educational presentation.\n\n2. **Storytelling Through First-Person Narratives**: The use of first-person experiences to illustrate how scams operate is being confused with actual scam attempts. The model should recognize that these narratives are presented as examples rather than real scam interactions.\n\n3. **Urgent Tones in Educational Settings**: Urgent language used to warn viewers about scams is b..."
+    },
+    {
+      "round": 6,
+      "seg": "early",
+      "train_map": 0.36440746753246755,
+      "dev_map": 0.7100965354090354,
+      "dev_auc": 0.8225,
+      "dev_f1": 0.6829268292682927,
+      "dev_acc": 0.74,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame is part of an active cyber scam. Focus on frames promoting misleading \"BIG SALE\" events lasting unusually long, offering unrealistic guarantees like immediate support, or using chats promising quick fixes to build false trust. Ignore frames about scam prevention, especially those mentioning \"initial stages,\" \"prevention,\" and \"what to do.\" Exclude content of professionals giving advice in formal settings. Maintain high scores for misleading urgency tactics. Return ONLY a float 0.0–1.0 per frame.",
+      "feedback": "Improving the visual detection instructions alone can fix this error. The current prompt is missing key scam signals related to financial promotions that exploit viewers' desire for quick gains and insider knowledge. Specifically, the frames exhibit the following abstract, generalizable visual patterns:\n\n1. **Financial Return Claims**: Frames that prominently display financial charts or graphs alongside claims of high returns or performance rankings. Such visuals should be analyzed for misleading promises of exceptional financial success without clear evidence or context to support these claims.\n\n2. **Urgent Action Calls**: Content that urges viewers to take immediate action, such as following a profile, subscribing, or joining a group to access exclusive financial tips or insider informat..."
+    },
+    {
+      "round": 6,
+      "seg": "late",
+      "train_map": 0.6682402027796764,
+      "dev_map": 0.6974282881967294,
+      "dev_auc": 0.8035714285714285,
+      "dev_f1": 0.7142857142857143,
+      "dev_acc": 0.76,
+      "prompt": "Predict a single float (0.0–1.0) for cyber scam likelihood in each video frame. Focus on presentation style and content purpose. Legitimate content uses structured, formal presentations with clear disclaimers and balanced language. Scams often use urgent, persuasive tones and lack transparency. Analyze whether the content is instructional or cautionary, warning about scams with balanced information, versus promotional content with urgent calls to action. Avoid over-detection in educational videos discussing scams by considering broader contextual signals like visual cues, formal settings, and professional presentations. Maintain performance on recognized cases, like video=abnormal_0JUr7e9RGeA. Ensure the model outputs only a float 0.0–1.0 per frame.",
+      "feedback": "The model is over-detecting scam content in videos due to the presence of visual and textual patterns that resemble promotional or deceptive content, such as gold bars, financial-related items, urgent warnings, and discussion formats. However, some videos appear to be formal presentations in professional settings, potentially discussing or exposing scams rather than promoting them. To distinguish such legitimate patterns from actual scams, the model should focus on the following broader contextual signals:\n\n1. **Formal Presentation Style**: Look for consistent professional settings, such as polished studios or office environments, with presenters in business attire. These visual cues suggest an educational or news context rather than a scam.\n\n2. **Content Purpose and Tone**: Analyze if the content is cautionary and educational, with a formal and balanced presentation style, clear disclaimers, and structured narratives. Educational content will explicitly warn about potential scams and use instructional or cautionary language, while actual scams tend to use urgent, persuasive language without transparency.\n\n3. **Textual Cues**: Identify phrases or text that discuss common scam elements like online relationships, impersonation, or financial services. These can appear in both educational content warning about scams and actual scam content attempting to create fear or urgency.\n\nBy focusing on these abstract, generalizable visual and textual cues, the model can better distinguish legitimate educational content from actual scams."
+    },
+    {
+      "round": 7,
+      "seg": "early",
+      "train_map": 0.455884984296749,
+      "dev_map": 0.5394073018585858,
+      "dev_auc": 0.7736185383244207,
+      "dev_f1": 0.6818181818181818,
+      "dev_acc": 0.72,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame is part of an active cyber scam. Focus on frames promoting misleading \"BIG SALE\" events lasting unusually long, offering unrealistic guarantees like immediate support, or using chats promising quick fixes to build false trust. Ignore frames about scam prevention, especially those mentioning \"initial stages,\" \"prevention,\" and \"what to do.\" Exclude content of professionals giving advice in formal settings. Maintain high scores for misleading urgency tactics. Return ONLY a float 0.0–1.0 per frame.",
+      "feedback": "Improving the visual detection instructions alone can fix this error. The current prompt is missing critical scam indicators related to financial trust-building tactics:\n\n1. **Personalized Financial Advice**: The model should detect visuals of financial experts or advisors in seemingly formal settings, but who are actually promoting high-risk investments or claiming guaranteed returns. Analyze the credibility of the advice presented and the context in which it is given.\n\n2. **Urgency Coupled with Personal Appeals**: Frames where individuals directly address the viewer with phrases like \"last chance\" or \"act now\" while in a personal or family setting. This creates a false sense of trust and immediate action.\n\n3. **Hidden Agendas in Genuine Appearances**: Content where the visual context app..."
+    },
+    {
+      "round": 7,
+      "seg": "late",
+      "train_map": 0.4302620653004285,
+      "dev_map": 0.6860056792723551,
+      "dev_auc": 0.7094155844155843,
+      "dev_f1": 0.47058823529411764,
+      "dev_acc": 0.64,
+      "prompt": "Predict a single float (0.0–1.0) for cyber scam likelihood in each video frame. Focus on presentation style and content purpose. Legitimate content uses structured, formal presentations with clear disclaimers and balanced language. Scams often use urgent, persuasive tones and lack transparency. Analyze whether the content is instructional or cautionary, warning about scams with balanced information, versus promotional content with urgent calls to action. Avoid over-detection in educational videos discussing scams by considering broader contextual signals like visual cues, formal settings, and professional presentations. Maintain performance on recognized cases, like video=abnormal_0JUr7e9RGeA. Ensure the model outputs only a float 0.0–1.0 per frame.",
+      "feedback": "The current visual detection is over-detecting legitimate educational content as scams due to misinterpreting formal presentation styles, cautionary tones, and structured text overlays as indicators of fraudulent activity. The model appears to be flagging frames that simulate typical scam interactions, such as impersonation attempts and initial contact, as actual scams.\n\nTo distinguish these legitimate patterns from actual scams, the visual detection should:\n\n1. **Educational Framing**: Recognize structured presentations with formal instructional tones. These typically include text overlays that summarize key points or provide balanced information about recognizing fraud, rather than urgent calls to action.\n\n2. **Content Context**: Analyze the broader narrative for a mix of cautionary exam..."
+    }
+  ]
+}

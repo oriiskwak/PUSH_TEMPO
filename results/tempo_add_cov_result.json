@@ -1,0 +1,312 @@
+{
+  "method": "TEMPO+COV",
+  "best_early_prompt": "Estimate the likelihood (0.0-1.0) that a video frame indicates a cyber scam. Focus on non-professional visuals, manipulative language, vague claims, low-quality presentation, and high-pressure tactics. Prioritize frames with clear warnings, concrete examples, straightforward language, professional graphics, structured narratives, and expert commentary as non-scam content. Recognize well-organized, informative frames with explicit scam warnings and credible sources. Distinguish between normal educational videos and scams using subtle trust-building, vague promises, and non-transparent details. Emphasize identifying friendly introductions, testimonials, and manipulative content. Match against known scam patterns. Avoid flagging educational content about scams with clear references and structured guidance. Balance identifying informative content and deceptive techniques. Output ONLY a single float between 0.0 and 1.0 per frame.",
+  "best_late_prompt": "Predict the likelihood (0.0-1.0) that a video frame is part of a cyber scam, focusing on distinguishing cautious educational content from manipulative scams. Analyze visual patterns for clear explanations, credible sources, and transparent information in educational content versus vague promises, urgent calls to action, and emotional appeals in scams. Look for structured, informative presentations in legitimate content and lack of transparency in scam videos. Return ONLY a float between 0.0 and 1.0 for each frame, ensuring a balance between reducing false positives and increasing true positives.",
+  "baseline_test": {
+    "auc": null,
+    "map": null,
+    "f1": null,
+    "acc": null
+  },
+  "single_test": {
+    "kl": 0.8981841210860484,
+    "auc": 0.6155555555555555,
+    "map": 0.419115468578117,
+    "f1": 0.584070796460177,
+    "f1_macro": 0.6069960281513483,
+    "acc": 0.6083333333333333,
+    "auc_ratio": 0.6635555555555555,
+    "map_ratio": 0.4867892837966331,
+    "f1_ratio": 0.6099290780141844,
+    "acc_ratio": 0.5416666666666666
+  },
+  "single_test_f1_opt": 0.5970149253731343,
+  "single_test_acc_opt": 0.55,
+  "best_test": {
+    "kl": 0.8979574722994944,
+    "auc": 0.6103703703703703,
+    "map": 0.4098533125249174,
+    "f1": 0.5272727272727272,
+    "f1_macro": 0.5636363636363636,
+    "acc": 0.5666666666666667,
+    "auc_ratio": 0.6571851851851851,
+    "map_ratio": 0.47682204283435886,
+    "f1_ratio": 0.6068965517241379,
+    "acc_ratio": 0.525
+  },
+  "best_test_f1_opt": 0.608,
+  "best_test_acc_opt": 0.5916666666666667,
+  "n_ensemble_pairs": 3,
+  "config": {
+    "mini_eval": 30,
+    "lambda_cov": 0.05,
+    "dev_subsample": 50,
+    "patience": 2
+  },
+  "log": [
+    {
+      "round": 1,
+      "seg": "early",
+      "train_map": 0.48656074259205595,
+      "dev_map": 0.3779694076061325,
+      "dev_auc": 0.5246179966044143,
+      "dev_f1": 0.5384615384615384,
+      "dev_acc": 0.52,
+      "prompt": "Determine the likelihood (0.0-1.0) of a video frame being part of a cyber scam. Prioritize detecting frames with amateur or unclear presentations, promises of quick financial gain, and manipulative language that create a sense of urgency. Simultaneously, identify frames from news or documentaries with visible anchors, branded content, and explicit scam warnings as non-scam content to reduce false positives. Output ONLY a single float between 0.0 and 1.0 per frame.",
+      "feedback": "To achieve a balanced reduction in false positives and increase in true positives, the policy should focus on the following:\n\n- **FP Reduction:** Recognize normal videos that contain educational or informative content about scams, typically presented in a structured news or documentary format. These videos often feature professional anchors, clear branding, and direct warnings about scams. The policy should emphasize the presence of structured, informative content presented by credible news sources as a key differentiator to avoid false positives.\n\n- **FN Detection:** Flag scam videos that exhibit vague or misleading language, exaggerated claims of easy money with minimal effort, high-pressure tactics, and non-professional presentation. These patterns should be identified as potential indicators of scam content to reduce false negatives."
+    },
+    {
+      "round": 1,
+      "seg": "late",
+      "train_map": 0.7477773962148963,
+      "dev_map": 0.44688699982784674,
+      "dev_auc": 0.6154513888888888,
+      "dev_f1": 0.5106382978723404,
+      "dev_acc": 0.54,
+      "prompt": "Predict the probability (0.0-1.0) that a video frame indicates a cyber scam. Focus on distinguishing non-transparent, deceptive content from clear, educational material. Look for urgency, emotional manipulation, misleading claims, and vague information, which are common in scams. Normal frames will have structured, informative content with clear attribution to credible sources, avoiding immediate action prompts. Analyze each frame for visual patterns indicating a lack of transparency compared to reliable content. Return ONLY a float between 0.0 and 1.0 for each frame.",
+      "feedback": "To achieve a balance between reducing false positives and increasing true positives, the policy should focus on distinguishing the cautious presentation of educational content from the deceptive tactics often employed in scams. Normal videos typically exhibit transparency, clear attribution to credible sources, and a focus on providing information rather than soliciting immediate action. In contrast, scam videos often use urgency, emotional appeals, and misleading claims to manipulate viewers. The policy should encourage the identification of visual patterns that indicate a lack of transparency, such as vague or inconsistent information, and contrast these with the more structured and informative presentation found in legitimate content."
+    },
+    {
+      "round": 2,
+      "seg": "early",
+      "train_map": 0.8696032260391529,
+      "dev_map": 0.4282047157340092,
+      "dev_auc": 0.5716666666666667,
+      "dev_f1": 0.5818181818181818,
+      "dev_acc": 0.54,
+      "prompt": "Calculate the probability (0.0-1.0) a video frame is a cyber scam. Prioritize identifying frames with vague or misleading language, exaggerated claims, and high-pressure tactics. Recognize frames from professional news or documentaries with visible anchors, clear branding, and explicit scam warnings as non-scam content. Focus on initial trust-building tactics such as friendly introductions and testimonials. Identify subtle signs of deception like vague promises or non-transparent information. Output ONLY a single float 0.0-1.0 per frame.",
+      "feedback": "To achieve a balanced reduction in false positives and increase in true positives, the policy should focus on the following:\n\n- **FP Reduction:** Normal videos often contain educational or informative content about scams, typically presented in a structured news or documentary format with professional anchors, clear branding, and direct warnings about scams. These elements should be recognized as indicators of non-scam content. The policy should emphasize the presence of structured, informative content presented by credible news sources as a key differentiator.\n\n- **FN Detection:** Scam videos typically exhibit vague or misleading language, exaggerated claims of easy money with minimal effort, high-pressure tactics, and non-professional presentation. These patterns should be flagged as potential scams. Additionally, the policy should update the EARLY frame prompt to emphasize detecting initial trust-building tactics, such as friendly introductions or testimonials, which often precede scam reveals. Focus on identifying subtle signs of deception, like vague promises or non-transparent information, that may not be immediately obvious but foreshadow later manipulative content."
+    },
+    {
+      "round": 2,
+      "seg": "late",
+      "train_map": 0.7356965585584007,
+      "dev_map": 0.5054569219632162,
+      "dev_auc": 0.6825127334465195,
+      "dev_f1": 0.64,
+      "dev_acc": 0.64,
+      "prompt": "Calculate the likelihood (0.0-1.0) that a video frame is part of a cyber scam, focusing on visual signs of manipulation, urgency, and inconsistency. Identify frames with explicit scam reveals, urgent calls to action, and manipulative language, while distinguishing between cautious, educational content and deceptive practices. Recognize structured presentations with clear attribution and informative content as legitimate, and flag frames that transition from normal to deceptive. Avoid false positives from legitimate content with emotional engagement, and detect subtle signs of manipulation. Return ONLY a float between 0.0 and 1.0 for each frame.",
+      "feedback": "To achieve a balanced policy that reduces false positives and increases true positives, the key is to focus on identifying general visual patterns that indicate manipulation, urgency, and lack of transparency versus structured, informative content. False positives often arise from mistaking legitimate content as deceptive due to emotional appeals or detailed scenarios. True positive increases can be achieved by detecting subtle signs of manipulation, such as inconsistent information and vague claims. The policy should encourage the identification of structured presentations with consistent information as legitimate content, while looking for any signs of manipulation or urgency as potential scams.\n\nThe policy should distinguish between cautious presentations of educational content and deceptive tactics often employed in scams. Normal videos typically exhibit transparency, clear attribution to credible sources, and a focus on providing information rather than soliciting immediate action. In contrast, scam videos often use urgency, emotional appeals, and misleading claims to manipulate viewers. The policy should encourage the identification of visual patterns that indicate a lack of transparency, such as vague or inconsistent information, and contrast these with the more structured and informative presentation found in legitimate content.\n\nRefine the LATE frame prompt to better recognize the culmination of early trust-building. Focus on detecting explicit scam reveals, urgent calls to action, and manipulative language. Also, improve handling of content that initially seems normal but transitions into deceptive practices, ensuring late frames are accurately flagged."
+    },
+    {
+      "round": 3,
+      "seg": "early",
+      "train_map": 0.6562625583794938,
+      "dev_map": 0.42088989665977844,
+      "dev_auc": 0.5121753246753247,
+      "dev_f1": 0.5925925925925926,
+      "dev_acc": 0.56,
+      "prompt": "Assess the likelihood (0.0-1.0) a video frame is part of a cyber scam. Focus on detecting vague, misleading language, exaggerated claims, and high-pressure tactics. Frames with professional presentations, clear branding, and structured information from credible news sources should be rated lower. Prioritize professional anchors, explicit scam warnings, and educational content. Avoid flagging frames with structured guidance, credible sources, and a lack of manipulative language. Return ONLY a single float between 0.0 and 1.0 per frame.",
+      "feedback": "To achieve a balanced policy that reduces false positives and increases true positives, the key is identifying abstract visual patterns that distinguish normal, informative content from deceptive scams. Normal videos should be characterized by clear, structured information, professional presentation, and the absence of high-pressure tactics. They often provide educational content about scams in a structured news or documentary format, featuring professional anchors, clear branding, and direct warnings. These elements should be recognized as indicators of non-scam content, with an emphasis on structured, informative content presented by credible news sources.\n\nConversely, scam videos typically exhibit vague or misleading language, exaggerated claims of easy money with minimal effort, high-pressure tactics, and a non-professional presentation. They frequently employ urgent language, promise unrealistic returns, and lack credible sources. To reduce false positives, focus on content that provides structured guidance, cites credible sources, and avoids manipulative tactics. To increase true positives, look for videos that use vague or urgent language, promise high returns with minimal effort, and lack transparent details about the investment process. The goal is to balance these criteria effectively, ensuring that legitimate content is not flagged while identifying and addressing deceptive scams accurately."
+    },
+    {
+      "round": 3,
+      "seg": "late",
+      "train_map": 0.5573800070643102,
+      "dev_map": 0.37562217848417695,
+      "dev_auc": 0.5882352941176471,
+      "dev_f1": 0.5116279069767442,
+      "dev_acc": 0.58,
+      "prompt": "Determine the probability (0.0-1.0) of a video frame being part of a cyber scam. Identify manipulative visual patterns, such as urgency and misleading claims, while recognizing structured, informative content as legitimate. Focus on inconsistencies, vague information, and lack of transparency. Avoid false positives by not confusing genuine emotional appeals with deception. Return ONLY a float between 0.0 and 1.0 for each frame.",
+      "feedback": "To achieve a balanced policy that reduces false positives and increases true positives, the key is to focus on distinguishing the cautious presentation of educational content from the deceptive tactics often employed in scams. Legitimate videos typically exhibit transparency, clear attribution to credible sources, and a focus on providing information rather than soliciting immediate action. In contrast, scam videos often use urgency, emotional appeals, and misleading claims to manipulate viewers. The policy should encourage the identification of visual patterns that indicate a lack of transparency, such as vague or inconsistent information, and contrast these with the more structured and informative presentation found in legitimate content. To reduce false positives, the system should avoid mistaking legitimate content as deceptive due to emotional appeals or detailed scenarios. True positive increases can be achieved by detecting subtle signs of manipulation, such as inconsistent information and vague claims. The policy should encourage the identification of structured presentations with consistent information as legitimate content, while looking for any signs of manipulation or urgency as potential scams."
+    },
+    {
+      "round": 4,
+      "seg": "early",
+      "train_map": 0.7006990864527628,
+      "dev_map": 0.48352561699954966,
+      "dev_auc": 0.6493055555555556,
+      "dev_f1": 0.5333333333333333,
+      "dev_acc": 0.58,
+      "prompt": "Calculate the likelihood (0.0-1.0) a video frame indicates a cyber scam. Concentrate on detecting frames with low-quality visuals, vague language, exaggerated claims about easy money, and high-pressure techniques. Recognize frames with professional graphics, structured content, expert commentary, and explicit scam warnings as non-scam content. Output ONLY a single float between 0.0 and 1.0 per frame, emphasizing non-professional presentations as potential scam content while ensuring well-organized, informative content is identified as non-scam.",
+      "feedback": "To achieve a balanced reduction in false positives and increase in true positives, the policy should focus on generalizable visual and content patterns:\n\n- **FP Reduction:** Normal videos should be identified by their clear branding from reputable news channels, structured content with expert commentary, and direct warnings about potential scams. These videos typically use professional graphics, present information in an organized, informative manner, and highlight risks with actionable advice from credible sources. The policy should recognize structured, educational content presented by credible news sources as a key indicator of non-scam content.\n\n- **FN Detection:** Scam videos are often characterized by vague or misleading language, exaggerated claims about easy money with minimal effort, high-pressure tactics, and non-professional presentation. Visual cues such as low-quality graphics and a lack of professionalism should be flagged as potential indicators of scam content. The policy should emphasize identifying these patterns to effectively detect and flag scam videos."
+    },
+    {
+      "round": 4,
+      "seg": "late",
+      "train_map": 0.5900549824515232,
+      "dev_map": 0.5043684608327085,
+      "dev_auc": 0.675,
+      "dev_f1": 0.6046511627906976,
+      "dev_acc": 0.66,
+      "prompt": "Predict the likelihood (0.0-1.0) that a video frame is part of a cyber scam. Focus on distinguishing educational content from manipulative scams. Look for visual patterns such as neutral, structured settings with clear attribution to credible sources in educational content, versus vague, urgent, and emotionally manipulative visuals in scams. Analyze each frame for transparency, rational analysis, and explicit warnings in educational content versus deceptive claims and immediate action prompts in scams. Return ONLY a float between 0.0 and 1.0 for each frame.",
+      "feedback": "To achieve a balance between reducing false positives and increasing true positives, the policy should focus on distinguishing educational content from actual scams based on visual patterns, subtle manipulative cues, and the overall presentation style. \n\n**Reducing False Positives:** Videos that present explicit warnings about scams, show interviews with experts or law enforcement, or provide detailed explanations of scam tactics are likely educational content. These videos often include neutral visuals, formal or semi-formal settings, and a structured narrative that clearly outlines the risks and preventive measures. Such videos typically avoid vague or urgent language, focusing instead on rational analysis and clear guidance. They exhibit transparency, clear attribution to credible sources, and a focus on providing information rather than soliciting immediate action.\n\n**Increasing True Positives:** Scam videos often exhibit subtle visual cues, urgency, emotional appeals, and misleading claims to manipulate viewers. The policy should encourage the identification of visual patterns that indicate a lack of transparency, such as vague or inconsistent information, and contrast these with the more structured and informative presentation found in legitimate content. Scam videos typically lack the neutral visuals, formal settings, and structured narratives found in educational content and instead use manipulative language and tactics to deceive viewers."
+    },
+    {
+      "round": 5,
+      "seg": "early",
+      "train_map": 0.5357194107065265,
+      "dev_map": 0.41586707116873994,
+      "dev_auc": 0.7085714285714286,
+      "dev_f1": 0.6153846153846154,
+      "dev_acc": 0.7,
+      "prompt": "Determine the likelihood (0.0-1.0) of a video frame being a cyber scam. Concentrate on detecting low-quality visuals, vague or urgent language, and exaggerated claims as scam indicators. Recognize frames with professional graphics, structured content, expert commentary, and explicit scam warnings as non-scam content. Reduce false positives by acknowledging that educational content about scams can use dramatic language but includes clear references and structured guidance. Increase true positives by flagging content that lacks transparency, uses manipulative tactics, and promises high returns with minimal effort. Output ONLY a single float between 0.0 and 1.0 per frame.",
+      "feedback": "To achieve a balanced policy that reduces false positives and increases true positives, the key is identifying abstract visual patterns that distinguish educational content from actual scams. Normal videos typically provide clear, structured information with professional presentation styles, expert commentary, and credible sources. They often include direct warnings about potential scams, highlighting risks and providing actionable advice. Scams, in contrast, frequently exhibit urgent, manipulative language, unrealistic return promises, and lack transparency or credible backing. They may also use low-quality graphics and non-professional presentation.\n\nTo reduce false positives, the policy should recognize that educational content about scams can use dramatic, cautionary language but will include clear disclaimers, references to real cases, and structured presentation. It should focus on content that provides structured guidance, cites credible sources, and avoids manipulative tactics. To increase true positives, the policy should flag videos that use vague or urgent language, promise high returns with minimal effort, and lack transparent details about the investment process.\n\nThe goal is to balance these criteria by focusing on generalizable visual patterns, professional context, and the presence of credible sources while flagging videos that lack transparency or use deceptive tactics."
+    },
+    {
+      "round": 5,
+      "seg": "late",
+      "train_map": 0.747051732989233,
+      "dev_map": 0.45803774484303095,
+      "dev_auc": 0.6871657754010695,
+      "dev_f1": 0.6666666666666666,
+      "dev_acc": 0.74,
+      "prompt": "Predict the likelihood (0.0-1.0) that a video frame is part of a cyber scam. Distinguish scams from normal videos by analyzing each frame for low-quality graphics, unclear or distorted text, manipulative language, and urgent calls to action in scams, versus high-quality visuals, consistent text, logos, and a neutral tone in normal videos. Look for transparency, rational analysis, and explicit warnings in educational content versus deceptive claims and immediate action prompts in scams. Return ONLY a float between 0.0 and 1.0 for each frame.",
+      "feedback": "To achieve a balanced reduction in false positives and increase in true positives, the policy should focus on the following:\n\n- **False Positive Reduction:** Normal videos often contain structured and educational content with clear, professional graphics. They tend to have a neutral tone, providing information without creating urgency or manipulating the viewer. These videos usually have consistent visual elements, such as well-defined text, logos, and high-quality visuals. They avoid vague or urgent language and do not create a sense of immediate action or fear.\n\n- **True Positive Increase:** Scam videos, on the other hand, often exhibit manipulative language, urgent calls to action, and inconsistent visual elements. They may use low-quality graphics, unclear or distorted text, and visual..."
+    },
+    {
+      "round": 6,
+      "seg": "early",
+      "train_map": 0.6816065162893259,
+      "dev_map": 0.38478015821882583,
+      "dev_auc": 0.6114081996434937,
+      "dev_f1": 0.5777777777777777,
+      "dev_acc": 0.62,
+      "prompt": "Assess the likelihood (0.0-1.0) that a video frame is a cyber scam. Focus on identifying low-quality visuals, manipulative language, vague or urgent claims, exaggerated promises of high returns with minimal effort, and lack of transparency in investment processes. Recognize non-scam content with professional graphics, clear narrative structures, credible sources, educational tones, and explicit scam warnings. Avoid high-pressure tactics, non-transparent details, and unrealistic return promises. Balance the identification of well-organized, informative content and deceptive scam techniques. Reduce false positives by acknowledging educational content about scams that may use dramatic language but includes clear references and structured guidance. Increase true positives by flagging content lacking transparency and using manipulative tactics. Output ONLY a single float between 0.0 and 1.0 per frame.",
+      "feedback": "To achieve a balanced policy that reduces false positives and increases true positives, the key is identifying abstract patterns that differentiate normal educational/informative videos about scams from actual scam content. Normal videos typically exhibit a clear narrative structure, credible sources, professional presentation, and a neutral, educational tone. They often include expert commentary, clearly identify deceptive elements, and avoid direct calls to action. Scam videos, in contrast, frequently use manipulative language, exaggerated claims, non-professional presentation, urgent language, promise unrealistic returns, and lack transparent details about the investment process.\n\nTo reduce false positives, focus on content that:\n- Provides structured guidance and clear disclaimers.\n- Cites credible sources and references real cases.\n- Avoids high-pressure tactics and manipulative language.\n- Presents content in a neutral, educational tone.\n\nTo increase true positives, look for videos that:\n- Use vague or urgent language.\n- Promise high returns with minimal effort.\n- Lack transparent details about the investment process.\n- Exhibit urgent, manipulative language and unrealistic return promises.\n\nThe policy should balance these criteria by recognizing that educational content about scams may use dramatic, cautionary language to warn viewers but will include structured presentation, clear disclaimers, and references to real cases. The goal is to distinguish between professional, informative content and deceptive scams effectively."
+    },
+    {
+      "round": 6,
+      "seg": "late",
+      "train_map": 0.7632767946922359,
+      "dev_map": 0.4534569055524234,
+      "dev_auc": 0.6375212224108658,
+      "dev_f1": 0.5957446808510638,
+      "dev_acc": 0.62,
+      "prompt": "Predict the likelihood (0.0-1.0) that a video frame is part of a cyber scam. Focus on distinguishing cautious educational content with clear, structured narratives, professional graphics, and actionable advice from manipulative scams with vague, urgent language and emotional appeals. Look for signs of transparency, credible sources, and formal settings in educational content, versus inconsistencies, misleading claims, and subtle manipulative visuals in scams. Analyze each frame for patterns that indicate a lack of transparency, such as vague information, versus the more structured and informative presentation found in legitimate content. Return ONLY a float between 0.0 and 1.0 for each frame.",
+      "feedback": "To achieve a balance between reducing false positives and increasing true positives, the policy should focus on distinguishing cautious educational content from manipulative scams by analyzing overall narrative and visual patterns. For reducing false positives, the system should identify structured educational content that highlights common scams with credible sources like news channels. These videos typically maintain professional graphics, use clear language, provide actionable advice, and avoid creating a sense of urgency or manipulation. They often include explicit warnings about scams, interviews with experts, detailed explanations of scam tactics, neutral visuals, formal settings, and a structured narrative that clearly outlines risks and preventive measures.\n\nFor increasing true positives, the policy should detect the presence of vague, urgent, and manipulative language, along with visual signs of manipulation and inconsistency. Scam videos often use urgency, emotional appeals, misleading claims, and subtle visual cues to manipulate viewers. Even if initial frames seem normal, subsequent frames may reveal inconsistencies. The policy should encourage identifying visual patterns indicating a lack of transparency, such as vague or inconsistent information, and contrast these with the more structured and informative presentation found in legitimate content. Normal videos typically exhibit transparency, clear attribution to credible sources, and a focus on providing information rather than soliciting immediate action."
+    },
+    {
+      "round": 7,
+      "seg": "early",
+      "train_map": 0.8295399014348823,
+      "dev_map": 0.41159403050893917,
+      "dev_auc": 0.6942857142857143,
+      "dev_f1": 0.6,
+      "dev_acc": 0.68,
+      "prompt": "Calculate the likelihood (0.0-1.0) that a video frame indicates a cyber scam. Focus on identifying non-professional presentations with low-quality visuals, vague language, exaggerated claims, and high-pressure tactics. However, prioritize content with clear dialogue, transparent information, formal greetings, and structured guidance as non-scam. Recognize professional graphics, expert commentary, and credible sources as indicators of genuine content. Avoid flagging educational videos about scams that have a clear narrative structure and neutral tone. Output ONLY a single float between 0.0 and 1.0 per frame, balancing true and false positives by distinguishing between deceptive and informative content.",
+      "feedback": "To achieve a balanced policy that reduces false positives and increases true positives, the key is distinguishing between the cautious, non-transparent behavior associated with scams and the clear, transparent interactions of genuine content. This involves recognizing the clarity and directness of normal interactions, which often include clear dialogue, transparent information such as the caller's identity or purpose, formal greetings, and introductions. These elements are typically absent in scam content, which relies on vague promises, indirect language, and manipulative tactics.\n\n**Reducing False Positives:** Focus on content that provides structured guidance, cites credible sources, and avoids manipulative tactics. Normal videos, including educational content about scams, tend to have a clear narrative structure, expert commentary, and a neutral, educational tone. They avoid direct calls to action and present content professionally.\n\n**Increasing True Positives:** Look for videos that exhibit vague or urgent language, promise high returns with minimal effort, and lack transparent details about the investment process. Scam videos frequently employ urgent language, promise unrealistic returns, and lack credible sources. They may also use manipulative language, exaggerated claims, and non-professional presentation.\n\nThe policy should aim to balance these criteria by identifying abstract visual patterns that distinguish normal, informative content from deceptive scams, ensuring that genuine interactions are not incorrectly flagged while effectively identifying and addressing actual scam content."
+    },
+    {
+      "round": 7,
+      "seg": "late",
+      "train_map": 0.6117378598596629,
+      "dev_map": 0.3747526407024567,
+      "dev_auc": 0.5827205882352942,
+      "dev_f1": 0.4782608695652174,
+      "dev_acc": 0.52,
+      "prompt": "Predict the likelihood (0.0-1.0) of a video frame being a cyber scam, focusing on visual indicators. Normal content has structured text with clear examples and disclaimers, while scams use exaggerated claims, vague language, and urgent actions. Look for visual subtleties like inconsistent formatting and abrupt transitions, typical in scams. Avoid emphasizing specific language; instead, evaluate the overall visual composition for abstract manipulation signals. Return ONLY a float between 0.0 and 1.0 for each frame, maintaining accuracy on both normal and scam visuals.",
+      "feedback": "[To balance false positives and false negatives, focus on identifying specific visual patterns that distinguish normal educational content from manipulative scams. Normal videos typically exhibit structured, informative text layouts with clear disclaimers and real-world examples, while scams often present exaggerated claims, vague language, and urgent calls to action. Enhance the visual prompt to detect subtle signs of manipulation, such as inconsistent text formatting and abrupt content transitions, which are common in scams but not in cautionary content. It is crucial to avoid over-relying on specific language and instead analyze the overall visual composition for these abstract signals.]"
+    },
+    {
+      "round": 8,
+      "seg": "early",
+      "train_map": 0.7753733245025815,
+      "dev_map": 0.5200436397984566,
+      "dev_auc": 0.6436781609195402,
+      "dev_f1": 0.625,
+      "dev_acc": 0.64,
+      "prompt": "Calculate the likelihood (0.0-1.0) that a video frame indicates a cyber scam. Focus on non-transparent behavior, vague language, exaggerated claims, low-quality visuals, and high-pressure techniques. Prioritize content with manipulative language, indirect communication, and lack of professional presentation. Recognize well-structured frames with professional graphics, expert commentary, explicit scam warnings, and clear narrative structures as non-scam content. Distinguish between cautious presentations of potential scams and overtly manipulative tactics. Avoid flagging frames with clear, transparent language, detailed explanations, neutral educational tones, and credible sources. Balance identifying well-organized, informative content and deceptive scam techniques. Reduce false positives by acknowledging educational content about scams that may use dramatic language but includes clear references and structured guidance. Increase true positives by flagging content lacking transparency and using manipulative tactics. Output ONLY a single float between 0.0 and 1.0 per frame.",
+      "feedback": "To achieve a balanced policy that reduces false positives and increases true positives, the key is distinguishing between the cautious presentation of potential scams and the overtly manipulative tactics often seen in actual scam videos. Normal videos that are incorrectly flagged as scams (false positives) typically use clear, transparent language, provide detailed explanations or warnings about suspicious activities, and have a structured format with expert commentary. These videos often aim to educate viewers by explicitly warning about potential scams, providing concrete examples, and using straightforward language. They also avoid direct calls to action and present content in a neutral, educational tone.\n\nIn contrast, actual scam videos (false negatives) frequently employ subtle trust-building techniques, vague promises, and non-transparent information. They often rely on indirect language, exaggerated claims, and non-professional presentation to manipulate viewers. Recognizing the clarity and directness of normal interactions, such as clear dialogue, transparent information, formal greetings, and introductions, can help in reducing false positives. \n\nTo increase true positives, the policy should focus on identifying videos that exhibit manipulative language, non-transparent behavior, and exaggerated claims. Scam videos often lack the structured format, credible sources, and professional presentation found in normal educational videos. By prioritizing these distinctions, the policy can effectively reduce false positives and increase true positives, ensuring that genuine, transparent interactions are not flagged incorrectly while identifying and addressing actual scam content."
+    },
+    {
+      "round": 8,
+      "seg": "late",
+      "train_map": 0.7525524153302539,
+      "dev_map": 0.43390250982222556,
+      "dev_auc": 0.6613190730837789,
+      "dev_f1": 0.5789473684210527,
+      "dev_acc": 0.68,
+      "prompt": "Predict the likelihood (0.0-1.0) that a video frame is part of a cyber scam by analyzing visual patterns, context, and narrative structure. Distinguish educational content with neutral, structured visuals, professional graphics, clear guidance, and rational analysis from manipulative scams with vague, urgent visuals, inconsistent information, and emotional appeals. Reduce false positives by recognizing detailed explanations, expert interviews, and explicit warnings in educational content. Increase true positives by identifying subtle cues, manipulative language, and urgent calls to action in scams. Look for signs of transparency, credible sources, and formal settings in educational content versus inconsistencies, misleading claims, and deceptive visuals in scams. Analyze each frame for patterns indicating a lack of transparency versus structured and informative presentation. Return ONLY a float between 0.0 and 1.0 for each frame.",
+      "feedback": "To achieve a balance between reducing false positives and increasing true positives, the policy should focus on distinguishing cautious educational content from manipulative scams by analyzing context, visual patterns, and narrative structure. \n\n**Reducing False Positives:** Videos that present explicit warnings about scams, show interviews with experts or law enforcement, or provide detailed explanations of scam tactics are likely educational content. These videos often include neutral visuals, formal or semi-formal settings, and a structured narrative that clearly outlines the risks and preventive measures. Such videos typically avoid vague or urgent language, focusing instead on rational analysis and clear guidance. They may feature professional graphics, credible sources like news channels, and actionable advice without creating a sense of urgency or manipulation.\n\n**Increasing True Positives:** Scam videos often exhibit subtle visual cues, manipulative language, and visual inconsistency. True positives typically include urgent calls to action, vague promises, or inconsistent information. The policy should emphasize the recognition of manipulative language, such as vague, urgent, and manipulative phrases, along with visual signs of manipulation. Even if the initial frames seem normal, subsequent frames may reveal inconsistencies or manipulative elements. The policy should focus on detecting the presence of explicit scam reveals and calls to action, while also identifying the overall narrative and visual patterns that indicate deception."
+    },
+    {
+      "round": 9,
+      "seg": "early",
+      "train_map": 0.8543677523456935,
+      "dev_map": 0.49805815149747396,
+      "dev_auc": 0.6071428571428571,
+      "dev_f1": 0.6086956521739131,
+      "dev_acc": 0.64,
+      "prompt": "Calculate the likelihood (0.0-1.0) that a video frame indicates a cyber scam. Focus on identifying non-professional presentations with vague or urgent language, unrealistic promises, and pressure to act quickly. Avoid false positives by recognizing frames with clear, transparent language, structured guidance, and explicit scam warnings as non-scam content. Annotate frames showing cautious presentation of suspicious behavior but exempt news reports or educational content with credible sources and concrete examples. Output ONLY a single float between 0.0 and 1.0 per frame, balancing critical thinking prompts and transparent information to accurately distinguish between actual scams and informative content.",
+      "feedback": "To achieve a balanced policy that reduces false positives and increases true positives, the key is distinguishing between the cautious presentation of potential scams and the overtly manipulative tactics often seen in actual scam videos. Videos that carefully highlight suspicious behavior, such as unsolicited investment advice or unrealistic promises, should be flagged. However, those that provide context, such as news reports or educational content, should be exempted. \n\nFor reducing false positives, the policy should prioritize identifying videos that explicitly warn viewers about potential scams, provide concrete examples of scams, and use straightforward language. These videos often aim to educate and provide structured guidance, cite credible sources, and avoid manipulative tactics. Normal videos that are incorrectly flagged as scams tend to use clear, transparent language and provide detailed explanations or warnings about suspicious activities.\n\nTo increase true positives, the policy should focus on identifying common visual patterns in scams, such as vague or urgent language, unrealistic promises, unsolicited contact, and pressure to act quickly. Scams frequently employ subtle trust-building techniques, vague promises, and non-transparent information, lacking credible sources and transparent details about the investment process.\n\nTo achieve a balanced approach, the policy should emphasize the presence of critical thinking prompts, transparent information, and clear disclaimers. The goal is to balance these criteria while ensuring that informative content is not mistakenly flagged and that actual scams are effectively identified and flagged."
+    },
+    {
+      "round": 9,
+      "seg": "late",
+      "train_map": 0.9422551406926407,
+      "dev_map": 0.47919004029217094,
+      "dev_auc": 0.6091954022988506,
+      "dev_f1": 0.6,
+      "dev_acc": 0.6,
+      "prompt": "Predict the likelihood (0.0-1.0) that a video frame is part of a cyber scam, focusing on visual cues. Assess high-quality graphics, clear text, logos, and neutral tone in normal videos indicating structured, transparent content. Conversely, identify scam frames with low-quality visuals, unclear text, manipulative language, and urgent calls to action. Analyze patterns for consistency and clarity, avoiding vague or unrealistic promises. Scams often use dramatic formatting and testimonials. Return only a float between 0.0 and 1.0 for each frame.",
+      "feedback": "To achieve a balanced reduction in false positives and increase in true positives, the policy should focus on the following:\n\n- **False Positive Reduction:** Normal videos typically contain structured and transparent educational content with clear, professional graphics. They exhibit a neutral tone, providing information without creating urgency or manipulating the viewer. These videos usually have consistent visual elements, such as well-defined text, logos, and high-quality visuals. They avoid vague or urgent language and do not create a sense of immediate action or fear. Normal videos also show clear sources, structured information, and present data without manipulation.\n\n- **True Positive Increase:** Scam videos frequently employ manipulative language, urgent calls to action, and inconsistent visual elements. They may use low-quality graphics, unclear or distorted text, and visual patterns that indicate a lack of transparency, such as vague or inconsistent information. Scam videos often include vague promises of unrealistic returns, testimonials or fake user stories to build trust, and create a sense of urgency and confusion through overly dramatic or inconsistent formatting. The policy should encourage the identification of these deceptive tactics and contrast them with the more structured and informative presentation found in legitimate content."
+    },
+    {
+      "round": 10,
+      "seg": "early",
+      "train_map": 0.6016749165976942,
+      "dev_map": 0.601322634899019,
+      "dev_auc": 0.7402597402597403,
+      "dev_f1": 0.6666666666666666,
+      "dev_acc": 0.7,
+      "prompt": "Estimate the likelihood (0.0-1.0) that a video frame indicates a cyber scam. Focus on non-professional visuals, manipulative language, vague claims, low-quality presentation, and high-pressure tactics. Prioritize frames with clear warnings, concrete examples, straightforward language, professional graphics, structured narratives, and expert commentary as non-scam content. Recognize well-organized, informative frames with explicit scam warnings and credible sources. Distinguish between normal educational videos and scams using subtle trust-building, vague promises, and non-transparent details. Emphasize identifying friendly introductions, testimonials, and manipulative content. Match against known scam patterns. Avoid flagging educational content about scams with clear references and structured guidance. Balance identifying informative content and deceptive techniques. Output ONLY a single float between 0.0 and 1.0 per frame.",
+      "feedback": "To achieve a balanced policy that reduces false positives and increases true positives, the key is identifying abstract patterns that differentiate normal educational/informative videos about scams from actual scam content. Normal videos often exhibit a clear narrative structure, credible sources, and professional presentation, whereas scam videos frequently use manipulative language, exaggerated claims, and non-professional presentation. \n\nFor reducing false positives, the policy should prioritize identifying videos that explicitly warn viewers about potential scams, provide concrete examples of scams, and use straightforward language. These videos often aim to educate and tend to have a structured format, include expert commentary, and clearly identify the deceptive elements being discussed. They also avoid direct calls to action and present content in a neutral, educational tone.\n\nFor increasing true positives, the policy should focus on distinguishing normal content from scams based on subtle trust-building tactics and vague promises that foreshadow later manipulative content. Normal videos often provide clear, transparent information, while scams tend to use friendly introductions, testimonials, and non-transparent details to build trust. The policy should emphasize identifying these patterns without relying on specific language or dates. Additionally, verifying the credibility of the source and matching against known scam patterns can help in accurately predicting scam content.\n\nOverall, the policy should aim to accurately differentiate between cautious presentations of potential scams and overtly manipulative tactics often seen in actual scam videos, ensuring a reduction in false positives and an increase in true positives."
+    },
+    {
+      "round": 10,
+      "seg": "late",
+      "train_map": 0.6936174118596887,
+      "dev_map": 0.5241555019216885,
+      "dev_auc": 0.7164685908319185,
+      "dev_f1": 0.6190476190476191,
+      "dev_acc": 0.68,
+      "prompt": "Predict the likelihood (0.0-1.0) that a video frame is part of a cyber scam, focusing on distinguishing cautious educational content from manipulative scams. Analyze visual patterns for clear explanations, credible sources, and transparent information in educational content versus vague promises, urgent calls to action, and emotional appeals in scams. Look for structured, informative presentations in legitimate content and lack of transparency in scam videos. Return ONLY a float between 0.0 and 1.0 for each frame, ensuring a balance between reducing false positives and increasing true positives.",
+      "feedback": "To achieve a balance between reducing false positives and increasing true positives, the policy should focus on distinguishing the cautious presentation of educational content from the manipulative and deceptive tactics often employed in scams. Normal videos typically provide clear explanations, credible sources, transparent information, and a focus on providing information rather than soliciting immediate action. In contrast, scam videos frequently use vague promises, urgent calls to action, emotional appeals, and manipulative or misleading language to manipulate viewers.\n\nThe policy should emphasize the importance of identifying these visual patterns, such as vague or inconsistent information, and integrating additional tools for verification when necessary. This approach ensures that both false positives and false negatives are addressed effectively, without prioritizing one over the other. To further reduce false positives, the system should consider the structured and informative presentation found in legitimate content, contrasting it with the lack of transparency in scam videos."
+    },
+    {
+      "round": 11,
+      "seg": "early",
+      "train_map": 0.6286918828298138,
+      "dev_map": 0.5594266181122798,
+      "dev_auc": 0.7702205882352942,
+      "dev_f1": 0.5789473684210527,
+      "dev_acc": 0.68,
+      "prompt": "Estimate the likelihood (0.0-1.0) a video frame indicates a cyber scam. Focus on overt manipulation, non-professional visuals, vague promises, low-quality presentation, and high-pressure tactics. Distinguish cautious presentations of potential scams, like news or educational content, from actual scams. Prioritize clear, transparent language, detailed explanations, critical thinking prompts, and disclaimers as non-scam. Avoid flagging content with clear warnings or references. Recognize signs of deception such as unsolicited contact, unrealistic promises, and pressure. Balance visual and contextual cues for accurate detection. Emphasize identifying friendly introductions, testimonials, and manipulative content. Match against known scam patterns. Ensure well-organized, informative content is identified as non-scam. Output ONLY a single float between 0.0 and 1.0 per frame.",
+      "feedback": "To achieve a balance between reducing false positives and increasing true positives, the policy should focus on distinguishing the cautious presentation of potential scams from the overtly manipulative tactics often employed in actual scams. Videos that carefully highlight suspicious behavior without making definitive claims, such as news reports or educational content, should be categorized as normal. These videos typically use clear, transparent language, provide detailed explanations or warnings, and include critical thinking prompts and clear disclaimers. Conversely, videos that exhibit signs of deception, such as vague promises, non-transparent information, unsolicited investment advice, unrealistic promises, subtle trust-building techniques, and aggressive trust-building tactics, should be flagged. The policy should look for a combination of visual and contextual cues, ensuring that the detection model does not lean too heavily on either side. Identifying common visual patterns in scams, such as vague promises, unsolicited contact, and pressure to act quickly, can help in detecting more scams and reducing false negatives."
+    },
+    {
+      "round": 11,
+      "seg": "late",
+      "train_map": 0.5751763861138861,
+      "dev_map": 0.3953506652481913,
+      "dev_auc": 0.6984126984126984,
+      "dev_f1": 0.4444444444444444,
+      "dev_acc": 0.6,
+      "prompt": "Predict the likelihood (0.0-1.0) that a video frame is part of a cyber scam by analyzing visual clarity, trust-building tactics, and content structure. Identify high-quality, consistent visuals and transparent information sources in legitimate content, contrasting with low-quality, inconsistent visuals and vague promises in scams. Recognize manipulative tactics like urgency, emotional appeals, and misleading claims in scams. Focus on clear, informative presentations in educational content versus deceptive tactics in scams. Look for neutral, structured settings with credible sources in legitimate content, versus vague, urgent, and emotionally manipulative visuals in scams. Balance reducing false positives and increasing true positives by closely examining these visual patterns. Return ONLY a float between 0.0 and 1.0 for each frame.",
+      "feedback": "To achieve a balance between reducing false positives and increasing true positives, the policy should focus on distinguishing the cautious presentation of educational content from the manipulative tactics of scams through visual patterns and supplementary information. Normal videos typically display structured, clear visuals with transparent information sources, whereas scam videos often exhibit inconsistency, exaggerated claims, and vague promises. The policy should emphasize identifying the following abstract visual patterns:\n\n1. **Clarity and Consistency**: Normal videos tend to have clear visuals, consistent formatting, and transparent information sources, whereas scam videos may have low-quality visuals, unclear text, and inconsistent formatting.\n2. **Trust-Building Tactics**: Scam videos often use urgency, emotional appeals, and misleading claims to manipulate viewers, while normal videos focus on providing information rather than soliciting immediate action.\n\nTo reduce false positives, the system should consider the overall presentation and context of the content. Legitimate content typically exhibits transparency, clear attribution to credible sources, and a focus on providing information. In contrast, scam content often uses deceptive tactics such as vague or inconsistent information, emotional manipulation, and urgent calls to action. The policy should encourage the identification of these visual patterns and context clues to accurately distinguish between educational content and scams."
+    },
+    {
+      "round": 12,
+      "seg": "early",
+      "train_map": 0.6611367144852052,
+      "dev_map": 0.35338996154071173,
+      "dev_auc": 0.6694386694386695,
+      "dev_f1": 0.5263157894736842,
+      "dev_acc": 0.64,
+      "prompt": "Estimate the likelihood (0.0-1.0) a video frame indicates a cyber scam. Focus on non-professional visuals, manipulative language, vague promises, low-quality presentations, and high-pressure tactics. Prioritize frames with clear warnings, professional graphics, straightforward language, concrete examples, and expert commentary as non-scam content. Recognize subtle trust-building tactics, friendly introductions, and testimonials as early signs of potential scams. Avoid flagging educational content with clear references and structured guidance. Balance identifying informative content and deceptive techniques, emphasizing cautious presentation versus overt manipulation. Match against known scam patterns. Ensure output is ONLY a single float between 0.0 and 1.0 per frame.",
+      "feedback": "To achieve a balance between reducing false positives and increasing true positives, the policy should focus on distinguishing the cautious presentation of potential scams from the overtly manipulative tactics often employed in actual scam videos. Normal videos typically present information in a straightforward, transparent manner, focusing on educating viewers or sharing news. In contrast, scam videos often use excessive praise, vague promises, or overly familiar introductions to build trust and manipulate the audience. \n\nThe policy will look for early indicators such as friendly introductions, testimonials, and non-transparent information to predict later manipulative content while avoiding false positives from normal videos. It should emphasize identifying subtle trust-building tactics and vague promises that foreshadow later manipulative content, without relying on specific language or dates. Verifying the credibility of the source and matching against known scam patterns can help in accurately predicting scam content.\n\nTo reduce false positives, the policy should prioritize identifying videos that explicitly warn viewers about potential scams, provide concrete examples of scams, and use straightforward language. These videos often aim to educate viewers and should not be flagged as scams. By focusing on these criteria, the policy can effectively distinguish between normal content and actual scams, enhancing its accuracy and reliability."
+    },
+    {
+      "round": 12,
+      "seg": "late",
+      "train_map": 0.5609280260645985,
+      "dev_map": 0.43723730843804265,
+      "dev_auc": 0.5599343185550082,
+      "dev_f1": 0.5818181818181818,
+      "dev_acc": 0.54,
+      "prompt": "Predict the likelihood (0.0-1.0) that a video frame is part of a cyber scam, distinguishing between educational content and manipulative scams. Analyze visuals for structured, clear explanations and credible sources in legitimate content versus vague promises, urgent calls to action, emotional appeals, and manipulative language in scams. Identify inconsistencies, misleading claims, and abstract visual patterns indicating scams while minimizing false positives in legitimate content. Focus on high-quality, consistent visuals and transparent information sources in legitimate content, contrasting with low-quality, inconsistent visuals and vague promises in scams. Balance true positive detection and false positive reduction by closely examining these visual patterns. Return ONLY a float between 0.0 and 1.0 for each frame.",
+      "feedback": "To achieve a balance between reducing false positives and increasing true positives, the policy should focus on distinguishing the cautious presentation of educational content from the manipulative tactics of scams through visual patterns and supplementary information. Normal videos typically display structured, clear visuals with transparent information, credible sources, and a focus on providing information rather than soliciting immediate action. In contrast, scam videos often show inconsistencies, manipulative cues, use urgency, emotional appeals, and misleading claims to manipulate viewers. The policy will emphasize identifying abstract visual patterns that indicate scams, such as vague or inconsistent information, urgent calls to action, and manipulative language, while ensuring legitimate content remains undisturbed. It will also incorporate the use of tools like `channel` and `web_search` to validate sources and claims, ensuring both false positives and false negatives are effectively addressed without prioritizing one over the other."
+    }
+  ]
+}

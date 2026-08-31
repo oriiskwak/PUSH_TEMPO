@@ -1,0 +1,80 @@
+{
+  "method": "EvoPrompt-GA",
+  "best_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+  "baseline_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+  "baseline_test": {
+    "map": 0.3502,
+    "auc": 0.4761,
+    "f1": 0.4667,
+    "acc": 0.4667
+  },
+  "best_test": {
+    "map": 0.3502,
+    "auc": 0.4761,
+    "f1": 0.4667,
+    "acc": 0.4667,
+    "f1_opt": 0.3062,
+    "acc_opt": 0.3833,
+    "best_threshold": 0.05
+  },
+  "best_test_f1_opt": 0.3062,
+  "best_test_acc_opt": 0.3833,
+  "train_map": 0.225,
+  "mode": "ga",
+  "log": [
+    {
+      "step": 1,
+      "train_map": 0.225,
+      "train_avg": 0.1975,
+      "dev_map": 0.3763,
+      "dev_auc": 0.4839,
+      "dev_f1": 0.4741,
+      "dev_acc": 0.475,
+      "best_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+      "feedback": ""
+    },
+    {
+      "step": 2,
+      "train_map": 0.775,
+      "train_avg": 0.6103,
+      "dev_map": 0.3597,
+      "dev_auc": 0.4486,
+      "dev_f1": 0.4653,
+      "dev_acc": 0.4667,
+      "best_prompt": "Assess the chance (ranging from 0.0 to 1.0) of a cyber scam being present in this video.",
+      "feedback": ""
+    }
+  ],
+  "final_population": [
+    {
+      "prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+      "score": 0.4928571428571429
+    },
+    {
+      "prompt": "Assess the chance (ranging from 0.0 to 1.0) of a cyber scam being present in this video.",
+      "score": 0.775
+    },
+    {
+      "prompt": "Estimate the likelihood (ranging from 0.0 to 1.0) that this video involves a cyber scam.",
+      "score": 0.5821428571428572
+    },
+    {
+      "prompt": "Calculate the risk (between 0.0 and 1.0) of a cyber scam being present in this video.",
+      "score": 0.4833333333333333
+    },
+    {
+      "prompt": "Determine the likelihood (ranging from 0.0 to 1.0) that a cyber scam may be present in this video.",
+      "score": 0.7182539682539683
+    }
+  ],
+  "config": {
+    "budget": 12,
+    "popsize": 5,
+    "n_eval": 10
+  },
+  "split": {
+    "train": 360,
+    "val": 120,
+    "test": 120
+  }
+}

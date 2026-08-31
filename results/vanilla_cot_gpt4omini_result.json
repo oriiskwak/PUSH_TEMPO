@@ -1,0 +1,39 @@
+{
+  "method": "Vanilla-CoT-GPT (no optimization)",
+  "gpt_model": "gpt-4o-mini",
+  "initial_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+  "score_suffix": "\nThink step by step: first describe the visual evidence you see in this frame (on-screen text, UI elements, people, context), then briefly reason about whether that evidence matches common cyber scam patterns (urgency, unrealistic returns, impersonation, requests for money/personal info). Finally, end your response with the probability as a single number 0.0-1.0.",
+  "split": {
+    "train": 360,
+    "dev": 120,
+    "test": 121,
+    "seed": 42
+  },
+  "dev": {
+    "kl": 0.8054070023309319,
+    "auc": 0.6445925925925925,
+    "map": 0.5720454150135191,
+    "f1": 0.5789473684210527,
+    "f1_macro": 0.5989974937343359,
+    "acc": 0.6,
+    "auc_ratio": 0.6472592592592592,
+    "map_ratio": 0.5375493961738363,
+    "f1_ratio": 0.5365853658536586,
+    "acc_ratio": 0.36666666666666664
+  },
+  "test": {
+    "kl": 0.8505134546729696,
+    "auc": 0.6497777777777778,
+    "map": 0.5172320600570696,
+    "f1": 0.6115702479338843,
+    "f1_macro": 0.6083061323703034,
+    "acc": 0.6083333333333333,
+    "auc_ratio": 0.6602962962962963,
+    "map_ratio": 0.5210452138870755,
+    "f1_ratio": 0.5454545454545454,
+    "acc_ratio": 0.375
+  },
+  "test_f1_opt": 0.5945945945945946,
+  "test_acc_opt": 0.625,
+  "best_threshold": 0.53
+}

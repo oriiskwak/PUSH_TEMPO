@@ -1,0 +1,24 @@
+{
+  "method": "APO",
+  "best_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+  "best_dev_map": 0.2979,
+  "log": [
+    {
+      "round": 0,
+      "dev_map": 0.2979,
+      "dev_auc": 0.3716,
+      "dev_f1": 0.4755,
+      "dev_acc": 0.375,
+      "prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam."
+    }
+  ],
+  "candidates": [
+    "Predict the probability (0.0-1.0) that this video contains a cyber scam."
+  ],
+  "scores": [
+    1.0
+  ],
+  "last_round": 0,
+  "no_improve": 0,
+  "best_ever": 0.2979
+}

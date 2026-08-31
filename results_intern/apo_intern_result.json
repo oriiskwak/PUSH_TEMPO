@@ -1,0 +1,81 @@
+{
+  "method": "APO",
+  "best_prompt": "\"Examine the video footage to assess the probability (on a scale of 0.0 to 1.0) that it showcases involvement in online fraudulent activities. Concentrate on pinpointing clear indicators or actions that imply fraudulent practices, such as deceptive marketing, fake products, or illicit financial transactions. Omit content that is solely educational or advisory regarding fraud prevention or identification.\"",
+  "initial_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+  "baseline_test": {
+    "auc": 0.471,
+    "map": 0.3422,
+    "f1": 0.4667,
+    "acc": 0.4667
+  },
+  "best_test": {
+    "auc": 0.5047,
+    "map": 0.4052,
+    "f1": 0.0435,
+    "acc": 0.6333,
+    "f1_opt": 0.3243,
+    "acc_opt": 0.5833,
+    "best_threshold": 0.05
+  },
+  "best_test_f1_opt": 0.3243,
+  "best_test_acc_opt": 0.5833,
+  "config": {
+    "rounds": 12,
+    "beam_size": 4,
+    "minibatch_size": 16,
+    "n_gradients": 1,
+    "errors_per_gradient": 4,
+    "gradients_per_error": 1,
+    "steps_per_gradient": 1,
+    "mc_samples_per_step": 2,
+    "max_expansion_factor": 8,
+    "evaluator": "ucb",
+    "eval_rounds": 2,
+    "eval_prompts_per_round": 8,
+    "samples_per_eval": 4,
+    "eval_budget": 64,
+    "c": 1.0
+  },
+  "log": [
+    {
+      "round": 0,
+      "dev_map": 0.3765,
+      "dev_auc": 0.4833,
+      "dev_f1": 0.496,
+      "dev_acc": 0.475,
+      "prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam."
+    },
+    {
+      "round": 1,
+      "dev_map": 0.396,
+      "dev_auc": 0.5483,
+      "dev_f1": 0.4,
+      "dev_acc": 0.575,
+      "prompt": "\"Estimate the likelihood (ranging from 0.0 to 1.0) that the video contains elements of online fraud, including scam deals, counterfeit items, or illicit monetary activities.\""
+    },
+    {
+      "round": 2,
+      "dev_map": 0.4637,
+      "dev_auc": 0.5613,
+      "dev_f1": 0.0426,
+      "dev_acc": 0.625,
+      "prompt": "\"Examine the video footage to assess the probability (on a scale of 0.0 to 1.0) that it showcases involvement in online fraudulent activities. Concentrate on pinpointing clear indicators or actions that imply fraudulent practices, such as deceptive marketing, fake products, or illicit financial transactions. Omit content that is solely educational or advisory regarding fraud prevention or identification.\""
+    },
+    {
+      "round": 3,
+      "dev_map": 0.3899,
+      "dev_auc": 0.5301,
+      "dev_f1": 0.2319,
+      "dev_acc": 0.5583,
+      "prompt": "Review the material in this video to determine if it primarily showcases a cyber scam. Look for indicators like suspicious activities, fraudulent deals, or misleading data. Provide a likelihood rating from 0.0 to 1.0, where 0.0 means no signs of a cyber scam and 1.0 indicates substantial evidence of a cyber scam."
+    },
+    {
+      "round": 4,
+      "dev_map": 0.452,
+      "dev_auc": 0.6241,
+      "dev_f1": 0.4557,
+      "dev_acc": 0.6417,
+      "prompt": "Review the video to detect potential signs of a cyber scam. Use the following methodical approach:\n   a. Look for explicit solicitations of private information (phishing).\n   b. Scrutinize any atypical financial activities or offers that appear too good to be true.\n   c. Evaluate the authenticity of the information provided. Are there any deceptive or inaccurate statements?\n   d. Investigate any endorsements or testimonials that seem questionable or excessively flattering without concrete backing.\n\n   Assign a score from 0.0 to 1.0 to represent the probability that the video is promoting a cyber scam, with 0.0 indicating no indicators of a scam and 1.0 suggesting strong evidence of a scam."
+    }
+  ]
+}

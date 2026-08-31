@@ -1,0 +1,21 @@
+{
+  "source_result": "results/qwen/tempo_cov_total_covfix_result.json",
+  "note": "재학습 없음, 저장된 best prompt로 재채점만. 전 조건 5:5 고정 분할, tool 없음. tempo_cov.py는 수정하지 않고 score_dataset을 이 파일 안에서 독립 복제해서 사용.",
+  "results": {
+    "normal": {
+      "auc": 0.6663703703703703,
+      "map": 0.5173520624324883,
+      "n": 120
+    },
+    "swapped": {
+      "auc": 0.6691851851851851,
+      "map": 0.5037393673160614,
+      "n": 120
+    },
+    "random_partition": {
+      "auc": 0.6696296296296296,
+      "map": 0.5123487186547544,
+      "n": 120
+    }
+  }
+}

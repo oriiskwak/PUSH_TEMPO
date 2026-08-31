@@ -1,0 +1,86 @@
+{
+  "method": "ERM",
+  "best_prompt": "\"Predict the probability (0.0-1.0) that this video frame contains content intended to deceive viewers through various means, including but not limited to divulging personal information, committing fraudulent financial transactions, engaging in misleading marketing tactics, or any other deceptive activities commonly associated with cyber scams. Provide a detailed analysis of the visual cues and context indicators present in the frame to accurately differentiate between actual scam attempts and content that is educational or informational about cyber scams. Specifically, look for elements such as emergency language, urgency, threats, or promises of unrealistic rewards, which often indicate a scam attempt. Conversely, identify features such as disclaimers, educational text, or references to official sources that may suggest the content is meant to inform or warn about scams rather than to deceive directly.\"\n\nReference examples from similar videos:\nExample 1 [Label: normal]: description: The image shows a person in a white suit with a blue background. There is Korean text at the top that translates to \"Phishing prevention strategy.\"",
+  "best_prompt_base": "\"Predict the probability (0.0-1.0) that this video frame contains content intended to deceive viewers through various means, including but not limited to divulging personal information, committing fraudulent financial transactions, engaging in misleading marketing tactics, or any other deceptive activities commonly associated with cyber scams. Provide a detailed analysis of the visual cues and context indicators present in the frame to accurately differentiate between actual scam attempts and content that is educational or informational about cyber scams. Specifically, look for elements such as emergency language, urgency, threats, or promises of unrealistic rewards, which often indicate a scam attempt. Conversely, identify features such as disclaimers, educational text, or references to official sources that may suggest the content is meant to inform or warn about scams rather than to deceive directly.\"",
+  "initial_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+  "baseline_test": {
+    "auc": 0.471,
+    "map": 0.3422,
+    "f1": 0.4667,
+    "acc": 0.4667
+  },
+  "best_test": {
+    "auc": 0.5932,
+    "map": 0.4215,
+    "f1": 0.254,
+    "acc": 0.6083,
+    "f1_opt": 0.544,
+    "acc_opt": 0.525,
+    "best_threshold": 0.06
+  },
+  "best_test_f1_opt": 0.544,
+  "best_test_acc_opt": 0.525,
+  "config": {
+    "video_dir": "/home/oem/TEMPO/data/videos",
+    "frames_dir": "./frames_cache_2s",
+    "output": "/home/oem/TEMPO/results_intern/erm_intern_result.json",
+    "rounds": 12,
+    "beam_size": 2,
+    "minibatch_size": 16,
+    "n_exemplars": 1,
+    "n_feedbacks": 2,
+    "n_feedback_from_memory": 1,
+    "n_exemplars_inference": 3,
+    "mem_max_size": 20,
+    "ex_max_size": 30,
+    "patience": 2,
+    "patience_eps": 0.01,
+    "val_subsample": 15
+  },
+  "log": [
+    {
+      "round": 1,
+      "dev_map": 0.4347,
+      "dev_auc": 0.5664,
+      "dev_f1": 0.1786,
+      "dev_acc": 0.6167,
+      "prompt": "\"Predict the probability (0.0-1.0) that this video frame contains content intended to deceive viewers into divulging personal information, committing fraudulent financial transactions, or engaging in other deceptive activities associated with a cyber scam. Ensure to differentiate between educational or informational content about cyber scams and actual scam attempts.\"",
+      "feedback": "The current prompt lacks context specificity and does not consider the informational or educational content, leading to potential misclassification of educational materials as scams.",
+      "n_candidates": 4,
+      "improved": true
+    },
+    {
+      "round": 2,
+      "dev_map": 0.4846,
+      "dev_auc": 0.6464,
+      "dev_f1": 0.0816,
+      "dev_acc": 0.625,
+      "prompt": "\"Predict the probability (0.0-1.0) that this video frame contains content intended to deceive viewers through various means, including but not limited to divulging personal information, committing fraudulent financial transactions, engaging in misleading marketing tactics, or any other deceptive activities commonly associated with cyber scams. Carefully evaluate visual cues such as text indicating an educational or preventive theme to accurately differentiate between actual scam attempts and content that is educational or informational about cyber scams.\"",
+      "feedback": "The current prompt may have failed because it does not explicitly instruct the model to look for misleading marketing tactics or deceptive language related to sales, which can be subtle and context-dependent. Adding a criterion about identifying deceptive marketing tactics would help.",
+      "n_candidates": 5,
+      "improved": true
+    },
+    {
+      "round": 3,
+      "dev_map": 0.4033,
+      "dev_auc": 0.5327,
+      "dev_f1": 0.1111,
+      "dev_acc": 0.6,
+      "prompt": "\"Predict the probability (0.0-1.0) that this video frame contains content intended to deceive viewers into divulging personal information, committing fraudulent financial transactions, or engaging in other deceptive activities associated with a cyber scam. Ensure to differentiate between educational or informational content about cyber scams and actual scam attempts.\"",
+      "feedback": "Feedback 1: The prompt should be more specific in identifying educational or informational content related to cyber scams, as the current description of \"visual cues such as text indicating an educational or preventive theme\" is too vague. The prompt should explicitly include examples of such text, such as phrases like \"Anyone can be a victim\" that are commonly used in educational content about scams.",
+      "n_candidates": 8,
+      "improved": false
+    },
+    {
+      "round": 4,
+      "dev_map": 0.4485,
+      "dev_auc": 0.5677,
+      "dev_f1": 0.0408,
+      "dev_acc": 0.6083,
+      "prompt": "\"Predict the probability (0.0-1.0) that this video frame contains content intended to deceive viewers through various means, including but not limited to divulging personal information, committing fraudulent financial transactions, engaging in misleading marketing tactics, or any other deceptive activities commonly associated with cyber scams. Provide a detailed analysis of the visual cues and context indicators present in the frame to accurately differentiate between actual scam attempts and content that is educational or informational about cyber scams. Specifically, look for elements such as emergency language, urgency, threats, or promises of unrealistic rewards, which often indicate a scam attempt. Conversely, identify features such as disclaimers, educational text, or references to official sources that may suggest the content is meant to inform or warn about scams rather than to deceive directly.\"",
+      "feedback": "The current prompt does not sufficiently emphasize the importance of context and intent in making the classification. While it mentions deceptive activities, it does not clearly define what constitutes deception, such as the presence of urgent or authoritative language that could be misleading.",
+      "n_candidates": 8,
+      "improved": false
+    }
+  ]
+}

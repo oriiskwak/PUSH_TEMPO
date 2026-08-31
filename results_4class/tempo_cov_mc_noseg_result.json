@@ -1,0 +1,190 @@
+{
+  "method": "TEMPO-COV-MC-NoSeg",
+  "best_prompt": "Classify each video frame into one of four scam types: 보이스피싱, 투자사기, 로맨스스캠, 부업사기. For 로맨스스캠, identify progressive relationship building, personal interactions, and emotional manipulation. For 투자사기, look for financial promises, urgent transactions, professional settings, financial charts, and investment promotions. For 부업사기, detect quick money offers, low-effort jobs, and immediate gains. For 보이스피싱, focus on urgency, direct calls, and impersonation. Analyze abstract visual and contextual patterns to differentiate between similar scams. Prioritize financial visuals for 투자사기, quick money and job offers for 부업사기, urgency and direct communication for 보이스피싱, and romantic interactions for 로맨스스캠. Ensure each frame outputs only one class name based on the strongest visual and contextual indicators. The output should be just one class name per frame: 보이스피싱 / 투자사기 / 로맨스스캠 / 부업사기.",
+  "baseline_test": {
+    "acc": 0.3089430894308943,
+    "macro_f1": 0.2606045449341039,
+    "per_class_f1": {
+      "보이스피싱": 0.4528301886792453,
+      "투자사기": 0.1935483870967742,
+      "로맨스스캠": 0.39603960396039606,
+      "부업사기": 0.0
+    },
+    "confusion": {
+      "보이스피싱": {
+        "보이스피싱": 12,
+        "투자사기": 14,
+        "로맨스스캠": 5,
+        "부업사기": 0
+      },
+      "투자사기": {
+        "보이스피싱": 1,
+        "투자사기": 6,
+        "로맨스스캠": 27,
+        "부업사기": 0
+      },
+      "로맨스스캠": {
+        "보이스피싱": 6,
+        "투자사기": 2,
+        "로맨스스캠": 20,
+        "부업사기": 1
+      },
+      "부업사기": {
+        "보이스피싱": 3,
+        "투자사기": 6,
+        "로맨스스캠": 20,
+        "부업사기": 0
+      }
+    }
+  },
+  "best_test": {
+    "acc": 0.8861788617886179,
+    "macro_f1": 0.8855045862332541,
+    "per_class_f1": {
+      "보이스피싱": 0.8857142857142857,
+      "투자사기": 0.8955223880597015,
+      "로맨스스캠": 0.8679245283018868,
+      "부업사기": 0.8928571428571429
+    },
+    "confusion": {
+      "보이스피싱": {
+        "보이스피싱": 31,
+        "투자사기": 0,
+        "로맨스스캠": 0,
+        "부업사기": 0
+      },
+      "투자사기": {
+        "보이스피싱": 2,
+        "투자사기": 30,
+        "로맨스스캠": 0,
+        "부업사기": 2
+      },
+      "로맨스스캠": {
+        "보이스피싱": 5,
+        "투자사기": 1,
+        "로맨스스캠": 23,
+        "부업사기": 0
+      },
+      "부업사기": {
+        "보이스피싱": 1,
+        "투자사기": 2,
+        "로맨스스캠": 1,
+        "부업사기": 25
+      }
+    }
+  },
+  "log": [
+    {
+      "round": 1,
+      "train_f1": 0.1346153846153846,
+      "dev_f1": 0.8513888888888889,
+      "dev_acc": 0.9,
+      "dev_per_class": {
+        "보이스피싱": 0.8888888888888888,
+        "투자사기": 1.0,
+        "로맨스스캠": 0.6,
+        "부업사기": 0.9166666666666666
+      },
+      "prompt": "Classify each video frame into one of four scam types: 보이스피싱, 투자사기, 로맨스스캠, 부업사기. Focus on distinguishing between 보이스피싱 and 투자사기 using visual cues. For 투자사기, look for financial elements like charts, numbers, and promotional graphics indicating investments or gains. For 보이스피싱, identify individuals making direct calls, impersonating authority figures, or creating a sense of urgency. Ensure the output is only one class name per frame. Pay attention to repeated numerical data for investment fraud and communication settings with urgency for voice phishing. Analyze the visual context for accuracy, noting patterns like financial visuals for investment fraud and direct calls or impersonation scenes for voice phishing. The output should be just one class name per frame.",
+      "feedback": "To address the misclassification between \"투자사기\" (investment fraud) and \"보이스피싱\" (voice phishing), we need to enhance the visual and contextual understanding of the video content. Investment fraud typically involves visual and textual elements related to financial gains, predictions, or investments, often displayed through chat interfaces, tables of numbers, or promotional graphics. In contrast, voice phishing is more likely to feature individuals making direct calls or impersonating authority figures, often with a sense of urgency or threat.\n\nTo improve classification accuracy, focus on identifying patterns such as repeated numerical data, financial charts, or promotional messages in investment fraud. For voice phishing, look for scenes of individuals in communication settings, impersonatio..."
+    },
+    {
+      "round": 2,
+      "train_f1": 0.9363613360323887,
+      "dev_f1": 0.8338768115942029,
+      "dev_acc": 0.84,
+      "dev_per_class": {
+        "보이스피싱": 0.75,
+        "투자사기": 0.9333333333333333,
+        "로맨스스캠": 0.782608695652174,
+        "부업사기": 0.8695652173913043
+      },
+      "prompt": "Classify each video frame into one of four scam types: 보이스피싱, 투자사기, 로맨스스캠, 부업사기. Focus on distinguishing between 보이스피싱 and 투자사기 using visual cues. For 투자사기, look for financial elements like charts, numbers, and promotional graphics indicating investments or gains. For 보이스피싱, identify individuals making direct calls, impersonating authority figures, or creating a sense of urgency. Ensure the output is only one class name per frame. Pay attention to repeated numerical data for investment fraud and communication settings with urgency for voice phishing. Analyze the visual context for accuracy, noting patterns like financial visuals for investment fraud and direct calls or impersonation scenes for voice phishing. The output should be just one class name per frame.",
+      "feedback": "The current visual detection instructions alone are insufficient to resolve the classification errors between 투자사기 and 보이스피싱. The issue stems from a lack of clear differentiation between the abstract visual and contextual patterns of the two scam types. To address this, we need to focus on identifying specific scenario patterns and broader contextual elements rather than relying solely on visual cues.\n\n**Identifying Visual and Contextual Differences**:\n- **투자사기**: Typically involves visuals and text related to financial opportunities, investment returns, or discussions about financial growth. These scenarios often present a professional or promotional tone, with elements like graphs, charts, or text emphasizing potential gains or financial advice.\n- **보이스피싱**: Generally includes visuals an..."
+    },
+    {
+      "round": 3,
+      "train_f1": 0.9017857142857143,
+      "dev_f1": 0.9177777777777778,
+      "dev_acc": 0.92,
+      "dev_per_class": {
+        "보이스피싱": 0.8888888888888888,
+        "투자사기": 0.96,
+        "로맨스스캠": 0.8888888888888888,
+        "부업사기": 0.9333333333333333
+      },
+      "prompt": "Classify each video frame into one of four scam types: 보이스피싱, 투자사기, 로맨스스캠, 부업사기. Focus on visual and contextual elements to distinguish scams. For 투자사기, identify financial visuals like charts, numbers, and investment promotions. For 보이스피싱, look for direct calls, urgency, and impersonation. For 부업사기, observe job offers and easy money promises. For 로맨스스캠, detect romantic scenarios and personal connections. Analyze frames for dominant patterns: financial data suggests investment fraud, direct communication indicates voice phishing, job offers point to side job scams, and romantic interactions signal romance scams. Prioritize context and visual patterns for accuracy. Ensure each frame outputs only one class name, based on the strongest visual and contextual indicators. The output should be just one class name per frame: 보이스피싱 / 투자사기 / 로맨스스캠 / 부업사기.",
+      "feedback": "Improving the visual detection instructions alone is insufficient to resolve this error. The core challenge lies in distinguishing the broader context and scenario patterns of 부업사기 (side job scams) from 보이스피싱 (voice phishing) based on both visual and contextual cues. While visual elements can provide initial hints, the deeper understanding of the scam's progression and context is crucial. Tools like web_search and rag can help verify specific scam scenario vocabulary and match against known scam patterns, thereby refining the classification logic.\nImproving the visual detection instructions alone may not be sufficient to resolve the classification errors between 로맨스스캠 and 보이스피싱. Both scams can involve communication and urgency, leading to ambiguous visual cues. A more nuanced approach is n..."
+    },
+    {
+      "round": 4,
+      "train_f1": 0.8960084033613445,
+      "dev_f1": 0.9185714285714285,
+      "dev_acc": 0.92,
+      "dev_per_class": {
+        "보이스피싱": 0.9142857142857143,
+        "투자사기": 0.96,
+        "로맨스스캠": 0.9,
+        "부업사기": 0.9
+      },
+      "prompt": "Classify each video frame into one of four scam types: 보이스피싱, 투자사기, 로맨스스캠, 부업사기. Analyze visuals and context for distinctive patterns. For 투자사기, identify financial charts, high return promises, and complex schemes. For 부업사기, look for quick money offers, low-effort jobs, and immediate gains. For 보이스피싱, focus on urgency, direct calls, and impersonation. For 로맨스스캠, detect romantic themes and personal connections. Prioritize financial visuals for 투자사기, quick money and job offers for 부업사기, urgency and direct communication for 보이스피싱, and romantic interactions for 로맨스스캠. Ensure only one class name per frame based on the strongest indicators. The output should be just one class name per frame: 보이스피싱 / 투자사기 / 로맨스스캠 / 부업사기.",
+      "feedback": "Improving the visual detection instructions alone is insufficient to address this classification error between 투자사기 (investment scams) and 부업사기 (side job scams). The core issue lies in distinguishing the broader contextual and narrative patterns that characterize each scam type. Here are generalizable patterns and suggestions:\n\n### Visual and Contextual Differences:\n- **투자사기 (Investment Scams):** Focus on long-term financial growth, promises of high returns, and complex investment schemes. Visuals often include charts, graphs, or investment-related content. The narrative revolves around financial expertise and promising significant gains over time.\n- **부업사기 (Side Job Scams):** Emphasize quick and easy money with minimal effort, often targeting individuals looking for immediate financial re..."
+    },
+    {
+      "round": 5,
+      "train_f1": 0.8102286967418546,
+      "dev_f1": 0.8562045622741717,
+      "dev_acc": 0.86,
+      "dev_per_class": {
+        "보이스피싱": 0.8461538461538461,
+        "투자사기": 0.9032258064516129,
+        "로맨스스캠": 0.8421052631578947,
+        "부업사기": 0.8333333333333334
+      },
+      "prompt": "Classify each video frame into one of four scam types: 보이스피싱, 투자사기, 로맨스스캠, 부업사기. Analyze visuals and context for distinctive patterns. For 투자사기, identify financial charts, high return promises, and complex schemes. For 부업사기, look for quick money offers, low-effort jobs, and immediate gains. For 보이스피싱, focus on urgency, direct calls, and impersonation. For 로맨스스캠, detect romantic themes and personal connections. Prioritize financial visuals for 투자사기, quick money and job offers for 부업사기, urgency and direct communication for 보이스피싱, and romantic interactions for 로맨스스캠. Ensure only one class name per frame based on the strongest indicators. The output should be just one class name per frame: 보이스피싱 / 투자사기 / 로맨스스캠 / 부업사기.",
+      "feedback": "The core issue lies in distinguishing between investment fraud (투자사기) and quick money/job scams (부업사기). Visual elements alone are insufficient as both types of scams can feature financial incentives. To refine the classification:\n\n1. **Financial Complexity:** Investment scams often involve **complex financial instruments**, **charts**, and **technical analysis**, suggesting a more sophisticated investment scheme. Job scams focus on **quick, low-effort money** with **little financial complexity**.\n\n2. **Promised Gains:** Investment scams emphasize **high returns over time**, while job scams promise **immediate, easy gains** with minimal effort.\n\n3. **Narrative Structure:** Investment scams typically have a **long-term investment narrative** with detailed explanations. Job scams have a **sho..."
+    },
+    {
+      "round": 6,
+      "train_f1": 0.8311188811188811,
+      "dev_f1": 0.9300437433722163,
+      "dev_acc": 0.94,
+      "dev_per_class": {
+        "보이스피싱": 0.875,
+        "투자사기": 0.975609756097561,
+        "로맨스스캠": 0.8695652173913043,
+        "부업사기": 1.0
+      },
+      "prompt": "Classify each video frame into one of four scam types: 보이스피싱, 투자사기, 로맨스스캠, 부업사기. For 로맨스스캠, identify progressive relationship building, personal interactions, and emotional manipulation. For 투자사기, look for financial promises, urgent transactions, professional settings, financial charts, and investment promotions. For 부업사기, detect quick money offers, low-effort jobs, and immediate gains. For 보이스피싱, focus on urgency, direct calls, and impersonation. Analyze abstract visual and contextual patterns to differentiate between similar scams. Prioritize financial visuals for 투자사기, quick money and job offers for 부업사기, urgency and direct communication for 보이스피싱, and romantic interactions for 로맨스스캠. Ensure each frame outputs only one class name based on the strongest visual and contextual indicators. The output should be just one class name per frame: 보이스피싱 / 투자사기 / 로맨스스캠 / 부업사기.",
+      "feedback": "To accurately distinguish between 로맨스스캠 (romance scams) and 투자사기 (investment scams), the visual detection system must focus on both specific visual cues and broader contextual patterns. For 로맨스스캠, the system should identify:\n\n1. **Progressive relationship building:** Visuals or text indicating a gradual development of trust and intimacy, such as personal interactions or connection-focused themes.\n2. **Emotional manipulation:** Phrases or visuals suggesting a strong emotional bond, like promises of love or affection.\n\nFor 투자사기, the system should look for:\n\n1. **Financial promises:** Visuals and dialogue emphasizing high returns, quick gains, or investment opportunities.\n2. **Urgency in financial transactions:** Scenarios pressuring immediate financial actions or commitments.\n3. **Professional contexts:** Settings like offices or formal meetings, indicating business or investment discussions.\n\nImproving visual detection instructions alone is insufficient; the model must differentiate between emotional connections and financial proposals. Refining the visual instructions to focus on abstract patterns rather than specific details will help distinguish the two. For 로맨스스캠, key visual cues include personal interactions, emotional appeals, and gradual relationship building, whereas 투자사기 is often characterized by financial incentives, urgency, and investment platforms. Specific visual and contextual patterns unique to investment scams should be identified to avoid misclassification with 보이스피싱 (voice phishing)."
+    },
+    {
+      "round": 7,
+      "train_f1": 0.9347030678300028,
+      "dev_f1": 0.8755997123627824,
+      "dev_acc": 0.88,
+      "dev_per_class": {
+        "보이스피싱": 0.8275862068965517,
+        "투자사기": 0.967741935483871,
+        "로맨스스캠": 0.8181818181818182,
+        "부업사기": 0.8888888888888888
+      },
+      "prompt": "Classify each video frame into one of four scam types: 보이스피싱, 투자사기, 로맨스스캠, 부업사기. For 로맨스스캠, identify progressive relationship building, personal interactions, and emotional manipulation. For 투자사기, look for financial promises, urgent transactions, professional settings, financial charts, and investment promotions. For 부업사기, detect quick money offers, low-effort jobs, and immediate gains. For 보이스피싱, focus on urgency, direct calls, and impersonation. Analyze abstract visual and contextual patterns to differentiate between similar scams. Prioritize financial visuals for 투자사기, quick money and job offers for 부업사기, urgency and direct communication for 보이스피싱, and romantic interactions for 로맨스스캠. Ensure each frame outputs only one class name based on the strongest visual and contextual indicators. The output should be just one class name per frame: 보이스피싱 / 투자사기 / 로맨스스캠 / 부업사기.",
+      "feedback": "Improving the visual detection instructions alone is insufficient to fix this error. The core challenge lies in distinguishing the broader context and progression patterns between 부업사기 (side job scams) and 투자사기 (investment fraud), which often share similar financial incentives but differ in their framing and promised outcomes.  \n\nFeedback content:  \nTo accurately classify 부업사기, focus on detecting the promise of immediate financial gain through quick and simple job offers, often targeting individuals dissatisfied with their current income. Look for visuals that emphasize an easy way out of financial struggles, minimal effort required, and the allure of earning significant money in a short time frame. These elements are distinct from the more complex financial schemes and high-return promise..."
+    },
+    {
+      "round": 8,
+      "train_f1": 0.9259446693657221,
+      "dev_f1": 0.9017765567765568,
+      "dev_acc": 0.9,
+      "dev_per_class": {
+        "보이스피싱": 0.8461538461538461,
+        "투자사기": 0.9523809523809523,
+        "로맨스스캠": 0.88,
+        "부업사기": 0.9285714285714286
+      },
+      "prompt": "Classify each video frame into one of four scam types: 보이스피싱, 투자사기, 로맨스스캠, 부업사기. For 로맨스스캠, identify progressive relationship building, personal interactions, and emotional manipulation. For 투자사기, look for financial promises, urgent transactions, professional settings, financial charts, and investment promotions. For 부업사기, detect quick money offers, low-effort jobs, and immediate gains. For 보이스피싱, focus on urgency, direct calls, and impersonation. Analyze abstract visual and contextual patterns to differentiate between similar scams. Prioritize financial visuals for 투자사기, quick money and job offers for 부업사기, urgency and direct communication for 보이스피싱, and romantic interactions for 로맨스스캠. Ensure each frame outputs only one class name based on the strongest visual and contextual indicators. The output should be just one class name per frame: 보이스피싱 / 투자사기 / 로맨스스캠 / 부업사기.",
+      "feedback": "Improving the visual detection instructions alone is insufficient to resolve this error. The core challenge lies in distinguishing the broader contextual patterns between 로맨스스캠 and 보이스피싱. While visual cues like urgency and direct communication suggest 보이스피싱, 로맨스스캠 is characterized by progressive relationship building and emotional manipulation through personal interactions. \n\nTo address this, incorporating the **web_search** tool can help verify specific vocabulary related to romantic interactions, emotional appeals, and gradual trust-building tactics. This will refine the classification logic to focus on the evolving emotional context rather than just isolated urgent communications.\nImproving visual detection instructions alone is insufficient to resolve this classification error. The cor..."
+    }
+  ]
+}

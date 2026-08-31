@@ -1,0 +1,177 @@
+{
+  "method": "TEMPO-Total",
+  "best_early_prompt": "Predict the probability (0.0–1.0) that this video frame depicts a cyber scam, outputting only a single float. Focus on financial visuals with claims of high returns or rapid gains, combined with financial charts or graphs. Analyze for deceptive promo content, abstract patterns mimicking legitimate ads, misleading urgency cues, repetitive ad layouts, and generic contact instructions. Ignore frames with text about scam prevention or professionals with name badges. Prioritize identifying financial visuals with claims and urgent calls to action while maintaining accuracy on abstract patterns and repetitive layouts. Exclude frames discussing scam prevention, including phrases like \"initial stages,\" \"prevention,\" and \"what to do,\" as well as frames showing professionals at desks with name badges. Ensure the model's sensitivity to direct evidence of scam activities while upholding performance on correctly predicted cases.",
+  "best_late_prompt": "Estimate the probability (0.0-1.0) this frame is part of a cyber scam. Evaluate if the content exposes scams, offers financial advice, or educates about potential scams. Identify detailed explanations of fraud tactics, steps for identifying scams, and advice on recognizing fraudulent activities. Check if official overlays and text support legal advice, fraud prevention, or financial processes. Avoid false positives by not flagging content based on professional displays of gold bars, formal settings discussing financial opportunities, or official-looking overlays. Ensure credible financial content is not incorrectly flagged as scams. Return ONLY a float 0.0–1.0.",
+  "baseline_test": {
+    "kl": 1.6356415109280462,
+    "auc": 0.32266666666666666,
+    "map": 0.28333251521372993,
+    "f1": 0.44755244755244755,
+    "acc": 0.3416666666666667
+  },
+  "best_test": {
+    "kl": 1.2059179560273425,
+    "auc": 0.5447407407407407,
+    "map": 0.4064227068393816,
+    "f1": 0.43243243243243246,
+    "acc": 0.475
+  },
+  "best_test_f1_opt": 0.43243243243243246,
+  "best_test_acc_opt": 0.475,
+  "log": [
+    {
+      "round": 1,
+      "seg": "early",
+      "train_map": 0.21140620980400926,
+      "dev_map": 0.6199192125186047,
+      "dev_auc": 0.6786858974358975,
+      "dev_f1": 0.6923076923076923,
+      "dev_acc": 0.68,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame depicts a cyber scam, not content about identifying or preventing scams. Ignore frames with text focusing on advising viewers on specific scams, including phrases like \"initial stages,\" \"prevention,\" and \"what to do.\" Also, disregard frames showing professionals in business attire at desks with name badges, as these are likely providing guidance. Focus on identifying direct evidence of scam activities. Maintain performance on correctly predicted cases.",
+      "feedback": "The current false positives indicate that the model is over-detecting legitimate content about identifying and preventing romance scams. The visual patterns that appear to be causing these false alarms include:\n\n1. **Textual Patterns**: Frames with text heavily focused on advising viewers on identifying and avoiding specific types of scams, including references to \"initial stages,\" \"prevention,\" and \"what to do.\" These are often accompanied by contact information for legal advice, which the model may misinterpret as part of a scam.\n\n2. **Visual Patterns**: The presence of individuals who seem to be professionals (e.g., dressed in business attire, sitting at a desk, and displaying credentials like a name badge) delivering advice in a formal setting. The model may confuse this professional p..."
+    },
+    {
+      "round": 1,
+      "seg": "late",
+      "train_map": 0.4612779845235985,
+      "dev_map": 0.4171692515557865,
+      "dev_auc": 0.6434937611408199,
+      "dev_f1": 0.56,
+      "dev_acc": 0.56,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame is part of a cyber scam, considering the context. Focus on distinguishing between legitimate discussions of legal, financial topics, and actual scams. Evaluate the setting, dialogue, and purpose of the content. Consider official-looking overlays, formal settings, financial content, and contact information within the broader context. Avoid overfitting to specific frames by interpreting patterns like repetition of contact numbers, call-to-action text, and visual similarity to scam patterns within the context. Return ONLY a float 0.0–1.0.",
+      "feedback": "The model is over-detecting scam content due to the presence of formal settings, official-looking text overlays, abstract visual cues like road signs, financial-related content, and contact information. To reduce false alarms, the visual detection instructions should be refined to distinguish between legitimate discussions of legal, financial topics, and actual scams. This includes considering the context in which legal or financial terms are discussed, the presence of official-looking overlays, the setting of the video, the source and nature of the dialogue, and the broader purpose of the content. Additionally, patterns such as repetition of contact numbers and phrases, call-to-action text, and visual similarity to scam patterns should be interpreted within the context to avoid overfitting to specific frames. Refining the model to focus on these contextual factors will help in reducing false alarms on this type of content."
+    },
+    {
+      "round": 2,
+      "seg": "early",
+      "train_map": 0.5766298759719812,
+      "dev_map": 0.6430745404785119,
+      "dev_auc": 0.8140916808149405,
+      "dev_f1": 0.6956521739130435,
+      "dev_acc": 0.72,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame depicts a cyber scam, outputting only a single float. Focus on direct evidence of scam activities, such as deceptive promotional content: abstract visual patterns mimicking legitimate ads, misleading urgency cues like \"BIG SALE,\" highly repetitive ad layouts with similar product images, and generic contact instructions encouraging \"ask in chat.\" Ignore frames with text advising on scams, including phrases like \"initial stages,\" \"prevention,\" and \"what to do,\" as well as frames showing professionals at desks with name badges. Ensure the model maintains performance on correctly predicted cases, especially those with abstract patterns and repetitive layouts. Do not consider content about identifying or preventing scams. Maintain focus on identifying direct evidence of scam activities.",
+      "feedback": "The current prompt is missing critical signals related to deceptive promotional content that masquerades as legitimate sales. These frames show **abstract visual patterns** that mimic legitimate advertisements but include subtle yet significant scam indicators:\n\n1. **Misleading Urgency Cues**: The prominent use of terms like \"BIG SALE\" and \"only available here\" to create a false sense of urgency and exclusivity, which can deceive viewers into making hasty decisions.\n   \n2. **Repetitive Ad Layouts**: The frames use a **highly repetitive layout** with similar product images and promotional text, which is a common tactic in fraudulent advertising campaigns to overwhelm viewers with seemingly endless offers.\n\n3. **Generic Contact Instructions**: The text encourages viewers to \"ask in chat\" for..."
+    },
+    {
+      "round": 2,
+      "seg": "late",
+      "train_map": 0.46992914598749835,
+      "dev_map": 0.5892371732462479,
+      "dev_auc": 0.7077175697865352,
+      "dev_f1": 0.64,
+      "dev_acc": 0.64,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame is part of a cyber scam by analyzing the comprehensive context, including source credibility and dialogue nature. Recognize that elements like prominently displayed contact numbers and financial discussions can be part of legitimate content. Focus on distinguishing genuine content from scams by evaluating the creator's reputation, the purpose of the content, and the tone of the dialogue. A credible financial advisor discussing investments should not be flagged as a scam. Avoid overfitting to specific frames. Return ONLY a float 0.0–1.0.",
+      "feedback": "Improving the visual detection instructions alone may not fully resolve this issue. The model appears to be over-detecting scam content based on visual patterns such as prominently displayed contact numbers, call-to-action text encouraging viewer engagement (like subscribing or liking), and references to financial discussions or transactions. While these elements can be associated with scams, they also appear in legitimate content where creators engage with their audience or discuss financial topics. To distinguish legitimate patterns from actual scams, the model should be refined to consider the broader context of the content, including the source credibility and the nature of the dialogue. For instance, a financial advisor on a credible channel discussing investments would not be a scam,..."
+    },
+    {
+      "round": 3,
+      "seg": "early",
+      "train_map": 0.49416282642089093,
+      "dev_map": 0.3874654954942237,
+      "dev_auc": 0.48,
+      "dev_f1": 0.6101694915254238,
+      "dev_acc": 0.54,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame depicts a cyber scam, outputting only a single float. Focus on direct evidence of scam activities, such as deceptive promotional content: abstract visual patterns mimicking legitimate ads, misleading urgency cues like \"BIG SALE,\" highly repetitive ad layouts with similar product images, and generic contact instructions encouraging \"ask in chat.\" Ignore frames with text advising on scams, including phrases like \"initial stages,\" \"prevention,\" and \"what to do,\" as well as frames showing professionals at desks with name badges. Ensure the model maintains performance on correctly predicted cases, especially those with abstract patterns and repetitive layouts. Do not consider content about identifying or preventing scams. Maintain focus on identifying direct evidence of scam activities.",
+      "feedback": "The current prompt is missing key signals related to scams that use a facade of professional financial advice. These frames demonstrate a pattern where a seemingly legitimate financial opportunity is presented, but the language and context suggest high-pressure sales tactics and false promises of high returns. \n\nTo better detect this type of scam, the model should focus on the following abstract visual patterns:\n\n1. **Financial Charts and Returns**: Look for frames where financial charts, graphs, or documents are displayed alongside claims of high returns or urgent investments. The presence of such visual elements, combined with a professional setting, can indicate a deceptive financial opportunity.\n\n2. **Authoritative Figures**: Increase sensitivity to videos that feature individuals in p..."
+    },
+    {
+      "round": 3,
+      "seg": "late",
+      "train_map": 0.6069023569023568,
+      "dev_map": 0.5400529574231996,
+      "dev_auc": 0.7272727272727273,
+      "dev_f1": 0.5161290322580645,
+      "dev_acc": 0.7,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame is part of a cyber scam by analyzing the comprehensive context, including source credibility and dialogue nature. Recognize that elements like prominently displayed contact numbers and financial discussions can be part of legitimate content. Focus on distinguishing genuine content from scams by evaluating the creator's reputation, the purpose of the content, and the tone of the dialogue. A credible financial advisor discussing investments should not be flagged as a scam. Avoid overfitting to specific frames. Return ONLY a float 0.0–1.0.",
+      "feedback": "To address the issue of over-detecting scam content, the visual detection instructions should be refined to focus on evaluating the broader context of the content. The model is currently flagging legitimate discussions about financial or legal topics in professional settings as scams due to the presence of official-looking overlays and text. To distinguish these from actual scams, the instructions should consider the following:\n\n- **Broader context of the content**: Determine if the discussion is exposing scams rather than promoting them. Look for detailed explanations of fraud tactics and advice on identifying scams, which are typical in legitimate content. Also, assess whether the content focuses on easy money-making schemes or lacks substantial evidence for financial returns, which are common in scams.\n\n- **Official-looking overlays and text**: Verify if the overlays provide context and support rather than making unsubstantiated claims. Legitimate content often includes detailed information and evidence, whereas scams may rely on exaggerated claims or get-rich-quick schemes.\n\nBy incorporating these considerations into the visual detection instructions, the model can more accurately distinguish between legitimate discussions and actual scams, reducing the over-detection of scam content."
+    },
+    {
+      "round": 4,
+      "seg": "early",
+      "train_map": 0.4335379763821793,
+      "dev_map": 0.47123062753405,
+      "dev_auc": 0.7628676470588236,
+      "dev_f1": 0.7441860465116279,
+      "dev_acc": 0.78,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame depicts a cyber scam, outputting only a single float. Focus on direct evidence of scam activities, such as deceptive promotional content: abstract visual patterns mimicking legitimate ads, misleading urgency cues like \"BIG SALE,\" highly repetitive ad layouts with similar product images, and generic contact instructions encouraging \"ask in chat.\" Ignore frames with text advising on scams, including phrases like \"initial stages,\" \"prevention,\" and \"what to do,\" as well as frames showing professionals at desks with name badges. Ensure the model maintains performance on correctly predicted cases, especially those with abstract patterns and repetitive layouts. Do not consider content about identifying or preventing scams. Maintain focus on identifying direct evidence of scam activities.",
+      "feedback": "Improving the visual detection instructions alone is insufficient to fix the error of over-detecting scam content. The model misinterprets frames that mimic common patterns seen in actual scams, such as urgent language combined with references to financial incentives or institutions, and the presence of silhouettes or abstract visual elements resembling scam setups. These patterns can create a sense of urgency or opportunity, leading the model to confuse legitimate content with actual scams.\n\nTo distinguish legitimate patterns from actual scams:\n\n- **Textual Patterns**: Look for the use of urgent or authoritative language combined with references to financial gains, institutions, or contact information. While these elements can resemble scams, the content may be educational, aiming to inform viewers about identifying and preventing scams.\n- **Visual Patterns**: Identify the presence of silhouettes or abstract visual elements that resemble common scam setups, such as fake interactions or impersonations. These visual cues might be part of an educational presentation rather than actual scam activities.\n- **Contextual Understanding**: Analyze the overall context of the video. If the content is framed as a cautionary or educational piece with a clear intention to inform rather than deceive, it is likely legitimate. The frames should show structured and formal presentations that aim to educate viewers on recognizing and avoiding scams.\n\nBy considering these textual and visual patterns within the broader context of the video, the model can more accurately distinguish between legitimate content and actual scams."
+    },
+    {
+      "round": 4,
+      "seg": "late",
+      "train_map": 0.7640176490176489,
+      "dev_map": 0.6679541675429834,
+      "dev_auc": 0.8676470588235294,
+      "dev_f1": 0.7368421052631579,
+      "dev_acc": 0.8,
+      "prompt": "Estimate the probability (0.0-1.0) this frame is part of a cyber scam by evaluating its broader context. Check if the content educates about scams, highlights risks, or offers guidance rather than promoting exaggerated claims. Consider official overlays and text for supporting the topic rather than making unsubstantiated claims. Assess creator reputation, content purpose, and dialogue tone. Avoid flagging credible financial content as scams. Return ONLY a float 0.0–1.0.",
+      "feedback": "To address the issue of over-detecting scam content, the visual detection instructions should focus on the broader context of the content and the role of official-looking overlays and text. Specifically, the model should determine whether the discussion is focused on educating the audience about potential scams, highlighting risks, and offering guidance, rather than promoting get-rich-quick schemes or exaggerated claims. Additionally, the model should evaluate whether official-looking overlays and text provide context and support the topic being discussed, rather than making unsubstantiated claims. These adjustments will help distinguish genuine discussions from actual scams and reduce the number of false positives."
+    },
+    {
+      "round": 5,
+      "seg": "early",
+      "train_map": 0.6990618858265917,
+      "dev_map": 0.56673009340708,
+      "dev_auc": 0.731527093596059,
+      "dev_f1": 0.7083333333333334,
+      "dev_acc": 0.72,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame depicts a cyber scam, outputting only a single float. Focus on direct evidence of scam activities, such as deceptive promotional content: abstract visual patterns mimicking legitimate ads, misleading urgency cues like \"BIG SALE,\" highly repetitive ad layouts with similar product images, and generic contact instructions encouraging \"ask in chat.\" Ignore frames with text advising on scams, including phrases like \"initial stages,\" \"prevention,\" and \"what to do,\" as well as frames showing professionals at desks with name badges. Ensure the model maintains performance on correctly predicted cases, especially those with abstract patterns and repetitive layouts. Do not consider content about identifying or preventing scams. Maintain focus on identifying direct evidence of scam activities.",
+      "feedback": "Improving the visual detection instructions alone is insufficient to address the over-detection of scam content. The model misinterprets frames that mimic common scam patterns, such as urgent language, references to financial institutions or guidance, and professional advice. These elements are often present in educational content aimed at informing viewers about identifying and preventing scams. The frames typically show structured, formal presentations with a clear intention to educate rather than deceive. To distinguish legitimate content from actual scams:\n\n- **Look for Contextual Clues**: Analyze the overall context of the video. If the content is framed as a cautionary tale, preventive measure, or educational piece with a focus on precautionary measures and professional advice, it is likely legitimate content rather than a scam.\n- **Abstract Visual Patterns**: Focus on frames that display financial data in a structured format alongside warnings about specific types of scams. These patterns, when combined with an educational intent, indicate that the content is likely aimed at informing viewers rather than perpetuating scams.\n\nBy integrating these considerations, the model can better differentiate between educational content and actual scam attempts."
+    },
+    {
+      "round": 5,
+      "seg": "late",
+      "train_map": 0.6887254901960784,
+      "dev_map": 0.5454785582572043,
+      "dev_auc": 0.6830870279146141,
+      "dev_f1": 0.6086956521739131,
+      "dev_acc": 0.64,
+      "prompt": "Estimate the probability (0.0-1.0) this frame is part of a cyber scam by evaluating its broader context. Check if the content educates about scams, highlights risks, or offers guidance rather than promoting exaggerated claims. Consider official overlays and text for supporting the topic rather than making unsubstantiated claims. Assess creator reputation, content purpose, and dialogue tone. Avoid flagging credible financial content as scams. Return ONLY a float 0.0–1.0.",
+      "feedback": "To address the issue of over-detecting scam content in formal settings with financial discussions, official overlays, and numerical data, the visual detection instructions should be improved as follows:\n\n- **Identify the broader context of the content**: Focus on whether the video exposes scams or promotes them. Look for detailed explanations of fraud tactics, risks, and advice on identifying scams. Legitimate content often includes step-by-step guidance, critical analysis, and discussions that provide financial or legal advice.\n\n- **Assess official overlays and text for context support**: Verify if the overlays and text provide context and support the topic being discussed, such as legal advice, fraud prevention, or financial guidance. Legitimate content should not make exaggerated or unsubstantiated claims about financial returns.\n\nBy implementing these improvements, the model will be better equipped to distinguish between legitimate content and actual scams, reducing the number of false positives."
+    },
+    {
+      "round": 6,
+      "seg": "early",
+      "train_map": 0.3578171828171828,
+      "dev_map": 0.7108980454248996,
+      "dev_auc": 0.8049999999999999,
+      "dev_f1": 0.6956521739130435,
+      "dev_acc": 0.72,
+      "prompt": "Predict the probability (0.0–1.0) that this video frame depicts a cyber scam, outputting only a single float. Focus on financial visuals with claims of high returns or rapid gains, combined with financial charts or graphs. Analyze for deceptive promo content, abstract patterns mimicking legitimate ads, misleading urgency cues, repetitive ad layouts, and generic contact instructions. Ignore frames with text about scam prevention or professionals with name badges. Prioritize identifying financial visuals with claims and urgent calls to action while maintaining accuracy on abstract patterns and repetitive layouts. Exclude frames discussing scam prevention, including phrases like \"initial stages,\" \"prevention,\" and \"what to do,\" as well as frames showing professionals at desks with name badges. Ensure the model's sensitivity to direct evidence of scam activities while upholding performance on correctly predicted cases.",
+      "feedback": "Improving the visual detection instructions alone cannot fix this error. The current prompt is missing specific signals related to deceptive financial claims and promotional tactics embedded in visual content. These patterns include the presence of financial charts combined with claims of high returns or urgent calls to action, which are common in investment scams. To better detect this type of scam, the model should focus on the following abstract, generalizable visual cues:\n\n- **Financial Visuals with Claims**: Increase sensitivity to frames that display financial graphs, charts, or data alongside promises of exceptional returns or rapid financial gains. These visuals often aim to create an illusion of legitimacy and success.\n  \n- **Urgent Calls to Action**: Look for visual cues that enc..."
+    },
+    {
+      "round": 6,
+      "seg": "late",
+      "train_map": 0.7670077879636704,
+      "dev_map": 0.744456574471589,
+      "dev_auc": 0.7548701298701299,
+      "dev_f1": 0.6792452830188679,
+      "dev_acc": 0.66,
+      "prompt": "Estimate the probability (0.0-1.0) this frame is part of a cyber scam. Evaluate if the content exposes scams, offers financial advice, or educates about potential scams. Identify detailed explanations of fraud tactics, steps for identifying scams, and advice on recognizing fraudulent activities. Check if official overlays and text support legal advice, fraud prevention, or financial processes. Avoid false positives by not flagging content based on professional displays of gold bars, formal settings discussing financial opportunities, or official-looking overlays. Ensure credible financial content is not incorrectly flagged as scams. Return ONLY a float 0.0–1.0.",
+      "feedback": "To address the issue of over-detecting scam content, the visual detection instructions should be refined to distinguish between legitimate content and actual scams. The model is currently flagging content incorrectly based on frames featuring professional displays of gold bars, individuals in formal settings discussing financial opportunities, or discussions around financial or legal topics with official-looking overlays and text. To improve accuracy:\n\n- **Evaluate the broader context of the content**: Focus on whether the content is exposing scams, providing financial advice, or educating about potential scams. Look for detailed explanations of fraud tactics, steps for identifying scams, and advice on recognizing fraudulent activities, which are common in legitimate content.\n- **Assess official overlays and text for context support**: Verify if the overlays and text provide context and support the topic being discussed, such as legal advice, fraud prevention, or financial processes, rather than promoting get-rich-quick schemes or making exaggerated claims.\n\nBy incorporating these considerations into the visual detection instructions, the model can more accurately distinguish between genuine discussions and actual scams, reducing the number of false positives."
+    },
+    {
+      "round": 7,
+      "seg": "early",
+      "train_map": 0.39085997335997336,
+      "dev_map": 0.344587170590275,
+      "dev_auc": 0.5418894830659536,
+      "dev_f1": 0.5333333333333333,
+      "dev_acc": 0.44,
+      "prompt": "Predict the probability (0.0–1.0) that this video frame depicts a cyber scam, outputting only a single float. Focus on financial visuals with claims of high returns or rapid gains, combined with financial charts or graphs. Analyze for deceptive promo content, abstract patterns mimicking legitimate ads, misleading urgency cues, repetitive ad layouts, and generic contact instructions. Ignore frames with text about scam prevention or professionals with name badges. Prioritize identifying financial visuals with claims and urgent calls to action while maintaining accuracy on abstract patterns and repetitive layouts. Exclude frames discussing scam prevention, including phrases like \"initial stages,\" \"prevention,\" and \"what to do,\" as well as frames showing professionals at desks with name badges. Ensure the model's sensitivity to direct evidence of scam activities while upholding performance on correctly predicted cases.",
+      "feedback": "Improving the visual detection instructions alone cannot fix this error. The current prompt is missing scam signals related to emotional manipulation targeting vulnerable individuals. Specifically, it lacks sensitivity to visual cues of authority figures, such as financial advisors, exploiting trust by making urgent financial claims that appeal to fear or urgency among older adults. To better detect this type of scam:\n\n- **Visual Cues for Emotional Exploitation**: Focus on frames where financial advisors or similar figures are seen interacting closely with older individuals, using visual elements like concerned expressions, direct eye contact, or body language that suggests pressure or urgency. Look for scenes that imply a personal relationship building, such as home visits or intimate fin..."
+    },
+    {
+      "round": 7,
+      "seg": "late",
+      "train_map": 0.2791334124044703,
+      "dev_map": 0.5842234695355313,
+      "dev_auc": 0.6907467532467532,
+      "dev_f1": 0.6122448979591837,
+      "dev_acc": 0.62,
+      "prompt": "Estimate the probability (0.0-1.0) this frame is part of a cyber scam. Evaluate if the content exposes scams, offers financial advice, or educates about potential scams. Identify detailed explanations of fraud tactics, steps for identifying scams, and advice on recognizing fraudulent activities. Check if official overlays and text support legal advice, fraud prevention, or financial processes. Avoid false positives by not flagging content based on professional displays of gold bars, formal settings discussing financial opportunities, or official-looking overlays. Ensure credible financial content is not incorrectly flagged as scams. Return ONLY a float 0.0–1.0.",
+      "feedback": "To address the issue of over-detecting scam content in educational materials, the visual detection instructions should be refined to distinguish between legitimate educational content and actual scams. The model is currently flagging frames that contain simulated phone call scripts discussing financial or personal topics, formal settings with professional discussions around financial or legal topics, and official-looking text overlays as potential scams. These patterns can be common in educational content about scams, leading to incorrect flagging.\n\nTo improve accuracy, the visual detection instructions should focus on:\n\n- **Identifying broader content context**: Determine whether the content is exposing scams or promoting them. Look for detailed explanations of fraud tactics and advice on identifying scams, which are common in legitimate educational content.\n- **Assessing overlays and text for context support**: Verify if the overlays and text provide context and support the topic being discussed, such as legal advice or fraud prevention, rather than making exaggerated or unsubstantiated claims.\n\nBy incorporating these considerations into the visual detection instructions, the model can more accurately distinguish between genuine discussions and actual scams, reducing the number of false positives and improving the overall effectiveness of the system."
+    }
+  ]
+}

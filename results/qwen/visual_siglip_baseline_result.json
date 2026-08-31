@@ -1,0 +1,42 @@
+{
+  "method": "Visual-only Baseline (siglip embedding, mean of frames sampled every 2s up to 150s, same as CYREN + Logistic Regression)",
+  "embedding_model": "google/siglip-base-patch16-224",
+  "frame_step_sec": 2,
+  "max_sec": 150,
+  "split": {
+    "train": 360,
+    "dev": 120,
+    "test": 120,
+    "seed": 42,
+    "note": "utils.py(Qwen)와 동일한 stratified split"
+  },
+  "dev_test_0.5": {
+    "dev": {
+      "auc": 0.8696296296296296,
+      "map": 0.8008710572419511,
+      "f1": 0.7311827956989247,
+      "acc": 0.7916666666666666
+    },
+    "test": {
+      "auc": 0.8761481481481481,
+      "map": 0.7921765538287135,
+      "f1": 0.75,
+      "acc": 0.8
+    }
+  },
+  "best_threshold": 0.44,
+  "dev_test_opt": {
+    "test": {
+      "auc": 0.8761481481481481,
+      "map": 0.7921765538287135,
+      "f1": 0.7454545454545455,
+      "acc": 0.7666666666666667
+    }
+  },
+  "channel_clean_test": {
+    "auc": 0.8513931888544891,
+    "map": 0.7356201924054591,
+    "f1": 0.7297297297297297,
+    "acc": 0.7802197802197802
+  }
+}

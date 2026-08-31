@@ -1,0 +1,88 @@
+{
+  "method": "ERM-MC (Qwen)",
+  "best_prompt": "Classify this video frame into one of five fraud categories. Carefully consider the content, context, the purpose of the video, and the language and textual information present in the frame. \n\nWhen analyzing the frame, explicitly prioritize the following criteria in this order:\n\n1. **Explicit Textual Mentions of Fraud Types**: If the frame contains text or verbal content that directly mentions a specific type of fraud (e.g., \"voice phishing,\" \"investment fraud,\" etc.), give significant weight to this information. If the text clearly indicates a specific fraud type, classify the frame accordingly, regardless of the visual or contextual resemblance to scams.\n\n2. **Educational or Informative Purpose**: If the frame is part of an educational or informative video that provides examples or warnings about scams, even if it visually resembles a scam, classify it as \"Type-E: normal.\" However, if the educational content explicitly discusses a specific type of fraud, consider this as a key factor in determining the category, classifying it as the mentioned fraud type (e.g., Type-C: romance scam).\n\n3. **Contextual Analysis**: Consider the roles and interactions depicted in the frame, the presence of authority figures such as lawyers or educators, and how the characters or figures interact with each other and the environment. This may help determine the overall purpose of the video (educational vs. actual fraud).\n\n4. **Warning Against Specific Fraud Types**: If the frame explicitly warns against a particular type of fraud, consider this as a key factor in determining the category. If the warning is about voice phishing, for example, classify it as \"Type-A: voice phishing.\"\n\nReturn ONLY one of the following categories:\n- Type-A: voice phishing\n- Type-B: investment fraud\n- Type-C: romance scam\n- Type-D: part-time job scam\n- Type-E: normal\n\nEnsure that you are distinguishing between actual fraudulent content and content used for educational purposes within the video. Pay special attention to any textual or verbal content that indicates the nature of the video, whether it is educational or fraudulent, and prioritize explicit textual mentions of specific fraud types when the context is educational or informative.\n\nReference examples from similar videos:\nExample 1 [Label: 정상]: The image depicts a man wearing a suit and speaking, with Korean text visible that seems to discuss investment or financial topics. The text appears to be part of an educational or informative segment.\nExample 2 [Label: 정상]: description: The image shows a person sitting in a chair, holding a microphone and speaking. The text on the image is in Korean and translates to \"Most online jobs are scams.\"\nExample 3 [Label: 보이스피싱]: An older woman looks worried while holding a phone, with text in Korean warning about voice phishing scams",
+  "best_prompt_base": "Classify this video frame into one of five fraud categories. Carefully consider the content, context, the purpose of the video, and the language and textual information present in the frame. \n\nWhen analyzing the frame, explicitly prioritize the following criteria in this order:\n\n1. **Explicit Textual Mentions of Fraud Types**: If the frame contains text or verbal content that directly mentions a specific type of fraud (e.g., \"voice phishing,\" \"investment fraud,\" etc.), give significant weight to this information. If the text clearly indicates a specific fraud type, classify the frame accordingly, regardless of the visual or contextual resemblance to scams.\n\n2. **Educational or Informative Purpose**: If the frame is part of an educational or informative video that provides examples or warnings about scams, even if it visually resembles a scam, classify it as \"Type-E: normal.\" However, if the educational content explicitly discusses a specific type of fraud, consider this as a key factor in determining the category, classifying it as the mentioned fraud type (e.g., Type-C: romance scam).\n\n3. **Contextual Analysis**: Consider the roles and interactions depicted in the frame, the presence of authority figures such as lawyers or educators, and how the characters or figures interact with each other and the environment. This may help determine the overall purpose of the video (educational vs. actual fraud).\n\n4. **Warning Against Specific Fraud Types**: If the frame explicitly warns against a particular type of fraud, consider this as a key factor in determining the category. If the warning is about voice phishing, for example, classify it as \"Type-A: voice phishing.\"\n\nReturn ONLY one of the following categories:\n- Type-A: voice phishing\n- Type-B: investment fraud\n- Type-C: romance scam\n- Type-D: part-time job scam\n- Type-E: normal\n\nEnsure that you are distinguishing between actual fraudulent content and content used for educational purposes within the video. Pay special attention to any textual or verbal content that indicates the nature of the video, whether it is educational or fraudulent, and prioritize explicit textual mentions of specific fraud types when the context is educational or informative.",
+  "initial_prompt": "Classify this video frame into one of five fraud categories.\n- Type-A\n- Type-B\n- Type-C\n- Type-D\n- Type-E",
+  "baseline_test": {
+    "macro_f1": 0.08945630640545894,
+    "per_class_f1": {
+      "보이스피싱": 0.2857142857142857,
+      "투자사기": 0.0,
+      "로맨스스캠": 0.13559322033898305,
+      "부업사기": 0.0,
+      "정상": 0.025974025974025976
+    },
+    "acc": 0.08064516129032258
+  },
+  "best_test": {
+    "macro_f1": 0.3577584896482534,
+    "per_class_f1": {
+      "보이스피싱": 0.14285714285714285,
+      "투자사기": 0.4864864864864865,
+      "로맨스스캠": 0.25,
+      "부업사기": 0.5,
+      "정상": 0.4094488188976378
+    },
+    "acc": 0.3870967741935484
+  },
+  "config": {
+    "frames_dir": "data/frames_cache_2s",
+    "output": "/home/oem/TEMPO/results_4class/erm_mc_qwen_result.json",
+    "rounds": 12,
+    "beam_size": 2,
+    "minibatch_size": 16,
+    "n_exemplars": 1,
+    "n_feedbacks": 2,
+    "n_feedback_from_memory": 1,
+    "n_exemplars_inference": 3,
+    "mem_max_size": 20,
+    "ex_max_size": 30,
+    "patience": 2,
+    "patience_eps": 0.01,
+    "val_subsample": 15
+  },
+  "log": [
+    {
+      "round": 1,
+      "dev_f1": 0.3852425456163774,
+      "dev_acc": 0.39316239316239315,
+      "prompt": "Classify this video frame into one of five fraud categories based on the following context-specific details:\n\n- **Type-A (Voice Phishing):** The frame contains individuals or elements that suggest a fraudulent attempt to obtain personal information, often disguised as a legitimate entity. Look for signs of urgency, impersonation, or requests for sensitive data.\n\n- **Type-B (Investment Fraud):** The frame may show content related to financial schemes, promises of high returns with minimal risk, or unsolicited investment advice. Watch for exaggerated claims or pressure to invest quickly.\n\n- **Type-C (Romance Scam):** The frame might depict romantic or emotional content aimed at building a false relationship. Look for overly personal gestures, requests for money, or stories that seem too good to be true.\n\n- **Type-D (Part-Time Job Scam):** The frame could show job offers that seem unrealistic, with promises of easy money. Look for job listings that require little effort but offer high rewards, or requests for personal information as part of the application.\n\n- **Type-E (Normal):** The frame does not exhibit any of the above fraud characteristics and appears to be a legitimate, non-deceptive scene.\n\n**Instruction:** Analyze the video frame for the nature of the speech, the presence of warning signs, and the intent behind the message. Return ONLY one of the following categories: Type-A / Type-B / Type-C / Type-D / Type-E.",
+      "improved": true
+    },
+    {
+      "round": 2,
+      "dev_f1": 0.33081019731098305,
+      "dev_acc": 0.6068376068376068,
+      "prompt": "Classify this video frame into one of five fraud categories. Carefully consider the content, context, and purpose of the frame. If the frame is part of an educational or informative video about scams, categorize it as \"Type-E: normal,\" as it serves an informative purpose rather than being an actual instance of fraud. Return ONLY one of the following categories:\n- Type-A: voice phishing\n- Type-B: investment fraud\n- Type-C: romance scam\n- Type-D: part-time job scam\n- Type-E: normal\n\nTo assist in accurate classification, look for visual cues that might indicate the video is part of an educational segment. These cues may include:\n- Logos or branding of educational institutions or organizations.\n- Structured presentation formats, such as slides or bullet points.\n- Text overlays or graphics that explicitly state the purpose of the video as educational or informative about scams.\n- The presence of an instructor or presenter who is clearly explaining the content rather than engaging in fraudulent activities.\n\nBy considering these visual indicators and the overall purpose of the video, you can more accurately classify the frame into the appropriate category.",
+      "improved": true
+    },
+    {
+      "round": 3,
+      "dev_f1": 0.40315753887762007,
+      "dev_acc": 0.7264957264957265,
+      "prompt": "Classify this video frame into one of five fraud categories based on the specific visual elements, settings, and context provided. Pay close attention to the details that might indicate the type of fraud. If the frame is part of an educational or informative video that provides examples or warnings about scams, classify it as \"Type-E: normal\" even if it visually resembles a scam.\n\nHere are some typical settings and visual elements associated with each fraud category:\n- **Type-A: voice phishing**: Often involves someone holding a phone, a setting that resembles a call center, computer screens displaying fake bank or service websites, etc.\n- **Type-B: investment fraud**: May include visuals of financial charts, investment schemes, people in business attire, high-value items like luxury cars or homes, etc.\n- **Type-C: romance scam**: Typically features public spaces like cafes, parks, or bars; someone using a smartphone or computer to communicate, romantic gestures, etc.\n- **Type-D: part-time job scam**: Might display job offer flyers, online job portals, someone filling out job applications, images of cash being counted, etc.\n- **Type-E: normal**: This category includes any video frame that is not fraudulent but rather informational or educational. It may visually resemble a scam but is used to warn viewers about potential fraud.\n\nReturn ONLY one of the following categories:\n- Type-A: voice phishing\n- Type-B: investment fraud\n- Type-C: romance scam\n- Type-D: part-time job scam\n- Type-E: normal\n\nPlease ensure that you are distinguishing between actual fraudulent content and content used for educational purposes. If the video is meant to inform viewers about a voice phishing scam, for example, classify it as \"Type-E: normal\" since it serves an educational purpose.",
+      "improved": false
+    },
+    {
+      "round": 4,
+      "dev_f1": 0.4000893300248139,
+      "dev_acc": 0.6410256410256411,
+      "prompt": "Classify this video frame into one of five fraud categories. Carefully consider the content, context, and the purpose of the video. If the frame is part of an educational or informative video that provides examples or warnings about scams, even if it visually resembles a scam, classify it as \"Type-E: normal\" since it is not fraudulent but rather informational. \n\nReturn ONLY one of the following categories:\n- Type-A: voice phishing\n- Type-B: investment fraud\n- Type-C: romance scam\n- Type-D: part-time job scam\n- Type-E: normal\n\nPlease ensure that you are distinguishing between actual fraudulent content and content used for educational purposes within the video.",
+      "improved": true
+    },
+    {
+      "round": 5,
+      "dev_f1": 0.39051851851851854,
+      "dev_acc": 0.7094017094017094,
+      "prompt": "Classify this video frame into one of five fraud categories. It is crucial to carefully consider the overall context and purpose of the video frame. If the content is part of an educational or informative video that provides examples or warnings about scams, even if it visually resembles a scam, categorize it as \"Type-E: normal\" since it is not fraudulent but rather serves an educational purpose.\n\nReturn ONLY one of the following categories:\n- Type-A: voice phishing\n- Type-B: investment fraud\n- Type-C: romance scam\n- Type-D: part-time job scam\n- Type-E: normal\n\nPlease ensure that you are distinguishing between actual fraudulent content and content used for educational purposes within the video. If the frame is clearly aimed at educating or warning the audience about a scam, categorize it as \"Type-E: normal\" to accurately reflect its purpose.",
+      "improved": false
+    },
+    {
+      "round": 6,
+      "dev_f1": 0.3779918984305824,
+      "dev_acc": 0.4444444444444444,
+      "prompt": "Classify this video frame into one of five fraud categories. Carefully consider the content, context, the purpose of the video, and the language and textual information present in the frame. \n\nWhen analyzing the frame, explicitly prioritize the following criteria in this order:\n\n1. **Explicit Textual Mentions of Fraud Types**: If the frame contains text or verbal content that directly mentions a specific type of fraud (e.g., \"voice phishing,\" \"investment fraud,\" etc.), give significant weight to this information. If the text clearly indicates a specific fraud type, classify the frame accordingly, regardless of the visual or contextual resemblance to scams.\n\n2. **Educational or Informative Purpose**: If the frame is part of an educational or informative video that provides examples or warnings about scams, even if it visually resembles a scam, classify it as \"Type-E: normal.\" However, if the educational content explicitly discusses a specific type of fraud, consider this as a key factor in determining the category, classifying it as the mentioned fraud type (e.g., Type-C: romance scam).\n\n3. **Contextual Analysis**: Consider the roles and interactions depicted in the frame, the presence of authority figures such as lawyers or educators, and how the characters or figures interact with each other and the environment. This may help determine the overall purpose of the video (educational vs. actual fraud).\n\n4. **Warning Against Specific Fraud Types**: If the frame explicitly warns against a particular type of fraud, consider this as a key factor in determining the category. If the warning is about voice phishing, for example, classify it as \"Type-A: voice phishing.\"\n\nReturn ONLY one of the following categories:\n- Type-A: voice phishing\n- Type-B: investment fraud\n- Type-C: romance scam\n- Type-D: part-time job scam\n- Type-E: normal\n\nEnsure that you are distinguishing between actual fraudulent content and content used for educational purposes within the video. Pay special attention to any textual or verbal content that indicates the nature of the video, whether it is educational or fraudulent, and prioritize explicit textual mentions of specific fraud types when the context is educational or informative.",
+      "improved": false
+    }
+  ]
+}

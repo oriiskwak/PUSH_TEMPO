@@ -1,0 +1,187 @@
+{
+  "method": "TEMPO",
+  "best_early_prompt": "Classify this video frame into one of five categories: 보이스피싱, 투자사기, 로맨스스캠, 부업사기, 정상. Focus on specific visual cues: for 부업사기, look for app interfaces, side jobs, and passive income themes. For 로맨스스캠, identify text messages, urgency in financial transactions, and romantic relationship references. For 투자사기, analyze visuals of rapid financial gains, complex charts, and unrealistic returns. Consider the video's context: news reports may include explanatory graphics, while actual scams have a personal tone. Ensure only one category is returned per frame. Keep all important visual cues and type-distinguishing instructions while removing redundancies and resolving contradictions. The model must return ONLY one of: 보이스피싱 / 투자사기 / 로맨스스캠 / 부업사기 / 정상.",
+  "best_late_prompt": "Classify this video frame into one of five categories: 보이스피싱, 투자사기, 로맨스스캠, 부업사기, or 정상. Focus on visual cues: financial or work-related content suggests 부업사기; romantic or personal elements indicate 로맨스스캠. Identify urgency or pressure indicators to assist in classification. Ensure financial news remains classified as 정상 by recognizing its professional and neutral tone. Return only one category per frame, maintaining accuracy for correctly classified examples. Avoid misclassifying regular financial news by noting its neutral presentation. Use visual context to differentiate between the categories, ensuring each frame gets exactly one classification. Keep all important visual cues and type-distinguishing instructions while removing redundancies and resolving contradictions.",
+  "baseline_test": {
+    "acc": 0.3089430894308943,
+    "macro_f1": 0.2606045449341039,
+    "per_class_f1": {
+      "보이스피싱": 0.4528301886792453,
+      "투자사기": 0.1935483870967742,
+      "로맨스스캠": 0.39603960396039606,
+      "부업사기": 0.0
+    },
+    "confusion": {
+      "보이스피싱": {
+        "보이스피싱": 12,
+        "투자사기": 14,
+        "로맨스스캠": 5,
+        "부업사기": 0
+      },
+      "투자사기": {
+        "보이스피싱": 1,
+        "투자사기": 6,
+        "로맨스스캠": 27,
+        "부업사기": 0
+      },
+      "로맨스스캠": {
+        "보이스피싱": 6,
+        "투자사기": 2,
+        "로맨스스캠": 20,
+        "부업사기": 1
+      },
+      "부업사기": {
+        "보이스피싱": 3,
+        "투자사기": 6,
+        "로맨스스캠": 20,
+        "부업사기": 0
+      }
+    }
+  },
+  "best_test": {
+    "acc": 0.33064516129032256,
+    "macro_f1": 0.3600768789443488,
+    "per_class_f1": {
+      "보이스피싱": 0.17142857142857143,
+      "투자사기": 0.5416666666666666,
+      "로맨스스캠": 0.375,
+      "부업사기": 0.64,
+      "정상": 0.07228915662650602
+    },
+    "confusion": {
+      "보이스피싱": {
+        "보이스피싱": 3,
+        "투자사기": 0,
+        "로맨스스캠": 0,
+        "부업사기": 0,
+        "정상": 0
+      },
+      "투자사기": {
+        "보이스피싱": 0,
+        "투자사기": 13,
+        "로맨스스캠": 0,
+        "부업사기": 3,
+        "정상": 2
+      },
+      "로맨스스캠": {
+        "보이스피싱": 1,
+        "투자사기": 1,
+        "로맨스스캠": 6,
+        "부업사기": 0,
+        "정상": 0
+      },
+      "부업사기": {
+        "보이스피싱": 1,
+        "투자사기": 0,
+        "로맨스스캠": 0,
+        "부업사기": 16,
+        "정상": 3
+      },
+      "정상": {
+        "보이스피싱": 27,
+        "투자사기": 16,
+        "로맨스스캠": 18,
+        "부업사기": 11,
+        "정상": 3
+      }
+    }
+  },
+  "log": [
+    {
+      "round": 1,
+      "seg": "early",
+      "train_f1": 0.025,
+      "dev_f1": 0.27037709215567657,
+      "dev_acc": 0.28,
+      "dev_per_class": {
+        "보이스피싱": 0.0,
+        "투자사기": 0.4444444444444444,
+        "로맨스스캠": 0.27586206896551724,
+        "부업사기": 0.631578947368421,
+        "정상": 0.0
+      },
+      "prompt": "Classify this video frame into one of five categories: 보이스피싱, 투자사기, 로맨스스캠, 부업사기, 정상. Focus on specific visual cues: for 부업사기, look for app interfaces, side jobs, and passive income themes. For 로맨스스캠, identify text messages, urgency in financial transactions, and romantic relationship references. For 투자사기, analyze visuals of rapid financial gains, complex charts, and unrealistic returns. Consider the video's context: news reports may include explanatory graphics, while actual scams have a personal tone. Ensure only one category is returned per frame. Keep all important visual cues and type-distinguishing instructions while removing redundancies and resolving contradictions. The model must return ONLY one of: 보이스피싱 / 투자사기 / 로맨스스캠 / 부업사기 / 정상.",
+      "feedback": "To effectively distinguish between \"부업사기\" (side job scam), \"로맨스스캠\" (romance scam), and \"투자사기\" (investment scam), the visual detection instructions must focus on identifying specific visual and contextual patterns unique to each type of scam. For \"부업사기,\" look for visuals that promote a financial opportunity through a side job or app, with an emphasis on passive income, app interfaces, point balances, and references to daily tasks or missions. In contrast, \"로맨스스캠\" involves a narrative centered around forming a romantic relationship, with visual cues such as text messages, urgency in financial transactions, and references to romantic relationships. For \"투자사기,\" focus on visuals emphasizing rapid financial gains, complex charts, and unrealistic returns, which are more indicative of investment scams rather than the personal, emotional appeals common in \"로맨스스캠.\" Additionally, the context of the video, such as whether it is a news report or an actual scam video, can provide further clues. News reports often include explanatory text and graphics, while actual scam videos may have a more personal and direct tone. By refining the visual detection instructions to focus on these specific cues and context, we can improve the accuracy of classification between different types of scams."
+    },
+    {
+      "round": 1,
+      "seg": "late",
+      "train_f1": 0.16327300150829566,
+      "dev_f1": 0.4168627450980392,
+      "dev_acc": 0.36,
+      "dev_per_class": {
+        "보이스피싱": 0.11764705882352941,
+        "투자사기": 0.46153846153846156,
+        "로맨스스캠": 0.5,
+        "부업사기": 0.8,
+        "정상": 0.20512820512820512
+      },
+      "prompt": "Classify this video frame into one of five categories: 보이스피싱, 투자사기, 로맨스스캠, 부업사기, or 정상. Focus on visual cues: financial or work-related content suggests 부업사기; romantic or personal elements indicate 로맨스스캠. Identify urgency or pressure indicators to assist in classification. Ensure financial news remains classified as 정상 by recognizing its professional and neutral tone. Return only one category per frame, maintaining accuracy for correctly classified examples. Avoid misclassifying regular financial news by noting its neutral presentation. Use visual context to differentiate between the categories, ensuring each frame gets exactly one classification. Keep all important visual cues and type-distinguishing instructions while removing redundancies and resolving contradictions.",
+      "feedback": "The current detection struggles to differentiate between 부업사기 (side hustle scams) and 로맨스스캠 (romance scams) due to a lack of emphasis on distinguishing visual patterns. While both scams may involve messaging interfaces, their context and content differ significantly. To improve accuracy, the visual detection should focus on identifying specific cues such as the presence of financial or work-related language versus romantic or personal themes. Additionally, recognizing the role of urgency or pressure for actions can be key. Refining the visual prompts to focus on these abstract patterns should help, but cross-referencing with known scam databases could provide further accuracy.\nThe current detection struggles to differentiate regular financial news coverage from romance scam content. To imp..."
+    },
+    {
+      "round": 2,
+      "seg": "early",
+      "train_f1": 0.3447032967032967,
+      "dev_f1": 0.4473550724637681,
+      "dev_acc": 0.46,
+      "dev_per_class": {
+        "보이스피싱": 0.0,
+        "투자사기": 0.6666666666666666,
+        "로맨스스캠": 0.6,
+        "부업사기": 0.782608695652174,
+        "정상": 0.1875
+      },
+      "prompt": "Classify this video frame into one of five categories: 보이스피싱, 투자사기, 로맨스스캠, 부업사기, 정상. Focus on specific visual cues: for 부업사기, look for app interfaces, side jobs, and passive income themes. For 로맨스스캠, identify text messages, urgency in financial transactions, and romantic references. For 투자사기, analyze visuals of rapid financial gains, complex charts, and unrealistic returns. Consider context: professional certifications and detailed explanations suggest 정상, while exaggerated claims and personal tones may indicate scams. News reports may include explanatory graphics. Ensure only one category is returned per frame. The model must output ONLY one of: 보이스피싱 / 투자사기 / 로맨스스캠 / 부업사기 / 정상.",
+      "feedback": "The current detection struggles to differentiate regular content from voice phishing scams based on visual cues alone. The frames provided show similar layout, text density, and structure, making it challenging to rely solely on visual patterns for distinction. Improving visual instructions alone may not resolve this issue effectively due to the similarities. Instead, incorporating contextual analysis could enhance accuracy.\nThe current detection struggles to differentiate regular financial advice or business content (정상) from side hustle scams (부업사기) due to overlapping visual and textual elements. To improve accuracy:\n\n1. Focus on identifying **contextual patterns** that indicate a genuine offer versus a scam. For instance, the presence of professional certifications, detailed explanation..."
+    },
+    {
+      "round": 2,
+      "seg": "late",
+      "train_f1": 0.33681318681318684,
+      "dev_f1": 0.40324929971988804,
+      "dev_acc": 0.34,
+      "dev_per_class": {
+        "보이스피싱": 0.23529411764705882,
+        "투자사기": 0.5555555555555556,
+        "로맨스스캠": 0.4,
+        "부업사기": 0.7142857142857143,
+        "정상": 0.1111111111111111
+      },
+      "prompt": "Classify this video frame into one of five categories: 보이스피싱, 투자사기, 로맨스스캠, 부업사기, or 정상. Focus on identifying abstract patterns such as \"unsolicited advice,\" \"false authority claims,\" and \"unexpected demands\" that suggest phishing attempts. Look for signs of false urgency, impersonation, or unsolicited product recommendations in the visual content. Distinguish regular content from phishing attempts by analyzing the tone and context, ensuring neutral financial news remains classified as 정상. Avoid misclassifying studio interviews discussing scams broadly; identify live scam attempts based on specific visual cues. Financial or work-related content suggests 부업사기, while romantic or personal elements indicate 로맨스스캠. Identify urgency or pressure indicators to assist in classification. Return ONLY one category per frame, maintaining accuracy. Keep all important visual cues and type-distinguishing instructions while removing redundancies and resolving contradictions.",
+      "feedback": "The current detection struggles to differentiate regular content from phishing attempts based on visual cues alone. While the frames provided show consistent branding, the textual content (asr and ocr) reveals phishing attempts through false urgency, impersonation, and unsolicited product recommendations. To improve accuracy, focus on identifying abstract patterns like \"unsolicited advice,\" \"false authority claims,\" and \"unexpected demands.\"\nThe current detection struggles to differentiate regular discussions from romance scam scenarios based on visual cues alone. The frames provided show a casual, studio interview setup without any overt signs of a scam in progress. The content discusses scams in a broad sense rather than depicting a live scam attempt. To improve detection, focus on the f..."
+    },
+    {
+      "round": 3,
+      "seg": "early",
+      "train_f1": 0.4344527986633249,
+      "dev_f1": 0.3783163791832522,
+      "dev_acc": 0.3673469387755102,
+      "dev_per_class": {
+        "보이스피싱": 0.2,
+        "투자사기": 0.5263157894736842,
+        "로맨스스캠": 0.2857142857142857,
+        "부업사기": 0.7619047619047619,
+        "정상": 0.11764705882352941
+      },
+      "prompt": "Classify this video frame into one of five categories: 보이스피싱, 투자사기, 로맨스스캠, 부업사기, 정상. For 투자사기, identify graphs, financial data, rapid gains, complex charts, and mentions of stocks or crypto. For 부업사기, look for app interfaces, side jobs, part-time work, and passive income themes. For 로맨스스캠, find text messages, urgency in financial transactions, and romantic references. Consider context: news reports use explanatory graphics, scams have a personal tone, professional certifications suggest 정상, while exaggerated claims indicate scams. Focus on specific visual cues and ensure clear, concise instructions. The model must return ONLY one category per frame: 보이스피싱 / 투자사기 / 로맨스스캠 / 부업사기 / 정상. Avoid redundancies and contradictions.",
+      "feedback": "[feedback content]  \nImproving the visual detection instructions alone may not fully resolve the classification error between \"투자사기\" (investment scam) and \"부업사기\" (side hustle scam). Both involve deceptive financial practices but have distinct visual and contextual elements.  \n\nTo distinguish \"투자사기\" from \"부업사기,\" focus on identifying whether the content primarily involves large-scale investment opportunities with promises of significant returns. Look for visual cues such as graphs, charts, financial data, or mentions of stocks, cryptocurrency, or other investment vehicles. These elements are characteristic of \"투자사기.\"  \n\nIn contrast, \"부업사기\" often focuses on smaller, daily tasks or missions, with visual elements like app interfaces, point balances, or references to part-time work. The absence ..."
+    },
+    {
+      "round": 3,
+      "seg": "late",
+      "train_f1": 0.2658008658008658,
+      "dev_f1": 0.3384136015714963,
+      "dev_acc": 0.30612244897959184,
+      "dev_per_class": {
+        "보이스피싱": 0.0,
+        "투자사기": 0.631578947368421,
+        "로맨스스캠": 0.2857142857142857,
+        "부업사기": 0.6666666666666666,
+        "정상": 0.10810810810810811
+      },
+      "prompt": "Classify each video frame into one of five categories: 보이스피싱, 투자사기, 로맨스스캠, 부업사기, or 정상. Focus on identifying scam-specific patterns: unusual payment requests, exaggerated claims, or explicit calls for personal info. Financial or work-related content suggests 부업사기; romantic or personal elements indicate 로맨스스캠. Urgency or pressure signals aid classification. Regular financial content, with a professional and neutral tone, remains 정상. Avoid misclassifying financial news as 부업사기 by noting its neutral presentation. Look for abstract patterns like \"unsolicited advice,\" \"false authority claims,\" and \"unexpected demands.\" Analyze tone and context to distinguish regular content from phishing attempts. Return ONLY one category per frame, maintaining accuracy. Use visual context for differentiation, keeping important cues while removing redundancies and resolving contradictions.",
+      "feedback": "The current detection struggles to differentiate regular financial content from potential scams based on visual cues alone. The video content appears to focus on financial advice, market analysis, and related topics, which are generally normal. However, the detection occasionally flags these as potential \"side jobs scams.\" To address this, we should focus on identifying patterns that typically indicate scams, such as unusual payment requests, exaggerated claims, or explicit calls-to-action for personal information. The current frames don't showcase these elements clearly. Refining the visual detection instructions to focus on more generalized scam patterns would be beneficial.\nThe current detection struggles to differentiate regular content from romance scam content based on visual cues al..."
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "method": "APO-GPT",
+  "gpt_model": "gpt-4o-mini",
+  "best_prompt": "Assess the video for indications of a cyber scam. Focus particularly on whether it offers educational insights about scams, addresses ways to prevent them, or alerts viewers to fraudulent practices. Look for signs of deception, unusual behavior, or any fraud indicators, while also determining if the video's purpose is to inform or educate rather than to promote a scam. Assign a probability score (from 0.0 to 1.0) indicating the likelihood that this video is associated with a cyber scam, making a clear distinction between genuine educational content and fraudulent intentions.",
+  "initial_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+  "baseline_test": {
+    "accuracy": 0.525,
+    "f1_macro": 0.5247,
+    "auc": 0.4828,
+    "map": 0.349
+  },
+  "best_test": {
+    "accuracy": 0.7,
+    "f1_macro": 0.6979,
+    "auc": 0.7173,
+    "map": 0.4803
+  },
+  "config": {
+    "rounds": 6,
+    "beam_size": 4,
+    "minibatch_size": 32,
+    "n_gradients": 4,
+    "errors_per_gradient": 4,
+    "gradients_per_error": 1,
+    "steps_per_gradient": 1,
+    "mc_samples_per_step": 2,
+    "max_expansion_factor": 8,
+    "evaluator": "ucb",
+    "eval_rounds": 4,
+    "eval_prompts_per_round": 8,
+    "samples_per_eval": 16,
+    "eval_budget": 512,
+    "c": 1.0
+  },
+  "log": [
+    {
+      "round": 0,
+      "dev_map": 0.4059,
+      "dev_auc": 0.5295,
+      "dev_f1": 0.4828,
+      "dev_acc": 0.4833,
+      "prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam."
+    },
+    {
+      "round": 1,
+      "dev_map": 0.4657,
+      "dev_auc": 0.6114,
+      "dev_f1": 0.4931,
+      "dev_acc": 0.5,
+      "prompt": "\"Examine the video’s content and determine if it displays traits typically linked to cyber scams. Take into account elements like odd requests for personal details, offers that appear excessively advantageous, and any warning signs that could suggest deceitful conduct. Assign a probability score ranging from 0.0 to 1.0 to indicate the chance that this video is associated with a cyber scam.\""
+    },
+    {
+      "round": 2,
+      "dev_map": 0.5629,
+      "dev_auc": 0.715,
+      "dev_f1": 0.7103,
+      "dev_acc": 0.725,
+      "prompt": "\"Evaluate the content of this video for signs of a cyber scam. Pay special attention to whether the video is providing educational information about scams, discussing preventive measures, or warning viewers about fraudulent activities. Consider deceptive practices, suspicious behavior, or any indications of fraud, but also identify if the intent is to inform or educate rather than promote a scam. Provide a probability score (0.0-1.0) that this video contains a cyber scam, clearly distinguishing between legitimate educational content and fraudulent intent.\""
+    },
+    {
+      "round": 3,
+      "dev_map": 0.5756,
+      "dev_auc": 0.757,
+      "dev_f1": 0.7241,
+      "dev_acc": 0.7333,
+      "prompt": "Assess the video for indications of a cyber scam. Focus particularly on whether it offers educational insights about scams, addresses ways to prevent them, or alerts viewers to fraudulent practices. Look for signs of deception, unusual behavior, or any fraud indicators, while also determining if the video's purpose is to inform or educate rather than to promote a scam. Assign a probability score (from 0.0 to 1.0) indicating the likelihood that this video is associated with a cyber scam, making a clear distinction between genuine educational content and fraudulent intentions."
+    },
+    {
+      "round": 4,
+      "dev_map": 0.4671,
+      "dev_auc": 0.629,
+      "dev_f1": 0.6181,
+      "dev_acc": 0.6333,
+      "prompt": "Carefully analyze the video's content and assign a probability score between 0.0 and 1.0 that indicates the likelihood of it containing elements of a cyber scam. Cyber scams can include tactics like phishing attacks, fraudulent investment opportunities, or misleading advertisements. While assessing, consider the context: genuine news reports or educational content should not be mistakenly classified as scams. Identify clear indicators of scams, such as dubious links, unsolicited demands for personal information, or offers that appear too good to be true. If the content seems to be standard news or educational material without these red flags, assign it a low probability score."
+    },
+    {
+      "round": 5,
+      "dev_map": 0.5136,
+      "dev_auc": 0.6717,
+      "dev_f1": 0.6132,
+      "dev_acc": 0.6583,
+      "prompt": "\"Evaluate the video in the context of cyber scams by considering both explicit content and underlying messages. Analyze the language, visual elements, and overall intent of the video. Determine if the video is primarily educational or informative about scams, or if it potentially promotes or participates in dishonest activities related to cyber scams. Assign a probability score (from 0.0 to 1.0) indicating the likelihood that the video is endorsing or engaging in cyber scam activities, while carefully considering the nuances and context of the presentation.\""
+    },
+    {
+      "round": 6,
+      "dev_map": 0.539,
+      "dev_auc": 0.5379,
+      "dev_f1": 0.4047,
+      "dev_acc": 0.625,
+      "prompt": "Examine the video for its content concerning cyber scams. Take careful note of both direct messages and deeper themes. Analyze the language, visual elements, and the overall purpose. Aim to determine whether the video aims to educate or inform about scams, rather than encouraging fraudulent behavior. Provide specific instances from the video that back up your assessment. Rate the probability (on a scale from 0.0 to 1.0) of the video promoting or participating in cyber scam activities, while clearly differentiating between standard and atypical content based on the cues observed."
+    }
+  ]
+}

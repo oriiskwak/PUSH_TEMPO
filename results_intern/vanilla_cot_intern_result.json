@@ -1,0 +1,26 @@
+{
+  "method": "Vanilla+CoT (InternVL, no optimization)",
+  "initial_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+  "score_suffix": "\nThink step by step: first describe the visual evidence you see in this frame (on-screen text, UI elements, people, context), then briefly reason about whether that evidence matches common cyber scam patterns (urgency, unrealistic returns, impersonation, requests for money/personal info). Finally, end your response with the probability as a single number 0.0-1.0.",
+  "split": {
+    "train": 360,
+    "dev": 120,
+    "test": 121,
+    "seed": 42
+  },
+  "dev": {
+    "auc": 0.6364618709478235,
+    "map": 0.45019266178635264,
+    "f1": 0.5324675324675324,
+    "acc": 0.4
+  },
+  "test": {
+    "auc": 0.662719298245614,
+    "map": 0.5197531973122617,
+    "f1": 0.5555555555555556,
+    "acc": 0.4049586776859504
+  },
+  "test_f1_opt": 0.5521472392638037,
+  "test_acc_opt": 0.39669421487603307,
+  "best_threshold": 0.45
+}

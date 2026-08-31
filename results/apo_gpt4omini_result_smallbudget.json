@@ -1,0 +1,93 @@
+{
+  "method": "APO-GPT",
+  "gpt_model": "gpt-4o-mini",
+  "best_prompt": "Evaluate the content of the video by examining both its visual and auditory components to ascertain whether it is promoting or linked to a cyber scam. Pay particular attention to distinct signs of malicious intent, including deceptive assertions, urgency in the communication, and solicitations for personal data. Exercise caution to avoid confusing educational material on scams with promotional content. Reflect on the video's overarching objective: if it is designed to teach viewers how to identify scams or to raise awareness about cybersecurity, it should not be deemed as promoting a scam. Assign a likelihood rating (from 0.0 to 1.0) regarding the video's potential to endorse a cyber scam, making sure to distinguish between educational content and genuine endorsements of fraudulent activities.",
+  "initial_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+  "baseline_test": {
+    "accuracy": 0.525,
+    "f1_macro": 0.5242,
+    "auc": 0.499,
+    "map": 0.3577
+  },
+  "best_test": {
+    "accuracy": 0.6583,
+    "f1_macro": 0.6371,
+    "auc": 0.6523,
+    "map": 0.4705
+  },
+  "config": {
+    "rounds": 6,
+    "beam_size": 4,
+    "minibatch_size": 32,
+    "n_gradients": 4,
+    "errors_per_gradient": 4,
+    "gradients_per_error": 1,
+    "steps_per_gradient": 1,
+    "mc_samples_per_step": 2,
+    "max_expansion_factor": 8,
+    "evaluator": "ucb",
+    "eval_rounds": 4,
+    "eval_prompts_per_round": 8,
+    "samples_per_eval": 16,
+    "eval_budget": 512,
+    "c": 1.0
+  },
+  "log": [
+    {
+      "round": 0,
+      "dev_map": 0.3968,
+      "dev_auc": 0.5213,
+      "dev_f1": 0.4828,
+      "dev_acc": 0.4833,
+      "prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam."
+    },
+    {
+      "round": 1,
+      "dev_map": 0.3894,
+      "dev_auc": 0.5369,
+      "dev_f1": 0.4965,
+      "dev_acc": 0.5,
+      "prompt": "Examine the video’s content and assess the probability (ranging from 0.0 to 1.0) that it includes characteristics commonly associated with cyber scams, such as phishing efforts, fraudulent investment schemes, or tactics related to identity theft. Take into account both visual and verbal indicators that might suggest dishonest practices."
+    },
+    {
+      "round": 2,
+      "dev_map": 0.4325,
+      "dev_auc": 0.5969,
+      "dev_f1": 0.5499,
+      "dev_acc": 0.55,
+      "prompt": "\"Examine the complete context, emotional tone, and purpose of the video's material. Take into account both the visual and sound components, alongside the underlying messaging and intent of the video. Assess the probability (on a scale from 0.0 to 1.0) that this video is associated with or endorsing a cyber scam, prioritizing the broader context over individual signals or expressions.\""
+    },
+    {
+      "round": 3,
+      "dev_map": 0.4842,
+      "dev_auc": 0.6241,
+      "dev_f1": 0.6298,
+      "dev_acc": 0.65,
+      "prompt": "\"Evaluate the video's content for potential indicators of cyber scams, while also considering the overall context and tone of the material. Assess the likelihood (on a scale from 0.0 to 1.0) that the video exhibits traits associated with scams. Look for visual cues (like unusual website layouts or suspicious logos) and verbal signals (such as urgent requests for personal information or promises of unrealistic returns) but balance these observations with the general message and intent of the video. Ensure your assessment reflects a nuanced understanding of both common scam traits and legitimate content to avoid misclassification.\""
+    },
+    {
+      "round": 4,
+      "dev_map": 0.4371,
+      "dev_auc": 0.5716,
+      "dev_f1": 0.5362,
+      "dev_acc": 0.5417,
+      "prompt": "\"Review the video carefully for specific indicators of cyber scams. Focus on identifying signs such as misleading claims, requests for sensitive personal information, high-pressure tactics, or suspicious links. Clearly differentiate between normal content and potential scams by considering the following: \n\n1. **Visual Elements**: Look for overly flashy graphics, inconsistent branding, or misleading text.\n2. **Audio Cues**: Pay attention to the tone of voice, urgency in speech, and choice of words that may suggest manipulation or deceit.\n\nAfter your analysis, rate the likelihood (on a scale from 0.0 to 1.0) that this video is promoting or engaging in a cyber scam, ensuring to justify your assessment based on the identified characteristics.\""
+    },
+    {
+      "round": 5,
+      "dev_map": 0.5416,
+      "dev_auc": 0.68,
+      "dev_f1": 0.6698,
+      "dev_acc": 0.7083,
+      "prompt": "Evaluate the content of the video by examining both its visual and auditory components to ascertain whether it is promoting or linked to a cyber scam. Pay particular attention to distinct signs of malicious intent, including deceptive assertions, urgency in the communication, and solicitations for personal data. Exercise caution to avoid confusing educational material on scams with promotional content. Reflect on the video's overarching objective: if it is designed to teach viewers how to identify scams or to raise awareness about cybersecurity, it should not be deemed as promoting a scam. Assign a likelihood rating (from 0.0 to 1.0) regarding the video's potential to endorse a cyber scam, making sure to distinguish between educational content and genuine endorsements of fraudulent activities."
+    },
+    {
+      "round": 6,
+      "dev_map": 0.4814,
+      "dev_auc": 0.6191,
+      "dev_f1": 0.5964,
+      "dev_acc": 0.6583,
+      "prompt": "\"Review the video carefully, keeping in mind that not all flashy graphics or urgent tones indicate a cyber scam. Pay close attention to the cultural context and intended audience of the content, as these factors can significantly influence the presentation style.\n\n1. **Visual Elements**: Analyze whether flashy graphics are paired with misleading claims or if they are part of a culturally accepted marketing strategy. Look for elements of consistent branding, clear messaging, and alignment with the norms of the target audience.\n\n2. **Audio Cues**: Evaluate the tone and urgency in the speech based on the overall message and context. Consider whether the language used is appropriate for the audience and if it genuinely seeks to inform rather than incite fear or urgency without basis.\n\n3. **Contextual Understanding**: Reflect on the overall purpose of the video. Is it educational, promotional, or informative? Assess how the content aligns with typical practices within its genre or industry.\n\nAfter your review, rate the likelihood (on a scale from 0.0 to 1.0) that this video is promoting or engaging in a cyber scam. Provide a well-rounded justification for your assessment that incorporates potential scam indicators while also respecting the cultural and contextual nuances of the content.\""
+    }
+  ]
+}

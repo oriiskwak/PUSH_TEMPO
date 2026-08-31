@@ -1,0 +1,27 @@
+{
+  "backend": "intern",
+  "cyren_variant": "ensemble_top3",
+  "n_videos": 121,
+  "auc": {
+    "cyren_ensemble": 0.6826023391812865,
+    "uniapo": 0.6261695906432748,
+    "diff": 0.05643274853801172,
+    "ci_95": [
+      0.0054003718611275375,
+      0.10854069442532131
+    ],
+    "contains_zero": false,
+    "n_boot_valid": 10000
+  },
+  "map": {
+    "cyren_ensemble": 0.5514042716654445,
+    "uniapo": 0.534991133727949,
+    "diff": 0.016413137937495437,
+    "ci_95": [
+      -0.06651119566693346,
+      0.10768246219364154
+    ],
+    "contains_zero": true,
+    "n_boot_valid": 10000
+  }
+}

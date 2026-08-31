@@ -1,0 +1,61 @@
+{
+  "method": "Tool-EM",
+  "best_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam, focusing on transparency, credibility, and context. For financial content, look for detailed explanations, reputable sources, and balanced risk-benefit presentations. Abstract patterns include formal interviews, expert discussions, and structured presentations. For urgency and phone call scenarios, consider the conversation's context. If the content is educational about scams or from a well-established channel with informative ASR, it's likely legitimate. Evaluate the channel's credibility and ASR nature. Return ONLY a float 0.0–1.0.",
+  "baseline_test": {
+    "auc": null,
+    "map": null,
+    "f1": null,
+    "acc": null
+  },
+  "best_test": {
+    "kl": 1.2305861207455162,
+    "auc": 0.47511111111111104,
+    "map": 0.3369107953155337,
+    "f1": 0.5196850393700787,
+    "acc": 0.49166666666666664
+  },
+  "best_test_f1_opt": 0.5196850393700787,
+  "best_test_acc_opt": 0.49166666666666664,
+  "log": [
+    {
+      "round": 1,
+      "train_map": 0.21302958642738584,
+      "dev_map": 0.4866932092742742,
+      "dev_auc": 0.5681818181818181,
+      "dev_f1": 0.6415094339622641,
+      "dev_acc": 0.62,
+      "prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam, focusing on transparency, credibility, and context. For financial content, look for detailed explanations, reputable sources, and balanced risk-benefit presentations. Abstract patterns include formal interviews, expert discussions, and structured presentations. For urgency and phone call scenarios, consider the conversation's context. If the content is educational about scams or from a well-established channel with informative ASR, it's likely legitimate. Evaluate the channel's credibility and ASR nature. Return ONLY a float 0.0–1.0.",
+      "feedback": "The model is over-detecting scam content, particularly in financial discussions, investment advice, and scenarios involving urgency and phone calls. To distinguish between legitimate content and scams, the model should focus on identifying patterns that indicate transparency, credibility, and context. For financial content, look for detailed explanations, references to reputable sources, and a balanced presentation of risks and benefits. Abstract patterns to watch for include formal interviews, expert discussions, and structured presentations of investment concepts. For content involving urgency and phone calls, consider the context and the nature of the conversation. If the content is part of an educational video about scams, or if the channel is well-established and the ASR content is informative rather than deceptive, the content is likely legitimate. Additionally, the model should consider the credibility of the channel and the nature of the ASR content. Improving the visual detection instructions alone may not be sufficient to resolve this issue."
+    },
+    {
+      "round": 2,
+      "train_map": 0.3361709718852576,
+      "dev_map": 0.3509801358473216,
+      "dev_auc": 0.4325,
+      "dev_f1": 0.4897959183673469,
+      "dev_acc": 0.5,
+      "prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam, focusing on transparency, credibility, and context. For financial content, look for detailed explanations, reputable sources, and balanced risk-benefit presentations. Abstract patterns include formal interviews, expert discussions, and structured presentations. For urgency and phone call scenarios, consider the conversation's context. If the content is educational about scams or from a well-established channel with informative ASR, it's likely legitimate. Evaluate the channel's credibility and ASR nature. Return ONLY a float 0.0–1.0.",
+      "feedback": "The current false positives indicate that the model is over-detecting scam content in video frames containing road signs and driving-related visuals. These frames do not inherently contain financial or urgency-related content that would typically suggest a scam. Instead, the model seems to mistakenly associate road signs or driving scenes with suspicious activity, likely due to a lack of contextual understanding.\n\nTo distinguish between legitimate driving content and actual scams:\n1. **Abstract visual patterns**: Focus on identifying scenes that are typically associated with scams, such as close-ups of individuals making urgent phone calls, financial transactions, or financial charts. Driving scenes should not be flagged unless accompanied by clear scam-related content.\n2. **Contextual ana..."
+    },
+    {
+      "round": 3,
+      "train_map": 0.4751701777077454,
+      "dev_map": 0.4539469578602856,
+      "dev_auc": 0.5072463768115942,
+      "dev_f1": 0.6229508196721312,
+      "dev_acc": 0.54,
+      "prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam, focusing on transparency, credibility, and context. For financial content, look for detailed explanations, reputable sources, and balanced risk-benefit presentations. Abstract patterns include formal interviews, expert discussions, and structured presentations. For urgency and phone call scenarios, consider the conversation's context. If the content is educational about scams or from a well-established channel with informative ASR, it's likely legitimate. Evaluate the channel's credibility and ASR nature. Return ONLY a float 0.0–1.0.",
+      "feedback": "To address the issue of the model over-detecting scam content in financial discussions and investment advice, the following policy should be implemented:\n\n1. **Content Context and Structure**: Focus on the broader context of the video. Legitimate financial content often includes structured news reports or educational segments with transparent risk explanations, reputable sources, and balanced presentations of risks and benefits. Avoid flagging content based solely on the presence of financial charts, formal settings, or advice-giving contexts.\n\n2. **Detailed Explanations and Reputable Sources**: Legitimate financial advice typically involves detailed explanations and references to reputable sources. Look for content that provides a balanced presentation of risks and benefits rather than exaggerated claims or unsolicited advice.\n\n3. **Formal Interviews and Expert Discussions**: Legitimate financial advice often involves structured interviews or expert discussions where the context is transparent and the source is credible. These segments are usually part of a larger, well-organized presentation of investment concepts.\n\n4. **Channel Credibility**: Evaluate the channel’s reputation, subscriber base, and history of content. Established channels with a track record of reliable content are less likely to host scams. Consider the channel name, subscriber count, and other indicators of credibility when assessing the legitimacy of financial content.\n\nImplementing these guidelines will help distinguish between legitimate financial advice and actual scams, reducing the over-detection of scam content by the model."
+    },
+    {
+      "round": 4,
+      "train_map": 0.5280900508351489,
+      "dev_map": 0.39140297873332924,
+      "dev_auc": 0.5314091680814941,
+      "dev_f1": 0.5769230769230769,
+      "dev_acc": 0.56,
+      "prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam, focusing on transparency, credibility, and context. For financial content, look for detailed explanations, reputable sources, and balanced risk-benefit presentations. Abstract patterns include formal interviews, expert discussions, and structured presentations. For urgency and phone call scenarios, consider the conversation's context. If the content is educational about scams or from a well-established channel with informative ASR, it's likely legitimate. Evaluate the channel's credibility and ASR nature. Return ONLY a float 0.0–1.0.",
+      "feedback": "To address the issue of over-detecting scam content, especially in videos that include visual patterns resembling urgent phone calls, financial discussions, expert-like presentations, or formal interviews, the following policy should be implemented:\n\n1. **Evaluate Contextual Cues**: The model should focus on the broader context of the video to distinguish between legitimate content and scams. Legitimate content, whether educational or financial advice, typically provides detailed explanations, references reputable sources, includes transparent risk explanations, and presents balanced information. Scams, on the other hand, often use urgent tones, high-pressure tactics, and vague promises.\n\n2. **Channel Credibility**: Assess the channel's reputation and subscriber base. Established channels with a history of reliable content, such as reputable news channels or educational platforms, are less likely to host scam content. Channels that consistently provide credible and balanced information should be given higher credibility in the model's evaluation.\n\nBy applying these guidelines, the model can more accurately differentiate between legitimate content and actual scams, reducing the number of false positives and ensuring that valuable educational and financial advice content is not mistakenly flagged."
+    }
+  ]
+}

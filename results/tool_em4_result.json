@@ -1,0 +1,101 @@
+{
+  "method": "Tool-EM-v4",
+  "best_prompt": "Estimate the probability (0.0–1.0) that this video frame is a cyber scam. Focus on professional elements like studio settings, clear branding, and formal attire. Analyze the tone for balance and informativeness, avoiding urgent or aggressive language common in scams. Consider the source's credibility, including reputable news channels, expert involvement, and clear disclaimers. Differentiate between legitimate financial advice and scams, especially in educational or news contexts. Be cautious with text overlays containing commands or technical instructions, as they can appear in tutorials. Similarly, computer screens showing software interfaces should not trigger high scam probability unless other indicators are present. Avoid content with overly simplified financial charts and aggressive return claims that create urgency. Return ONLY a float 0.0–1.0.",
+  "baseline_test": {
+    "auc": null,
+    "map": null,
+    "f1": null,
+    "acc": null
+  },
+  "best_test": {
+    "kl": 0.7325096671634372,
+    "auc": 0.5968888888888889,
+    "map": 0.4003720324167469,
+    "f1": 0.4752475247524752,
+    "acc": 0.5583333333333333
+  },
+  "best_test_f1_opt": 0.5833333333333334,
+  "best_test_acc_opt": 0.5833333333333334,
+  "log": [
+    {
+      "round": 1,
+      "train_map": 0.21302958642738584,
+      "dev_map": 0.4339446891395717,
+      "dev_auc": 0.5162337662337662,
+      "dev_f1": 0.5882352941176471,
+      "dev_acc": 0.58,
+      "prompt": "Estimate the probability (0.0–1.0) that this video frame is part of a cyber scam. Focus on identifying transparency and credibility through professional credentials, clear disclaimers, and structured presentation formats. Ensure the model recognizes legitimate financial advice in educational or news contexts. Avoid confusion with financial advisory phrases that are part of legitimate content. Return ONLY a float 0.0–1.0.",
+      "feedback": "The model is over-detecting scam content due to visual patterns related to financial discussions and investment advice. These frames show individuals in formal settings discussing investment strategies, which the model might confuse with scams due to the presence of financial terms and advice. To distinguish between legitimate financial advice and scams, focus on identifying patterns that indicate transparency and credibility, such as professional credentials, clear disclaimers, and structured presentation formats. Additionally, ensure the model recognizes the context of educational or news content rather than unsolicited financial advice.\nThe current false positive is likely due to the presence of certain financial advisory phrases and contact numbers in the OCR text, which may resemble p..."
+    },
+    {
+      "round": 2,
+      "train_map": 0.40419000933706817,
+      "dev_map": 0.5809177447509493,
+      "dev_auc": 0.7683333333333333,
+      "dev_f1": 0.5714285714285714,
+      "dev_acc": 0.7,
+      "prompt": "Estimate the probability (0.0–1.0) that this video frame is part of a cyber scam. Focus on professional contextual cues like studio environments, clear branding, and formal attire. Analyze the content's tone for balance and informativeness, avoiding urgent or aggressive language common in scams. Consider the credibility of the source, including reputable news channels, expert involvement, and clear disclaimers. Ensure the model distinguishes between legitimate financial advice and scams, reducing over-detection in educational or news contexts. Return ONLY a float 0.0–1.0.",
+      "feedback": "To address the issue of over-detecting scam content, especially in financial advice and news reports, the model should be refined to distinguish between legitimate content and actual scams by focusing on the following key elements:\n\n1. **Professional Contextual Cues**: The model should identify visual indicators of a structured, professional setting, such as a studio environment, clear branding, formal attire, and a well-known news channel. Scams often lack these cues and may appear less polished.\n\n2. **Balanced and Informative Tone**: Legitimate financial advice and news reports typically have a balanced and informative tone. The model should analyze the tone of the content, noting that scams often use urgent or aggressive language.\n\n3. **Context and Credibility of the Source**: The model should recognize the overall context of the communication, including whether it is from a reputable source. A professional presentation format, clear disclaimers, and the involvement of experts or journalists are strong indicators of legitimate content. The model should also consider the balance and tone of the content, as well as verifying the channel's credibility and subscriber base.\n\nBy integrating these elements, the model can more accurately distinguish between legitimate financial advice, news reports, and actual scams, reducing the over-detection of scam content."
+    },
+    {
+      "round": 3,
+      "train_map": 0.707565398714467,
+      "dev_map": 0.5625317720296051,
+      "dev_auc": 0.6586151368760065,
+      "dev_f1": 0.6428571428571429,
+      "dev_acc": 0.6,
+      "prompt": "Estimate the probability (0.0–1.0) that this video frame is part of a cyber scam. Focus on professional contextual cues like studio environments, clear branding, and formal attire. Analyze the content's tone for balance and informativeness, avoiding urgent or aggressive language common in scams. Consider the credibility of the source, including reputable news channels, expert involvement, and clear disclaimers. Ensure the model distinguishes between legitimate financial advice and scams, reducing over-detection in educational or news contexts. Return ONLY a float 0.0–1.0.",
+      "feedback": "Improving the visual detection instructions alone cannot fully resolve this error. The current prompt is missing key scam signals related to the use of overly simplistic financial charts and aggressive investment return claims. These elements are often used to create a sense of urgency and pressure the viewer into quick, impulsive decisions. The prompt should consider the following abstract visual patterns:\n\n1. **Overly Simplified Financial Charts**: Scam content often uses basic, unexplained financial charts that promise high returns with little risk. Legitimate content usually includes detailed explanations and disclaimers about the risks involved.\n2. **Aggressive Return Claims**: The presence of bold text or voice-overs claiming exceptionally high returns or guaranteed profits is a comm..."
+    },
+    {
+      "round": 4,
+      "train_map": 0.870436507936508,
+      "dev_map": 0.43951403860960236,
+      "dev_auc": 0.6179966044142615,
+      "dev_f1": 0.5957446808510638,
+      "dev_acc": 0.62,
+      "prompt": "Estimate the probability (0.0–1.0) that this video frame is part of a cyber scam. Focus on professional contextual cues like studio environments, clear branding, and formal attire. Analyze the content's tone for balance and informativeness, avoiding urgent or aggressive language common in scams. Consider the credibility of the source, including reputable news channels, expert involvement, and clear disclaimers. Ensure the model distinguishes between legitimate financial advice and scams, reducing over-detection in educational or news contexts. Return ONLY a float 0.0–1.0.",
+      "feedback": "Improving the visual detection instructions alone cannot fully resolve this error. The model is over-detecting scam content due to the presence of security awareness-related visual elements and financial discussions, which can appear in legitimate educational or news content. To distinguish these patterns from actual scams:\n\n1. **Abstract Visual Patterns**: Focus on broader context cues such as structured presentation formats, professional branding, and organized layout commonly found in reputable news or educational content. Scams often lack these elements, featuring disorganized or overly aggressive visuals.\n\n2. **Textual and Contextual Analysis**: Analyze the tone and language used in the content. Legitimate security awareness content typically provides clear, balanced guidance without ..."
+    },
+    {
+      "round": 5,
+      "train_map": 0.2764021692593121,
+      "dev_map": 0.5958410648159626,
+      "dev_auc": 0.6988727858293076,
+      "dev_f1": 0.6382978723404256,
+      "dev_acc": 0.66,
+      "prompt": "Estimate the probability (0.0–1.0) that this video frame is a cyber scam. Focus on professional elements like studio settings, clear branding, and formal attire. Analyze the tone for balance and informativeness, avoiding urgent or aggressive language common in scams. Consider the source's credibility, including reputable news channels, expert involvement, and clear disclaimers. Differentiate between legitimate financial advice and scams, especially in educational or news contexts. Be cautious with text overlays containing commands or technical instructions, as they can appear in tutorials. Similarly, computer screens showing software interfaces should not trigger high scam probability unless other indicators are present. Avoid content with overly simplified financial charts and aggressive return claims that create urgency. Return ONLY a float 0.0–1.0.",
+      "feedback": "Improving the visual detection instructions alone cannot fully fix this error. The model is over-detecting scam content in videos that include text overlays and screen recordings of software interfaces, which may resemble phishing or hacking tools. The visual patterns causing the model to over-detect include:\n\n1. **Text Overlays with Commands or Instructions**: The presence of text overlays containing what appears to be commands or technical instructions is triggering a high probability of scam content. However, these could be part of legitimate tutorials or news reports about technology or software.\n\n2. **Computer Screens Showing Software or Interfaces**: The model is likely interpreting the display of computer interfaces or software as indicative of malicious activity, especially when co..."
+    },
+    {
+      "round": 6,
+      "train_map": 0.6501108776844071,
+      "dev_map": 0.4978254185984191,
+      "dev_auc": 0.6701388888888888,
+      "dev_f1": 0.6086956521739131,
+      "dev_acc": 0.64,
+      "prompt": "Estimate the probability (0.0–1.0) that this video frame is a cyber scam. Focus on professional elements like studio settings, clear branding, and formal attire. Analyze the tone for balance and informativeness, avoiding urgent or aggressive language common in scams. Consider the source's credibility, including reputable news channels, expert involvement, and clear disclaimers. Differentiate between legitimate financial advice and scams, especially in educational or news contexts. Be cautious with text overlays containing commands or technical instructions, as they can appear in tutorials. Similarly, computer screens showing software interfaces should not trigger high scam probability unless other indicators are present. Avoid content with overly simplified financial charts and aggressive return claims that create urgency. Return ONLY a float 0.0–1.0.",
+      "feedback": "Improving the visual detection instructions alone cannot fully fix the over-detection of scam content due to the presence of urgent communication elements and financial discussions, which also appear in legitimate content such as educational videos or security alerts. To distinguish these patterns from actual scams, the model should:\n\n1. **Analyze Urgent Messaging Context**: The model should evaluate the broader context of urgent messaging. Legitimate content often includes urgent messages for security awareness or important notifications, which are usually balanced with clear explanations and professional branding. In contrast, scams tend to use urgent messaging without a clear, structured context.\n\n2. **Assess Technical Instruction Tone**: The tone of technical instructions should be considered. Legitimate educational content typically has a professional and structured tone.\n\n3. **Recognize Abstract Visual Patterns**: The model should be trained to recognize broader context clues such as professional branding, clear disclaimers, and structured presentation formats, which are common in reputable educational or news content. While financial discussions and urgent messaging are common in scams, they can also appear in legitimate content. Additional visual cues like a professional tone and clear branding should help in distinguishing between the two."
+    },
+    {
+      "round": 7,
+      "train_map": 0.7307208994708995,
+      "dev_map": 0.39246160337491603,
+      "dev_auc": 0.6185383244206775,
+      "dev_f1": 0.4444444444444444,
+      "dev_acc": 0.6,
+      "prompt": "Estimate the probability (0.0–1.0) that this video frame is a cyber scam. Focus on professional elements like studio settings, clear branding, and formal attire. Analyze the tone for balance and informativeness, avoiding urgent or aggressive language common in scams. Consider the source's credibility, including reputable news channels, expert involvement, and clear disclaimers. Differentiate between legitimate financial advice and scams, especially in educational or news contexts. Be cautious with text overlays containing commands or technical instructions, as they can appear in tutorials. Similarly, computer screens showing software interfaces should not trigger high scam probability unless other indicators are present. Avoid content with overly simplified financial charts and aggressive return claims that create urgency. Return ONLY a float 0.0–1.0.",
+      "feedback": "To address the issue of over-detecting scam content, the model must consider both abstract visual patterns and textual/contextual analysis, as visual and textual elements common in scams can also appear in legitimate news or educational content. Specifically:\n\n1. **Abstract Visual Patterns**: The model should focus on broader context clues such as structured content presentation, professional branding, and balanced visual elements. Financial discussions and urgent messaging, while common in scams, can also be part of legitimate content like security alerts or educational videos. Scams often lack cohesive structure and have inconsistent branding, which the model should be trained to recognize.\n\n2. **Textual and Contextual Analysis**: The model should analyze the tone and balance of the content. Legitimate content typically provides clear, informative guidance without creating panic or misleading urgency. By integrating these comprehensive analysis methods, the model can more accurately distinguish between legitimate content and actual scams, reducing false positives."
+    },
+    {
+      "round": 8,
+      "train_map": 0.6855411792847294,
+      "dev_map": 0.4024918232061446,
+      "dev_auc": 0.6488970588235294,
+      "dev_f1": 0.5365853658536586,
+      "dev_acc": 0.62,
+      "prompt": "Estimate the probability (0.0–1.0) that this video frame is a cyber scam. Focus on professional elements like studio settings, clear branding, and formal attire. Analyze the tone for balance and informativeness, avoiding urgent or aggressive language common in scams. Consider the source's credibility, including reputable news channels, expert involvement, and clear disclaimers. Differentiate between legitimate financial advice and scams, especially in educational or news contexts. Be cautious with text overlays containing commands or technical instructions, as they can appear in tutorials. Similarly, computer screens showing software interfaces should not trigger high scam probability unless other indicators are present. Avoid content with overly simplified financial charts and aggressive return claims that create urgency. Return ONLY a float 0.0–1.0.",
+      "feedback": "Improving the visual detection instructions alone cannot fully address the issue of over-detecting scam content. The current model misinterprets certain visual and textual patterns as scams, even when they appear in legitimate news or educational videos. These patterns include professional branding elements, formal discussions about financial or legal topics, financial discussions, urgent messaging, and structured presentation formats. To better distinguish legitimate content from actual scams, the model should focus on the broader context of the content. It should look for additional visual cues such as clear branding, a professional tone, and structured presentation formats that indicate genuineness. The model should be trained to recognize these elements in various contexts, especially in security alerts or educational videos, to avoid misinterpretation."
+    }
+  ]
+}

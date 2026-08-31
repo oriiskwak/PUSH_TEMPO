@@ -1,0 +1,38 @@
+{
+  "method": "Baseline-GPT (no optimization)",
+  "gpt_model": "gpt-4o-mini",
+  "initial_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+  "split": {
+    "train": 360,
+    "dev": 120,
+    "test": 121,
+    "seed": 42
+  },
+  "dev": {
+    "kl": 0.7658949643558414,
+    "auc": 0.5220740740740741,
+    "map": 0.3953926785738371,
+    "f1": 0.5040650406504065,
+    "f1_macro": 0.49134875964144253,
+    "acc": 0.49166666666666664,
+    "auc_ratio": 0.5074074074074074,
+    "map_ratio": 0.3837206787616638,
+    "f1_ratio": 0.5375,
+    "acc_ratio": 0.38333333333333336
+  },
+  "test": {
+    "kl": 0.9040408439827441,
+    "auc": 0.5050370370370371,
+    "map": 0.35660683239149843,
+    "f1": 0.5573770491803278,
+    "f1_macro": 0.5498749652681301,
+    "acc": 0.55,
+    "auc_ratio": 0.5287407407407406,
+    "map_ratio": 0.38612950450583544,
+    "f1_ratio": 0.5365853658536586,
+    "acc_ratio": 0.36666666666666664
+  },
+  "test_f1_opt": 0.5454545454545454,
+  "test_acc_opt": 0.375,
+  "best_threshold": 0.08
+}

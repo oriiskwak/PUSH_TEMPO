@@ -1,0 +1,61 @@
+{
+  "method": "Tool-EM",
+  "best_prompt": "Predict the probability (0.0-1.0) that this video frame depicts a cyber scam, focusing on the intent and context rather than just visual elements. Consider frames with people in professional attire discussing financial matters as likely benign if the conversation includes detailed explanations, comparisons, or warnings about financial practices. Avoid over-detections caused by text overlays identifying individuals. The output should remain a single float between 0.0 and 1.0 per frame, maintaining performance on correctly predicted cases.",
+  "baseline_test": {
+    "auc": null,
+    "map": null,
+    "f1": null,
+    "acc": null
+  },
+  "best_test": {
+    "kl": 1.5078732837988584,
+    "auc": 0.3970370370370371,
+    "map": 0.30767252557476577,
+    "f1": 0.5072463768115942,
+    "acc": 0.43333333333333335
+  },
+  "best_test_f1_opt": 0.5432098765432098,
+  "best_test_acc_opt": 0.38333333333333336,
+  "log": [
+    {
+      "round": 1,
+      "train_map": 0.21302958642738584,
+      "dev_map": 0.5701275924032349,
+      "dev_auc": 0.6057692307692307,
+      "dev_f1": 0.6333333333333333,
+      "dev_acc": 0.56,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame depicts a cyber scam, focusing on the intent and context rather than just visual elements. Consider frames with people in professional attire discussing financial matters as likely benign if the conversation includes detailed explanations, comparisons, or warnings about financial practices. Avoid over-detections caused by text overlays identifying individuals. The output should remain a single float between 0.0 and 1.0 per frame, maintaining performance on correctly predicted cases.",
+      "feedback": "The model is over-detecting frames that contain people discussing financial matters in a formal setting. These frames exhibit individuals in professional attire seated across a table, likely engaged in conversations about investments or financial advice. The presence of text overlay, possibly identifying names or details of the individuals, is also contributing to the false positives. To reduce false alarms, the model should be trained to distinguish between legitimate financial discussions and actual scams by focusing on the context and intent of the content rather than just the visual elements. For instance, if the conversation includes detailed explanations, comparisons, or warnings about financial practices, it is likely to be a legitimate discussion. Additionally, the model should con..."
+    },
+    {
+      "round": 2,
+      "train_map": 0.19559750285556737,
+      "dev_map": 0.40184526802173864,
+      "dev_auc": 0.7675438596491229,
+      "dev_f1": 0.34782608695652173,
+      "dev_acc": 0.7,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame depicts a cyber scam, focusing on the intent and context rather than just visual elements. Consider frames with people in professional attire discussing financial matters as likely benign if the conversation includes detailed explanations, comparisons, or warnings about financial practices. Avoid over-detections caused by text overlays identifying individuals. The output should remain a single float between 0.0 and 1.0 per frame, maintaining performance on correctly predicted cases.",
+      "feedback": "The model is currently over-detecting scam content by associating structured, repetitive text overlays, professional attire in formal settings, bold text statements, and structured layouts with fraudulent activity. These patterns are common in educational or informational videos rather than actual scams. To reduce false alarms and distinguish legitimate content from actual scams, the model should focus on the following:\n\n1. **Contextual Intent:** Analyze the overall tone and intent of the communication. Legitimate content typically includes detailed explanations, comparisons, or warnings about practices, rather than urgent or overly persuasive language. Educational videos often have calm, informative tones and authoritative statements about fraud awareness.\n\n2. **Structured vs. Chaotic Patterns:** Distinguish between highly scripted, structured tones typical of scams and the structured yet consistent branding and content format of educational materials. Legitimate content often features detailed financial explanations, comparisons, or warnings, which are not characteristic of manipulative scams.\n\n3. **Visual Detection Refinement:** Refine the visual detection instructions to consider context clues such as consistent branding, watermarking, and structured content formats typical of educational materials. This will help the model recognize the benign nature of structured educational layouts and reduce false alarms on this type of content."
+    },
+    {
+      "round": 3,
+      "train_map": 0.6790544570393005,
+      "dev_map": 0.28481014662034193,
+      "dev_auc": 0.4430147058823529,
+      "dev_f1": 0.5172413793103449,
+      "dev_acc": 0.44,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame depicts a cyber scam, focusing on the intent and context rather than just visual elements. Consider frames with people in professional attire discussing financial matters as likely benign if the conversation includes detailed explanations, comparisons, or warnings about financial practices. Avoid over-detections caused by text overlays identifying individuals. The output should remain a single float between 0.0 and 1.0 per frame, maintaining performance on correctly predicted cases.",
+      "feedback": "The model is over-detecting scam content based on structured layouts that combine professional imagery with bold, repetitive text overlays discussing financial matters. These visual patterns often include static segments with phone icons or communication symbols, as well as prominent calls to action that could resemble scam tactics. To distinguish legitimate content from scams:\n\n1. **Focus on conversational tone and narrative structure:** Legitimate financial discussions typically feature detailed explanations, comparisons, and authoritative statements rather than manipulative or urgent language. Consider the overall tone conveyed by the video's dialogue and text overlays.\n\n2. **Contextualize financial warnings:** Videos that aim to educate or warn about financial risks often include struc..."
+    },
+    {
+      "round": 4,
+      "train_map": 0.1846390168970814,
+      "dev_map": 0.3250699698413341,
+      "dev_auc": 0.6600877192982456,
+      "dev_f1": 0.5238095238095238,
+      "dev_acc": 0.6,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame depicts a cyber scam, focusing on the intent and context rather than just visual elements. Consider frames with people in professional attire discussing financial matters as likely benign if the conversation includes detailed explanations, comparisons, or warnings about financial practices. Avoid over-detections caused by text overlays identifying individuals. The output should remain a single float between 0.0 and 1.0 per frame, maintaining performance on correctly predicted cases.",
+      "feedback": "The model is over-detecting scam content because it associates structured visual patterns—such as repetitive frames of a person in professional attire with text overlays resembling official notifications or warnings—with fraudulent activity. These patterns are common in educational materials that aim to inform viewers about scams or financial risks. To distinguish legitimate content from actual scams:\n\n1. **Focus on the narrative structure:** Educational content often includes detailed explanations, authoritative tones, and structured narratives aimed at informing or warning the audience. Scams tend to have more manipulative and urgent tones with less structured dialogue.\n\n2. **Consider the conversational tone:** Legitimate videos usually have a calm and explanatory tone, while scam videos..."
+    }
+  ]
+}

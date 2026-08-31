@@ -1,0 +1,1061 @@
+{
+  "source_checkpoint": "results_intern/tempo_cov_intern_evolve_checkpoint.json",
+  "backbone": "InternVL2.5-78B-AWQ",
+  "note": "VLM 재추론 없이, 완료된 학습의 fb_mem으로 test set tool 라우팅만 재계산. Late 세그먼트는 프로덕션에서 tool 미사용(_use_l_tools=False)이라 제외.",
+  "total_test_videos": 121,
+  "n_tool_activated": 46,
+  "activation_rate": 0.38016528925619836,
+  "tool_frequency": {
+    "channel": 46,
+    "title": 46,
+    "web_search": 36,
+    "description": 1
+  },
+  "by_scam_type": {
+    "정상": {
+      "channel": 34,
+      "title": 34,
+      "web_search": 26,
+      "description": 1
+    },
+    "투자사기": {
+      "channel": 5,
+      "title": 5,
+      "web_search": 4
+    },
+    "로맨스스캠": {
+      "channel": 3,
+      "title": 3,
+      "web_search": 2
+    },
+    "부업사기": {
+      "channel": 4,
+      "title": 4,
+      "web_search": 4
+    }
+  },
+  "per_video": [
+    {
+      "video_name": "normal_a8otkPPfXuE",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_YrCVyeMN3LQ",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_Z5eABm1-leM",
+      "label": "abnormal",
+      "scam_type": "투자사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_kmLnwR-9kKk",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_wZhXd22l3yU",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title"
+      ],
+      "n_tools": 2
+    },
+    {
+      "video_name": "normal_jo3pzgaz_s8",
+      "label": "abnormal",
+      "scam_type": "로맨스스캠",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_upBkSv0ZO0M",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_j9B1O__qrko",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_p6jhHh7_QkM",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "normal_0XBKlGeCwvk",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_DJyYCrGpevo",
+      "label": "abnormal",
+      "scam_type": "투자사기",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_9psoU1JHr2Y",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_PXKHQbBm8CQ",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_6Od1eE5T61U",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "description",
+        "title"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "normal_DlsVq2j5ltk",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_prAY8fws4Qc",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "normal_wPWTodLMWfM",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_oTb6REZwUiI",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_BUgNJjh0N48",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_JDXd9Ch58Qo",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_WKJoPi7NnNQ",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_azOEjsx4JV0",
+      "label": "abnormal",
+      "scam_type": "투자사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_vKlFF0KIJrg",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_vLJv0Jekxw4",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_fWmKhAE8uXU",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_vUJUjeDq82Y",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "normal_DIh-6X9LAF4",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_MJJx-ptMQdo",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_qP5mKE72RZs",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_sjDEw9dr3o8",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_DA_lQK0U80A",
+      "label": "abnormal",
+      "scam_type": "투자사기",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_n5POzCe_kgY",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_yIyGAScRRoc",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_pjAnVlkt1r0",
+      "label": "abnormal",
+      "scam_type": "투자사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_P93II4LI0ho",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "normal_XXSfQbbGyF8",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title"
+      ],
+      "n_tools": 2
+    },
+    {
+      "video_name": "normal_HYsNsFtVIUc",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_hkXPKxoxNPA",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_el4sW337z50",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_0sdDlAObqyo",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_ejtRVv5tu1A",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_BOEsAESoafc",
+      "label": "abnormal",
+      "scam_type": "투자사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_qKkgPuJ9esM",
+      "label": "abnormal",
+      "scam_type": "투자사기",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "normal_JFLT0mtyPlc",
+      "label": "abnormal",
+      "scam_type": "투자사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_1BgWEoQ5HgI",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_xBOOFdxDYGU",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_jJk4N0ARTnI",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_A7sTEdCCEOY",
+      "label": "abnormal",
+      "scam_type": "로맨스스캠",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "normal_3R7m0X2tp9o",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title"
+      ],
+      "n_tools": 2
+    },
+    {
+      "video_name": "abnormal_glIzpmmRhN8",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_qPAW_c2TxcQ",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "normal_DycppOclEUE",
+      "label": "abnormal",
+      "scam_type": "로맨스스캠",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "normal_YRlVcoALkdI",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_S7QhqhbXMSc",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_yvL0E8Dce7Y",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_UB3JlZUD6lI",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_C7MdikZ1WCw",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_qGDKLUkamFU",
+      "label": "abnormal",
+      "scam_type": "투자사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_dPQ93UWuyKE",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_9OaX-GcIMxE",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_Clz4eR8cNlU",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_RzsWUpHWnX4",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_BFSYwlX-SBU",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "normal_WQ6y3sKDX8w",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_ud5o0J3Gacg",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "normal_t8eHVaefP_E",
+      "label": "abnormal",
+      "scam_type": "투자사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_HW2Rtr_Eu2Q",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_wgxsgtznbg8",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_Drq9JiFjPiQ",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_up67NztzBt4",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_j3mkcQFBGr0",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_7edVFuB8NP8",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_B_9-MHuiGMk",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_YtDySp1puJY",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "normal_AjUTFmP-e-c",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_vYcVargDEPI",
+      "label": "abnormal",
+      "scam_type": "로맨스스캠",
+      "tools": [
+        "channel",
+        "title"
+      ],
+      "n_tools": 2
+    },
+    {
+      "video_name": "abnormal_Djzer_QXHRo",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_DqHsbX3r77M",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_L_e_UHhZx1c",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_p9LBgEnsgFU",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_XcRyl3iTzq0",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_7IdGqhlbOw4",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_pfwZONDDRKA",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title"
+      ],
+      "n_tools": 2
+    },
+    {
+      "video_name": "normal_6ks04cA6ZD8",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_AXLcemLnHV0",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_Gh9lKEY8rSM",
+      "label": "abnormal",
+      "scam_type": "로맨스스캠",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_DyphPGBl-Bo",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_FUs3IPaZD4Y",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_xraymAl80JM",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_5j-wlWESYEs",
+      "label": "abnormal",
+      "scam_type": "투자사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_fodyXfdvuAc",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_RHOQgOiWJjE",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_v8QD7TLJiBw",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title"
+      ],
+      "n_tools": 2
+    },
+    {
+      "video_name": "normal_6aFgm_YfOSI",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_xN8QoP6G6nU",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_RjJOXQE0Zvc",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_0uzvMrhfXwo",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_s6tRBXY0MEA",
+      "label": "abnormal",
+      "scam_type": "투자사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_UvJLJ5X26OQ",
+      "label": "abnormal",
+      "scam_type": "투자사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_gqTqBw1uGYM",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_N4IuCYy0v7o",
+      "label": "abnormal",
+      "scam_type": "투자사기",
+      "tools": [
+        "channel",
+        "title"
+      ],
+      "n_tools": 2
+    },
+    {
+      "video_name": "normal_xTu4rAzDbPI",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_aQ4O5qSfUkE",
+      "label": "abnormal",
+      "scam_type": "투자사기",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "normal_uppntbT41oY",
+      "label": "abnormal",
+      "scam_type": "보이스피싱",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_7432310493836004628",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_jIi-gWUTBmE",
+      "label": "abnormal",
+      "scam_type": "로맨스스캠",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_jrAdMNbAZV0",
+      "label": "abnormal",
+      "scam_type": "로맨스스캠",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_gN0QOwurfqY",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_Fbp1iEY37gQ",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_7547524184637721874",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title"
+      ],
+      "n_tools": 2
+    },
+    {
+      "video_name": "abnormal_7585206666812214545",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "normal_NsqRd21kZKA",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_EuZ0kYXXp8I",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "normal_r6N-vSz7K0g",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_HZ-sa1dOBBY",
+      "label": "abnormal",
+      "scam_type": "로맨스스캠",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_NbGQtYTSu88",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_hL2IiI3yGG4",
+      "label": "abnormal",
+      "scam_type": "부업사기",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_mwTQk1TgW74",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_rZpSjlv9a_c",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title",
+        "web_search"
+      ],
+      "n_tools": 3
+    },
+    {
+      "video_name": "abnormal_7325776644675865874",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [],
+      "n_tools": 0
+    },
+    {
+      "video_name": "abnormal_JYsmdBKx2sw",
+      "label": "normal",
+      "scam_type": "정상",
+      "tools": [
+        "channel",
+        "title"
+      ],
+      "n_tools": 2
+    }
+  ]
+}

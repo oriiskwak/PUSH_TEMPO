@@ -1,0 +1,34 @@
+{
+  "backbone": "InternVL2.5-78B-AWQ",
+  "method": "CYREN-ensemble (top-3)",
+  "source_result": "/home/oem/TEMPO/results_intern/tempo_cov_intern_evolve_result.json",
+  "n_ensemble_pairs": 3,
+  "note": "Table 1 앙상블 기준(재채점 AUC=0.6826/mAP=0.5514)과 동일한 top-3 앙상블 방식으로 전체 test와 channel-clean 서브셋을 각각 재채점 (재학습 없음, 동일 학습된 fb_mem 사용).",
+  "full_test": {
+    "n": 121,
+    "kl": 0.6193898935515361,
+    "auc": 0.6818713450292397,
+    "map": 0.5503860185702342,
+    "f1": 0.5161290322580645,
+    "f1_macro": 0.6070578047196362,
+    "acc": 0.628099173553719,
+    "auc_ratio": 0.6802631578947368,
+    "map_ratio": 0.5426226420531699,
+    "f1_ratio": 0.6153846153846154,
+    "acc_ratio": 0.5867768595041323
+  },
+  "channel_clean": {
+    "n": 100,
+    "kl": 0.5455337412806445,
+    "auc": 0.684041184041184,
+    "map": 0.5470460997274333,
+    "f1": 0.4931506849315068,
+    "f1_macro": 0.6009060511271707,
+    "acc": 0.63,
+    "auc_ratio": 0.6748176748176749,
+    "map_ratio": 0.5513255048360283,
+    "f1_ratio": 0.6153846153846154,
+    "acc_ratio": 0.6
+  },
+  "n_contaminated_excluded": 21
+}

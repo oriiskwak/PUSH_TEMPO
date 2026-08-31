@@ -1,0 +1,67 @@
+{
+  "method": "ERM-MC (InternVL)",
+  "best_prompt": "Classify this video frame into one of the following categories, paying close attention to the contextual elements, such as text content, tone, and direct address to the viewer:\n\n- Type-A: Voice Phishing - This includes interactions where the speaker claims to be from a bank or service provider, often using an authoritative tone, and asks for personal or financial information. Look for signs of urgency, threats of legal action, or insistence on immediate compliance.\n\n- Type-B: Investment Fraud - This involves scenarios where unusually high returns with little risk are promised, or where unsolicited investment advice is given. Pay attention to exaggerated claims, pressure to invest quickly, and lack of transparency about the investment's nature.\n\n- Type-C: Romance Scam - This includes instances where individuals are approached through dating sites or social media, building a relationship based on false identities, and eventually making requests for money or gifts under fabricated circumstances.\n\n- Type-D: Part-Time Job Scam - This encompasses offers for easy money through online or remote work, often requiring an upfront fee. It can also include promises of rewards or money for performing seemingly simple tasks. Be wary of jobs that seem too good to be true or require payment before starting.\n\n- Type-E: Normal - Video frames that contain informative or educational content about fraud or general advice that does not promote fraudulent activities. These could include tips for avoiding scams, discussions on the importance of privacy, or general advice on financial management.\n\nEnsure your classification is based on the presence of specific indicators related to the type of fraud mentioned above. If the video frame is informative or educational about fraud, classify it as Type-E: Normal.\n\nReference examples from similar videos:\nExample 1 [Label: 부업사기]: description: The image shows a person speaking directly to the camera, with text in Korean on the screen. The person appears to be explaining something important.",
+  "best_prompt_base": "Classify this video frame into one of the following categories, paying close attention to the contextual elements, such as text content, tone, and direct address to the viewer:\n\n- Type-A: Voice Phishing - This includes interactions where the speaker claims to be from a bank or service provider, often using an authoritative tone, and asks for personal or financial information. Look for signs of urgency, threats of legal action, or insistence on immediate compliance.\n\n- Type-B: Investment Fraud - This involves scenarios where unusually high returns with little risk are promised, or where unsolicited investment advice is given. Pay attention to exaggerated claims, pressure to invest quickly, and lack of transparency about the investment's nature.\n\n- Type-C: Romance Scam - This includes instances where individuals are approached through dating sites or social media, building a relationship based on false identities, and eventually making requests for money or gifts under fabricated circumstances.\n\n- Type-D: Part-Time Job Scam - This encompasses offers for easy money through online or remote work, often requiring an upfront fee. It can also include promises of rewards or money for performing seemingly simple tasks. Be wary of jobs that seem too good to be true or require payment before starting.\n\n- Type-E: Normal - Video frames that contain informative or educational content about fraud or general advice that does not promote fraudulent activities. These could include tips for avoiding scams, discussions on the importance of privacy, or general advice on financial management.\n\nEnsure your classification is based on the presence of specific indicators related to the type of fraud mentioned above. If the video frame is informative or educational about fraud, classify it as Type-E: Normal.",
+  "initial_prompt": "Classify this video frame into one of five fraud categories.\n- Type-A\n- Type-B\n- Type-C\n- Type-D\n- Type-E",
+  "baseline_test": {
+    "macro_f1": 0.06990759341100843,
+    "per_class_f1": {
+      "보이스피싱": 0.0,
+      "투자사기": 0.24427480916030533,
+      "로맨스스캠": 0.10526315789473684,
+      "부업사기": 0.0,
+      "정상": 0.0
+    },
+    "acc": 0.13709677419354838
+  },
+  "best_test": {
+    "macro_f1": 0.36388278388278383,
+    "per_class_f1": {
+      "보이스피싱": 0.0,
+      "투자사기": 0.4,
+      "로맨스스캠": 0.16666666666666666,
+      "부업사기": 0.46153846153846156,
+      "정상": 0.7912087912087912
+    },
+    "acc": 0.6774193548387096
+  },
+  "config": {
+    "frames_dir": "baselines/frames_cache_2s",
+    "output": "/home/oem/TEMPO/results_4class/erm_mc_intern_result.json",
+    "rounds": 12,
+    "beam_size": 2,
+    "minibatch_size": 16,
+    "n_exemplars": 1,
+    "n_feedbacks": 2,
+    "n_feedback_from_memory": 1,
+    "n_exemplars_inference": 3,
+    "mem_max_size": 20,
+    "ex_max_size": 30,
+    "patience": 2,
+    "patience_eps": 0.01,
+    "val_subsample": 15
+  },
+  "log": [
+    {
+      "round": 1,
+      "dev_f1": 0.35100736058223037,
+      "dev_acc": 0.3247863247863248,
+      "prompt": "Classify this video frame into one of the following categories, considering the context-specific details such as text content, tone, and direct address to the viewer:\n- Type-A: Voice Phishing\n- Type-B: Investment Fraud\n- Type-C: Romance Scam\n- Type-D: Part-Time Job Scam\n- Type-E: Normal\n\nEnsure your classification is based on the presence of specific indicators related to the type of fraud mentioned above.",
+      "improved": true
+    },
+    {
+      "round": 2,
+      "dev_f1": 0.38451757514009166,
+      "dev_acc": 0.5811965811965812,
+      "prompt": "Classify this video frame into one of the following categories, considering the context-specific details such as text content, tone, direct address to the viewer, and the presence of specific indicators related to the type of fraud mentioned below. Also, take into account that informative or educational content about fraud prevention, without direct deceptive intent or action, should be classified as normal (Type-E).\n\n- Type-A: Voice Phishing - Look for indications of impersonation, such as posing as a bank employee or authority figure, and requests for personal information over the phone.\n- Type-B: Investment Fraud - Identify offers of unusually high returns with little risk, or pressure to invest quickly, often involving fake credentials or unregistered investments.\n- Type-C: Romance Scam - Detect signs of overly flattering messages or profiles, requests for money under false pretenses, and reluctance to meet in person.\n- Type-D: Part-Time Job Scam - Recognize offers for easy money with little effort, unusual payment methods, or requests to pay for training or equipment upfront.\n- Type-E: Normal - Videos that are purely informative, educational, or unrelated to fraud, including those discussing fraud prevention and awareness.\n\nEnsure your classification is based solely on the provided indicators and criteria.",
+      "improved": false
+    },
+    {
+      "round": 3,
+      "dev_f1": 0.3992673992673993,
+      "dev_acc": 0.6324786324786325,
+      "prompt": "Classify this video frame into one of the following categories, paying close attention to the contextual elements, such as text content, tone, and direct address to the viewer:\n\n- Type-A: Voice Phishing - This includes interactions where the speaker claims to be from a bank or service provider, often using an authoritative tone, and asks for personal or financial information. Look for signs of urgency, threats of legal action, or insistence on immediate compliance.\n\n- Type-B: Investment Fraud - This involves scenarios where unusually high returns with little risk are promised, or where unsolicited investment advice is given. Pay attention to exaggerated claims, pressure to invest quickly, and lack of transparency about the investment's nature.\n\n- Type-C: Romance Scam - This includes instances where individuals are approached through dating sites or social media, building a relationship based on false identities, and eventually making requests for money or gifts under fabricated circumstances.\n\n- Type-D: Part-Time Job Scam - This encompasses offers for easy money through online or remote work, often requiring an upfront fee. It can also include promises of rewards or money for performing seemingly simple tasks. Be wary of jobs that seem too good to be true or require payment before starting.\n\n- Type-E: Normal - Video frames that contain informative or educational content about fraud or general advice that does not promote fraudulent activities. These could include tips for avoiding scams, discussions on the importance of privacy, or general advice on financial management.\n\nEnsure your classification is based on the presence of specific indicators related to the type of fraud mentioned above. If the video frame is informative or educational about fraud, classify it as Type-E: Normal.",
+      "improved": false
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "method": "EvoPrompt-GA-MC (Qwen)",
+  "best_prompt": "Classify the fraud depicted in this video frame according to the specified categories. Your response must consist of exactly one of the following options:\n- Type-A\n- Type-B\n- Type-C\n- Type-D\n- Type-E\n\nEnsure your selection is solely from the provided categories.",
+  "baseline_prompt": "Classify this video frame into one of five fraud categories.\n- Type-A\n- Type-B\n- Type-C\n- Type-D\n- Type-E",
+  "baseline_test": {
+    "macro_f1": 0.0895,
+    "per_class_f1": {
+      "보이스피싱": 0.2857142857142857,
+      "투자사기": 0.0,
+      "로맨스스캠": 0.13559322033898305,
+      "부업사기": 0.0,
+      "정상": 0.025974025974025976
+    },
+    "acc": 0.0806
+  },
+  "best_test": {
+    "macro_f1": 0.0291,
+    "per_class_f1": {
+      "보이스피싱": 0.0,
+      "투자사기": 0.0,
+      "로맨스스캠": 0.14545454545454545,
+      "부업사기": 0.0,
+      "정상": 0.0
+    },
+    "acc": 0.0645
+  },
+  "mode": "ga",
+  "log": [
+    {
+      "step": 1,
+      "train_f1": 0.0,
+      "dev_f1": 0.0205,
+      "dev_acc": 0.0513,
+      "best_prompt": "Analyze the video frame and pinpoint the specific category of fraud using precisely one of the given options: Type-A, Type-B, Type-C, Type-D, Type-E. Response must consist of a single category without any additional details."
+    },
+    {
+      "step": 2,
+      "train_f1": 0.0,
+      "dev_f1": 0.0342,
+      "dev_acc": 0.0513,
+      "best_prompt": "Classify the fraud depicted in this video frame according to the specified categories. Your response must consist of exactly one of the following options:\n- Type-A\n- Type-B\n- Type-C\n- Type-D\n- Type-E\n\nEnsure your selection is solely from the provided categories."
+    }
+  ],
+  "final_population": [
+    {
+      "prompt": "Classify the fraud depicted in this video frame according to the specified categories. Your response must consist of exactly one of the following options:\n- Type-A\n- Type-B\n- Type-C\n- Type-D\n- Type-E\n\nEnsure your selection is solely from the provided categories.",
+      "score": 0.0
+    },
+    {
+      "prompt": "Identify the specific fraud category from the list for this video frame. Select solely from these options:\n- Type-A\n- Type-B\n- Type-C\n- Type-D\n- Type-E\n\nPlease provide only one category as the answer.",
+      "score": 0.0
+    },
+    {
+      "prompt": "Determine the appropriate fraud classification for this video frame. Choose exclusively from:\n- Type-A\n- Type-B\n- Type-C\n- Type-D\n- Type-E\n\nEnsure your response includes only a single category.",
+      "score": 0.0
+    },
+    {
+      "prompt": "Assign the video frame provided to one of the five fraud types listed below. The output must be one of:\n- Type-A\n- Type-B\n- Type-C\n- Type-D\n- Type-E\n\nYour selection should be limited to just one type.",
+      "score": 0.0
+    },
+    {
+      "prompt": "Categorize the fraud in this video frame based on the given types. Provide an answer that is ONLY one of the following:\n- Type-A\n- Type-B\n- Type-C\n- Type-D\n- Type-E\n\nMake sure to select precisely one type.",
+      "score": 0.0
+    }
+  ],
+  "config": {
+    "budget": 12,
+    "popsize": 5,
+    "n_eval": 10
+  },
+  "split": {
+    "train": 359,
+    "val": 117,
+    "test": 124
+  }
+}

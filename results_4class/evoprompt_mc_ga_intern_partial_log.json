@@ -1,0 +1,18 @@
+{
+  "population": [
+    "Classify this video frame into one of five fraud categories.\n- Type-A\n- Type-B\n- Type-C\n- Type-D\n- Type-E",
+    "Identify the appropriate fraud category for this video frame: Type-A, Type-B, Type-C, Type-D, or Type-E.",
+    "Designate the suitable fraud category for this video frame: Type-A, Type-B, Type-C, Type-D, or Type-E.",
+    "Assign the correct fraud category to this video frame: Type-A, Type-B, Type-C, Type-D, or Type-E.",
+    "Determine the fitting fraud category for this video frame: Type-A, Type-B, Type-C, Type-D, or Type-E."
+  ],
+  "scores": [
+    0.03636363636363636,
+    0.025,
+    0.06857142857142857,
+    0.026666666666666665,
+    0.041379310344827586
+  ],
+  "log": [],
+  "last_step": 0
+}

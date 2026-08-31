@@ -1,0 +1,59 @@
+data/videos/
+data/gt_results/
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+results/em_logs/
+results_intern/em_logs/
+*.log
+frames_cache/
+frames_cache_1fps/
+frames_cache_2s/
+**/frames_cache_2s/
+visual_interpret_frames/
+*.jpg
+*.jpeg
+
+# 모델/대용량 바이너리
+hf_models/
+*.safetensors
+*.bin
+*.pt
+*.ckpt
+*.mp4
+*.mov
+*.webm
+
+# 로컬 전용 (GitHub 제외)
+wait_and_*.sh
+run_*.py
+tempo_cov_total.py
+tempo_total.py
+
+# 코드가 아닌 산출물 (결과 JSON/체크포인트) — 필요시 개별적으로 git add -f
+results/**/*checkpoint*.json
+results_intern/**/*checkpoint*.json
+results_4class/**/*checkpoint*.json
+*.env
+.env.*
+secrets.json
+**/api_key*
+
+# 버그로 확인된 중간 결과물 (split 오류 등)
+*_WRONG_split.json
+
+# 이번 세션 한정 일회성 GPU chain 오케스트레이션 스크립트 (PID 하드코딩 등, 재사용 불가)
+run_bootstrap_fix_chain.sh
+run_bootstrap_fix_chain2.sh
+run_full_remaining_chain.sh
+run_intern_seedruns_chain.sh
+run_qwen_bootstrap_chain.sh
+run_qwen_mc_chain.sh
+run_qwen_mc_chain2.sh
+run_qwen_mc_chain3.sh
+run_qwen_mc_chain4.sh
+run_qwen_mc_chain5.sh
+run_qwen_mc_chain6.sh
+run_qwen_mc_chain7.sh
+run_qwen_then_seed777_chain.sh

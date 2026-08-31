@@ -1,0 +1,108 @@
+{
+  "method": "APO",
+  "best_prompt": "\"Analyze the video content, focusing on the environment, purpose, and presentation. Determine if the video is warning or educating the audience about internet fraud, or if it is perpetrating a deception. Closely scrutinize any spoken, visual, or behavioral aspects that indicate the video intends to inform or protect viewers from scams, rather than being involved in one. Supply a likelihood rating from 0.0 to 1.0, where a higher value indicates a greater likelihood of association with a cyber scam.\"",
+  "initial_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+  "baseline_test": {
+    "auc": 0.3536,
+    "map": 0.2975,
+    "f1": 0.4552,
+    "acc": 0.3417
+  },
+  "best_test": {
+    "auc": 0.8444,
+    "map": 0.7234,
+    "f1": 0.5714,
+    "acc": 0.75
+  },
+  "config": {
+    "rounds": 12,
+    "beam_size": 4,
+    "minibatch_size": 16,
+    "n_gradients": 2,
+    "errors_per_gradient": 4,
+    "gradients_per_error": 1,
+    "steps_per_gradient": 1,
+    "mc_samples_per_step": 2,
+    "max_expansion_factor": 8,
+    "evaluator": "ucb",
+    "eval_rounds": 4,
+    "eval_prompts_per_round": 8,
+    "samples_per_eval": 8,
+    "eval_budget": 256,
+    "c": 1.0
+  },
+  "log": [
+    {
+      "round": 0,
+      "dev_map": 0.2979,
+      "dev_auc": 0.3716,
+      "dev_f1": 0.4755,
+      "dev_acc": 0.375,
+      "prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam."
+    },
+    {
+      "round": 1,
+      "dev_map": 0.3568,
+      "dev_auc": 0.5084,
+      "dev_f1": 0.5414,
+      "dev_acc": 0.4917,
+      "prompt": "Estimate the likelihood (on a scale of 0.0 to 1.0) that this video is a cyber scam."
+    },
+    {
+      "round": 2,
+      "dev_map": 0.4913,
+      "dev_auc": 0.6987,
+      "dev_f1": 0.3889,
+      "dev_acc": 0.6333,
+      "prompt": "\"Conduct a comprehensive analysis of the video, including both visual and textual components. Assess the likelihood (on a scale from 0.0 to 1.0) that the video is actively involved in facilitating or carrying out a cyber scam, as opposed to simply talking about, cautioning against, or documenting cyber scams.\""
+    },
+    {
+      "round": 3,
+      "dev_map": 0.5252,
+      "dev_auc": 0.7333,
+      "dev_f1": 0.3944,
+      "dev_acc": 0.6417,
+      "prompt": "\"Conduct a comprehensive analysis of the video, considering its visual and textual components. Assess the likelihood (using a scale from 0.0 to 1.0) that the video actively promotes or facilitates a cyber scam, as opposed to just talking about, cautioning against, or documenting cyber scams.\""
+    },
+    {
+      "round": 4,
+      "dev_map": 0.6149,
+      "dev_auc": 0.7782,
+      "dev_f1": 0.381,
+      "dev_acc": 0.675,
+      "prompt": "\"Thoroughly review the video content, taking into account the setting, mood, objective, and visual components like text and sound patterns. Determine if the video is either facilitating or participating in online fraud, or if it is merely addressing, warning about, or documenting such actions. Focus particularly on whether the material aims to inform viewers about possible scams rather than commit one. Allocate a likelihood rating between 0.0 and 1.0, where a higher value indicates a greater likelihood of being associated with a cyber scam.\""
+    },
+    {
+      "round": 5,
+      "dev_map": 0.6149,
+      "dev_auc": 0.7782,
+      "dev_f1": 0.381,
+      "dev_acc": 0.675,
+      "prompt": "\"Thoroughly review the video content, taking into account the setting, mood, objective, and visual components like text and sound patterns. Determine if the video is either facilitating or participating in online fraud, or if it is merely addressing, warning about, or documenting such actions. Focus particularly on whether the material aims to inform viewers about possible scams rather than commit one. Allocate a likelihood rating between 0.0 and 1.0, where a higher value indicates a greater likelihood of being associated with a cyber scam.\""
+    },
+    {
+      "round": 6,
+      "dev_map": 0.7382,
+      "dev_auc": 0.8486,
+      "dev_f1": 0.6389,
+      "dev_acc": 0.7833,
+      "prompt": "\"Analyze the video content, focusing on the environment, purpose, and presentation. Determine if the video is warning or educating the audience about internet fraud, or if it is perpetrating a deception. Closely scrutinize any spoken, visual, or behavioral aspects that indicate the video intends to inform or protect viewers from scams, rather than being involved in one. Supply a likelihood rating from 0.0 to 1.0, where a higher value indicates a greater likelihood of association with a cyber scam.\""
+    },
+    {
+      "round": 7,
+      "dev_map": 0.6694,
+      "dev_auc": 0.8105,
+      "dev_f1": 0.5429,
+      "dev_acc": 0.7333,
+      "prompt": "\"Thoroughly examine the video content, concentrating on its environment, aim, and presentation. Ascertain whether the video is either warning or teaching the audience about online fraud, or if it is engaging in a deceit. Closely observe any spoken, visual, or behavioral signals that indicate the video's intention is to enlighten or safeguard viewers from scams, as opposed to participating in a scam. Nevertheless, evaluate contextual factors like the video's origin, the existence of trustworthy data, and any evident marketing or educational purpose. Furnish a probability rating from 0.0 to 1.0, with a higher score signifying a higher chance of the video being linked to a cyber fraud, while also taking into account the potential for genuine content production or marketing initiatives.\""
+    },
+    {
+      "round": 8,
+      "dev_map": 0.667,
+      "dev_auc": 0.8375,
+      "dev_f1": 0.6234,
+      "dev_acc": 0.7583,
+      "prompt": "\"Carefully examine the video content, concentrating on its environment, aim, and presentation. Assess whether the video is informing or warning the audience about online fraud, or if it is engaged in misleading practices. Scrutinize any spoken, visual, or behavioral signals that indicate the video's goal is to educate or safeguard viewers from scams, rather than participating in a scam. Additionally, evaluate contextual factors such as the video's origin, the presence of trustworthy information, and any evident promotional or educational objectives. Assign a probability rating from 0.0 to 1.0, with a higher score signifying a higher chance of the video being linked to a cyber scam, while also considering the possibility of authentic content creation or marketing efforts.\""
+    }
+  ]
+}

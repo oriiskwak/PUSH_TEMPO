@@ -1,0 +1,30 @@
+{
+  "source_result": "results/tempo_cov_total_result.json",
+  "method": "TEMPO-COV-Total",
+  "best_early_prompt": "Predict the probability (0.0-1.0) that this video frame is part of an active cyber scam. Focus on frames promoting misleading \"BIG SALE\" events lasting unusually long, offering unrealistic guarantees like immediate support, or using chats promising quick fixes to build false trust. Ignore frames about scam prevention, especially those mentioning \"initial stages,\" \"prevention,\" and \"what to do.\" Exclude content of professionals giving advice in formal settings. Maintain high scores for misleading urgency tactics. Return ONLY a float 0.0–1.0 per frame.",
+  "best_late_prompt": "Predict a single float (0.0–1.0) for cyber scam likelihood in each video frame. Focus on presentation style and content purpose. Legitimate content uses structured, formal presentations with clear disclaimers and balanced language. Scams often use urgent, persuasive tones and lack transparency. Analyze whether the content is instructional or cautionary, warning about scams with balanced information, versus promotional content with urgent calls to action. Avoid over-detection in educational videos discussing scams by considering broader contextual signals like visual cues, formal settings, and professional presentations. Maintain performance on recognized cases, like video=abnormal_0JUr7e9RGeA. Ensure the model outputs only a float 0.0–1.0 per frame.",
+  "gt_segmentation": {
+    "kl": 0.5846003807050726,
+    "auc": 0.6263703703703702,
+    "map": 0.5223377479080528,
+    "f1": 0.41975308641975306,
+    "f1_macro": 0.5620778010715117,
+    "acc": 0.6083333333333333,
+    "auc_ratio": 0.6293333333333333,
+    "map_ratio": 0.540149661425962,
+    "f1_ratio": 0.5619834710743802,
+    "acc_ratio": 0.5583333333333333
+  },
+  "fixed_5050_segmentation": {
+    "kl": 0.5756724721347126,
+    "auc": 0.6762962962962962,
+    "map": 0.5797902628151844,
+    "f1": 0.47368421052631576,
+    "f1_macro": 0.6148908857509627,
+    "acc": 0.6666666666666666,
+    "auc_ratio": 0.6496296296296296,
+    "map_ratio": 0.5783621582229596,
+    "f1_ratio": 0.5619834710743802,
+    "acc_ratio": 0.5583333333333333
+  }
+}

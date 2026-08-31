@@ -1,0 +1,294 @@
+{
+  "method": "TEMPO-COV-Total",
+  "best_early_prompt": "Evaluate the likelihood (0.0-1.0) that this frame is part of a cyber scam. Focus on visual cues such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, requests for personal information, fake credentials, and overly polished production quality. Pay close attention to the presence or absence of clear disclaimers, source verification, actionable steps, expert endorsements, detailed explanations, and legal or financial advice. Ensure to differentiate between educational content, trusted news sources, and warnings about scams, maintaining lower scores for trusted channels and expert advice unless they are suspicious in nature. Avoid mistaking educational content, trusted news sources, and tips on identifying scams unless they lack credible sources or are presented in a suspicious manner. Differentiate trusted news channels and expert advice videos by their logos, branding, and neutral or educational tone.",
+  "best_late_prompt": "Evaluate the likelihood that this visual frame is part of a cyber-scam video. Focus on the coherence between visual elements and textual overlays, ensuring alignment and consistency. Pay attention to visual clarity and context, ensuring high-quality and relevant images. Check for textual consistency and coherence, avoiding abrupt changes or overly promotional graphics. Look for exaggerated claims or urgent language. Assess the realism of any promises or claims displayed, considering whether the language used seems too good to be true. Analyze the visual style for consistency and the production quality for signs of low credibility. Avoid frames with exaggerated claims or low production quality. Ensure the model outputs ONLY a single float between 0.0 and 1.0, representing the probability of the frame being part of a scam.",
+  "baseline_test": {
+    "auc": null,
+    "map": null,
+    "f1": null,
+    "acc": null
+  },
+  "single_test": {
+    "auc": 0.6479532163742691,
+    "map": 0.5189666857924259,
+    "f1": 0.5148514851485149,
+    "acc": 0.5950413223140496
+  },
+  "single_test_f1_opt": 0.5,
+  "single_test_acc_opt": 0.6198347107438017,
+  "best_test": {
+    "auc": 0.6874269005847954,
+    "map": 0.5468476273832795,
+    "f1": 0.5652173913043478,
+    "acc": 0.6694214876033058
+  },
+  "best_test_f1_opt": 0.5436893203883495,
+  "best_test_acc_opt": 0.6115702479338843,
+  "n_ensemble_pairs": 3,
+  "log": [
+    {
+      "round": 1,
+      "seg": "early",
+      "train_map": 0.46629790348540345,
+      "dev_map": 0.48035565843340555,
+      "dev_auc": 0.6909722222222222,
+      "dev_f1": 0.6829268292682927,
+      "dev_acc": 0.74,
+      "prompt": "Predict the likelihood (0.0-1.0) that this video frame depicts a cyber scam. Focus on visual cues such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, requests for personal information, fake credentials, overly polished production, and a lack of actionable steps or disclaimers. Ignore educational content, news reports, and tips on identifying scams unless they lack credible sources or are presented in a suspicious manner.",
+      "feedback": "To reduce false positives, we should focus on distinguishing normal informational videos about scams from actual scam videos. Normal videos usually provide educational content, news reports, or tips on identifying scams. These often include warning signs, steps to avoid scams, and legal or financial advice, usually presented by trusted news channels or experts.\n\nTo increase true positives, we need to identify visual scam signals that were missed in false negatives. Scam videos often promise unrealistic returns, use high-pressure sales tactics, create a sense of urgency, or ask for personal information. They may also feature fake credentials, overly polished production, and a lack of actionable steps or disclaimers.\n\nThe balanced policy should involve:\n1. Analyzing the video's tone and cont..."
+    },
+    {
+      "round": 1,
+      "seg": "late",
+      "train_map": 0.6780570382060319,
+      "dev_map": 0.44609186792433164,
+      "dev_auc": 0.6415441176470589,
+      "dev_f1": 0.5777777777777777,
+      "dev_acc": 0.62,
+      "prompt": "Predict the probability (0.0-1.0) that this frame is part of a cyber scam video. Analyze the visual clarity, textual consistency, and any signs of low credibility, such as generic stock images or exaggerated claims. Consider the visual quality, textual content for unrealistic promises, and indications of low production quality. Ensure the model returns ONLY a float between 0.0 and 1.0.",
+      "feedback": "To reduce false positives and increase true positives, we need to focus on both textual and visual patterns that distinguish normal videos from scams. Here's a balanced policy:\n\n1. **Visual Clarity and Context**: Normal videos often have clear, high-quality visuals that match the title and description. Scam videos might show low-quality or irrelevant images, such as generic stock images or unrelated text overlays.\n\n2. **Textual Consistency**: Scam videos often have exaggerated claims or unrealistic promises (e.g., guaranteed high returns). Normal videos usually have more balanced and realistic language, often accompanied by disclaimers or realistic expectations.\n\n3. **Source Credibility**: Check the channel's credibility. Scam channels may have low subscriber counts, fake or generic profiles, and a lack of engagement or interaction with viewers."
+    },
+    {
+      "round": 2,
+      "seg": "early",
+      "train_map": 0.7191332972582972,
+      "dev_map": 0.46614747944642354,
+      "dev_auc": 0.6923809523809523,
+      "dev_f1": 0.5217391304347826,
+      "dev_acc": 0.56,
+      "prompt": "Predict the likelihood (0.0-1.0) that this video frame depicts a cyber scam. Focus on visual cues such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, requests for personal information, fake credentials, and overly polished production quality. Pay special attention to the absence of actionable steps, disclaimers, and source verification, which are common in educational or informative videos about scams. Avoid mistaking educational content, trusted news sources, and tips on identifying scams unless they lack credible sources or are presented in a suspicious manner.",
+      "feedback": "To address both false positives and false negatives, the balanced policy should focus on distinguishing between educational content and actual scam videos. For false positives, normal videos often include warnings, steps to avoid scams, and are presented by trusted news channels or experts. These videos usually provide actionable steps, disclaimers, and source verification. \n\nFor false negatives, missed visual scam signals include exaggerated claims of unrealistic returns, high-pressure sales tactics, and a sense of urgency. These videos might feature fake credentials or overly polished production quality without providing actionable steps or disclaimers.\n\nBy focusing on these patterns, the model can better differentiate between educational content and actual scam videos, reducing false po..."
+    },
+    {
+      "round": 2,
+      "seg": "late",
+      "train_map": 0.6473963536463536,
+      "dev_map": 0.6158970823638006,
+      "dev_auc": 0.7873263888888888,
+      "dev_f1": 0.6666666666666666,
+      "dev_acc": 0.72,
+      "prompt": "Evaluate the likelihood that this visual frame is part of a cyber-scam video. Focus on the coherence between visual elements and textual overlays, ensuring alignment and consistency. Look for abrupt changes in visual themes, overly promotional graphics, and generic stock images. Assess the realism of any promises or claims displayed, considering whether the language used seems too good to be true. Analyze the visual style for consistency and the production quality for signs of low credibility. Avoid frames with exaggerated claims or low production quality. Ensure the model returns ONLY a float between 0.0 and 1.0.",
+      "feedback": "To balance both false positives and false negatives, it's crucial to focus on the underlying patterns and context rather than surface-level features. Here's a comprehensive approach:\n\n1. **Contextual Relevance**: Ensure that the title, description, and visual content align coherently. Scam videos often have mismatched or exaggerated titles compared to their content.\n\n2. **Visual Consistency**: Check for consistent visual themes throughout the video. Scam videos might abruptly switch visual styles or use overly promotional graphics.\n\n3. **Textual Credibility**: Look for realistic language and balanced claims. Scam videos often use emotionally charged language, making exaggerated promises that seem too good to be true.\n\n4. **Source Verification**: Use the `channel` tool to assess the credibi..."
+    },
+    {
+      "round": 3,
+      "seg": "early",
+      "train_map": 0.7472198315926899,
+      "dev_map": 0.49806688319321635,
+      "dev_auc": 0.7415329768270944,
+      "dev_f1": 0.5789473684210527,
+      "dev_acc": 0.68,
+      "prompt": "Predict the likelihood (0.0-1.0) that this video frame depicts a cyber scam. Focus on visual cues such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, requests for personal information, fake credentials, and overly polished production quality. Pay special attention to the presence or absence of disclaimers, actionable steps, and source verification, which are common in educational or informative videos about scams. Avoid mistaking educational content, trusted news sources, and tips on identifying scams unless they lack credible sources or are presented in a suspicious manner. Ensure to distinguish educational content and warnings about scams from actual scams by checking for disclaimers, actionable steps, and source verification. Maintain a low score for frames that clearly appear to be from trusted news channels or expert advice videos.",
+      "feedback": "To reduce false positives, focus on identifying educational content or warnings about scams as indicators of a normal video. Check for disclaimers, actionable steps, and source verification, which are common in informative videos about scams. These videos often provide legal or financial advice and are presented by trusted news channels or experts.\n\nTo increase true positives, look for visual scam signals such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, or requests for personal information. Scam videos may feature fake credentials, overly polished production quality, and a lack of actionable steps or disclaimers.\n\nBy analyzing these patterns, we can balance the detection of scams while minimizing false positives."
+    },
+    {
+      "round": 3,
+      "seg": "late",
+      "train_map": 0.6139998770973035,
+      "dev_map": 0.5385716583297228,
+      "dev_auc": 0.8519736842105263,
+      "dev_f1": 0.43478260869565216,
+      "dev_acc": 0.74,
+      "prompt": "Evaluate the likelihood that this visual frame is part of a cyber-scam video. Focus on the coherence between visual elements and textual overlays, ensuring alignment and consistency. Look for abrupt changes in visual themes, low-quality footage, or generic stock images. Assess whether the language used seems too good to be true, with exaggerated promises or overly promotional graphics. Ensure the visual style is consistent and the production quality is high. Avoid frames with exaggerated claims or low production quality. Return ONLY a float between 0.0 and 1.0.",
+      "feedback": "To reduce false positives and increase true positives, we need to focus on the following:\n\n1. **Visual Consistency**: Normal videos often have consistent visual themes and professional production quality. Scam videos might have abrupt changes in visual styles, low-quality footage, or generic stock images.\n\n2. **Textual Credibility**: Normal videos use realistic language and balanced claims. Scam videos often use emotionally charged language, making exaggerated promises that seem too good to be true.\n\n3. **Source Verification**: Using the `channel` tool, normal videos typically come from channels with higher credibility, such as verified accounts or channels with substantial engagement. Scam videos might have low subscriber counts, generic profile pictures, or poor engagement metrics.\n\n4. **Contextual Relevance**: Ensure that the title, description, and visual content align coherently. Scam videos often have mismatched or exaggerated titles compared to their content.\n\n5. **Visual Clarity and Context**: Normal videos often have clear, high-quality visuals that match the title and description. Scam videos might show low-quality or irrelevant images, such as generic stock images or unrelated text overlays.\n\n6. **Textual Consistency**: Scam videos often have exaggerated claims or unrealistic promises (e.g., guaranteed high returns). Normal videos usually have more balanced and realistic language, often accompanied by disclaimers or realistic expectations."
+    },
+    {
+      "round": 4,
+      "seg": "early",
+      "train_map": 0.5388798291778167,
+      "dev_map": 0.6789393818096993,
+      "dev_auc": 0.8290441176470589,
+      "dev_f1": 0.7058823529411765,
+      "dev_acc": 0.8,
+      "prompt": "Predict the likelihood (0.0-1.0) that this video frame depicts a cyber scam. Focus on visual cues such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, requests for personal information, fake credentials, and overly polished production quality. Pay special attention to the presence or absence of clear disclaimers, source verification, actionable steps, expert endorsements, detailed explanations, and legal or financial advice. Avoid mistaking educational content, trusted news sources, and tips on identifying scams unless they lack credible sources or are presented in a suspicious manner. Ensure to distinguish educational content and warnings about scams from actual scams by checking for disclaimers, actionable steps, and source verification. Maintain a low score for frames that clearly appear to be from trusted news channels or expert advice videos.",
+      "feedback": "To balance the detection of cyber scams in video frames, focus on distinguishing between educational content and actual scams. Educational videos often feature clear disclaimers, source verification, and actionable steps for viewers. They include expert endorsements, detailed explanations, and warnings about common scams. In contrast, scam videos may lack credible sources, present unrealistic offers, and use high-pressure tactics without providing clear, actionable advice.\n\nFor reducing false positives, ensure the content includes:\n- Clear disclaimers or warnings\n- Expert endorsements or testimonials\n- Detailed explanations of scams\n- Source verification\n- Legal or financial advice\n- Presentation by trusted news channels or experts\n\nFor increasing true positives, look for:\n- Unrealistic promises or offers\n- High-pressure sales tactics or urgency\n- Lack of actionable steps or source verification\n- Requests for personal information\n- Fake credentials\n- Overly polished production quality\n\nBy analyzing these patterns, we can balance the detection of scams while minimizing false positives."
+    },
+    {
+      "round": 4,
+      "seg": "late",
+      "train_map": 0.6135538459648366,
+      "dev_map": 0.4461227906080848,
+      "dev_auc": 0.7718253968253969,
+      "dev_f1": 0.625,
+      "dev_acc": 0.76,
+      "prompt": "Evaluate the likelihood that this visual frame is part of a cyber-scam video. Focus on the coherence between visual elements and textual overlays, ensuring alignment and consistency. Look for abrupt changes in visual themes, overly promotional graphics, and generic stock images. Assess the realism of any promises or claims displayed, considering whether the language used seems too good to be true. Analyze the visual style for consistency and the production quality for signs of low credibility. Avoid frames with exaggerated claims or low production quality. Ensure the model returns ONLY a float between 0.0 and 1.0.",
+      "feedback": "To effectively distinguish between scam and legitimate videos, the following comprehensive policy should be implemented:\n\n1. **Contextual Analysis**: Ensure that the video content aligns with educational or informative themes about scams rather than promoting them. Check titles and descriptions for keywords related to scam prevention or awareness. Scam videos often have mismatched or exaggerated titles compared to their content.\n\n2. **Visual Consistency**: Look for abrupt changes in visual themes, overly promotional graphics, or generic stock images. Scam videos might switch styles or use low-quality images. Normal videos typically have consistent visual themes and professional production quality.\n\n3. **Textual Credibility**: Evaluate the language for realism. Scam videos often use emotionally charged language, making exaggerated promises that seem too good to be true. Normal videos use realistic language and balanced claims.\n\n4. **Source Verification**: Use the `channel` tool to assess the credibility of the channel. Scam channels might have low subscriber counts, generic profile pictures, or poor engagement metrics. Normal videos typically come from channels with higher credibility, such as verified accounts or channels with substantial engagement."
+    },
+    {
+      "round": 5,
+      "seg": "early",
+      "train_map": 0.7558244226104133,
+      "dev_map": 0.5875309426868303,
+      "dev_auc": 0.805704099821747,
+      "dev_f1": 0.7317073170731707,
+      "dev_acc": 0.78,
+      "prompt": "Predict the likelihood (0.0-1.0) that this video frame depicts a cyber scam. Focus on visual cues such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, requests for personal information, fake credentials, and overly polished production quality. Pay special attention to the presence or absence of clear disclaimers, source verification, actionable steps, expert endorsements, detailed explanations, and legal or financial advice. Avoid mistaking educational content, trusted news sources, and tips on identifying scams unless they lack credible sources or are presented in a suspicious manner. Ensure to distinguish educational content and warnings about scams from actual scams by checking for disclaimers, actionable steps, and source verification. Maintain a low score for frames that clearly appear to be from trusted news channels or expert advice videos.",
+      "feedback": "To reduce false positives and increase true positives, adopt the following balanced approach:\n\n1. **Source Verification**: Verify if the video is from a reputable news channel or an expert advice video. Reputable sources typically have clear branding and logos, whereas scams may mimic these but lack authenticity.\n\n2. **Content Context**: Analyze the video title and description for context. Educational content, warnings about scams, and tips often include disclaimers and actionable steps, distinguishing them from actual scams.\n\n3. **Visual Cues**: Look for trust-building tactics like testimonials, endorsements, or overly polished production quality. Scams often use these to build credibility. However, educational content may also use similar tactics to engage viewers.\n\n4. **Tone and Language**: Identify the tone and language used in the video. Normal informational videos about scams often provide educational content, news reports, or tips on identifying scams. These usually include warning signs, steps to avoid scams, and legal or financial advice, typically presented by trusted news channels or experts.\n\n5. **Visual Scam Signals**: To increase true positives, look for visual scam signals such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, or requests for personal information. Scam videos may feature fake credentials, overly polished production quality, and a lack of actionable steps or disclaimers.\n\nBy analyzing these patterns, we can balance the detection of scams while minimizing false positives."
+    },
+    {
+      "round": 5,
+      "seg": "late",
+      "train_map": 0.6482899432009339,
+      "dev_map": 0.5015700121894624,
+      "dev_auc": 0.750445632798574,
+      "dev_f1": 0.5161290322580645,
+      "dev_acc": 0.7,
+      "prompt": "Evaluate the likelihood that this visual frame is part of a cyber-scam video. Focus on narrative consistency, visual coherence, and textual credibility. Look for abrupt changes in tone or visual styles, low-quality footage, or generic stock images. Assess the realism of any promises or claims displayed, considering whether the language used seems too good to be true. Analyze the visual style for consistency and the production quality for signs of low credibility. Avoid frames with exaggerated claims or low production quality. Ensure the model returns ONLY a float between 0.0 and 1.0.",
+      "feedback": "To balance both false positives and false negatives, focus on the following aspects:\n\n1. **Narrative Consistency**: Ensure that the narrative remains consistent throughout the video. Scam videos often have abrupt shifts in tone or narrative, making the content feel disjointed.\n\n2. **Visual Consistency**: Look for consistent visual themes and professional production quality. Scam videos might have abrupt changes in visual styles, low-quality footage, or generic stock images.\n\n3. **Textual Credibility**: Analyze the language used. Normal videos use realistic language and balanced claims, while scam videos often use emotionally charged language, making exaggerated promises that seem too good to be true.\n\n4. **Engagement Metrics**: Use engagement metrics like likes, comments, and shares to gauge the video's authenticity. Scam videos often have artificially inflated metrics.\n\n5. **Source Verification**: Use the `channel` tool to assess the credibility of the source. Normal videos typically come from channels with higher credibility, such as verified accounts or channels with substantial engagement. Scam videos might have low subscriber counts, generic profile pictures, or poor engagement metrics.\n\n6. **Contextual Relevance**: Ensure that the title, description, and visual content align coherently. Scam videos often have mismatched or exaggerated titles compared to their content."
+    },
+    {
+      "round": 6,
+      "seg": "early",
+      "train_map": 0.498405784030784,
+      "dev_map": 0.45696737902620255,
+      "dev_auc": 0.7504761904761905,
+      "dev_f1": 0.631578947368421,
+      "dev_acc": 0.72,
+      "prompt": "Predict the likelihood (0.0-1.0) that this video frame depicts a cyber scam. Focus on visual cues such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, requests for personal information, fake credentials, and overly polished production quality. Pay special attention to the presence or absence of clear disclaimers, source verification, actionable steps, expert endorsements, detailed explanations, and legal or financial advice. Avoid mistaking educational content, trusted news sources, and tips on identifying scams unless they lack credible sources or are presented in a suspicious manner. Ensure to distinguish educational content and warnings about scams from actual scams by checking for disclaimers, actionable steps, and source verification. Maintain a low score for frames that clearly appear to be from trusted news channels or expert advice videos.",
+      "feedback": "To balance false positives and false negatives, focus on the following:\n\n1. **False Positives Reduction**: Normal videos often include educational content, warnings about scams, or expert advice. Look for clear disclaimers, source verification, and actionable steps. These indicators help distinguish genuine educational content from scams.\n\n2. **True Positives Increase**: In false negative cases, missed visual scam signals include promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, and requests for personal information. Pay special attention to overly polished production quality and the presence of fake credentials or endorsements.\n\nBoth strategies should be applied to ensure a balanced approach without swinging toward either extreme."
+    },
+    {
+      "round": 6,
+      "seg": "late",
+      "train_map": 0.6265081991055379,
+      "dev_map": 0.5732471626100158,
+      "dev_auc": 0.7416666666666667,
+      "dev_f1": 0.6341463414634146,
+      "dev_acc": 0.7,
+      "prompt": "Evaluate the likelihood that this visual frame is part of a cyber-scam video. Focus on coherence between visual elements and textual overlays, ensuring alignment and consistency. Look for abrupt changes in visual themes, overly promotional graphics, and generic stock images. Assess the realism of any promises or claims displayed, considering whether the language used seems too good to be true. Analyze the visual style for consistency and the production quality for signs of low credibility. Avoid frames with exaggerated claims or low production quality. Ensure the model returns ONLY a float between 0.0 and 1.0, representing the probability of the frame being part of a scam.",
+      "feedback": "To balance the detection of cyber-scam videos while minimizing false positives and increasing true positives, consider the following strategies:\n\n1. **Contextual Relevance**: Ensure that the title, description, and visual content align coherently. Scam videos often have mismatched or exaggerated titles compared to their content. Utilize the `title` tool to verify this alignment.\n\n2. **Visual Consistency**: Check for consistent visual themes throughout the video. Scam videos might abruptly switch visual styles or use overly promotional graphics. This consistency or lack thereof can be a strong indicator.\n\n3. **Textual Credibility**: Look for realistic language and balanced claims. Scam videos often use emotionally charged language, making exaggerated promises that seem too good to be true. ..."
+    },
+    {
+      "round": 7,
+      "seg": "early",
+      "train_map": 0.7123886369048907,
+      "dev_map": 0.6650603495649691,
+      "dev_auc": 0.8107638888888888,
+      "dev_f1": 0.6829268292682927,
+      "dev_acc": 0.74,
+      "prompt": "Predict the likelihood (0.0-1.0) that this video frame depicts a cyber scam. Focus on visual cues such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, requests for personal information, fake credentials, and overly polished production quality. Pay special attention to the presence or absence of clear disclaimers, source verification, actionable steps, expert endorsements, detailed explanations, and legal or financial advice. Avoid mistaking educational content, trusted news sources, and tips on identifying scams unless they lack credible sources or are presented in a suspicious manner. Ensure to distinguish educational content and warnings about scams from actual scams by checking for disclaimers, actionable steps, and source verification. Maintain a low score for frames that clearly appear to be from trusted news channels or expert advice videos.",
+      "feedback": "To effectively distinguish between educational content about scams and actual scam videos, the following policy is recommended:\n\n1. **Reduce False Positives (FP):**\n   - Focus on identifying videos that provide educational content, news reports, or tips on identifying scams. These videos typically include clear disclaimers, source verification, expert endorsements, actionable steps, and legal or financial advice. They are often presented by trusted news channels or experts.\n\n2. **Increase True Positives (TP):**\n   - Identify common scam tactics visually, such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, or requests for personal information. Scam videos may also feature fake credentials, overly polished production quality, and a lack of actionable steps or disclaimers.\n\n3. **Balanced Detection:**\n   - Use a combination of visual analysis and metadata verification (e.g., channel credibility) to maintain a balanced approach in detecting scams while minimizing false positives.\n\nBy implementing these strategies, we can improve the accuracy of scam detection and ensure that educational content about scams is not misclassified."
+    },
+    {
+      "round": 7,
+      "seg": "late",
+      "train_map": 0.7471237737902792,
+      "dev_map": 0.5822262618702247,
+      "dev_auc": 0.8128898128898129,
+      "dev_f1": 0.5161290322580645,
+      "dev_acc": 0.7,
+      "prompt": "Evaluate the likelihood that this visual frame is part of a cyber-scam video. Focus on the coherence between visual elements and textual overlays, ensuring alignment and consistency. Look for abrupt changes in visual themes, overly promotional graphics, and generic stock images. Assess the realism of any promises or claims displayed, considering whether the language used seems too good to be true. Analyze the visual style for consistency and the production quality for signs of low credibility. Avoid frames with exaggerated claims or low production quality. Ensure the model outputs ONLY a single float between 0.0 and 1.0, representing the probability of the frame being part of a scam.",
+      "feedback": "To balance the detection of cyber-scam videos while minimizing false positives and increasing true positives, consider the following strategies:\n\n1. **Contextual Relevance**: Ensure that the title, description, and visual content align coherently. Scam videos often have mismatched or exaggerated titles compared to their content. Utilize the `title` tool to verify this alignment.\n\n2. **Visual Consistency**: Check for consistent visual themes throughout the video. Scam videos might abruptly switch visual styles or use overly promotional graphics. This consistency or lack thereof can be a strong indicator.\n\n3. **Textual Credibility**: Look for realistic language and balanced claims. Scam videos often use emotionally charged language, making exaggerated promises that seem too good to be true.\n\n4. **Source Verification**: Use the `channel` tool to assess the credibility of the source. Scam videos may originate from less reputable channels or those with a history of posting suspicious content."
+    },
+    {
+      "round": 8,
+      "seg": "early",
+      "train_map": 0.6838075764391554,
+      "dev_map": 0.5942725209517306,
+      "dev_auc": 0.8373161764705883,
+      "dev_f1": 0.6857142857142857,
+      "dev_acc": 0.78,
+      "prompt": "Predict the likelihood (0.0-1.0) that this video frame depicts a cyber scam. Focus on visual cues such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, requests for personal information, fake credentials, and overly polished production quality. Pay special attention to the presence or absence of clear disclaimers, source verification, actionable steps, expert endorsements, detailed explanations, and legal or financial advice. Avoid mistaking educational content, trusted news sources, and tips on identifying scams unless they lack credible sources or are presented in a suspicious manner. Ensure to distinguish educational content and warnings about scams from actual scams by checking for disclaimers, actionable steps, and source verification. Maintain a low score for frames that clearly appear to be from trusted news channels or expert advice videos. Differentiate trusted news channels and expert advice videos by their logos, branding, and neutral or educational tone.",
+      "feedback": "To reduce false positives and increase true positives, focus on the following balanced approach:\n\n1. **Visual Cues for False Positives Reduction**:\n   - **Trust Indicators**: Look for clear disclaimers, source verification, and expert endorsements in the video frames. These are common in educational content and news segments.\n   - **Content Context**: Check for visual elements that indicate the video is from a trusted news channel or expert advice video. Trusted sources often have logos or recognizable branding.\n   - **Educational Tone**: Normal videos usually have a neutral or educational tone, avoiding exaggerated claims or overly positive language.\n\n2. **Visual Cues for True Positives Increase**:\n   - **Scam Tactics**: Identify high-pressure sales tactics, a sense of urgency, and requests for personal information. Scam videos may feature fake credentials, overly polished production quality, and a lack of actionable steps or disclaimers.\n   - **Promises of Unrealistic Returns**: Look for promises that are too good to be true, such as guaranteed high returns or quick fixes.\n   - **Content Context**: Analyze the video title and description for context. Scam videos often lack disclaimers and actionable steps, distinguishing them from educational content.\n\nBy focusing on these visual cues and content context, we can effectively balance the detection of scams while minimizing false positives."
+    },
+    {
+      "round": 8,
+      "seg": "late",
+      "train_map": 0.6876855098483388,
+      "dev_map": 0.6519297265502808,
+      "dev_auc": 0.7928692699490663,
+      "dev_f1": 0.65,
+      "dev_acc": 0.72,
+      "prompt": "Evaluate the likelihood that this visual frame is part of a cyber-scam video. Focus on the coherence between visual elements and textual overlays, ensuring alignment and consistency. Look for abrupt changes in visual themes, overly promotional graphics, and generic stock images. Assess the realism of any promises or claims displayed, considering whether the language used seems too good to be true. Analyze the visual style for consistency and the production quality for signs of low credibility. Avoid frames with exaggerated claims or low production quality. Ensure the model outputs ONLY a single float between 0.0 and 1.0, representing the probability of the frame being part of a scam.",
+      "feedback": "To balance the detection of cyber-scam videos while minimizing false positives and increasing true positives, focus on the following elements:\n\n1. **Contextual Relevance**: Ensure that the title, description, and visual content align coherently. Scam videos often have mismatched or exaggerated titles compared to their content. Utilize the `title` tool to verify this alignment.\n\n2. **Visual Consistency**: Look for abrupt changes in visual themes, overly promotional graphics, and generic stock images. Scam videos might use these elements inconsistently. Check for consistent visual themes throughout the video. This consistency or lack thereof can be a strong indicator.\n\n3. **Textual Credibility**: Assess the language used for its realism and balance. Scam videos often make promises that are too good to be true and use emotionally charged language. Look for realistic language and balanced claims.\n\n4. **Source Verification**: Check the credibility of the channel. Scam channels might have low subscriber counts and poor engagement metrics.\n\n5. **Claim Verification**: Verify the claims made in the video to ensure they are plausible and supported by evidence."
+    },
+    {
+      "round": 9,
+      "seg": "early",
+      "train_map": 0.651400858553697,
+      "dev_map": 0.4775591955833891,
+      "dev_auc": 0.7599999999999999,
+      "dev_f1": 0.5555555555555556,
+      "dev_acc": 0.68,
+      "prompt": "Predict the likelihood (0.0-1.0) that this video frame depicts a cyber scam. Focus on visual cues such as direct requests for personal information, promises of unrealistic returns, high-pressure sales tactics, fake credentials, overly polished production quality, and a sense of urgency. Pay special attention to the presence or absence of clear disclaimers, source verification, actionable steps, expert endorsements, detailed explanations, and legal or financial advice. Identify frames from trusted news channels or educational videos by their logos, neutral tone, and clear disclaimers. Maintain a low score for these frames. Differentiate educational content about scams from actual scams by checking for actionable steps, source verification, and expert endorsements. Ensure to distinguish educational content and warnings about scams from actual scams by checking for disclaimers, actionable steps, and source verification. Avoid mistaking educational content, trusted news sources, and tips on identifying scams unless they lack credible sources or are presented in a suspicious manner. Strive for accuracy by balancing both visual and contextual analysis.",
+      "feedback": "To reduce false positives and increase true positives, focus on the following balanced approach:\n\n1. **Visual and Contextual Analysis:**\n   - **Scam Indicators:** Look for visual cues such as direct requests for personal information, unrealistic promises of high returns, fake credentials or endorsements, and a sense of urgency. These are common in scam videos.\n   - **Trusted Sources:** Identify frames from trusted news channels or educational videos by their logos, neutral tone, and clear disclaimers. These should generally be classified as normal.\n   - **Educational Content:** Recognize frames that provide tips on identifying scams or educational content about scams. These often include actionable steps, expert endorsements, and source verification, distinguishing them from actual scams.\n..."
+    },
+    {
+      "round": 9,
+      "seg": "late",
+      "train_map": 0.7173751984338032,
+      "dev_map": 0.6625494532881324,
+      "dev_auc": 0.803921568627451,
+      "dev_f1": 0.6341463414634146,
+      "dev_acc": 0.7,
+      "prompt": "Evaluate the likelihood that this visual frame is part of a cyber-scam video. Focus on the coherence between visual elements and any textual overlays, ensuring alignment and consistency. Assess the realism of any claims or promises displayed, considering whether the language used seems too good to be true. Analyze the visual style for consistency and the production quality for signs of low credibility. Look for abrupt changes in visual themes, overly promotional graphics, and generic stock images. Avoid frames with exaggerated claims or low production quality. Ensure the model outputs ONLY a single float between 0.0 and 1.0, representing the probability of the frame being part of a scam.",
+      "feedback": "To effectively distinguish between normal informative videos and scams, especially when the content is based on real events or uses a professional tone, the following balanced policy is proposed:\n\n1. **Contextual Relevance**: Ensure that the title, description, and visual content align coherently. Scam videos often have mismatched or exaggerated titles compared to their content. Utilize the `title` tool to verify this alignment.\n\n2. **Visual Consistency**: Check for consistent visual themes throughout the video. Scam videos might abruptly switch visual styles or use overly promotional graphics. This consistency or lack thereof can be a strong indicator.\n\n3. **Textual Credibility**: Look for realistic language and balanced claims. Scam videos often use emotionally charged language, making exaggerated promises that seem too good to be true."
+    },
+    {
+      "round": 10,
+      "seg": "early",
+      "train_map": 0.500296085493454,
+      "dev_map": 0.5283697448843179,
+      "dev_auc": 0.7,
+      "dev_f1": 0.5365853658536586,
+      "dev_acc": 0.62,
+      "prompt": "Predict the likelihood (0.0-1.0) that this video frame depicts a cyber scam. Focus on visual cues such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, requests for personal information, fake credentials, and overly polished production quality. Pay special attention to the presence or absence of clear disclaimers, source verification, actionable steps, expert endorsements, detailed explanations, and legal or financial advice. Avoid mistaking educational content, trusted news sources, and tips on identifying scams unless they lack credible sources or are presented in a suspicious manner. Ensure to distinguish educational content and warnings about scams from actual scams by checking for disclaimers, actionable steps, and source verification. Maintain a low score for frames that clearly appear to be from trusted news channels or expert advice videos. Differentiate trusted news channels and expert advice videos by their logos, branding, and neutral or educational tone.",
+      "feedback": "To balance false positives and false negatives, the following policy should be implemented:\n\n**For False Positives (FP):**\n- **Distinguish Educational Content:** Focus on identifying frames that clearly belong to trusted news channels or educational videos. Look for neutral or educational tones, and the presence of disclaimers, source verification, and expert endorsements.\n- **Contextual Analysis:** Analyze the context provided by the video title and description. Trusted channels often have clear disclaimers and educational content.\n- **Visual Cues:** Pay attention to visual cues like logos, branding, and the overall professionalism of the production. Trusted channels tend to have consistent branding and production quality.\n\n**For False Negatives (FN):**\n- **High-Pressure Tactics:** Look for missed visual scam signals such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, and requests for personal information. Pay special attention to overly polished production quality and the presence of fake credentials or endorsements."
+    },
+    {
+      "round": 10,
+      "seg": "late",
+      "train_map": 0.5827581257497467,
+      "dev_map": 0.5713336972624898,
+      "dev_auc": 0.8092691622103386,
+      "dev_f1": 0.6666666666666666,
+      "dev_acc": 0.74,
+      "prompt": "Evaluate the likelihood that this visual frame is part of a cyber-scam video. Focus on the coherence between visual elements and textual overlays, ensuring alignment and consistency. Look for abrupt changes in visual themes, overly promotional graphics, and generic stock images. Assess the realism of any promises or claims displayed, considering whether the language used seems too good to be true. Analyze the visual style for consistency and the production quality for signs of low credibility. Avoid frames with exaggerated claims or low production quality. Ensure the model outputs ONLY a single float between 0.0 and 1.0, representing the probability of the frame being part of a scam.",
+      "feedback": "To balance the detection of cyber-scam videos, focus on the following elements:\n\n1. **Contextual Relevance**: Ensure that the title, description, and visual content align coherently. Scam videos often have mismatched or exaggerated titles compared to their content.\n\n2. **Visual Consistency**: Check for consistent visual themes throughout the video. Scam videos might abruptly switch visual styles or use overly promotional graphics.\n\n3. **Textual Credibility**: Look for realistic language and balanced claims. Scam videos often use emotionally charged language, making exaggerated promises that seem too good to be true.\n\n4. **Source Verification**: Use the `channel` tool to assess the credibility of the channel. Scam channels might have low subscriber counts and poor engagement metrics.\n\n5. **Claim Verification**: Cross-check claims made in the video using external sources. Scam videos often make unsubstantiated claims that can be easily debunked."
+    },
+    {
+      "round": 11,
+      "seg": "early",
+      "train_map": 0.7201963371380942,
+      "dev_map": 0.785804163592696,
+      "dev_auc": 0.8353140916808149,
+      "dev_f1": 0.5853658536585366,
+      "dev_acc": 0.66,
+      "prompt": "Evaluate the likelihood (0.0-1.0) that this frame is part of a cyber scam. Focus on visual cues such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, requests for personal information, fake credentials, and overly polished production quality. Pay close attention to the presence or absence of clear disclaimers, source verification, actionable steps, expert endorsements, detailed explanations, and legal or financial advice. Ensure to differentiate between educational content, trusted news sources, and warnings about scams, maintaining lower scores for trusted channels and expert advice unless they are suspicious in nature. Avoid mistaking educational content, trusted news sources, and tips on identifying scams unless they lack credible sources or are presented in a suspicious manner. Differentiate trusted news channels and expert advice videos by their logos, branding, and neutral or educational tone.",
+      "feedback": "To balance the reduction of false positives and the increase of true positives, the following policy is recommended:\n\n1. **Contextual Analysis for FP Reduction:**\n   - **Channel Credibility:** Utilize the `channel` tool to verify the source. Trusted news channels or educational channels with high subscriber counts are less likely to be scams.\n   - **Video Titles and Descriptions:** Use the `title` and `description` tools to understand the context. Titles and descriptions mentioning scams, fraud, or educational content about identifying scams are less likely to be actual scams.\n   - **Source Verification:** Employ the `web_search` tool to verify the claims made in the video. Trusted sources often provide clear disclaimers and source verification.\n\n2. **Visual and Textual Analysis for FN Det..."
+    },
+    {
+      "round": 11,
+      "seg": "late",
+      "train_map": 0.6363417756098677,
+      "dev_map": 0.5901903300123115,
+      "dev_auc": 0.7549019607843137,
+      "dev_f1": 0.5945945945945946,
+      "dev_acc": 0.7,
+      "prompt": "Evaluate the likelihood that this visual frame is part of a cyber-scam video. Focus on the coherence between visual elements and textual overlays, ensuring alignment and consistency. Pay attention to visual clarity and context, ensuring high-quality and relevant images. Check for textual consistency and coherence, avoiding abrupt changes or overly promotional graphics. Look for exaggerated claims or urgent language. Assess the realism of any promises or claims displayed, considering whether the language used seems too good to be true. Analyze the visual style for consistency and the production quality for signs of low credibility. Avoid frames with exaggerated claims or low production quality. Ensure the model outputs ONLY a single float between 0.0 and 1.0, representing the probability of the frame being part of a scam.",
+      "feedback": "To improve the model's performance and balance detection, focus on the following comprehensive policy:\n\n1. **Visual Clarity and Context**: Ensure that the visual content is clear, high-quality, and relevant to the title and description. Scam videos often use low-quality or irrelevant images, such as generic stock images or unrelated text overlays.\n\n2. **Textual Consistency and Coherence**: Ensure that the textual content aligns without abrupt changes in themes or overly promotional graphics. Scam videos often have exaggerated claims or unrealistic promises (e.g., guaranteed high returns). Normal videos usually have more balanced and realistic language, often accompanied by disclaimers or realistic expectations.\n\n3. **Promotional Language**: Look for language that promises unusually high returns or uses emotionally charged, urgent language. Normal videos may have informative or educational tones without such urgency.\n\n4. **Source Credibility**: Verify the credibility of the channel. Scam channels might have low subscriber counts, poor engagement metrics, and fake or generic profiles. Use the channel information to assess this.\n\n5. **Claim Verification**: Cross-check claims made in the video using external sources. Scam videos often make unsubstantiated claims that can be easily debunked."
+    },
+    {
+      "round": 12,
+      "seg": "early",
+      "train_map": 0.6132041971898359,
+      "dev_map": 0.6546569677645397,
+      "dev_auc": 0.7674023769100169,
+      "dev_f1": 0.6086956521739131,
+      "dev_acc": 0.64,
+      "prompt": "Evaluate the likelihood (0.0-1.0) that this frame is part of a cyber scam. Focus on visual cues such as promises of unrealistic returns, high-pressure sales tactics, a sense of urgency, requests for personal information, fake credentials, and overly polished production quality. Pay close attention to the presence or absence of clear disclaimers, source verification, actionable steps, expert endorsements, detailed explanations, and legal or financial advice. Ensure to differentiate between educational content, trusted news sources, and warnings about scams. Look for trust indicators such as testimonials, endorsements from credible sources, and professional affiliations. Scam videos might use overly positive or exaggerated language to create a sense of urgency or unrealistic expectations. Trusted news channels and expert advice videos typically have clear disclaimers, source verification, and actionable steps, and maintain a neutral or educational tone. Scam videos often lack these elements or present information in a misleading way. Avoid mistaking educational content, trusted news sources, and tips on identifying scams unless they lack credible sources or are presented in a suspicious manner. Differentiate trusted news channels and expert advice videos by their logos, branding, and neutral or educational tone. Return a single float between 0.0 and 1.0 per frame.",
+      "feedback": "To reduce false positives and increase true positives, focus on the following strategies:\n\n1. **Trust Indicators**: Normal videos often include trust-building elements such as testimonials, endorsements from credible sources, and professional affiliations. Scam videos may lack these or present them in a deceptive manner.\n\n2. **Content Tone**: Genuine informational content usually maintains a neutral or educational tone. Scam videos might use overly positive or exaggerated language to create a sense of urgency or unrealistic expectations.\n\n3. **Source Verification**: Trusted news channels and expert advice videos typically have clear disclaimers, source verification, and actionable steps. Scam videos often lack these elements or present information in a misleading way.\n\n4. **Visual Cues**: ..."
+    },
+    {
+      "round": 12,
+      "seg": "late",
+      "train_map": 0.6857511859780004,
+      "dev_map": 0.6167301640642602,
+      "dev_auc": 0.7816666666666667,
+      "dev_f1": 0.7083333333333334,
+      "dev_acc": 0.72,
+      "prompt": "Evaluate the likelihood that this visual frame is part of a cyber-scam video by focusing on the following aspects:\n\n1. **Visual Consistency**: Check for abrupt changes or low-quality footage, ensuring coherent visual style.\n2. **Narrative Consistency**: Ensure the narrative remains coherent without abrupt shifts.\n3. **Promotional Language**: Identify urgent or emotionally charged language, detecting overly urgent or emotional text.\n4. **Claim Realism**: Assess if the claims seem too good to be true, evaluating if the claims appear unrealistic.\n5. **Production Quality**: Identify signs of low credibility in the visual style, analyzing the visual style for consistency and the production quality for signs of low credibility.\n6. **Engagement Metrics**: Consider artificially inflated likes, comments, and shares, looking for artificially inflated engagement.\n\nOutput ONLY a single float between 0.0 and 1.0, representing the probability of the frame being part of a scam.",
+      "feedback": "To reduce false positives and increase true positives, focus on the following balanced approach:\n\n1. **Visual Consistency**: Ensure the visual style is coherent throughout the video. Scam videos often have abrupt changes, low-quality footage, or generic stock images.\n\n2. **Narrative Consistency**: Ensure that the narrative remains consistent throughout the video. Scam videos often have abrupt shifts in tone or narrative, making the content feel disjointed.\n\n3. **Promotional Language**: Look for overly urgent or emotionally charged language. Educational or informative videos typically avoid such language.\n\n4. **Claim Realism**: Assess if the claims made seem too good to be true. Scam videos often promise unusually high returns or benefits.\n\n5. **Source Credibility**: Verify the credibility of the channel by checking subscriber counts, engagement metrics, and whether the channel is verified. Reputable channels generally have consistent and high-quality content.\n\n6. **Engagement Metrics**: Use engagement metrics like likes, comments, and shares to gauge the video's authenticity. Scam videos often have artificially inflated metrics.\n\n7. **External Verification**: Cross-check information provided in the video to ensure accuracy and reliability."
+    }
+  ]
+}

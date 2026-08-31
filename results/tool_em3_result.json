@@ -1,0 +1,61 @@
+{
+  "method": "Tool-EM",
+  "best_prompt": "Determine the probability (0.0-1.0) that this video is a cyber scam by examining the contextual use of financial terms, presentation style, and conversation coherence. Look for clear, structured, and educational content versus urgent calls to action, exaggerated claims, and inconsistent visuals. Consider the channel's credibility based on its subscribers and content quality. Output a single float between 0.0 and 1.0.",
+  "baseline_test": {
+    "auc": null,
+    "map": null,
+    "f1": null,
+    "acc": null
+  },
+  "best_test": {
+    "kl": 1.0683262384397667,
+    "auc": 0.5571851851851852,
+    "map": 0.3779214702987459,
+    "f1": 0.5483870967741935,
+    "acc": 0.5333333333333333
+  },
+  "best_test_f1_opt": 0.5483870967741935,
+  "best_test_acc_opt": 0.5333333333333333,
+  "log": [
+    {
+      "round": 1,
+      "train_map": 0.21302958642738584,
+      "dev_map": 0.6572723690966882,
+      "dev_auc": 0.7035256410256411,
+      "dev_f1": 0.68,
+      "dev_acc": 0.68,
+      "prompt": "Determine the probability (0.0-1.0) that this video is a cyber scam by examining the contextual use of financial terms, presentation style, and conversation coherence. Look for clear, structured, and educational content versus urgent calls to action, exaggerated claims, and inconsistent visuals. Consider the channel's credibility based on its subscribers and content quality. Output a single float between 0.0 and 1.0.",
+      "feedback": "The model is over-detecting scam content due to the presence of formal business attire, discussions around financial transactions, investment advice, phone numbers, warnings about voice phishing, and calls to action for channel engagement. These visual and textual patterns are common in both scam videos and legitimate financial education or advisory content. To distinguish between the two, the model should focus on the **contextual use of financial terms**, **presentation style**, and the **coherence of the conversation**. \n\nLegitimate content typically features a clear, structured presentation with balanced visuals, educational content about fraud prevention, and a narrative of genuine concern from well-known channels. Scam content, on the other hand, often includes urgent calls to action, exaggerated claims, inconsistent visuals, rapid text exchanges, emotional appeals, and suspicious phone interfaces. The model should also consider the channel's credibility, such as the number of subscribers and the overall quality of the content. The goal is to train the model to recognize the authenticity of the communication method and the source credibility, rather than solely relying on visual elements that may appear similar to scam tactics."
+    },
+    {
+      "round": 2,
+      "train_map": 0.45202020202020204,
+      "dev_map": 0.5526502600818199,
+      "dev_auc": 0.7816399286987522,
+      "dev_f1": 0.65,
+      "dev_acc": 0.72,
+      "prompt": "Determine the probability (0.0-1.0) that this video is a cyber scam by examining the contextual use of financial terms, presentation style, and conversation coherence. Look for clear, structured, and educational content versus urgent calls to action, exaggerated claims, and inconsistent visuals. Consider the channel's credibility based on its subscribers and content quality. Output a single float between 0.0 and 1.0.",
+      "feedback": "To address the issue of over-detecting scam content in educational materials, the model should focus on the **contextual use of warning messages**, **coherence of the presentation**, and the **channel's credibility**. Educational content often includes urgent warnings, financial terms, and scenarios involving personal threats to inform viewers about fraud prevention. These elements can resemble typical scam patterns, but the context and presentation style distinguish them. Legitimate content typically features a structured narrative with a clear educational intent, while scam content often uses exaggerated claims, inconsistent visuals, and urgent calls to action. Improving visual detection alone is insufficient; the model must also evaluate the overall coherence, the channel's credibility (e.g., number of subscribers and content quality), and the educational tone of the content to accurately differentiate between legitimate educational materials and actual scams."
+    },
+    {
+      "round": 3,
+      "train_map": 0.2539086517347387,
+      "dev_map": 0.344942104323443,
+      "dev_auc": 0.6951754385964912,
+      "dev_f1": 0.5116279069767442,
+      "dev_acc": 0.58,
+      "prompt": "Determine the probability (0.0-1.0) that this video is a cyber scam by examining the contextual use of financial terms, presentation style, and conversation coherence. Look for clear, structured, and educational content versus urgent calls to action, exaggerated claims, and inconsistent visuals. Consider the channel's credibility based on its subscribers and content quality. Output a single float between 0.0 and 1.0.",
+      "feedback": "To address the issue of over-detecting scam content, the model should focus on distinguishing legitimate educational content from actual scams by analyzing the contextual use of financial terms, warning messages, and the coherence of the narrative. Legitimate content typically features a structured format with a clear educational intent, whereas scam content often employs urgent calls to action, exaggerated language, and inconsistent visuals. Additionally, the model should consider the channel's credibility, including the number of subscribers and the overall quality of the content. Improving visual detection instructions alone is insufficient; a comprehensive approach that evaluates the presentation style, narrative coherence, and channel credibility is necessary to accurately identify and differentiate between legitimate educational content and actual scams."
+    },
+    {
+      "round": 4,
+      "train_map": 0.7747378298547887,
+      "dev_map": 0.48703475378742844,
+      "dev_auc": 0.7693014705882353,
+      "dev_f1": 0.6470588235294118,
+      "dev_acc": 0.76,
+      "prompt": "Determine the probability (0.0-1.0) that this video is a cyber scam by examining the contextual use of financial terms, presentation style, and conversation coherence. Look for clear, structured, and educational content versus urgent calls to action, exaggerated claims, and inconsistent visuals. Consider the channel's credibility based on its subscribers and content quality. Output a single float between 0.0 and 1.0.",
+      "feedback": "To address the over-detection of scam content, the model should focus on multiple factors beyond just visual detection instructions. Key elements include the **coherence and intent of the narrative**, the **contextual use of warning messages and financial terms**, and the **presentation style**. The model should recognize that urgent messaging, emotional appeals, and financial discussions can be part of legitimate educational content aimed at informing viewers about potential scams and financial risks. To distinguish between legitimate and scam content, the model should consider whether the content follows a structured educational format with clear objectives, credible sources, and a coherent narrative. Additionally, the **source credibility** of the content, including the channel's reputation, number of subscribers, and overall quality, should be taken into account to reduce false alarms. By integrating these factors, the model can more accurately identify and treat legitimate content aimed at educating viewers about fraud."
+    }
+  ]
+}

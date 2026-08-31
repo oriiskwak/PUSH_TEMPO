@@ -1,0 +1,114 @@
+{
+  "method": "ERM",
+  "best_prompt": "Given the video frames, predict the probability (0.0-1.0) that the video contains a cyber scam, taking into account the following factors:\n\n- Context and Purpose: Analyze the setting, content, and purpose of the video frames. Determine if the frames depict a scenario that is part of an actual cyber scam or if they are warning about scams. Scenarios that explicitly warn against scams, such as educational content, advertisements, news segments, or talk show discussions about scams, should not be classified as containing a cyber scam. Pay close attention to any text, dialogue, or visual elements that provide additional context. Consider the professional context of the frames, such as news or talk show settings, and how that might influence the purpose of the content.\n\n- Specific Indicators of Cyber Scams: Look for clear indicators of cyber scams, including phishing attempts, fake websites, deceptive language, suspicious activities, and requests for personal information. The presence of these elements should increase the probability score, but only if they are part of an actual scam scenario rather than a warning or informative content about scams. Be especially aware of cultural and linguistic variations in how these indicators may manifest.\n\n- Visual and Textual Differentiators: Identify visual and textual elements that differentiate actual scam content from warnings about scams. For example, actual scam content may display more covert and deceptive elements, while warnings are typically more direct and explicit in their messaging. Consider the tone, style, and presentation of the content to determine whether it is intended to deceive or inform.\n\n- Cultural and Linguistic Context: Recognize the variations in how cyber scams manifest in different cultures and languages. Adjust the probability score based on the cultural and linguistic nuances observed in the video frames, but take care to distinguish between actual scam content and content that is warning about scams. A video that explicitly mentions a romance scam and its victims should be classified as containing a cyber scam, even if the cultural context is different from what you are familiar with.\n\nReturn ONLY a single float value between 0.0 and 1.0.\n\nReference examples from similar videos:\nExample 1 [Label: normal]: description: Frame 2 shows a hand holding an apple with text in Korean. The text mentions an MBC advertisement.\nExample 2 [Label: normal]: description: The second image shows a woman sitting in front of a large pile of Korean currency. The background features the logo of a Korean bank.\nExample 3 [Label: normal]: Frame 3: The image is a black background with two red horizontal lines.",
+  "best_prompt_base": "Given the video frames, predict the probability (0.0-1.0) that the video contains a cyber scam, taking into account the following factors:\n\n- Context and Purpose: Analyze the setting, content, and purpose of the video frames. Determine if the frames depict a scenario that is part of an actual cyber scam or if they are warning about scams. Scenarios that explicitly warn against scams, such as educational content, advertisements, news segments, or talk show discussions about scams, should not be classified as containing a cyber scam. Pay close attention to any text, dialogue, or visual elements that provide additional context. Consider the professional context of the frames, such as news or talk show settings, and how that might influence the purpose of the content.\n\n- Specific Indicators of Cyber Scams: Look for clear indicators of cyber scams, including phishing attempts, fake websites, deceptive language, suspicious activities, and requests for personal information. The presence of these elements should increase the probability score, but only if they are part of an actual scam scenario rather than a warning or informative content about scams. Be especially aware of cultural and linguistic variations in how these indicators may manifest.\n\n- Visual and Textual Differentiators: Identify visual and textual elements that differentiate actual scam content from warnings about scams. For example, actual scam content may display more covert and deceptive elements, while warnings are typically more direct and explicit in their messaging. Consider the tone, style, and presentation of the content to determine whether it is intended to deceive or inform.\n\n- Cultural and Linguistic Context: Recognize the variations in how cyber scams manifest in different cultures and languages. Adjust the probability score based on the cultural and linguistic nuances observed in the video frames, but take care to distinguish between actual scam content and content that is warning about scams. A video that explicitly mentions a romance scam and its victims should be classified as containing a cyber scam, even if the cultural context is different from what you are familiar with.\n\nReturn ONLY a single float value between 0.0 and 1.0.",
+  "initial_prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam.",
+  "baseline_test": {
+    "auc": 0.3536,
+    "map": 0.2975,
+    "f1": 0.4552,
+    "acc": 0.3417
+  },
+  "best_test": {
+    "auc": 0.7828,
+    "map": 0.6416,
+    "f1": 0.4928,
+    "acc": 0.7083
+  },
+  "config": {
+    "video_dir": "../data/videos",
+    "frames_dir": "../data/frames_cache_2s",
+    "output": "/home/labhosik4609/DG/TEMPO/results/erm_result.json",
+    "rounds": 12,
+    "beam_size": 3,
+    "minibatch_size": 32,
+    "n_exemplars": 3,
+    "n_feedbacks": 3,
+    "n_feedback_from_memory": 2,
+    "n_exemplars_inference": 3,
+    "mem_max_size": 20,
+    "ex_max_size": 30,
+    "patience": 2,
+    "patience_eps": 0.01,
+    "val_subsample": 30
+  },
+  "log": [
+    {
+      "round": 1,
+      "dev_map": 0.329,
+      "dev_auc": 0.4419,
+      "dev_f1": 0.48,
+      "dev_acc": 0.4583,
+      "prompt": "Predict the probability (0.0-1.0) that this video contains a cyber scam, considering the following specific criteria: the presence of unsolicited financial requests, phishing attempts, impersonation of legitimate entities, false promises of rewards or prizes, and urgent calls to action. Return ONLY a single float between 0.0 and 1.0.",
+      "feedback": "The current prompt fails to consider the context of the video frames. It does not take into account the setting, content, and purpose of the video, which are crucial factors in determining whether a video contains a cyber scam.",
+      "n_candidates": 5,
+      "improved": true
+    },
+    {
+      "round": 2,
+      "dev_map": 0.7068,
+      "dev_auc": 0.8381,
+      "dev_f1": 0.6173,
+      "dev_acc": 0.7417,
+      "prompt": "Given the video frames, predict the probability (0.0-1.0) that the video contains a cyber scam, taking into account the following factors:\n\n- Context and Purpose: Carefully analyze the setting, content, and purpose of the video frames. Determine whether the frames depict a scenario that is part of a cyber scam or if they are warning about scams (e.g., an advertisement, informational content, or educational material about cyber scams). Scenarios that are explicitly warning against scams should generally not be classified as containing a scam.\n\n- Specific Indicators of Cyber Scams: Look for clear indicators of cyber scams, including but not limited to phishing attempts, fake websites, deceptive language, suspicious activities, and requests for personal information. The presence of these elements should increase the probability score. However, ensure that these indicators are not part of content that is warning against such scams.\n\n- Cultural and Linguistic Context: Recognize the variations in how cyber scams manifest in different cultures and languages. Adjust the probability score based on the cultural and linguistic nuances observed in the video frames, but take care to distinguish between actual scam content and content that is warning about scams.\n\nReturn ONLY a single float value between 0.0 and 1.0.",
+      "feedback": "The current prompt fails to differentiate between the presence of money and a cyber scam, as seen in Frame 1. The prompt should be more specific about the context in which financial elements appear.",
+      "n_candidates": 15,
+      "improved": true
+    },
+    {
+      "round": 3,
+      "dev_map": 0.6637,
+      "dev_auc": 0.8074,
+      "dev_f1": 0.5143,
+      "dev_acc": 0.7167,
+      "prompt": "Predict the probability (0.0-1.0) that this video frame, considering its context, setting, content, purpose, and the relation of the text to the video content, contains an actual cyber scam activity. \n\nTo differentiate between educational content and actual fraudulent activities, carefully analyze the frame's purpose. Determine whether the content is intended to inform or educate about scams or if it represents an actual scam in progress. \n\nTake into account the professional context, such as news or talk show settings. If the frame is part of an educational discussion, consider it in the context of cyber scam detection to avoid misclassification. \n\nFor diverse cultural and linguistic contexts, use specific criteria to identify cyber scams. Recognize deceptive practices, phishing attempts, or fraudulent offers, and be aware of how these may manifest differently in various cultures and languages.\n\nConsider the cultural and linguistic context of the video frames. Ensure the classifier is trained to recognize variations in how cyber scams may appear in different cultures and languages, to accurately identify abnormal content.\n\nFocus on the relevance and intent of the text in determining the likelihood of a cyber scam. Analyze the text's relation to the video content, as seen in Frame 2, to better understand the context and purpose.\n\nReturn ONLY a single float 0.0–1.0.",
+      "feedback": "The current prompt does not adequately consider the context and purpose of the video frames. In Frame 1 and Frame 2, the content appears to be informational or educational, warning viewers about job trends and providing resources for further learning. The prompt should include a more detailed analysis of the purpose and context to distinguish between actual scam content and content that is warning about scams.",
+      "n_candidates": 15,
+      "improved": true
+    },
+    {
+      "round": 4,
+      "dev_map": 0.7337,
+      "dev_auc": 0.8578,
+      "dev_f1": 0.6234,
+      "dev_acc": 0.7583,
+      "prompt": "Given the video frames, predict the probability (0.0-1.0) that the video contains a cyber scam, taking into account the following factors:\n\n- **Context and Purpose with Explicit Differentiation**: Carefully analyze the setting, content, and purpose of the video frames. Determine whether the frames depict a scenario that is part of a cyber scam or if they are warning about scams (e.g., an advertisement, informational content, or educational material about cyber scams). Scenarios that are explicitly warning against scams should generally not be classified as containing a scam. To differentiate, look for direct statements or visual cues that explicitly indicate the video's purpose as educational or informational. If the content is framed as a warning, consider the probability as lower. Pay special attention to the initial frames as they often set the tone for the entire video.\n\n- **Specific Indicators of Cyber Scams with Intent Analysis**: Look for clear indicators of cyber scams, including but not limited to phishing attempts, fake websites, deceptive language, suspicious activities, and requests for personal information. The presence of these elements should increase the probability score. However, ensure that these indicators are not part of content that is warning against such scams. Analyze the intent behind these elements—whether they are used to deceive the viewer or to educate them about potential risks. Cross-reference these indicators with the overall context to ensure they align with the video's purpose.\n\n- **Cultural and Linguistic Context with Nuanced Analysis**: Recognize the variations in how cyber scams manifest in different cultures and languages. Adjust the probability score based on the cultural and linguistic nuances observed in the video frames, but take care to distinguish between actual scam content and content that is warning about scams. Pay attention to cultural references, language-specific phrases, and visual elements that may indicate a specific cultural context. Ensure that these nuances are analyzed in the context of the video's overall purpose.\n\n- **Sequential Contextual Analysis with Narrative Cohesion**: Consider the sequence of frames and their overall narrative. Analyze the frames in order to understand how they contribute to the narrative. If the frames collectively depict a coherent narrative aimed at deceiving the viewer, increase the probability score. Conversely, if the frames collectively depict a coherent narrative aimed at educating the viewer about scams, decrease the probability score. Look for transitions, continuity, and thematic consistency across the frames to determine the overall narrative intent.\n\nReturn ONLY a single float value between 0.0 and 1.0.",
+      "feedback": "The current prompt fails to adequately consider the context of the series of frames. It should be updated to take into account the broader narrative and potential connections between frames.",
+      "n_candidates": 12,
+      "improved": false
+    },
+    {
+      "round": 5,
+      "dev_map": 0.6815,
+      "dev_auc": 0.8236,
+      "dev_f1": 0.5429,
+      "dev_acc": 0.7333,
+      "prompt": "Given the video frames, predict the probability (0.0-1.0) that the video contains a cyber scam, taking into account the following factors:\n\n- Context and Purpose: Analyze the setting, content, and purpose of the video frames. Determine if the frames depict a scenario that is part of an actual cyber scam or if they are warning about scams. Scenarios that explicitly warn against scams, such as educational content, advertisements, news segments, or talk show discussions about scams, should not be classified as containing a cyber scam. Pay close attention to any text, dialogue, or visual elements that provide additional context. Consider the professional context of the frames, such as news or talk show settings, and how that might influence the purpose of the content.\n\n- Specific Indicators of Cyber Scams: Look for clear indicators of cyber scams, including phishing attempts, fake websites, deceptive language, suspicious activities, and requests for personal information. The presence of these elements should increase the probability score, but only if they are part of an actual scam scenario rather than a warning or informative content about scams. Be especially aware of cultural and linguistic variations in how these indicators may manifest.\n\n- Visual and Textual Differentiators: Identify visual and textual elements that differentiate actual scam content from warnings about scams. For example, actual scam content may display more covert and deceptive elements, while warnings are typically more direct and explicit in their messaging. Consider the tone, style, and presentation of the content to determine whether it is intended to deceive or inform.\n\n- Cultural and Linguistic Context: Recognize the variations in how cyber scams manifest in different cultures and languages. Adjust the probability score based on the cultural and linguistic nuances observed in the video frames, but take care to distinguish between actual scam content and content that is warning about scams. A video that explicitly mentions a romance scam and its victims should be classified as containing a cyber scam, even if the cultural context is different from what you are familiar with.\n\nReturn ONLY a single float value between 0.0 and 1.0.",
+      "feedback": "The current prompt does not adequately address the cultural and linguistic nuances present in the frames, leading to misclassification of Frame 1 as abnormal. The prompt needs to be more specific about recognizing personal or artistic expressions as normal content.",
+      "n_candidates": 5,
+      "improved": true
+    },
+    {
+      "round": 6,
+      "dev_map": 0.7181,
+      "dev_auc": 0.861,
+      "dev_f1": 0.6905,
+      "dev_acc": 0.7833,
+      "prompt": "Given the video frames, predict the probability (0.0-1.0) that the video contains a cyber scam, taking into account the following factors:\n\n- **Overall Purpose and Intent Analysis**: Begin by assessing the overall purpose of the video. Determine whether the frames are part of a cyber scam aimed at deceiving the viewer or if they are part of an educational or informational content warning about scams. Pay close attention to any direct statements, visual cues, or contextual elements that explicitly indicate the video's intent as educational or informational. If the frames are clearly intended to warn against scams, consider the probability as lower.\n\n- **Visual and Textual Cues for News and Educational Content**: Look for specific visual and textual cues that indicate the video is part of a news broadcast or educational content. Logos, professional settings, and direct statements such as \"be aware of scams\" or \"educational content\" should be given significant weight. These elements can help distinguish between actual scam content and content that is warning about scams.\n\n- **Cultural and Linguistic Context with Nuanced Analysis**: Recognize the cultural and linguistic nuances present in the video frames. Pay special attention to Korean text, specific phrases, and cultural references that may indicate a particular cultural context. Analyze these nuances in the context of the video's overall purpose. Ensure that cultural and linguistic elements are interpreted correctly, distinguishing between actual scam content and warnings presented within a specific cultural context.\n\n- **Sequential Contextual Analysis and Narrative Coherence**: Consider the sequence of frames and their overall narrative. If the frames collectively depict a coherent narrative aimed at deceiving the viewer, increase the probability score. Conversely, if the frames collectively depict a coherent narrative aimed at educating the viewer about scams, decrease the probability score. Pay attention to the context and purpose of each frame within the overall narrative.\n\n- **Professional Context and Settings**: Take into account the professional context of the video frames. Frames that are part of news or talk show settings should be analyzed with an understanding of the professional context. Educational discussions in professional settings should not be misclassified as normal in the context of cyber scam detection. Consider the purpose and intent of the frames within the professional context.\n\nReturn ONLY a single float value between 0.0 and 1.0.",
+      "feedback": "The current prompt fails to adequately address the subtleties of deceptive language and design elements that are indicative of cyber scams. It should be updated to recognize more nuanced visual and textual cues that are commonly used in fraud schemes.",
+      "n_candidates": 4,
+      "improved": false
+    },
+    {
+      "round": 7,
+      "dev_map": 0.7194,
+      "dev_auc": 0.8587,
+      "dev_f1": 0.5588,
+      "dev_acc": 0.75,
+      "prompt": "Given the video frames, predict the probability (0.0-1.0) that the video contains a cyber scam, taking into account the following factors:\n\n- Context and Purpose: Analyze the setting, content, and purpose of the video frames. Determine if the frames depict a scenario that is part of an actual cyber scam or if they are warning about scams. Scenarios that explicitly warn against scams, such as educational content, advertisements, news segments, or talk show discussions about scams, should not be classified as containing a cyber scam. Pay close attention to any text, dialogue, or visual elements that provide additional context. Consider the professional context of the frames, such as news or talk show settings, and how that might influence the purpose of the content.\n\n- Specific Indicators of Cyber Scams: Look for clear indicators of cyber scams, including phishing attempts, fake websites, deceptive language, suspicious activities, and requests for personal information. The presence of these elements should increase the probability score, but only if they are part of an actual scam scenario rather than a warning or informative content about scams. Be especially aware of cultural and linguistic variations in how these indicators may manifest.\n\n- Visual and Textual Differentiators: Identify visual and textual elements that differentiate actual scam content from warnings about scams. For example, actual scam content may display more covert and deceptive elements, while warnings are typically more direct and explicit in their messaging. Consider the tone, style, and presentation of the content to determine whether it is intended to deceive or inform.\n\n- Cultural and Linguistic Context: Recognize the variations in how cyber scams manifest in different cultures and languages. Adjust the probability score based on the cultural and linguistic nuances observed in the video frames, but take care to distinguish between actual scam content and content that is warning about scams. A video that explicitly mentions a romance scam and its victims should be classified as containing a cyber scam, even if the cultural context is different from what you are familiar with.\n\nReturn ONLY a single float value between 0.0 and 1.0.",
+      "feedback": "The current prompt does not emphasize enough on the professional and educational context. It should highlight the significance of visual cues like news anchors, logos, and educational statements to distinguish informative content from actual scams.",
+      "n_candidates": 4,
+      "improved": false
+    }
+  ]
+}

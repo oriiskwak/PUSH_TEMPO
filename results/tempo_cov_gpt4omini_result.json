@@ -1,0 +1,204 @@
+{
+  "method": "TEMPO-COV-Total-GPT",
+  "gpt_model": "gpt-4o-mini",
+  "best_early_prompt": "Evaluate this video frame and provide a probability score (0.0–1.0) indicating the likelihood of it containing a cyber scam. Focus on the professionalism of the visual presentation, assessing the clarity and organization of branding elements. Analyze the context of any financial discussions, distinguishing between legitimate educational content and promotional material that may suggest urgency or pressure tactics. Your output must be a single float value representing this probability, with no additional information or context provided.",
+  "best_late_prompt": "Analyze the video frame and assign a probability score (0.0-1.0) that it depicts a cyber scam. Focus on the professionalism of the visual style, including attire and branding consistency. Identify authoritative markers such as recognizable logos and formal presentation styles that may indicate legitimacy. Assess the clarity of any textual claims: straightforward language suggests credibility, while exaggerated emotional appeals or vague financial promises may indicate deceit. Monitor for visual cohesion and consistent communication styles that reinforce credibility. Return only a single float value.",
+  "baseline_test": {
+    "auc": null,
+    "map": null,
+    "f1": null,
+    "acc": null
+  },
+  "best_test": {
+    "kl": 0.7930712226077988,
+    "auc": 0.6434074074074073,
+    "map": 0.45483283460267376,
+    "f1": 0.5950413223140496,
+    "f1_macro": 0.5916383082158483,
+    "acc": 0.5916666666666667,
+    "auc_ratio": 0.6568888888888889,
+    "map_ratio": 0.4727121429671897,
+    "f1_ratio": 0.55,
+    "acc_ratio": 0.4
+  },
+  "best_test_f1_opt": 0.5964912280701754,
+  "best_test_acc_opt": 0.6166666666666667,
+  "log": [
+    {
+      "round": 1,
+      "seg": "early",
+      "train_map": 0.2554256745433216,
+      "dev_map": 0.39781113962505665,
+      "dev_auc": 0.42207792207792205,
+      "dev_f1": 0.48,
+      "dev_acc": 0.48,
+      "prompt": "Analyze this video frame and output a probability score (0.0–1.0) indicating the likelihood of a cyber scam being present. Focus on identifying specific visual cues such as financial documents or contracts showcasing investment opportunities, exaggerated claims of high returns or quick profits, emotional appeals like urgency or fear, and the absence of credible branding. Your response should be a single float representing this probability, with no additional information or context provided.",
+      "feedback": "The current prompt misses critical signals associated with scams, particularly the presence of specific visual elements that suggest fraudulent activities. To enhance detection sensitivity, consider incorporating instructions to identify the following visual cues: \n\n1. **Presence of financial documents or contracts**: Look for visuals depicting investment agreements, contracts, or financial statements that guarantee returns.\n2. **Use of exaggerated claims**: Identify any graphics or text that make bold promises of high returns or quick profits.\n3. **Emotional appeals**: Detect imagery that evokes strong emotions, such as urgency or fear of missing out, which are often used in scams.\n4. **Lack of credible branding**: Assess whether the video lacks recognizable logos or established branding ..."
+    },
+    {
+      "round": 1,
+      "seg": "late",
+      "train_map": 0.6425882152426775,
+      "dev_map": 0.4210661501365791,
+      "dev_auc": 0.6380952380952382,
+      "dev_f1": 0.55,
+      "dev_acc": 0.64,
+      "prompt": "Analyze this video frame and assign a probability (0.0-1.0) that it depicts a cyber scam. Focus on identifying visual cues such as dubious financial claims, unprofessional presentation styles, absence of credible branding, and emotional appeals that suggest urgency or manipulation. Look for specific indicators like unverified financial promotions, informal visuals, and suspicious interaction patterns, particularly those resembling unsolicited offers or creating a sense of urgency. Return only a single float value.",
+      "feedback": "The current detection model for identifying scam content in video frames requires refinement to enhance its sensitivity and accuracy. Key areas for improvement include:\n\n1. **Identification of Scam Signals**: The model should focus on visual cues that are indicative of scams, such as:\n   - Misleading financial claims and promotional offers.\n   - Informal presentation styles that lack professional credibility.\n   - Unprofessional or casual visual themes.\n   - Absence of established branding or recognizable logos.\n   - References to financial transactions or personal relationships that may appear suspicious.\n   - Emotional appeals or urgency in presentation style.\n\n2. **Reduction of False Positives**: The model currently over-detects scams due to the presence of common elements associated with legitimate discussions, such as police investigations and victim testimonies. To mitigate this, it is essential to refine detection criteria by:\n   - Focusing on specific indicators of illegitimacy, particularly financial claims or solicitations lacking clear verification.\n   - Analyzing interaction patterns, such as unsolicited offers or emotional appeals that are characteristic of scam content.\n\nBy incorporating these visual characteristics and refining detection criteria, the model can better differentiate between legitimate content and potential scams, thereby improving overall detection accuracy."
+    },
+    {
+      "round": 2,
+      "seg": "early",
+      "train_map": 0.454011093073593,
+      "dev_map": 0.6426989949341144,
+      "dev_auc": 0.6810064935064934,
+      "dev_f1": 0.6101694915254238,
+      "dev_acc": 0.54,
+      "prompt": "Analyze this video frame and output a probability score (0.0–1.0) indicating the likelihood of a cyber scam. Focus on identifying visual cues such as the professionalism of branding and the quality of visuals, distinguishing high-quality presentations from unprofessional designs. Examine the context of financial discussions and emotional appeals, particularly assessing the appropriateness of urgency or fear tactics and distinguishing legitimate claims from exaggerated ones. Your response should be a single float representing this probability, with no additional information or context provided.",
+      "feedback": "The model currently over-detects scam content due to misinterpretation of legitimate visual and textual patterns, particularly in contexts involving financial discussions, lotteries, and predictions. To enhance accuracy and reduce false positives, the following guidelines should be implemented:\n\n1. **Contextual Relevance**: Evaluate the surrounding context of conversations, especially in financial discussions, to identify clear indicators of deception. Distinguish between legitimate promotional content and scams by analyzing the context and intent.\n\n2. **Professionalism in Branding**: Differentiate between high-quality branding and unprofessional graphics. Legitimate content typically features well-designed visuals and clear branding, while scams often utilize flashy or poorly designed elements.\n\n3. **Balanced Emotional Appeal**: Recognize emotional content that is informative rather than overwhelmingly urgent or fear-inducing. Assess whether emotional appeals are appropriate for the context and not indicative of scam tactics.\n\n4. **Specific Visual Cues**: Train the model to identify visual indicators of authenticity, such as professional presentation and credible endorsements. Focus on the quality of presentation and the context in which financial information appears to avoid misinterpretation.\n\nBy refining these elements, the model can better distinguish between legitimate discussions and potential scams, leading to more accurate detection and reduced false alarms."
+    },
+    {
+      "round": 2,
+      "seg": "late",
+      "train_map": 0.6543972349742574,
+      "dev_map": 0.5896852854859768,
+      "dev_auc": 0.6733333333333333,
+      "dev_f1": 0.631578947368421,
+      "dev_acc": 0.58,
+      "prompt": "Analyze this video frame and assign a probability (0.0-1.0) that it depicts a cyber scam. Focus on visual cues such as financial claims, emotional appeals, and urgency, while carefully assessing their contextual relevance. Differentiate between legitimate cautionary content and manipulative tactics by considering the professionalism of the presentation, including branding and visual style. Pay attention to whether the presentation is credible or sensationalized. Return only a single float value.",
+      "feedback": "To enhance the accuracy of scam content detection and reduce false positives, the model must improve its differentiation between legitimate discussions about scams and actual scam indicators. Key areas of focus include:\n\n1. **Contextual Relevance**: Evaluate the context in which urgency and emotional appeals are presented. While these elements can indicate scams, they are also common in legitimate cautionary content. Assess whether the content provides credible information or sensationalizes financial topics.\n\n2. **Presentation Style**: Distinguish between informal and formal presentation styles. Informal visuals may signify casual discussions about scams, while professional graphics and branding are indicators of legitimacy.\n\n3. **Key Indicators**: Focus on the professionalism of the presentation, the context of the dialogue, and the presence of clear, credible branding. These aspects should be emphasized in detection prompts to improve classification accuracy.\n\nBy refining these criteria, the model can better identify genuine scam content while minimizing the misclassification of legitimate discussions."
+    },
+    {
+      "round": 3,
+      "seg": "early",
+      "train_map": 0.582909719184229,
+      "dev_map": 0.5401819672466033,
+      "dev_auc": 0.6562499999999999,
+      "dev_f1": 0.5185185185185185,
+      "dev_acc": 0.48,
+      "prompt": "Analyze this video frame and provide a probability score (0.0–1.0) indicating the likelihood of a cyber scam. Focus on visual cues such as the professionalism and quality of branding, distinguishing between organized, credible presentations and chaotic, unprofessional designs. Evaluate the context of any financial discussions: determine if they are framed as educational or advisory versus promotional or urgent, which may indicate high-pressure tactics typical of scams. Your output should be strictly a single float representing this probability, with no additional information or context provided.",
+      "feedback": "To enhance the accuracy of scam detection, the model must refine its criteria to better differentiate between legitimate financial discussions and actual scam indicators. The following guidelines are recommended to reduce false positives:\n\n1. **Contextual Analysis**: Evaluate whether financial topics are presented in an educational or advisory context, as opposed to a promotional or urgent context that may suggest high-pressure tactics typical of scams.\n\n2. **Visual Professionalism**: Recognize credible presentation styles characterized by organized and clean visuals, distinguishing them from chaotic or unprofessional imagery that may raise suspicion.\n\nBy implementing these improvements, the model can significantly reduce the over-detection of scams while maintaining the integrity of legitimate financial discussions."
+    },
+    {
+      "round": 3,
+      "seg": "late",
+      "train_map": 0.5736109404558603,
+      "dev_map": 0.5373376753495556,
+      "dev_auc": 0.6808149405772496,
+      "dev_f1": 0.6071428571428571,
+      "dev_acc": 0.56,
+      "prompt": "Analyze the video frame and assign a probability (0.0-1.0) that it depicts a cyber scam. Focus on the professionalism and cohesiveness of the visual presentation, including attire, branding, and overall visual style. Assess the clarity and simplicity of any textual claims, distinguishing between straightforward financial discussions and ambiguous or exaggerated statements. Evaluate the emotional appeals and urgency within the context, identifying manipulative tactics versus legitimate warnings. Look for consistent visual themes that suggest credibility versus those indicative of scams. Return only a single float value.",
+      "feedback": "The model is currently over-detecting scam content due to misinterpretation of certain visual and textual patterns that may align with typical scam characteristics. To improve detection accuracy and reduce false positives, the following refinements should be implemented:\n\n1. **Professionalism in Presentation**: Legitimate content typically features a formal and cohesive visual style, including clear branding and professional attire. Informal or casual styles should be treated with caution, as they may indicate potential scams.\n\n2. **Textual Clarity**: Genuine content should utilize clear and straightforward language, avoiding ambiguous or exaggerated financial claims. The model should be trained to recognize the difference between legitimate discussions of financial implications and deceptive language.\n\n3. **Urgency and Emotional Appeals**: While urgency can be a red flag for scams, it is also present in legitimate cautionary content. The model must evaluate the context in which urgency is presented to differentiate between genuine warnings and manipulative tactics.\n\n4. **Consistent Visual Themes**: Legitimate content often maintains consistent visual themes that align with credible sources. The model should be instructed to identify and differentiate these themes from those commonly associated with scams.\n\nBy focusing on these key identifiers, the model can enhance its ability to distinguish between legitimate content and scams, thereby reducing false positives."
+    },
+    {
+      "round": 4,
+      "seg": "early",
+      "train_map": 0.47096651659245076,
+      "dev_map": 0.6868863727071881,
+      "dev_auc": 0.7167207792207793,
+      "dev_f1": 0.6206896551724138,
+      "dev_acc": 0.56,
+      "prompt": "Evaluate this video frame and provide a probability score (0.0–1.0) indicating the likelihood of it containing a cyber scam. Focus on the professionalism of the visual presentation, assessing the clarity and organization of branding elements. Analyze the context of any financial discussions, distinguishing between legitimate educational content and promotional material that may suggest urgency or pressure tactics. Your output must be a single float value representing this probability, with no additional information or context provided.",
+      "feedback": "The model's over-detection of scam content is primarily due to its misinterpretation of urgency and emotional cues within legitimate financial discussions. This often results from visual elements that suggest distress or high-pressure tactics, leading to false positives. To enhance accuracy, the model must be trained to distinguish between authentic financial discussions and manipulative scams.\n\nKey areas for improvement include:\n\n1. **Contextual Understanding**: Emphasize the importance of evaluating the context of financial discussions, particularly in differentiating between genuine educational content and high-pressure sales techniques. Recognizing that urgency can exist in legitimate contexts without indicating fraud is crucial.\n\n2. **Visual Professionalism**: Develop criteria for identifying organized, clean visuals that reflect professionalism, such as formal attire and credible presentation styles, as opposed to chaotic or overly flashy designs typically associated with scams. This includes refining the model's ability to assess the overall visual presentation and emotional tone rather than relying solely on specific visual cues."
+    },
+    {
+      "round": 4,
+      "seg": "late",
+      "train_map": 0.4401732348111658,
+      "dev_map": 0.6201088691282861,
+      "dev_auc": 0.6607142857142857,
+      "dev_f1": 0.5660377358490566,
+      "dev_acc": 0.54,
+      "prompt": "Analyze the video frame and assign a probability score (0.0-1.0) that it depicts a cyber scam. Focus on the professionalism of the visual style, including attire and branding consistency. Identify authoritative markers such as recognizable logos and formal presentation styles that may indicate legitimacy. Assess the clarity of any textual claims: straightforward language suggests credibility, while exaggerated emotional appeals or vague financial promises may indicate deceit. Monitor for visual cohesion and consistent communication styles that reinforce credibility. Return only a single float value.",
+      "feedback": "The model's current approach to detecting scam content has resulted in an over-detection of legitimate material due to its sensitivity to certain visual and textual cues that overlap between both categories. To enhance accuracy and reduce false positives, the following guidelines should be implemented:\n\n1. **Visual Presentation**: Legitimate content typically features a cohesive and professional visual style, including recognizable branding and formal attire. In contrast, informal or inconsistent presentation styles may indicate potential scams.\n\n2. **Contextual Cues**: The model should assess the context of the content. Clear markers of authority, such as logos or verified branding, and the nature of the discussion (e.g., news segments, educational material) can help distinguish credible information from deceptive tactics.\n\n3. **Textual Clarity**: Genuine content should utilize straightforward language without excessive emotional appeals. The model should be cautious of exaggerated emotional language that creates urgency or fear, as this can be a hallmark of scams.\n\n4. **Indicators of Credibility**: Focus on identifying clear indicators of credibility, such as authoritative sources and the absence of ambiguous offers or vague financial claims. Legitimate discussions about financial topics should avoid high-pressure tactics and manipulative language.\n\nBy refining these criteria, the model can better differentiate between legitimate content and scams, improving overall detection accuracy."
+    },
+    {
+      "round": 5,
+      "seg": "early",
+      "train_map": 0.5337267585477521,
+      "dev_map": 0.546246723556876,
+      "dev_auc": 0.7132352941176471,
+      "dev_f1": 0.5714285714285714,
+      "dev_acc": 0.64,
+      "prompt": "Evaluate this video frame and assign a likelihood score (0.0–1.0) for the presence of a cyber scam. Focus on the intent and context of the content, distinguishing between genuine educational material and promotional tactics that create urgency or pressure. Assess the visual presentation for organization and professionalism, favoring clarity over chaotic or overly dramatic elements. Additionally, consider the emotional tone of the discussion to identify responsible conversations about financial risks that do not imply deceptive intent. Your output must be a single float value, with no additional commentary or context.",
+      "feedback": "The model is currently over-detecting scam content due to common visual and textual patterns associated with urgency and financial discussions. Key factors contributing to this issue include the emotional tone of presenters and the framing of financial opportunities, which can resemble scam indicators despite being legitimate content. \n\nTo reduce false positives, the detection criteria should be refined to focus on the following areas:\n\n1. **Contextual Analysis**: Evaluate the intent and framing of discussions to differentiate between genuine educational content and promotional materials that create a sense of urgency. This includes analyzing the tone of the conversation and the overall intent.\n\n2. **Visual Professionalism**: Establish clear standards for visual presentations, favoring organized and professional visuals over chaotic or overly dramatic elements typically associated with scams.\n\n3. **Emotional Tone Assessment**: Consider the emotional framing of discussions, recognizing that legitimate educational content can discuss financial risks without implying fraudulent intent.\n\nBy implementing these refined criteria, the model can improve its accuracy in distinguishing between legitimate content and potential scams."
+    },
+    {
+      "round": 5,
+      "seg": "late",
+      "train_map": 0.5612647810400344,
+      "dev_map": 0.5597444675357248,
+      "dev_auc": 0.6801948051948051,
+      "dev_f1": 0.6666666666666666,
+      "dev_acc": 0.68,
+      "prompt": "Evaluate the video frame and assign a probability score (0.0-1.0) indicating its likelihood of depicting a cyber scam. Focus on identifying unprofessional presentation styles, such as informal attire or cluttered backgrounds that may signal untrustworthiness. Look for ambiguous financial claims that suggest easy profits or quick returns without substantial evidence. Note the absence of credible logos or established branding typically associated with legitimacy. Additionally, monitor for emotional manipulation tactics, including exaggerated expressions or urgent appeals designed to provoke immediate reactions, such as anxiety or fear of missing out. Return only a single float value.",
+      "feedback": "The prompt for identifying scam-related visuals should be refined to enhance sensitivity to key indicators of financial deception and emotional manipulation. The following elements are essential for effective detection:\n\n1. **Informal Presentation Styles**: Look for visuals that depict casual or unprofessional settings, such as cluttered backgrounds or informal attire, which often characterize scam content.\n2. **Ambiguous Financial Claims**: Identify any vague language or visual elements suggesting easy money, quick returns, or unclear promises about financial gains without clear details or support.\n3. **Absence of Recognizable Branding**: Assess for a lack of credible logos or established branding that would typically indicate legitimacy.\n4. **Emotional Manipulation**: Monitor for exaggerated emotional expressions, urgent appeals, or bright colors that aim to provoke immediate reactions from viewers, creating a sense of urgency or fear of missing out."
+    },
+    {
+      "round": 6,
+      "seg": "early",
+      "train_map": 0.737037037037037,
+      "dev_map": 0.43071443021612515,
+      "dev_auc": 0.6893382352941176,
+      "dev_f1": 0.6511627906976745,
+      "dev_acc": 0.7,
+      "prompt": "Evaluate this video frame and assign a likelihood score (0.0–1.0) for the presence of cyber scam elements. Focus on the clarity and professionalism of the visual presentation, favoring organized and non-cluttered designs. Analyze the emotional tone of the discussion, ensuring it reflects balanced conversations about financial risks without creating undue urgency or implying deceptive intent. Your response must be a single float value, with no additional commentary or context.",
+      "feedback": "The model is currently over-detecting scam content primarily due to urgency indicators and emotional framing present in discussions about financial opportunities. To reduce false positives, it is essential to refine the detection criteria to effectively distinguish between legitimate educational content and high-pressure promotional tactics.\n\nKey visual patterns leading to misclassification include:\n1. **Urgency Indicators**: Rapid movements or expressions that convey anxiety or pressure.\n2. **Emotional Framing**: Exaggerated expressions or tones that imply urgency or fear.\n3. **Chaotic Presentation**: Cluttered or unorganized visuals that deviate from professional norms.\n4. **Lack of Verification**: Absence of credible branding or authoritative symbols.\n\nTo improve the model's accuracy, the following enhancements should be implemented:\n- **Contextual Framing**: Analyze the broader context of financial discussions to recognize that educational content may discuss risks without implying a scam.\n- **Visual Professionalism**: Assess the organization and clarity of visual elements, favoring clean and professional presentations.\n- **Emotional Tone Assessment**: Evaluate the emotional tone to differentiate between genuine educational intent and manipulative messaging that creates pressure.\n\nBy focusing on these aspects, the model can better identify legitimate content while minimizing false alarms related to scams."
+    },
+    {
+      "round": 6,
+      "seg": "late",
+      "train_map": 0.4854898188231522,
+      "dev_map": 0.4629656583573793,
+      "dev_auc": 0.6488413547237076,
+      "dev_f1": 0.5652173913043478,
+      "dev_acc": 0.6,
+      "prompt": "Evaluate the video frame and assign a probability score (0.0-1.0) indicating its likelihood of depicting a cyber scam. Focus on the professionalism of the visual presentation, including production quality and branding consistency, as these factors contribute to perceived legitimacy. Scrutinize financial claims for substantiation, distinguishing between responsible communication and emotional appeals lacking evidence. Identify common scam indicators, such as unrealistic promises of easy returns or urgency cues, while being mindful that informal settings and casual attire do not inherently signify a scam. Return only a single float value.",
+      "feedback": "The model's over-detection of scam content is primarily due to its sensitivity to certain visual and textual patterns that can be misinterpreted as scam indicators. Common factors contributing to misclassification include informal settings, casual attire, vague financial claims, and the absence of recognizable branding. To reduce false positives, it is crucial to refine detection criteria by distinguishing between legitimate informal presentations and genuine scams. \n\nKey strategies for improvement include:\n\n1. **Professionalism in Visual Presentation**: Emphasize the importance of production quality, consistent branding, and professional presentation styles, which are typically associated with legitimate content.\n\n2. **Contextual Understanding of Language**: Train the model to assess the context of financial claims, focusing on whether they are supported by concrete evidence or rely on emotional appeals without substantiation.\n\n3. **Identification of Scam Indicators**: Enhance the model's ability to recognize specific patterns characteristic of scams, such as clear financial claims or promises of returns, established branding or logos, and contextual cues suggesting urgency tied to financial outcomes.\n\nBy implementing these strategies, the model can better differentiate between legitimate content and scams, thereby improving detection accuracy and reducing false positives."
+    },
+    {
+      "round": 7,
+      "seg": "early",
+      "train_map": 0.6919536114040759,
+      "dev_map": 0.5079888008379044,
+      "dev_auc": 0.6987522281639929,
+      "dev_f1": 0.56,
+      "dev_acc": 0.56,
+      "prompt": "Analyze this video frame and assign a likelihood score (0.0–1.0) for the presence of cyber scam elements. Focus on urgency indicators such as frantic gestures, rapid transitions, or anxious expressions that suggest a high-pressure environment. Identify manipulative messaging, including fear-inducing visuals or exaggerated claims that create pressure. Assess the overall visual presentation; organized and professional designs are preferable, while cluttered or chaotic layouts should raise concern. Additionally, check for recognizable branding or authoritative symbols, as their absence may signal illegitimacy. Your response must be a single float value, with no additional commentary or context.",
+      "feedback": "To enhance the detection of scam videos, the following visual indicators should be incorporated into the assessment criteria:\n\n1. **Urgency Indicators**: Look for visual cues that suggest a high-pressure environment, including frantic gestures, rapid transitions, or anxious expressions that may indicate manipulative tactics.\n\n2. **Manipulative Messaging**: Identify graphics or text that evoke urgency or fear, such as alarming visuals, exaggerated claims, or emotionally charged language that create a sense of pressure.\n\n3. **Visual Presentation**: Emphasize the importance of organized and professional design. Cluttered or chaotic visuals should be flagged as potential indicators of scams.\n\n4. **Verification Markers**: Highlight the necessity of recognizable branding or authoritative symbols that lend credibility to the content, as their absence may signify a lack of legitimacy.\n\nBy integrating these elements, the detection system can improve its sensitivity and accuracy in identifying potential scam content while distinguishing between legitimate educational material and manipulative promotional tactics."
+    },
+    {
+      "round": 7,
+      "seg": "late",
+      "train_map": 0.4805688330400974,
+      "dev_map": 0.3926298181822567,
+      "dev_auc": 0.5918003565062389,
+      "dev_f1": 0.49122807017543857,
+      "dev_acc": 0.42,
+      "prompt": "Evaluate the video frame and assign a probability score (0.0-1.0) indicating its likelihood of depicting a cyber scam. Focus on visual indicators such as exaggerated financial claims, including unrealistic charts or promotional language suggesting quick or easy returns. Assess the professionalism of the presentation by noting any casual attire or cluttered backgrounds that may undermine credibility. Identify emotional manipulation tactics, such as urgent appeals or exaggerated expressions aimed at provoking immediate reactions. Additionally, look for the absence of professional branding or credible sources, as well as any vague offers that present unclear financial information. Return only a single float value.",
+      "feedback": "To enhance detection sensitivity for identifying scams, the prompt must be refined to include critical visual and textual cues. The following elements should be emphasized:\n\n1. **Ambiguous Financial Claims**: Identify visual elements such as charts or graphics that suggest exaggerated or unrealistic financial returns. Look for promotional language that implies easy money or quick gains.\n   \n2. **Informal Presentation Styles**: Assess the use of casual attire or unprofessional backgrounds that may indicate a lack of credibility. This includes cluttered settings or informal clothing that are often associated with scam content.\n\n3. **Emotional Manipulation**: Evaluate the presence of exaggerated emotional expressions or urgent appeals in imagery and language that aim to provoke immediate reactions from viewers.\n\n4. **Lack of Professional Branding**: Pay attention to the absence of credible sources or recognizable branding, which are essential for distinguishing scams from legitimate content.\n\n5. **Vague Offers**: Identify any text or imagery that presents unclear or ambiguous financial information, which may mislead viewers.\n\nBy incorporating these elements, the prompt will significantly improve its ability to detect scam signals effectively."
+    },
+    {
+      "round": 8,
+      "seg": "early",
+      "train_map": 0.5537995259282801,
+      "dev_map": 0.45313280824244817,
+      "dev_auc": 0.6423611111111112,
+      "dev_f1": 0.5660377358490566,
+      "dev_acc": 0.54,
+      "prompt": "Evaluate this video frame and assign a likelihood score (0.0–1.0) for the presence of cyber scam elements. Focus on identifying urgency tactics, such as exaggerated urgency or fear-inducing visuals, while distinguishing them from legitimate financial discussions. Assess the visual professionalism; organized and credible designs suggest legitimacy, while chaotic or overly dramatic elements may indicate a scam. Additionally, consider the emotional tone, differentiating between genuine expressions and manipulative messaging. Your response must be a single float value, with no additional commentary or context.",
+      "feedback": "The model's over-detection of scam content is primarily due to its sensitivity to urgency indicators and emotional framing, which can also appear in legitimate financial discussions. To reduce false positives, the detection criteria should be refined to include the following key distinctions:\n\n1. **Contextual Framing**: The model should differentiate between educational content discussing financial risks and promotional material that employs high-pressure tactics. It must assess the tone and overall intent of the conversation, recognizing that legitimate discussions may utilize urgency appropriately without inducing fear or pressure.\n\n2. **Visual Professionalism**: Establish clear visual standards for professionalism. Organized backgrounds and credible attire should indicate legitimacy, while chaotic or overly dramatic visuals should be flagged as potential scams.\n\n3. **Emotional Tone**: The model must be trained to recognize genuine emotional expressions versus exaggerated manipulative messaging. This includes identifying credible verification markers that help assess the legitimacy of the content.\n\nBy emphasizing these distinctions, the model can enhance its accuracy in identifying scams while minimizing the risk of misclassifying normal content as malicious."
+    },
+    {
+      "round": 8,
+      "seg": "late",
+      "train_map": 0.4723725926850927,
+      "dev_map": 0.530189861734183,
+      "dev_auc": 0.6595925297113752,
+      "dev_f1": 0.6071428571428571,
+      "dev_acc": 0.56,
+      "prompt": "Evaluate the video frame to determine the likelihood of it depicting a cyber scam, returning a probability score between 0.0 and 1.0. Focus on the context and intent of the content: assess if financial claims are specific and substantiated or vague and unrealistic. Identify any established branding or logos that indicate credibility. Look for emotional manipulation tactics, such as excessive urgency or high-pressure appeals, which may signal a scam. Analyze the overall professionalism of the presentation, ensuring that informal attire or settings do not lead to false positives. Return only a single float value.",
+      "feedback": "The model's current approach to detecting scam content is leading to an over-identification of legitimate material as scams. This issue arises from its sensitivity to various visual and textual cues, including serious themes related to financial security, emotional expressions, and informal presentation styles. To enhance accuracy and reduce false positives, the detection criteria should prioritize the context and intent behind the content rather than solely relying on superficial characteristics.\n\nKey indicators of legitimacy should include:\n1. **Clear Financial Claims**: Look for specific, substantiated financial claims or promises of returns.\n2. **Established Branding**: Identify credible branding or logos that signify legitimacy.\n3. **Contextual Cues**: Focus on the context of the communication, avoiding misinterpretation of serious language or direct appeals for caution as scam indicators.\n4. **Urgency and Manipulation**: Detect excessive emotional appeals or high-pressure tactics that create a sense of urgency, which are more characteristic of scams.\n5. **Visual Credibility**: Assess the overall professionalism of the presentation, ensuring that casual attire or informal settings do not automatically trigger misidentification.\n\nBy incorporating these criteria, the model can better distinguish between legitimate discussions about financial topics and actual scam content."
+    }
+  ]
+}

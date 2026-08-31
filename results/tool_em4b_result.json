@@ -1,0 +1,81 @@
+{
+  "method": "Tool-EM-v4",
+  "best_prompt": "Evaluate the likelihood (0.0-1.0) that this video frame is part of a cyber scam, distinguishing between actual scams and educational content. Analyze professional setups, clear overlays, balanced advice, and structured formats like panel discussions that suggest an educational intent. Identify dramatized scenarios simulating scam tactics for educational purposes, presented in a controlled, informative manner. Recognize formal attire, informative tone, and multiple speakers indicating an informative intent. Avoid mistaking complex financial analysis visuals, formal setups, urgent language, and immediate demands for actual scams. Consider video titles/descriptions to understand content intent and avoid over-detection in road/transport or educational content. Return ONLY a float 0.0–1.0.",
+  "baseline_test": {
+    "auc": null,
+    "map": null,
+    "f1": null,
+    "acc": null
+  },
+  "best_test": {
+    "kl": 0.7441949292563682,
+    "auc": 0.5599999999999999,
+    "map": 0.38934951715827326,
+    "f1": 0.41304347826086957,
+    "acc": 0.55
+  },
+  "best_test_f1_opt": 0.5043478260869565,
+  "best_test_acc_opt": 0.525,
+  "log": [
+    {
+      "round": 1,
+      "train_map": 0.21302958642738584,
+      "dev_map": 0.4369112236482675,
+      "dev_auc": 0.5129870129870131,
+      "dev_f1": 0.5555555555555556,
+      "dev_acc": 0.52,
+      "prompt": "Evaluate the likelihood (0.0-1.0) that this video frame is part of a cyber scam, not educational or professional content. Analyze professional setups, audience interaction, balanced advice, context and tone, content credibility, and educational purpose. Identify formal attire, panel discussions, informative tone, and structured formats. Avoid responding to urgent language and immediate demands. Return ONLY a float 0.0–1.0.",
+      "feedback": "To address the issue of over-detecting scam content, the model should focus on distinguishing legitimate educational or professional content from actual scams by considering the following context cues and characteristics:\n\n1. **Professional Presentations**: Look for formal setups with presenters in business attire, which suggest an informative or educational purpose rather than fraudulent intent.\n2. **Audience Interaction**: The presence of multiple speakers, panel discussions, or an audience can imply a collaborative or educational setting.\n3. **Balanced Content**: Legitimate videos often contain balanced information and advice, whereas scams may use urgent language and demand immediate responses.\n4. **Context and Tone**: Scams typically use urgent language and try to elicit an immediate response, while legitimate content is usually more informative and less demanding. The model should consider the overall tone and presentation style, which in educational content is usually more structured or dramatized.\n5. **Content Source**: Assess the credibility of the content by considering the channel name, subscriber count, and other relevant factors.\n6. **Educational Context**: Recognize video titles and descriptions that indicate the content is for educational or awareness purposes, especially when the video simulates realistic scam scenarios to educate viewers about scam tactics.\n\nBy integrating these context cues and characteristics, the model can more accurately distinguish between legitimate educational content and actual scams, reducing false positives and improving overall detection accuracy."
+    },
+    {
+      "round": 2,
+      "train_map": 0.4182535300956354,
+      "dev_map": 0.3888443331027858,
+      "dev_auc": 0.5133333333333333,
+      "dev_f1": 0.34146341463414637,
+      "dev_acc": 0.46,
+      "prompt": "Evaluate the likelihood (0.0-1.0) that this video frame is part of a cyber scam, not educational or professional content. Analyze professional setups, audience interaction, balanced advice, context and tone, content credibility, and educational purpose. Identify formal attire, panel discussions, informative tone, and structured formats. Avoid responding to urgent language and immediate demands. Return ONLY a float 0.0–1.0.",
+      "feedback": "The model is currently over-detecting scam content in general road or transport-related imagery and educational content that simulates real scam interactions. To address this, the model should focus on identifying specific visual and contextual elements directly linked to actual cyber scams, rather than abstract patterns or educational content. \n\nSpecifically, the model should:\n1. Identify specific scam-related visual elements such as text overlays with urgent or threatening language, phone call interfaces, or financial transaction details.\n2. Look for contextual clues indicating a cyber-scam scenario, such as a focus on personal data, banking information, or instructions to take immediate action.\n3. Recognize simulated scam scenarios, which may include dramatized interactions or dialogues mimicking romance scam tactics, but are used for educational purposes.\n4. Identify informative panels and discussions, where the content is presented in a professional setting with presenters in formal attire, suggesting an educational rather than a real scam context.\n5. Consider the video title or description to understand the intent behind the content, as abstract visual patterns like \"simulated scam interfaces\" should be recognized as educational content instead of real scams.\n\nImproving the visual detection instructions alone may not fully resolve the issue, as understanding the intent behind the content is crucial. Therefore, the model should be trained to distinguish between legitimate road-related content, educational content, and actual scams by focusing on the specific visual and contextual elements outlined above."
+    },
+    {
+      "round": 3,
+      "train_map": 0.4514096068591142,
+      "dev_map": 0.5435264393162464,
+      "dev_auc": 0.6481481481481481,
+      "dev_f1": 0.5454545454545454,
+      "dev_acc": 0.6,
+      "prompt": "Evaluate the likelihood (0.0-1.0) that this video frame is part of a cyber scam, distinguishing between actual scams and educational content. Analyze professional setups, clear overlays, balanced advice, and structured formats like panel discussions that suggest an educational intent. Identify dramatized scenarios simulating scam tactics for educational purposes, presented in a controlled, informative manner. Recognize formal attire, informative tone, and multiple speakers indicating an informative intent. Avoid mistaking complex financial analysis visuals, formal setups, urgent language, and immediate demands for actual scams. Consider video titles/descriptions to understand content intent and avoid over-detection in road/transport or educational content. Return ONLY a float 0.0–1.0.",
+      "feedback": "The model is over-detecting scam content due to recognizing structured financial analysis visuals, educational overlays, and dramatized scenarios that closely mimic real scam interactions. The video frames may feature graphical interfaces with financial data, text overlays providing guidance, dramatized dialogues with urgent language, and references to financial demands. However, the professional setup, balanced tone, structured presentation, and educational purpose suggest that the content is intended to inform viewers about scam tactics rather than perpetrate a scam. To distinguish these patterns from actual scams:\n\n1. **Identify structured educational content**: Recognize professionally formatted presentations with informative overlays, distinct from cluttered scam interfaces. Educational content often includes balanced advice, formal tones, and clear informational layouts.\n2. **Look for dramatized scenarios**: The presence of simulated interactions resembling scam tactics, when presented in a controlled, educational manner, indicates an informative purpose rather than actual fraud.\n3. **Formal Presentation Format**: Identify structured formats with panel discussions, multiple speakers, or formal setups that suggest an informative or educational purpose rather than a real scam."
+    },
+    {
+      "round": 4,
+      "train_map": 0.6879355212688547,
+      "dev_map": 0.49126340327525336,
+      "dev_auc": 0.6689303904923599,
+      "dev_f1": 0.5789473684210527,
+      "dev_acc": 0.68,
+      "prompt": "Evaluate the likelihood (0.0-1.0) that this video frame is part of a cyber scam, distinguishing between actual scams and educational content. Analyze professional setups, clear overlays, balanced advice, and structured formats like panel discussions that suggest an educational intent. Identify dramatized scenarios simulating scam tactics for educational purposes, presented in a controlled, informative manner. Recognize formal attire, informative tone, and multiple speakers indicating an informative intent. Avoid mistaking complex financial analysis visuals, formal setups, urgent language, and immediate demands for actual scams. Consider video titles/descriptions to understand content intent and avoid over-detection in road/transport or educational content. Return ONLY a float 0.0–1.0.",
+      "feedback": "The model is over-detecting scam content due to dramatized scenarios simulating fraudulent interactions. These patterns include text overlays mimicking scam dialogue, urgent language, and financial demands. However, the structured presentation and professional settings suggest an educational or awareness purpose rather than actual fraud. To distinguish these patterns:\n\n1. **Visual Framing**: Focus on identifying formal presentation styles, balanced advice, and professional settings that indicate educational intent rather than actual scams. Recognize dramatized scenarios as controlled simulations for awareness purposes.\n   \n2. **Textual Cues**: Analyze the tone and structure of text overlays. Educational content often includes balanced, informative language, while actual scams tend to use u..."
+    },
+    {
+      "round": 5,
+      "train_map": 0.29198028673835125,
+      "dev_map": 0.3899896489138105,
+      "dev_auc": 0.735966735966736,
+      "dev_f1": 0.42857142857142855,
+      "dev_acc": 0.68,
+      "prompt": "Evaluate the likelihood (0.0-1.0) that this video frame is part of a cyber scam, distinguishing between actual scams and educational content. Analyze professional setups, clear overlays, balanced advice, and structured formats like panel discussions that suggest an educational intent. Identify dramatized scenarios simulating scam tactics for educational purposes, presented in a controlled, informative manner. Recognize formal attire, informative tone, and multiple speakers indicating an informative intent. Avoid mistaking complex financial analysis visuals, formal setups, urgent language, and immediate demands for actual scams. Consider video titles/descriptions to understand content intent and avoid over-detection in road/transport or educational content. Return ONLY a float 0.0–1.0.",
+      "feedback": "The current false positive appears to be triggered by the following general patterns:\n\n1. **Urgent Communication Setup**: The presence of a person making a phone call, combined with a dramatic or urgent background, can be misinterpreted as a scam attempt, even in educational content. The model might be conflating staged scenarios with real scam tactics.\n\n2. **Textual Urgency and Personal Address**: Any overlay text that simulates a phone call and addresses the viewer directly can trigger the model’s scam detection, without considering the broader context or intent of the video.\n\n3. **Emotional Appeal and High Contrast Visuals**: The use of vivid, high-contrast imagery alongside dramatized scenarios might be mistaken for tactics used to evoke strong emotional reactions common in scams.\n\nTo ..."
+    },
+    {
+      "round": 6,
+      "train_map": 0.739514842456019,
+      "dev_map": 0.40143437563341977,
+      "dev_auc": 0.6647619047619048,
+      "dev_f1": 0.5161290322580645,
+      "dev_acc": 0.7,
+      "prompt": "Evaluate the likelihood (0.0-1.0) that this video frame is part of a cyber scam, distinguishing between actual scams and educational content. Analyze professional setups, clear overlays, balanced advice, and structured formats like panel discussions that suggest an educational intent. Identify dramatized scenarios simulating scam tactics for educational purposes, presented in a controlled, informative manner. Recognize formal attire, informative tone, and multiple speakers indicating an informative intent. Avoid mistaking complex financial analysis visuals, formal setups, urgent language, and immediate demands for actual scams. Consider video titles/descriptions to understand content intent and avoid over-detection in road/transport or educational content. Return ONLY a float 0.0–1.0.",
+      "feedback": "The current prompt is missing key visual and textual cues that indicate a cyber scam in these frames. To increase detection sensitivity for this pattern, the prompt should focus on the following:\n\n1. **Urgent Financial Claims**: The prompt should recognize urgent financial claims or promises of high returns, often accompanied by specific time frames or calls to action. Visual cues like bold text overlays with financial promises or deadlines should be flagged as potential scams.\n\n2. **Personal Communication Interfaces**: The prompt should identify scenes featuring personal communication interfaces, such as phone calls, text messages, or chat apps, where requests or demands are made. This includes visual and textual elements that simulate real-life scenarios targeting individuals.\n\n3. **Stru..."
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "method": "EvoPrompt-GA-MC (InternVL)",
+  "best_prompt": "Assign the correct fraud category to this video frame: Type-A, Type-B, Type-C, Type-D, or Type-E.",
+  "baseline_prompt": "Classify this video frame into one of five fraud categories.\n- Type-A\n- Type-B\n- Type-C\n- Type-D\n- Type-E",
+  "baseline_test": {
+    "macro_f1": 0.0699,
+    "per_class_f1": {
+      "보이스피싱": 0.0,
+      "투자사기": 0.24427480916030533,
+      "로맨스스캠": 0.10526315789473684,
+      "부업사기": 0.0,
+      "정상": 0.0
+    },
+    "acc": 0.1371
+  },
+  "best_test": {
+    "macro_f1": 0.0497,
+    "per_class_f1": {
+      "보이스피싱": 0.0,
+      "투자사기": 0.18803418803418803,
+      "로맨스스캠": 0.06060606060606061,
+      "부업사기": 0.0,
+      "정상": 0.0
+    },
+    "acc": 0.0968
+  },
+  "mode": "ga",
+  "log": [
+    {
+      "step": 1,
+      "train_f1": 0.05,
+      "dev_f1": 0.0507,
+      "dev_acc": 0.094,
+      "best_prompt": "Assign the correct fraud category to this video frame: Type-A, Type-B, Type-C, Type-D, or Type-E."
+    },
+    {
+      "step": 2,
+      "train_f1": 0.0,
+      "dev_f1": 0.0475,
+      "dev_acc": 0.0855,
+      "best_prompt": "Determine the fitting fraud category for this video frame: Type-A, Type-B, Type-C, Type-D, or Type-E."
+    }
+  ],
+  "final_population": [
+    {
+      "prompt": "Determine the fitting fraud category for this video frame: Type-A, Type-B, Type-C, Type-D, or Type-E.",
+      "score": 0.0
+    },
+    {
+      "prompt": "Identify the appropriate fraud category for this video frame: Type-A, Type-B, Type-C, Type-D, or Type-E.",
+      "score": 0.0
+    },
+    {
+      "prompt": "Designate the suitable fraud category for this video frame: Type-A, Type-B, Type-C, Type-D, or Type-E.",
+      "score": 0.0
+    },
+    {
+      "prompt": "Assign the correct fraud category to this video frame: Type-A, Type-B, Type-C, Type-D, or Type-E.",
+      "score": 0.0
+    },
+    {
+      "prompt": "Determine the fitting fraud category for this video frame: Type-A, Type-B, Type-C, Type-D, or Type-E.",
+      "score": 0.0
+    }
+  ],
+  "config": {
+    "budget": 12,
+    "popsize": 5,
+    "n_eval": 10
+  },
+  "split": {
+    "train": 359,
+    "val": 117,
+    "test": 124
+  }
+}
